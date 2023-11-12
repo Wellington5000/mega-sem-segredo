@@ -1,0 +1,74 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--black-2);
+  padding: 1.1875rem 4rem 1.1875rem 10.375rem;
+
+  .header-logo {
+    width: 7.5rem;
+    height: 3.125rem;
+  }
+
+  .header-actions {
+    gap: 8.375rem;
+    display: flex;
+
+    .header-actions-items {
+      gap: 1.5rem;
+      display: flex;
+      align-items: center;
+      text-transform: uppercase;
+
+      .header-actions-item {
+        color: var(--white);
+        font-size: var(--medium-font-size);
+        font-weight: var(--bold-font-weight);
+      }
+    }
+  }
+}
+
+section {
+  .content-1  {
+    .content-container {
+      display: flex;
+      padding-top: 88px;
+      align-items: center;
+      justify-content: center;
+
+      .content-info {
+        gap: 2.25rem;
+        display: flex;
+        max-width: 540px;
+        flex-direction: column;
+
+        .content-info-title {
+          width: 469px;
+        }
+
+        .content-info-elements {
+          display: flex;
+          flex-direction: column;
+          gap: 1.3125rem;
+
+          button {
+            width: fit-content;
+            padding-left: 3.75rem;
+            padding-right: 3.75rem;
+          }
+        }
+      }
+
+      .content-info-ilustration {
+        width: 440px;
+        height: 520px;
+      }
+
+      .phone-image {
+        position: absolute;
+        margin-left: 448px;
+      }
+    }
+  }
+}

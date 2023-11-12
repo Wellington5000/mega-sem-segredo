@@ -1,1 +1,89 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  //CORES
+  --black: #000000;
+  --white : #FFFFFF;
+  --black-2: #161C24;
+  --primary: #40AD1C;
+
+  //FONTES
+  --font-family: 'Nunito';
+
+  //TAMANHO DAS FONTES
+  --title-font-size: 3rem;
+  --text-font-size: 1.125rem;
+  --medium-font-size: 0.875rem;
+  --subtitle-font-size: 2.3125rem;
+
+  //PESO DAS FONTES
+  --lighter-font-weight: 300;
+  --medium-font-weight: 400;
+  --bold-font-weight: 700;
+  --bold-font-weight-900: 900;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+
+}
+
+body {
+  background-color: var(--black);
+}
+
+a {
+  text-decoration: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+  color: var(--white);
+  border-radius: 2rem;
+  text-transform: uppercase;
+  padding: 0.75rem 1.625rem;
+  font-size: var(--medium-font-size);
+  font-weight: var(--bold-font-weight);
+}
+
+button:active {
+  opacity: 0.8;
+}
+
+.primary-button {
+  background-color: var(--primary);
+}
+
+.secundary-button {
+  border: 1px solid var(--primary);
+  background-color: transparent;
+}
+
+.title {
+  color: var(--white);
+  line-height: 3rem;
+  font-size: var(--title-font-size);
+  font-weight: var(--medium-font-weight);
+}
+
+.subtitle {
+  line-height: normal;
+  font-size: var(--subtitle-font-size);
+  font-weight: var(--lighter-font-weight);
+}
+
+.text {
+  color: var(--white);
+  line-height: 1.6875rem;
+  font-size: var(--text-font-size);
+  font-weight: var(--medium-font-weight);
+}
+
+.text-primary {
+  color: var(--primary);
+}
+
+.title.text-primary {
+  font-weight: var(--bold-font-weight-900);
+}
