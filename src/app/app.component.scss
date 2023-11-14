@@ -3,7 +3,7 @@ header {
   align-items: center;
   justify-content: space-between;
   background-color: var(--black-2);
-  padding: 1.1875rem 4rem 1.1875rem 10.375rem;
+  padding: 0.75rem 4rem 1.1875rem 10.375rem;
 
   .header-logo {
     width: 7.5rem;
@@ -11,16 +11,17 @@ header {
   }
 
   .header-actions {
-    gap: 8.375rem;
+    gap: 1.5rem;
     display: flex;
 
     .header-actions-items {
-      gap: 1.5rem;
+      gap: 1rem;
       display: flex;
       align-items: center;
       text-transform: uppercase;
 
       .header-actions-item {
+        cursor: pointer;
         color: var(--white);
         font-size: var(--medium-font-size);
         font-weight: var(--bold-font-weight);
@@ -32,6 +33,7 @@ header {
 section {
   .content-1  {
     .content-container {
+      gap: 4rem;
       display: flex;
       padding-top: 88px;
       align-items: center;
@@ -44,13 +46,19 @@ section {
         flex-direction: column;
 
         .content-info-title {
-          width: 469px;
+          max-width: 469px;
         }
 
         .content-info-elements {
           display: flex;
-          flex-direction: column;
           gap: 1.3125rem;
+          max-width: 28.375rem;
+          flex-direction: column;
+
+          .content-info-stores {
+            display: flex;
+            gap: 0.25rem;
+          }
 
           button {
             width: fit-content;
@@ -66,8 +74,85 @@ section {
       }
 
       .phone-image {
+        margin-top: -20px;
+        margin-left: 430px;
         position: absolute;
-        margin-left: 448px;
+      }
+    }
+  }
+
+  .content-2 {
+    gap: 2.625rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 2.625rem 0 2.375rem 0;
+    background: radial-gradient(70.71% 70.71% at 50% 50%, #454F5B 34%, #000 100%);
+
+    .content-info-footer {
+      gap: 1.125rem;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      max-width: 39.25rem;
+      flex-direction: column;
+    }
+  }
+
+  .content-3 {
+    gap: 9.5rem;
+    display: flex;
+    padding-top: 4rem;
+    align-items: center;
+    justify-content: center;
+
+    .content-info-ilustration {
+      width: 23.5625rem;
+      height: 33.3125rem;
+    }
+
+    .book-image {
+      position: absolute;
+      margin-right: 700px;
+    }
+
+    .content-info {
+      .content-info-title {
+        margin-bottom: 1rem;
+        max-width: 37.875rem;
+
+        .title-small-weight {
+          font-weight: var(--medium-font-weight);
+        }
+      }
+
+      .content-info-text {
+        max-width: 33.75rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .content-info-footer {
+      gap: 0.75rem;
+      display: flex;
+      flex-direction: column;
+
+      .content-logos {
+        gap: 0.75rem;
+        display: flex;
+        align-items: center;
+
+        .americanas-logo {
+          margin-top: -8px;
+        }
+
+        .shopee-logo {
+          margin-top: -9px;
+        }
+
+        .submarino-logo {
+          margin-top: -10px;
+        }
       }
     }
   }
