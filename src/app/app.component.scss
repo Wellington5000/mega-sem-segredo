@@ -103,6 +103,7 @@ section {
     gap: 9.5rem;
     display: flex;
     padding-top: 4rem;
+    padding-bottom: 4.75rem;
     align-items: center;
     justify-content: center;
 
@@ -152,6 +153,169 @@ section {
 
         .submarino-logo {
           margin-top: -10px;
+        }
+      }
+    }
+  }
+
+  .content-4 {
+    gap: 3rem;
+    display: flex;
+    height: 65.875rem;
+    align-items: center;
+    padding-top: 6.25rem;
+    flex-direction: column;
+    background-color: var(--black-2);
+
+    .content-info-subtitle {
+      max-width: 37.25rem;
+      text-align: center;
+    }
+
+    .content-info {
+      gap: 7.5rem;
+      display: flex;
+      align-items: center;
+
+      .content-info-text {
+        max-width: 25rem;
+
+        .content-info-title {
+          display: flex;
+          flex-direction: column;
+
+          .text-1 {
+            font-size: 1.875rem;
+            font-weight: var(--bold-font-weight);
+          }
+
+          .text-2 {
+            font-size: 1.875rem;
+            font-weight: var(--lighter-font-weight);
+          }
+
+          .text-3 {
+            font-size: 1.875rem;
+            font-weight: var(--bold-font-weight);
+          }
+        }
+
+        .content-text {
+          border-radius: 0.9375rem;
+          border: 1px solid var(--primary);
+          padding: 1.5rem 1rem 1.31rem 2.06rem;
+        }
+      }
+
+      .card-plan {
+        width: 25rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .card-plan-top {
+          width: fit-content;
+          padding: 0.5rem 2.5rem;
+          background-color: var(--primary);
+          border-radius: 1.25rem 1.25rem 0rem 0rem;
+        }
+
+        .card-plan-container {
+          width: 100%;
+          height: 100%;
+
+          .card-plan-header {
+            display: flex;
+            padding: 0.6125rem 0;
+            justify-content: center;
+            background-color: #212B36;
+            border-radius: 1.25rem 1.25rem 0rem 0rem;
+          }
+
+          .card-plan-body {
+            height: 100%;
+            background-color: var(--white);
+            border-radius: 0rem 0rem 0.625rem 0.625rem;
+
+            .card-plan-info {
+              display: flex;
+              flex-direction: column;
+              padding: 0.7rem 1.88rem 0;
+              border-bottom: 1px solid var(--primary);
+
+              .text-center {
+                align-self: center;
+                margin-bottom: 0.75rem;
+              }
+
+              .info-title {
+                color: #000;
+                font-size: var(--small-text-font-size);
+                font-weight: var(--regular-font-weight);
+              }
+
+              .info-parcel {
+                font-size: 0.875rem;
+                font-weight: var(--medium-font-weight);
+              }
+
+              .info-value {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                font-weight: var(--medium-font-weight);
+              }
+
+              .card-value {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .card-value-aux {
+                  color: #000000;
+                  font-size: 1.5625rem;
+                  line-height: 1.875rem;
+                  font-weight: var(--bold-font-weight);
+                }
+
+                .card-value-price {
+                  font-size: 5.625rem;
+                  line-height: 6rem;
+                  font-weight: var(--bold-font-weight);
+                }
+              }
+            }
+
+            .card-plan-advantages {
+              gap: 2.94rem;
+              display: flex;
+              padding-top: 1.88rem;
+              flex-direction: column;
+              padding: 1.88rem;
+
+              button {
+                width: 100%;
+                align-self: center;
+              }
+
+              .advantages-content {
+                gap: 0.94rem;
+                display: flex;
+                flex-direction: column;
+
+                .advantages-description {
+                  gap: 0.62rem;
+                  display: flex;
+                  align-items: center;
+
+                  .advantages-text {
+                    line-height: normal;
+                    font-size: 0.875rem;
+                    font-weight: var(--bold-font-weight);
+                  }
+                }
+              }
+            }
+          }
         }
       }
     }
