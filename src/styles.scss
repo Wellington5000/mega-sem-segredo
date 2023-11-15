@@ -11,13 +11,17 @@
   //TAMANHO DAS FONTES
   --title-font-size: 3rem;
   --text-font-size: 1.125rem;
+  --small-text-font-size: 1rem;
   --medium-font-size: 0.875rem;
+  --large-text-font-size: 1.5rem;
   --subtitle-font-size: 2.3125rem;
+  --small-subtitle-font-size: 1.8rem;
 
   //PESO DAS FONTES
-  --lighter-font-weight: 300;
-  --medium-font-weight: 400;
   --bold-font-weight: 700;
+  --medium-font-weight: 400;
+  --regular-font-weight: 500;
+  --lighter-font-weight: 300;
   --bold-font-weight-900: 900;
 }
 
@@ -56,13 +60,13 @@ button:active {
 }
 
 .secundary-button {
-  border: 1px solid var(--primary);
   background-color: transparent;
+  border: 1px solid var(--primary);
 }
 
 .title {
-  color: var(--white);
   line-height: 3rem;
+  color: var(--white);
   font-size: var(--title-font-size);
   font-weight: var(--medium-font-weight);
 }
@@ -73,6 +77,18 @@ button:active {
   font-weight: var(--lighter-font-weight);
 }
 
+.small-subtitle {
+  line-height: normal;
+  font-weight: var(--medium-font-weight);
+  font-size: var(--small-subtitle-font-size);
+}
+
+.large-text {
+  line-height: 2.125rem;
+  font-size: var(--large-text-font-size);
+  font-weight: var(--medium-font-weight);
+}
+
 .text {
   color: var(--white);
   line-height: 1.6875rem;
@@ -80,10 +96,24 @@ button:active {
   font-weight: var(--medium-font-weight);
 }
 
+.small-text {
+  line-height: normal;
+  font-size: var(--small-text);
+  font-weight: var(--bold-font-weight);
+}
+
 .text-primary {
   color: var(--primary);
 }
 
+.text-secundary {
+  color: var(--white);
+}
+
 .title.text-primary {
   font-weight: var(--bold-font-weight-900);
+}
+
+.small-subtitle.text-primary {
+  font-weight: var(--bold-font-weight);
 }
