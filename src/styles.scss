@@ -15,10 +15,12 @@
   --medium-font-size: 0.875rem;
   --large-text-font-size: 1.5rem;
   --subtitle-font-size: 2.3125rem;
+  --small-subtitle-font-size: 1.8rem;
 
   //PESO DAS FONTES
   --bold-font-weight: 700;
   --medium-font-weight: 400;
+  --regular-font-weight: 500;
   --lighter-font-weight: 300;
   --bold-font-weight-900: 900;
 }
@@ -75,6 +77,12 @@ button:active {
   font-weight: var(--lighter-font-weight);
 }
 
+.small-subtitle {
+  line-height: normal;
+  font-weight: var(--medium-font-weight);
+  font-size: var(--small-subtitle-font-size);
+}
+
 .large-text {
   line-height: 2.125rem;
   font-size: var(--large-text-font-size);
@@ -104,4 +112,8 @@ button:active {
 
 .title.text-primary {
   font-weight: var(--bold-font-weight-900);
+}
+
+.small-subtitle.text-primary {
+  font-weight: var(--bold-font-weight);
 }
