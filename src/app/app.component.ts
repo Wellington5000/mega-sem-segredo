@@ -9,12 +9,5 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 export class AppComponent {
   title = 'mega-sem-segredo';
 
-  @ViewChild('about') aboutSection: ElementRef | undefined;
-
-  constructor(private viewportScroller: ViewportScroller) {}
-
-  scrollToAbout() {
-    console.log('a')
-    this.viewportScroller.scrollToAnchor('about');
-  }
+  constructor() {}
 }

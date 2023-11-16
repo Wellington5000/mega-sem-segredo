@@ -1,5 +1,6 @@
 :root {
   //CORES
+  --red: #FF3A44;
   --black: #000000;
   --white : #FFFFFF;
   --black-2: #161C24;
@@ -71,6 +72,10 @@ button:active {
   border: 1px solid var(--primary);
 }
 
+.secundary-button:hover {
+  background-color: var(--primary);
+}
+
 .title {
   line-height: 3rem;
   color: var(--white);
@@ -123,4 +128,23 @@ button:active {
 
 .small-subtitle.text-primary {
   font-weight: var(--bold-font-weight);
+}
+
+.error {
+  gap: 0.125rem;
+  display: flex;
+  margin-top: 4rem;
+  position: absolute;
+  align-items: center;
+}
+
+.error-text {
+  color: var(--red);
+  font-size: 0.75rem;
+  line-height: normal;
+  font-weight: var(--bold-font-weight);
+}
+
+.invalid-input {
+  border: 2px solid var(--red) !important;
 }
