@@ -1,0 +1,21 @@
+.form {
+  margin-top: 1.75rem;
+}
+
+.footer-form {
+  margin-top: 0.5rem;
+
+  .footer-text {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem !important;
+    font-weight: var(--bold-font-weight);
+  }
+
+  img {
+    margin-top: 1rem;
+    width: fit-content;
+    align-self: center;
+    margin-bottom: 1.25rem;
+  }
+}

@@ -6,13 +6,19 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AppService {
-  API_URL  = 'https://megamaisbets.com.br/api';
+  private API_URL  = 'https://megamaisbets.com.br/api';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  // createUser(): Observable<any> {
+  createUser(user: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    };
 
-  // }
+    return this.http.post(this.API_URL + '/auth/register', user, httpOptions);
+  }
 }

@@ -1,0 +1,29 @@
+<div class="content-info-subtitle">
+  <span class="register-subtitle text-secundary">Escolha a forma de pagamento</span>
+</div>
+<div class="form">
+  <div class="form-item">
+    <input type="radio" id="credit_card" name="payment_method" value="credit_card" [(ngModel)]="selectedPaymentMethod">
+    <label for="credit_card"></label>
+    <div class="item-card">
+      <span>Cartão de crédito</span>
+      <span>12x de R$ 20</span>
+    </div>
+  </div>
+  <div class="form-item">
+    <input type="radio" id="pix" name="payment_method" value="pix" [(ngModel)]="selectedPaymentMethod">
+    <label for="pix"></label>
+    <div class="item-card">
+      <span>PIX</span>
+      <span>R$ 180</span>
+    </div>
+  </div>
+  <div class="footer-form">
+    <button class="primary-button" (click)="next()">Continuar</button>
+    <div>
+      <span class="form-footer-text text-secundary">Ao continuar você concorda com os </span>
+      <a href="#"><strong class="form-footer-text text-secundary">Termos de contrato</strong></a>
+    </div>
+    <img src="/assets/images/safe-buy.png" alt="imagem do selo de compra segura">
+  </div>
+</div>

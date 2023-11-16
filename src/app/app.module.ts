@@ -8,14 +8,20 @@ import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
-import { ReactiveFormsModule } from '@angular/forms';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaymentTypeComponent } from './payment-type/payment-type.component';
+import { CreditCardDataComponent } from './credit-card-data/credit-card-data.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PixDataComponent } from './pix-data/pix-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    PaymentTypeComponent,
+    CreditCardDataComponent,
+    PixDataComponent
   ],
   imports: [
     BrowserModule,
@@ -23,6 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,
+    FormsModule,
+    BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
   ],
   providers: [],
