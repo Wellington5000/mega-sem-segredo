@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class PixDataComponent implements OnInit {
   hasError: boolean = false;
+  @Output() nextStep = new EventEmitter();
 
   formPix: FormControl = new FormControl('', [Validators.required]);
 
@@ -16,4 +17,11 @@ export class PixDataComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  next(): void {
+    if(this.formPix.valid) {
+      this.nextStep.emit(this.formPix.value);
+    } else {
+      this.hasError = true;
+    }
+  }
 }

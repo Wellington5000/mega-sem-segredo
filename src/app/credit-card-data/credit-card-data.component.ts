@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -8,6 +8,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 export class CreditCardDataComponent implements OnInit {
   hasError: boolean = false;
+  @Output() nextStep = new EventEmitter();
 
   formCard: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
@@ -23,7 +24,7 @@ export class CreditCardDataComponent implements OnInit {
 
   next(): void {
     if(this.formCard.valid) {
-
+      this.nextStep.emit(this.formCard.value)
     } else {
       this.hasError = true;
     }

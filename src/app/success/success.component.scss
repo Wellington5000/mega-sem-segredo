@@ -1,0 +1,29 @@
+.success-container {
+  margin-top: 3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  max-width: 53.875rem;
+  text-align: center;
+  background: radial-gradient(37.71% 70.71% at 50% 50%, rgba(64, 173, 28, 0.50) 0%, rgba(0, 0, 0, 0.00) 58.19%);
+
+  .success-gif {
+    border-radius: 50%;
+    width: 12.9375rem;
+    height: 12.9375rem;
+  }
+
+  .content-info-title {
+    margin-bottom: 2rem;
+  }
+
+  .store-logos {
+    gap: 0.25rem;
+    display: flex;
+    margin-top: 2rem;
+
+    .store-logo {
+      width: fit-content !important;
+    }
+  }
+}

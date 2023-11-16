@@ -13,6 +13,7 @@ import { PaymentTypeComponent } from './payment-type/payment-type.component';
 import { CreditCardDataComponent } from './credit-card-data/credit-card-data.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PixDataComponent } from './pix-data/pix-data.component';
+import { SuccessComponent } from './success/success.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PixDataComponent } from './pix-data/pix-data.component';
     HomeComponent,
     PaymentTypeComponent,
     CreditCardDataComponent,
-    PixDataComponent
+    PixDataComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,
