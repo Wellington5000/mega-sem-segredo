@@ -218,3 +218,14 @@
 app-payment-type, app-credit-card-data, app-pix-data, app-pix-payment {
   width: 100%;
 }
+
+@media(max-width: 800px) {
+  .section-register {
+    padding: 0.5rem;
+
+    .register-form {
+      max-width: 25.375rem;
+      width: 100%;
+    }
+  }
+}

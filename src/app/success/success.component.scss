@@ -27,3 +27,9 @@
     }
   }
 }
+
+@media(max-width: 800px) {
+  .success-container {
+    background: radial-gradient(130% 80% at 50% 55%, rgba(64, 173, 28, 0.50) 0%, rgba(0, 0, 0, 0.00) 58.19%);
+  }
+}

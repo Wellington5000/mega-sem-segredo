@@ -19,12 +19,12 @@ export class RegisterComponent implements OnInit {
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
-      first_name: new FormControl('Wellington', [Validators.required]),
-      last_name: new FormControl('Teixeira', [Validators.required]),
-      email: new FormControl('wellington3@gmail.com', [Validators.required, Validators.email]),
-      phone_number: new FormControl('86981862803', [Validators.required]),
-      password: new FormControl('teste123', [Validators.required, Validators.minLength(8)]),
-      password_confirmation: new FormControl('teste123', [Validators.required, Validators.minLength(8)]),
+      first_name: new FormControl('', [Validators.required]),
+      last_name: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone_number: new FormControl('', [Validators.required]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
   })
 

@@ -64,4 +64,8 @@
   }
 }
 
-
+@media(max-width: 800px) {
+  .qr-code-box {
+    padding: 1.25rem 0.5rem 2.25rem 0.5rem !important;
+  }
+}
