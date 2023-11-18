@@ -220,8 +220,14 @@ app-payment-type, app-credit-card-data, app-pix-data, app-pix-payment {
 }
 
 @media(max-width: 800px) {
+  .register-container {
+    background-color: var(--black);
+  }
+
   .section-register {
     padding: 0.5rem;
+    padding-bottom: 2rem !important;
+    margin-top: 2.5rem;
 
     .register-form {
       max-width: 25.375rem;
