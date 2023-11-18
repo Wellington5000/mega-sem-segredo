@@ -372,3 +372,10 @@ footer {
     font-size: 0.625rem;
   }
 }
+
+@media(max-width: 1360px) {
+  .phone-image {
+    width: 720px;
+    margin-left: 350px !important;
+  }
+}

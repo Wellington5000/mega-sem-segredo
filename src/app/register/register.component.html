@@ -97,11 +97,17 @@
               </div>
             </div>
             <div class="footer-form">
-              <button class="primary-button" (click)="nextStep()">Continuar</button>
-              <div>
-                <span class="form-footer-text text-secundary">Ao continuar você concorda com os </span>
-                <a href="#"><strong class="form-footer-text text-secundary">Termos de contrato</strong></a>
+              <div class="check-container">
+                <div id="inputPreview">
+                  <input [formControl]="hasAcceptedTerms" name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
+                  <label for="demo_opt_1"></label>
+                </div>
+                <span class="form-footer-text text-secundary">Li e concordo com os
+                  <a href="/assets/docs/TERMOS E CONDIÇÕES DE USO.pdf"><strong class="form-footer-text text-secundary">Termos e Condições de uso</strong></a> e
+                  <a href="/assets/docs/TERMOS E CONDIÇÕES DE USO.pdf"><strong class="form-footer-text text-secundary">Política de Privacidade</strong></a>
+                </span>
               </div>
+              <button class="primary-button" (click)="nextStep()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
             </div>
           </div>
         </ng-container>
@@ -109,10 +115,13 @@
           <app-payment-type (nextStep)="nextStepByPayment($event)"></app-payment-type>
         </ng-container>
         <ng-container *ngIf="step === 'credit-card-data'">
-          <app-credit-card-data (nextStep)="createInvoice($event)"></app-credit-card-data>
+          <app-credit-card-data (nextStep)="createUser($event)"></app-credit-card-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-data'">
-          <app-pix-data (nextStep)="createInvoice($event)"></app-pix-data>
+          <app-pix-data (nextStep)="createUser($event)"></app-pix-data>
+        </ng-container>
+        <ng-container *ngIf="step === 'pix-payment'">
+          <app-pix-payment [data]="pixData"></app-pix-payment>
         </ng-container>
       </div>
     </div>
@@ -121,3 +130,5 @@
     </ng-template>
   </section>
 </div>
+<app-loading [isLoading]="isLoading"></app-loading>
+<app-notification></app-notification>

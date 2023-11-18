@@ -63,6 +63,11 @@ button:active {
   opacity: 0.8;
 }
 
+button:disabled {
+  background-color: #B1B1B1;
+  cursor: default;
+}
+
 .primary-button {
   background-color: var(--primary);
 }

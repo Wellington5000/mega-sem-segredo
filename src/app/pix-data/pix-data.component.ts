@@ -19,7 +19,7 @@ export class PixDataComponent implements OnInit {
 
   next(): void {
     if(this.formPix.valid) {
-      this.nextStep.emit(this.formPix.value);
+      this.nextStep.emit({ pix_key: this.formPix.value });
     } else {
       this.hasError = true;
     }

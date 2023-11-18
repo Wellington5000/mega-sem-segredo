@@ -14,6 +14,10 @@ import { CreditCardDataComponent } from './credit-card-data/credit-card-data.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PixDataComponent } from './pix-data/pix-data.component';
 import { SuccessComponent } from './success/success.component';
+import { PixPaymentComponent } from './pix-payment/pix-payment.component';
+import { LoadingComponent } from './utils/loading/loading.component';
+import { NotificationComponent } from './utils/notification/notification/notification.component';
+import { NotificationService } from './utils/notification/notification.service';
 
 @NgModule({
   declarations: [
@@ -23,10 +27,14 @@ import { SuccessComponent } from './success/success.component';
     PaymentTypeComponent,
     CreditCardDataComponent,
     PixDataComponent,
-    SuccessComponent
+    SuccessComponent,
+    PixPaymentComponent,
+    LoadingComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     RouterModule,
     HttpClientModule,

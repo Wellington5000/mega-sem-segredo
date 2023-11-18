@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AppService {
-  private API_URL  = 'https://megamaisbets.com.br/api';
+  private API_URL  = 'https://megamaisbets.com.br/api/';
 
   constructor(
     private http: HttpClient
@@ -19,6 +19,30 @@ export class AppService {
       })
     };
 
-    return this.http.post(this.API_URL + '/auth/register', user, httpOptions);
+    return this.http.post(this.API_URL + 'auth/register', user, httpOptions);
+  }
+
+  createPaymentByCreditCard(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + data?.token,
+        'Content-Type':  'application/json',
+        'Accept': 'application/json'
+      })
+    };
+
+    return this.http.post(this.API_URL + 'v1/pagamento/checkout/salvar-cartao', data.body, httpOptions);
+  }
+
+  createPaymentByPix(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + data?.token,
+        'Content-Type':  'application/json',
+        'Accept': 'application/json'
+      })
+    };
+
+    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
   }
 }
