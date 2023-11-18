@@ -34,6 +34,7 @@
   box-sizing: border-box;
 }
 
+
 ::before,
 ::after {
   box-sizing: inherit;
@@ -106,6 +107,10 @@ button:disabled {
   font-weight: var(--medium-font-weight);
 }
 
+.large-text.text-primary {
+  font-weight: var(--bold-font-weight);
+}
+
 .text {
   color: var(--white);
   line-height: 1.6875rem;
@@ -152,4 +157,51 @@ button:disabled {
 
 .invalid-input {
   border: 2px solid var(--red) !important;
+}
+
+.hidden-desktop {
+  display: none;
+}
+
+.hidden-mobile {
+  display: flex;
+}
+
+@media(max-width: 800px) {
+  .title {
+    font-size: 2rem;
+    line-height: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+
+  .subtitle.text-primary {
+    font-weight: var(--bold-font-weight);
+  }
+
+  .small-subtitle {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .large-text {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+
+  .hidden-desktop {
+    display: flex;
+  }
+
+  .hidden-mobile {
+    display: none !important;
+  }
+
+  button {
+    font-size: 1rem;
+    font-weight: var(--bold-font-weight);
+  }
 }

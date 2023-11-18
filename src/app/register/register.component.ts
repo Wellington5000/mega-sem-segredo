@@ -34,7 +34,6 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.error();
   }
 
   checkPasswordIsValid(): boolean {

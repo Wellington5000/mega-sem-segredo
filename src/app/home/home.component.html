@@ -17,7 +17,7 @@
           <span class="title text-secundary">Já imaginou ganhar na </span>
           <span class="title text-primary">Mega-Sena?</span>
         </div>
-        <div class="content-info-elements">
+        <div class="content-info-elements hidden-mobile">
           <span class="text">Conheça o aplicativo Mega Sem Segredo e descubra como aumentar suas chances de ganhar!</span>
           <a routerLink="/register"><button class="primary-button">Quero ganhar</button></a>
           <div class="content-info-stores">
@@ -26,8 +26,18 @@
           </div>
         </div>
       </div>
-      <div class="content-info-ilustration"></div>
-      <img class="phone-image" src="/assets/images/phone-image-2.png" alt="Mão segurando telefone">
+      <div class="content-info-ilustration">
+        <div class="content-info-stores hidden-desktop">
+          <a href="#"><img src="/assets/images/google-play.png" alt="Loja de aplicativos google play"></a>
+          <a href="#"><img src="/assets/images/app-store.png" alt="Loja de aplicativos app store"></a>
+        </div>
+        <img class="phone-image hidden-desktop" src="/assets/images/phone.png" alt="Mão segurando telefone">
+      </div>
+      <img class="phone-image hidden-mobile" src="/assets/images/phone-image-2.png" alt="Mão segurando telefone">
+    </div>
+    <div class="content-info-elements hidden-desktop">
+      <span class="text">Conheça o aplicativo Mega Sem Segredo e descubra como aumentar suas chances de ganhar!</span>
+      <a routerLink="/register"><button class="primary-button">Quero ganhar</button></a>
     </div>
   </div>
   <div class="content content-2" id="about">
@@ -46,13 +56,16 @@
     </div>
   </div>
   <div class="content content-3" id="book">
-    <div class="content-info-ilustration"></div>
-    <img class="book-image" src="/assets/images/book.png" alt="livro loteria sem segredo">
+    <div class="content-info-ilustration hidden-mobile"></div>
+    <img class="book-image hidden-mobile" src="/assets/images/book.png" alt="livro loteria sem segredo">
     <div class="content-info">
       <div class="content-info-title">
         <span class="title text-secundary">Livro: </span>
         <span class="title text-primary">Loteria Sem Segredo </span>
         <span class="title text-secundary title-small-weight">- A Matemática Explica</span>
+      </div>
+      <div class="content-info-ilustration hidden-desktop">
+        <img class="book-image" src="/assets/images/book-2.png" alt="livro loteria sem segredo">
       </div>
       <div class="content-info-text">
         <span class="text text-secundary">A obra representa anos de pesquisa dedicada aos
@@ -81,7 +94,7 @@
       <span class="small-subtitle text-secundary">da Mega-Sena?</span>
     </div>
     <div class="content-info">
-      <div class="content-info-text">
+      <div class="content-info-text" hidden>
         <div class="content-info-title">
           <span class="text-1 text-secundary">OFERTA ESPECIAL</span>
           <span class="text-2 text-secundary">DE LANÇAMENTO</span>
@@ -175,9 +188,9 @@
 <footer>
   <div class="footer-container">
     <a href="#"><img src="/assets/images/logo.png" alt="logo mega sem segredo"></a>
-    <a href="#"><span class="text-footer">CONTATO</span></a>
-    <a href="/assets/docs/TERMOS E CONDIÇÕES DE USO.pdf" target="_blank"><span class="text-footer">TERMOS E CONDIÇÕES DE USO</span></a>
-    <a href="/assets/docs/POLITICA DE PRIVACIDADE.pdf" target="_blank"><span class="text-footer">POLÍTICAS DE PRIVACIDADE</span></a>
+    <a href="#"><span class="text-footer">Contato</span></a>
+    <a href="/assets/docs/TERMOS E CONDIÇÕES DE USO.pdf" target="_blank"><span class="text-footer">Termos e condições de uso</span></a>
+    <a href="/assets/docs/POLITICA DE PRIVACIDADE.pdf" target="_blank"><span class="text-footer">Políticas de privacidade</span></a>
   </div>
   <span class="text-copy">Todos os direitos reservados, 2023 - Mega sem segredo</span>
 </footer>
