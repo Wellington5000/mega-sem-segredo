@@ -24,7 +24,7 @@ export class CreditCardDataComponent implements OnInit {
 
   next(): void {
     if(this.formCard.valid) {
-      this.nextStep.emit(this.formCard.value)
+      this.nextStep.emit(this.formCard.value);
     } else {
       this.hasError = true;
     }

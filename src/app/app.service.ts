@@ -25,7 +25,7 @@ export class AppService {
   createPaymentByCreditCard(data: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + data?.token,
+        'Authorization': 'Bearer ' + data?.auth,
         'Content-Type':  'application/json',
         'Accept': 'application/json'
       })
@@ -37,12 +37,12 @@ export class AppService {
   createPaymentByPix(data: any): Observable<any> {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + data?.token,
+        'Authorization': 'Bearer ' + data?.auth,
         'Content-Type':  'application/json',
         'Accept': 'application/json'
       })
     };
 
-    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', {}, httpOptions);
   }
 }

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pagamento - Adicionar cartão de crédito</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body class="bg-light">
+    <div class="container">
+        <div class="row mt-4 px-5">
+            <nav style="--bs-breadcrumb-divider: url(&#34;data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Cpath d='M2.5 0L1 1.5 3.5 4 1 6.5 2.5 8l4-4-4-4z' fill='%236c757d'/%3E%3C/svg%3E&#34;);" aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                  <li class="breadcrumb-item"><a href="{{ route("pagamento.forma") }}">Forma de pagamento</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Cartão de crédito</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="row mt-4 px-5">
+            <h2>Adicionar cartão de crédito</h2>
+        </div>
+        <form id="payment-form" action="{{ route("pagamento.cartao.salvar") }}" method="POST" class="row g-3 px-5 justify-content-center">
+            @csrf
+            <div class="col-12">
+                <label for="credit_card_number" class="form-label">Número do cartão</label>
+                <input type="text" class="form-control" id="credit_card_number" data-iugu="number" placeholder="Número do Cartão" value="">
+            </div>
+            <div class="col-12">
+                <label for="credit_card_name" class="form-label">Nome impresso no cartão</label>
+                <input type="text" class="form-control" id="credit_card_name" data-iugu="full_name" placeholder="Titular do Cartão" value="">
+            </div>
+            <div class="col-sm-8">
+              <label for="credit_card_expiration" class="form-label">Data de expiração</label>
+              <input type="text" class="form-control" id="credit_card_expiration" data-iugu="expiration" placeholder="MM/AA" value="">
+            </div>
+            <div class="col-sm-4">
+              <label for="credit_card_cvv" class="form-label">CVV</label>
+              <input type="text" class="form-control" id="credit_card_cvv" data-iugu="verification_value" placeholder="CVV" value="">
+            </div>
+            <div class="token-area">
+                <input type="hidden" name="token" id="token" value="" />
+            </div>
+            <div class="col-12">
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success" type="submit">Adicionar cartão</button>
+                </div>
+            </div>
+          </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/formatter.js/0.1.5/formatter.min.js"></script>
+    <script type="text/javascript" src="https://js.iugu.com/v2"></script>
+    <script type="text/javascript">
+        Iugu.setAccountID("6743ADF556B84F229AE40D63AC8FE78A");
+        Iugu.setTestMode(true);
+
+        jQuery(function($) {
+            $('#payment-form').submit(function(evt) {
+                var form = $(this);
+                var tokenResponseHandler = function(data) {
+
+                    if (data.errors) {
+                        alert("Erro salvando cartão: " + JSON.stringify(data.errors));
+                    } else {
+                        $("#token").val( data.id );
+                        form.get(0).submit();
+                    }
+
+                    // Seu código para continuar a submissão
+                    // Ex: form.submit();
+                }
+
+                Iugu.createPaymentToken(this, tokenResponseHandler);
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

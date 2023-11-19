@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
+declare const Iugu: any;
 
 @Component({
   selector: 'app-register',
@@ -34,6 +35,7 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.createInvoiceByPix({ auth: "135|8r0PKASmlSAGJvNLfsiF6t1DMJ99jBYswsTA2t6p", body: { token: '61862470316' } })
   }
 
   checkPasswordIsValid(): boolean {
@@ -56,22 +58,61 @@ export class RegisterComponent implements OnInit {
     this.step = (paymentType === 'pix') ? 'pix-data' : 'credit-card-data';
   }
 
+  createCreditCardObject(creditData: any): any {
+    const month = creditData.date.substring(0, 2); // '12'
+    const year = creditData.date.substring(2);
+    return Iugu.CreditCard(
+      creditData.number,
+      month,
+      year,
+      this.formUser.get('user')?.get('first_name')?.value,
+      this.formUser.get('user')?.get('last_name')?.value,
+      creditData.cvv
+    );
+  }
+
   createUser(paymentData: any): void {
     this.isLoading = true;
     this.appService.createUser(this.formUser.get('user')?.value).subscribe((response) => {
-      const data = { token: response?.token, body: paymentData };
-
-      (paymentData?.pix_key) ?
-        this.createInvoiceByPix(data) :
+      if(paymentData?.pix_key) {
+        const data = { key: paymentData.pix_key, auth: response.token };
+        this.createInvoiceByPix(data)
+      } else {
+        const data = {
+          auth: response.token,
+          body: {
+            ...paymentData,
+            first_name: this.formUser?.get('user')?.get('first_name')?.value,
+            last_name: this.formUser?.get('user')?.get('last_name')?.value,
+          }
+        };
         this.createInvoiceByCreditCard(data);
+      }
     }, error => {
       this.isLoading = false;
       this.error();
     })
   }
 
-  createInvoiceByCreditCard(paymentData: any): void {
-    this.appService.createPaymentByCreditCard(paymentData).subscribe((response) => {
+  createInvoiceByCreditCard(data: any): void {
+    Iugu.setAccountID("6743ADF556B84F229AE40D63AC8FE78A");
+    Iugu.setTestMode(true);
+
+    const cc = this.createCreditCardObject(data.body);
+    const self = this;
+
+    Iugu.createPaymentToken(cc, function(response: any) {
+      if (response.errors) {
+        self.isLoading = false;
+        self.notificationService.notify('Erro ao criar pagamento. Por favor, revise os dados informados e tente novamente');
+      } else {
+        self.createCardPayment({ auth: data.auth, body: { token: response.id }});
+      }
+    });
+  }
+
+  createCardPayment(data: any): void {
+    this.appService.createPaymentByCreditCard(data).subscribe((response) => {
       this.isLoading = false;
       this.step = 'success';
     }, error => {
