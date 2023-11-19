@@ -35,7 +35,6 @@ export class RegisterComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.createInvoiceByPix({ auth: "135|8r0PKASmlSAGJvNLfsiF6t1DMJ99jBYswsTA2t6p", body: { token: '61862470316' } })
   }
 
   checkPasswordIsValid(): boolean {
@@ -75,7 +74,7 @@ export class RegisterComponent implements OnInit {
     this.isLoading = true;
     this.appService.createUser(this.formUser.get('user')?.value).subscribe((response) => {
       if(paymentData?.pix_key) {
-        const data = { key: paymentData.pix_key, auth: response.token };
+        const data = { auth: response.token, body: { numero_documento: paymentData.pix_key }};
         this.createInvoiceByPix(data)
       } else {
         const data = {

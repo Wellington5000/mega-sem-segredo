@@ -43,6 +43,6 @@ export class AppService {
       })
     };
 
-    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', {}, httpOptions);
+    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
   }
 }
