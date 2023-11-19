@@ -215,9 +215,19 @@
   width: 22px;
 }
 
+.password-info {
+  position: absolute;
+  color: var(--white);
+  font-size: 0.625rem;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: 5px;
+}
+
 app-payment-type, app-credit-card-data, app-pix-data, app-pix-payment {
   width: 100%;
 }
+
 
 @media(max-width: 800px) {
   .register-container {
