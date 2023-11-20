@@ -357,8 +357,11 @@ footer {
       margin-bottom: 0.5rem;
     }
 
+    a {
+      width: fit-content;
+    }
+
     .text-footer {
-      text-transform: uppercase;
       color: #C4C4C4;
       font-weight: 400;
       line-height: 1rem;
@@ -579,9 +582,5 @@ footer {
     align-items: center;
     text-align: center;
     padding: 2.5rem 0 1.75rem 0;
-
-    .text-footer {
-      text-transform: none !important;
-    }
   }
 }
