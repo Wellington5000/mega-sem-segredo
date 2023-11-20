@@ -123,7 +123,7 @@ export class RegisterComponent implements OnInit {
   createInvoiceByPix(paymentData: any): void {
     this.appService.createPaymentByPix(paymentData).subscribe((response) => {
       this.isLoading = false;
-      this.pixData = response;
+      this.pixData = { qrcode: response?.pix?.qrcode, qrcode_text: response?.pix?.qrcode_text };
       this.step = 'pix-payment';
 
     }, error => {
