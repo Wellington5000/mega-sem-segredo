@@ -96,7 +96,6 @@ export class RegisterComponent implements OnInit {
   createInvoiceByCreditCard(data: any): void {
     Iugu.setAccountID("6743ADF556B84F229AE40D63AC8FE78A");
     Iugu.setTestMode(true);
-
     const cc = this.createCreditCardObject(data.body);
     const self = this;
 
@@ -112,6 +111,7 @@ export class RegisterComponent implements OnInit {
 
   createCardPayment(data: any): void {
     this.appService.createPaymentByCreditCard(data).subscribe((response) => {
+
       this.isLoading = false;
       this.step = 'success';
     }, error => {
