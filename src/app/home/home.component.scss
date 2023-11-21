@@ -345,7 +345,7 @@ footer {
   display: flex;
   flex-direction: column;
   background-color: #000;
-  padding: 2rem 0 1.5rem 8.44rem;
+  padding: 2rem 0 1.25rem 8.44rem;
 
   .footer-container {
     gap: 0.5rem;
@@ -368,6 +368,11 @@ footer {
       margin-left: 0.375rem;
       font-size: var(--small-text-font-size);
     }
+  }
+
+  .text-footer {
+    display: flex;
+    flex-direction: column;
   }
 
   .text-copy {
