@@ -1,0 +1,41 @@
+.ut-container {
+  min-height: 100vh;
+  background-color: var(--black-2);
+
+  header {
+    padding-top: 1rem;
+    padding-left: 2.44rem;
+  }
+
+  section {
+    display: flex;
+    justify-content: center;
+  }
+
+  footer {
+    display: flex;
+    justify-content: center;
+  }
+
+  .ut-content {
+    width: 100%;
+    padding-top: 56px;
+    max-width: 1328px;
+
+    .small-text {
+      text-align: justify;
+    }
+
+    .ut-padding {
+      padding-left: 3rem;
+    }
+
+    ul {
+      list-style: none;
+      
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

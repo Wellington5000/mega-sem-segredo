@@ -3,16 +3,20 @@ import { RouterModule, Routes } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { UseTermsComponent } from './use-terms/use-terms.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'use-terms', component: UseTermsComponent },
+  { path: 'privacy-police', component: PrivacyPolicyComponent },
+  { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+  //providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
 })
 export class AppRoutingModule { }
