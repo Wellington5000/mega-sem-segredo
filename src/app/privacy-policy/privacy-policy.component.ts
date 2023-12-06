@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-privacy-policy',
@@ -9,6 +10,7 @@ import { Location } from '@angular/common';
 export class PrivacyPolicyComponent implements OnInit {
 
   constructor(
+    private router: Router,
     private location: Location
   ) { }
 
@@ -16,6 +18,11 @@ export class PrivacyPolicyComponent implements OnInit {
   }
 
   goBack(): void {
-    this.location.back();
+    const state = this.location.getState() as Record<string, any>;
+    if (state && state['navigationId'] === 1) {
+      this.router.navigate(['/']);
+    } else {
+      this.location.back();
+    }
   }
 }
