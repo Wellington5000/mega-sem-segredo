@@ -9,7 +9,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'use-terms', component: UseTermsComponent },
-  { path: 'privacy-police', component: PrivacyPolicyComponent },
+  { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

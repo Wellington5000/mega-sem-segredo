@@ -1,0 +1,49 @@
+.pp-container {
+    min-height: 100vh;
+    background-color: var(--black-2);
+  
+    header {
+      padding-top: 1rem;
+      padding-left: 2.44rem;
+    }
+  
+    section {
+      display: flex;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      justify-content: center;
+    }
+  
+    footer {
+      display: flex;
+      padding-left: 2.5rem;
+      padding-right: 2.5rem;
+      padding-bottom: 3rem;
+      justify-content: center;
+    }
+  
+    .pp-content {
+      width: 100%;
+      padding-top: 56px;
+      max-width: 1328px;
+  
+      .small-text {
+        text-align: justify;
+      }
+    }
+  }
+  
+  @media(max-width: 800px) {
+    section, footer {
+      padding-left: 1.5rem !important;
+      padding-right: 1.5rem !important;
+    }
+  
+    footer {
+      padding-bottom: 2rem !important;
+  
+      button {
+        width: 100%;
+      }
+    }
+  }

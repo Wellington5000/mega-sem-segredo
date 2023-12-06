@@ -9,11 +9,16 @@
 
   section {
     display: flex;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
     justify-content: center;
   }
 
   footer {
     display: flex;
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+    padding-bottom: 3rem;
     justify-content: center;
   }
 
@@ -30,12 +35,31 @@
       padding-left: 3rem;
     }
 
+    strong {
+      font-size: 18px;
+    }
+
     ul {
       list-style: none;
       
       li {
         margin-bottom: 10px;
       }
+    }
+  }
+}
+
+@media(max-width: 800px) {
+  section, footer {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  footer {
+    padding-bottom: 2rem !important;
+
+    button {
+      width: 100%;
     }
   }
 }

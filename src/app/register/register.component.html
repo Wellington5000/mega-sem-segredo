@@ -104,8 +104,8 @@
                   <label for="demo_opt_1"></label>
                 </div>
                 <span class="form-footer-text text-secundary">Li e concordo com os
-                  <a href="/assets/docs/TERMOS E CONDIÇÕES DE USO.pdf" target="_blank"><strong class="form-footer-text text-secundary">Termos e Condições de uso</strong></a> e
-                  <a href="/assets/docs/POLITICA DE PRIVACIDADE.pdf" target="_blank"><strong class="form-footer-text text-secundary">Política de Privacidade</strong></a>
+                  <a routerLink="/use-terms"><strong class="form-footer-text text-secundary">Termos e Condições de uso</strong></a> e
+                  <a routerLink="/privacy-policy"><strong class="form-footer-text text-secundary">Política de Privacidade</strong></a>
                 </span>
               </div>
               <button class="primary-button" (click)="nextStep()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
