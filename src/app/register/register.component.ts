@@ -70,23 +70,11 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  createUser(paymentData: any): void {
+  createUser(): void {
     this.isLoading = true;
     this.appService.createUser(this.formUser.get('user')?.value).subscribe((response) => {
-      if(paymentData?.pix_key) {
-        const data = { auth: response.token, body: { numero_documento: paymentData.pix_key }};
-        this.createInvoiceByPix(data)
-      } else {
-        const data = {
-          auth: response.token,
-          body: {
-            ...paymentData,
-            first_name: this.formUser?.get('user')?.get('first_name')?.value,
-            last_name: this.formUser?.get('user')?.get('last_name')?.value,
-          }
-        };
-        this.createInvoiceByCreditCard(data);
-      }
+      this.isLoading = false;
+      this.step = 'success';
     }, error => {
       this.isLoading = false;
       this.error();

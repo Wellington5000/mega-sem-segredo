@@ -99,7 +99,7 @@ section {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 5.625rem 0 5.375rem 0;
+    padding: 5.625rem 0 2.375rem 0;
     background: radial-gradient(70.71% 70.71% at 50% 50%, #454F5B 34%, #000 100%);
 
     .content-info-footer {
@@ -109,6 +109,11 @@ section {
       align-items: center;
       max-width: 39.25rem;
       flex-direction: column;
+    }
+
+    .secundary-button {
+      padding: 1rem 4rem;
+      font-size: 1rem;
     }
   }
 

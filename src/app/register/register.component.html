@@ -103,12 +103,11 @@
                   <input [formControl]="hasAcceptedTerms" name="cssCheckbox" id="demo_opt_1" type="checkbox" class="css-checkbox">
                   <label for="demo_opt_1"></label>
                 </div>
-                <span class="form-footer-text text-secundary">Li e concordo com os
-                  <a routerLink="/use-terms"><strong class="form-footer-text text-secundary">Termos e Condições de uso</strong></a> e
+                <span class="form-footer-text text-secundary">Li e concordo com a
                   <a routerLink="/privacy-policy"><strong class="form-footer-text text-secundary">Política de Privacidade</strong></a>
                 </span>
               </div>
-              <button class="primary-button" (click)="nextStep()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
+              <button class="primary-button" (click)="createUser()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
             </div>
           </div>
         </ng-container>
@@ -116,10 +115,10 @@
           <app-payment-type (nextStep)="nextStepByPayment($event)"></app-payment-type>
         </ng-container>
         <ng-container *ngIf="step === 'credit-card-data'">
-          <app-credit-card-data (nextStep)="createUser($event)"></app-credit-card-data>
+          <app-credit-card-data (nextStep)="createUser()"></app-credit-card-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-data'">
-          <app-pix-data (nextStep)="createUser($event)"></app-pix-data>
+          <app-pix-data (nextStep)="createUser()"></app-pix-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-payment'">
           <app-pix-payment [data]="pixData"></app-pix-payment>
