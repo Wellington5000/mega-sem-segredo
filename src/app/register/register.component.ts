@@ -77,7 +77,8 @@ export class RegisterComponent implements OnInit {
       this.step = 'success';
     }, error => {
       this.isLoading = false;
-      this.error();
+      const emailError = error?.error?.errors?.email;
+      this.error(emailError && emailError?.length > 0 ? emailError[0] : null );
     })
   }
 
@@ -120,21 +121,7 @@ export class RegisterComponent implements OnInit {
     })
   }
 
-  error(): void {
-    this.notificationService.notify('Ocorreu um erro ao criar o pagamento. Por favor, entre em contato com o suporte!');
+  error(msg?: string): void {
+    this.notificationService.notify(msg || 'Ocorreu um erro ao criar o pagamento. Por favor, entre em contato com o suporte!');
   }
 }
-
-//   {
-//     "user": {
-//         "name": "Wellington Teixeira",
-//         "email": "wellington1@gmail.com",
-//         "phone_number": "86981862803",
-//         "updated_at": "2023-11-18T02:00:10.000000Z",
-//         "created_at": "2023-11-18T02:00:08.000000Z",
-//         "id": 18,
-//         "iugu_user_id": "F382FECC56EA44AA96BFE3AFC62FCC4D"
-//     },
-//     "token": "135|8r0PKASmlSAGJvNLfsiF6t1DMJ99jBYswsTA2t6p",
-//     "token_type": "Bearer"
-// }
