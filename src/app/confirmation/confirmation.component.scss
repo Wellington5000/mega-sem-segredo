@@ -21,6 +21,10 @@
             width: 150px;
         }
 
+        .large-text {
+            margin-bottom: 0.5rem;
+        }
+
         .c-text-container {
             text-align: center;
             display: flex;
@@ -31,7 +35,7 @@
 
 @media(max-width: 800px) {
     .large-text {
-        margin-bottom: 20px;
+        margin-bottom: 20px !important;
         font-size: 1.375rem;
     }
 }

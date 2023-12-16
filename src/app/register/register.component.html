@@ -107,7 +107,7 @@
                   <a routerLink="/privacy-policy"><strong class="form-footer-text text-secundary privacy-text">Política de Privacidade</strong></a>
                 </span>
               </div>
-              <button class="primary-button" (click)="createUser()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
+              <button class="primary-button" (click)="nextStep()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
             </div>
           </div>
         </ng-container>
