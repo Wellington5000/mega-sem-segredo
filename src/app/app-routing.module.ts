@@ -5,10 +5,14 @@ import { HomeComponent } from './home/home.component';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { SuccessComponent } from './success/success.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'success-register', component: SuccessComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

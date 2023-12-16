@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
+import { Router } from '@angular/router';
 declare const Iugu: any;
 
 @Component({
@@ -30,6 +31,7 @@ export class RegisterComponent implements OnInit {
   })
 
   constructor(
+    private router: Router,
     private appService: AppService,
     private notificationService: NotificationService
   ) { }
@@ -74,7 +76,7 @@ export class RegisterComponent implements OnInit {
     this.isLoading = true;
     this.appService.createUser(this.formUser.get('user')?.value).subscribe((response) => {
       this.isLoading = false;
-      this.step = 'success';
+      this.router.navigateByUrl('/confirmation');
     }, error => {
       this.isLoading = false;
       const emailError = error?.error?.errors?.email;

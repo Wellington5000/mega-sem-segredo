@@ -20,6 +20,7 @@ import { NotificationComponent } from './utils/notification/notification/notific
 import { NotificationService } from './utils/notification/notification.service';
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
     LoadingComponent,
     NotificationComponent,
     UseTermsComponent,
-    PrivacyPolicyComponent
+    PrivacyPolicyComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,
