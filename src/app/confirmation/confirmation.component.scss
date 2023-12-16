@@ -14,6 +14,8 @@
         flex-direction: column;
         align-items: center;
         height: 500px;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
 
         img {
             width: 150px;
@@ -24,5 +26,12 @@
             display: flex;
             flex-direction: column;
         }
+    }
+}
+
+@media(max-width: 800px) {
+    .large-text {
+        margin-bottom: 20px;
+        font-size: 1.375rem;
     }
 }
