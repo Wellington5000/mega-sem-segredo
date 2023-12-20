@@ -15,7 +15,7 @@ export class RegisterComponent implements OnInit {
   hasAcceptedTerms: FormControl = new FormControl(false);
   hasError: boolean = false;
   showPassword: boolean = false;
-  step: string = 'user';
+  step: string = 'success';
   showConfirmPassword: boolean = false;
   isLoading: boolean = false;
 
