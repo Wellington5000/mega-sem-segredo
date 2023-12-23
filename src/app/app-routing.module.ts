@@ -9,9 +9,9 @@ import { SuccessComponent } from './success/success.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'register/:origin', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'success-register', component: SuccessComponent },
+  { path: 'success-register/:origin', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },

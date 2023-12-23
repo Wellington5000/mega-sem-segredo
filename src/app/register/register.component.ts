@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 declare const Iugu: any;
 
 @Component({
@@ -18,6 +18,7 @@ export class RegisterComponent implements OnInit {
   step: string = 'user';
   showConfirmPassword: boolean = false;
   isLoading: boolean = false;
+  origin: string = 'web';
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
@@ -33,10 +34,12 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private appService: AppService,
+    private activatedRoute: ActivatedRoute,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
+    this.origin = this.activatedRoute.snapshot.params['origin'];
   }
 
   checkPasswordIsValid(): boolean {
@@ -74,7 +77,8 @@ export class RegisterComponent implements OnInit {
 
   createUser(): void {
     this.isLoading = true;
-    this.appService.createUser(this.formUser.get('user')?.value).subscribe((response) => {
+    const user = { ...this.formUser.get('user')?.value, origin: this.origin };
+    this.appService.createUser(user).subscribe((response) => {
       this.isLoading = false;
       this.router.navigateByUrl('/confirmation');
     }, error => {
