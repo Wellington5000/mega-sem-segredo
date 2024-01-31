@@ -21,6 +21,8 @@ import { NotificationService } from './utils/notification/notification.service';
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { DeviceDetectorService } from 'ngx-device-detector';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +51,7 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
   ],
-  providers: [],
+  providers: [DeviceDetectorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
