@@ -52,7 +52,7 @@ export class RegisterComponent implements OnInit {
 
   nextStep(): void {
     if(this.checkPasswordIsValid() && this.formUser.valid) {
-      this.createUser();
+      this.step = 'payment-type';
     } else {
       this.hasError = true;
     }
