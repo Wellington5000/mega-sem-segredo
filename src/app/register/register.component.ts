@@ -19,6 +19,7 @@ export class RegisterComponent implements OnInit {
   showConfirmPassword: boolean = false;
   isLoading: boolean = false;
   origin: string = 'web';
+  originPayment: boolean = false;
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
@@ -40,6 +41,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.origin = this.activatedRoute.snapshot.params['origin'];
+
+    if(this.router.url === '/payment-methods') {
+      this.step = 'payment-type';
+      this.originPayment = true;
+      this.origin = 'app';
+    }
   }
 
   checkPasswordIsValid(): boolean {
@@ -91,7 +98,7 @@ export class RegisterComponent implements OnInit {
   createInvoiceByCreditCard(data: any): void {
     Iugu.setAccountID("6743ADF556B84F229AE40D63AC8FE78A");
     Iugu.setTestMode(true);
-    const cc = this.createCreditCardObject(data.body);
+    const cc = this.createCreditCardObject( this.originPayment ? data : data.body);
     const self = this;
 
     Iugu.createPaymentToken(cc, function(response: any) {
@@ -106,7 +113,6 @@ export class RegisterComponent implements OnInit {
 
   createCardPayment(data: any): void {
     this.appService.createPaymentByCreditCard(data).subscribe((response) => {
-
       this.isLoading = false;
       this.step = 'success';
     }, error => {
