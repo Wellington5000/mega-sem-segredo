@@ -8,6 +8,7 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { SuccessComponent } from './success/success.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PaymentTypeComponent } from './payment-type/payment-type.component';
+import { CheckHitsComponent } from './check-hits/check-hits.component';
 
 const routes: Routes = [
   { path: 'register/:origin', component: RegisterComponent },
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'success-register/:origin', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'check-hits', component: CheckHitsComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

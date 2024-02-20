@@ -17,11 +17,13 @@ import { SuccessComponent } from './success/success.component';
 import { PixPaymentComponent } from './pix-payment/pix-payment.component';
 import { LoadingComponent } from './utils/loading/loading.component';
 import { NotificationComponent } from './utils/notification/notification/notification.component';
-import { NotificationService } from './utils/notification/notification.service';
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { DeviceDetectorService } from 'ngx-device-detector';
+import { HeaderModule } from './components/header/header.module';
+import { FooterModule } from './components/footer/footer.module';
+import { CheckHitsComponent } from './check-hits/check-hits.component';
 
 
 @NgModule({
@@ -38,7 +40,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     NotificationComponent,
     UseTermsComponent,
     PrivacyPolicyComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    CheckHitsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +53,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
     FormsModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
+    HeaderModule,
+    FooterModule
   ],
   providers: [DeviceDetectorService],
   bootstrap: [AppComponent]
