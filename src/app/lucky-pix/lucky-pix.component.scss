@@ -1,0 +1,114 @@
+section {
+    padding: 1rem;
+    height: 100vh;
+    display: flex;
+    padding-top: 9rem;
+    padding-bottom: 3.75rem;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--black-2);
+
+    .lp-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .lp-title {
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .lp-table-container {
+        max-width: 100%;
+        margin-top: 4rem;
+        overflow-x: auto;
+        overflow-y: hidden;
+        margin-bottom: 2.5rem;
+    }
+
+    table {
+        width: 1086px;
+        overflow: hidden;
+        border-collapse: collapse;
+        border-radius: 1rem 1rem 0 0;
+
+        th, td {
+            text-align: left;
+            padding: 1rem 1.5rem;
+            color: white;
+        }
+    
+        th {
+            font-size: 1rem;
+            font-weight: 800;
+            background-color: #000000;
+        }
+    
+        td {
+            font-weight: 600;
+            background-color: #263238;
+        }
+
+        .lp-column-with-margin {
+            padding-right: 12rem;
+        }
+    }
+
+    .lp-table-button button, .lp-button {
+        padding: 0;
+        color: var(--primary);
+        background-color: transparent;
+    }
+
+    .lp-text-info {
+        max-width: 510px;
+        line-height: 22px;
+        text-align: center;
+        margin-bottom: 1rem;
+    }
+
+    .lp-searlp {
+        .lp-searlp-title {
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        .lp-searlp-actions {
+            gap: 0.5rem;
+            display: flex;
+            align-items: center;
+
+            input {
+                width: 184px;
+                outline: none;
+                font-size: 1rem;
+                color: #151516;
+                font-weight: 400;
+                border-radius: 10px;
+                padding: 0.625rem 0.5rem;
+                border: 2px solid #00000080;
+            }
+
+            button {
+                width: 46px;
+                height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--primary);
+                border-radius: 8px;
+            }
+        }
+    }
+
+    .lp-button {
+        align-self: flex-start;
+    }
+}
+
+@media(max-width: 1120px) {
+    .lp-column-with-margin {
+        padding-right: 1.5rem !important;
+    }
+}

@@ -24,6 +24,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
 import { CheckHitsComponent } from './check-hits/check-hits.component';
+import { LuckyPixComponent } from './lucky-pix/lucky-pix.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { CheckHitsComponent } from './check-hits/check-hits.component';
     UseTermsComponent,
     PrivacyPolicyComponent,
     ConfirmationComponent,
-    CheckHitsComponent
+    CheckHitsComponent,
+    LuckyPixComponent
   ],
   imports: [
     BrowserModule,

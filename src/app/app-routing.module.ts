@@ -9,6 +9,7 @@ import { SuccessComponent } from './success/success.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { PaymentTypeComponent } from './payment-type/payment-type.component';
 import { CheckHitsComponent } from './check-hits/check-hits.component';
+import { LuckyPixComponent } from './lucky-pix/lucky-pix.component';
 
 const routes: Routes = [
   { path: 'register/:origin', component: RegisterComponent },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'success-register/:origin', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'check-hits', component: CheckHitsComponent },
+  { path: 'lucky-pix', component: LuckyPixComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
