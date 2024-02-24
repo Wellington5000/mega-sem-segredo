@@ -4,143 +4,44 @@
     <div class="ch-search">
         <span class="ch-search-title text-secundary">Concurso</span>
         <div class="ch-search-actions">
-            <input mask="00000">
-            <button>
+            <input mask="00000" [formControl]="concourse">
+            <button (click)="getHitsByCode()">
                 <img src="/assets/icons/search.svg" alt="ícone de lupa">
             </button>
         </div>
     </div>
     <div class="ch-cards">
-        <div class="ch-card">
-            <div class="ch-card-header">
-                <span class="ch-card-header-title text-secundary">Concurso 2687 (10/02/24)</span>
-                <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
-            </div>
-            <div class="ch-card-items">
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">02</span>
+        <ng-container *ngIf="hits.length > 0; else notFoundHits">
+            <div class="ch-card" *ngFor="let hitsItem of hits">
+                <div class="ch-card-header">
+                    <span class="ch-card-header-title text-secundary">Concurso {{ hitsItem.concurso }} ({{ hitsItem.data_sorteio }})</span>
+                    <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
                 </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">04</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">24</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">30</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">34</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">50</span>
-                </div>
-            </div>
-        </div>
-        <div class="ch-card">
-            <div class="ch-card-header">
-                <span class="ch-card-header-title text-secundary">Concurso 2687 (10/02/24)</span>
-                <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
-            </div>
-            <div class="ch-card-items">
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">02</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">04</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">24</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">30</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">34</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">50</span>
+                <div class="ch-card-items">
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_1 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_2 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_3 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_4 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_5 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_6 }}</span>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="ch-card">
-            <div class="ch-card-header">
-                <span class="ch-card-header-title text-secundary">Concurso 2687 (10/02/24)</span>
-                <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
-            </div>
-            <div class="ch-card-items">
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">02</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">04</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">24</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">30</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">34</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">50</span>
-                </div>
-            </div>
-        </div>
-        <div class="ch-card">
-            <div class="ch-card-header">
-                <span class="ch-card-header-title text-secundary">Concurso 2687 (10/02/24)</span>
-                <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
-            </div>
-            <div class="ch-card-items">
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">02</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">04</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">24</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">30</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">34</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">50</span>
-                </div>
-            </div>
-        </div>
-        <div class="ch-card">
-            <div class="ch-card-header">
-                <span class="ch-card-header-title text-secundary">Concurso 2687 (10/02/24)</span>
-                <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
-            </div>
-            <div class="ch-card-items">
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">02</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">04</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">24</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">30</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">34</span>
-                </div>
-                <div class="ch-card-item">
-                    <span class="ch-card-item-number text-secundary">50</span>
-                </div>
-            </div>
-        </div>
+        </ng-container>
+        <ng-template #notFoundHits>
+            <span class="text-secundary small-text">Concurso não encontrado!</span>
+        </ng-template>
     </div>
 </section>
 <app-footer></app-footer>

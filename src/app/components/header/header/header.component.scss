@@ -26,19 +26,26 @@ header {
         align-items: center;
         text-transform: uppercase;
   
-        .header-actions-item {
+        a {
           cursor: pointer;
           color: var(--white);
           font-size: var(--medium-font-size);
           font-weight: var(--bold-font-weight);
         }
   
-        .header-actions-item:hover {
+        a:hover {
           color: var(--primary);
         }
       }
     }
   }
+
+@media(max-width: 1100px) {
+  header {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
 
 @media(max-width: 800px) {
 .header-actions {
