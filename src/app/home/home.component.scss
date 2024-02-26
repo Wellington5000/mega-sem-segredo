@@ -17,6 +17,11 @@ section {
         max-width: 540px;
         flex-direction: column;
 
+        .content-info-img {
+          height: 50px;
+          width: 120px;
+        }
+
         .content-info-title {
           max-width: 469px;
         }
@@ -308,6 +313,22 @@ section {
       }
     }
   }
+
+  .content-5 {
+    padding: 7.375rem 0 13.125rem;
+
+    .content-info-text {
+      gap: 2.5rem;
+      display: flex;
+      margin-left: 13vw;
+      flex-direction: column;
+    }
+
+    .text {
+      max-width: 540px;
+      line-height: 27px;
+    }
+  }
 }
 
 @media(max-width: 1360px) {
@@ -504,6 +525,16 @@ section {
     .content-info-text {
       width: 100%;
       max-width: 23.8125rem !important;
+    }
+  }
+
+  .content-5 {
+    .content-info-text {
+      align-items: center;
+      text-align: justify;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin-left: 0 !important;
     }
   }
 }

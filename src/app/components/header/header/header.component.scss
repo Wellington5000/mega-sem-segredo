@@ -8,11 +8,11 @@ header {
     justify-content: space-between;
     background-color: var(--black-2);
     box-shadow: 1px 1px 3px 1px #1a1a1a;
-    padding: 0.75rem 4rem 1.1875rem 10.375rem;
+    padding: 1.5rem 4rem 1.25rem 10.375rem;
   
     .header-logo {
-      width: 7.5rem;
-      height: 3.125rem;
+      width: 11.875rem;
+      height: 2.5rem;
     }
   
     .header-actions {
@@ -40,19 +40,19 @@ header {
     }
   }
 
-@media(max-width: 1100px) {
+@media(max-width: 1210px) {
   header {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 }
 
-@media(max-width: 800px) {
-.header-actions {
+@media(max-width: 1010px) {
+  .header-actions {
     display: none !important;
-    }
+  }
 
-    header {
+  header {
     padding-left: 2rem;
-    }
+  }
 }
