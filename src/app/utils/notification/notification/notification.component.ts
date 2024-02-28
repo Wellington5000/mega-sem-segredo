@@ -15,7 +15,7 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ],
 })
 export class NotificationComponent implements OnInit {
-  message: string | null = null;
+  message: string | null = 'aaa';
 
   constructor(private notificationService: NotificationService) {}
 

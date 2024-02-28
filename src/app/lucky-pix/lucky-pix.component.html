@@ -1,3 +1,5 @@
+<app-notification></app-notification>
+
 <app-header></app-header>
 <section>
     <div class="lp-container">
@@ -21,38 +23,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>18/02/24</td>
-                        <td>2689</td>
-                        <td class="lp-column-with-margin">PIXG1</td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                    </tr>
-                    <tr>
-                        <td>18/02/24</td>
-                        <td>2689</td>
-                        <td class="lp-column-with-margin">PIXG1</td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                    </tr>
-                    <tr>
-                        <td>18/02/24</td>
-                        <td>2689</td>
-                        <td class="lp-column-with-margin">PIXG1</td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                    </tr>
-                    <tr>
-                        <td>18/02/24</td>
-                        <td>2689</td>
-                        <td class="lp-column-with-margin">PIXG1</td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
-                        <td class="lp-table-button"><button>Baixar</button></td>
+                    <tr *ngFor="let promotion of promotions">
+                        <td>{{ promotion?.data_sorteio }}</td>
+                        <td>{{ promotion?.concurso }}</td>
+                        <td class="lp-column-with-margin">{{ promotion?.grupo }}</td>
+                        <td class="lp-table-button"><button (click)="downloadPdf(promotion, 'comprovante')">Baixar</button></td>
+                        <td class="lp-table-button"><button (click)="downloadPdf(promotion, 'relatorio')">Baixar</button></td>
                     </tr>
                 </tbody>
             </table>
             <ng-template #tableSearch>
-                <table>
+                <table *ngIf="promotionsByCode.length > 0; else notFoundPromotions">
                     <thead>
                         <tr>
                             <th>GRUPO</th>
@@ -63,22 +44,18 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>PIXG1</td>
+                        <tr *ngFor="let promotion of promotionsByCode">
+                            <td>{{ promotion?.grupo }}</td>
                             <td>01</td>
-                            <td class="lp-column-with-margin">2689</td>
-                            <td class="lp-table-button"><button>Baixar</button></td>
-                            <td class="lp-table-button"><button>Baixar</button></td>
-                        </tr>
-                        <tr>
-                            <td>PIXG1</td>
-                            <td>01</td>
-                            <td class="lp-column-with-margin">2689</td>
-                            <td class="lp-table-button"><button>Baixar</button></td>
-                            <td class="lp-table-button"><button>Baixar</button></td>
+                            <td class="lp-column-with-margin">{{ promotion?.concurso }}</td>
+                            <td class="lp-table-button"><button (click)="downloadPdf(promotion, 'comprovante')">Baixar</button></td>
+                            <td class="lp-table-button"><button (click)="downloadPdf(promotion, 'relatorio')">Baixar</button></td>
                         </tr>
                     </tbody>
                 </table>
+                <ng-template #notFoundPromotions>
+                    <span class="text-secundary small-text">Código não encontrado!</span>
+                </ng-template>
             </ng-template>
         </div>
        
@@ -92,7 +69,7 @@
                 <span class="lp-searlp-title text-secundary">Digite seu código</span>
                 <div class="lp-searlp-actions">
                     <input maxlength="50" [formControl]="code">
-                    <button (click)="searchByCode()">
+                    <button (click)="getPromotion()">
                         <img src="/assets/icons/search.svg" alt="ícone de lupa">
                     </button>
                     <div class="error" *ngIf="code.invalid && hasError">
@@ -110,3 +87,4 @@
         </ng-template>
     </div>
 </section>
+<app-loading [isLoading]="isLoading"></app-loading>
