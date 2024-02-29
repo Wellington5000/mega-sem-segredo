@@ -69,8 +69,14 @@ export class AppService {
     return this.http.post(this.API_URL + 'promocoes', { codigo: code });
   }
 
-  downloadReceipt(group: number, type: string): Observable<Blob> {
-    return this.http.get(`${this.API_URL}promocoes/download/${group}/${type}`, {
+  downloadReportOrReceipt(group: number, type: string): Observable<Blob> {
+    return this.http.get(this.API_URL + `promocoes/download/${group}/${type}`, {
+      responseType: 'blob'
+    });
+  }
+
+  downloadConcourse(concourse: number): Observable<Blob> {
+    return this.http.get(this.API_URL + `concursos-acertos-grupos/download/${concourse}`, {
       responseType: 'blob'
     });
   }

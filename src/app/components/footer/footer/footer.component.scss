@@ -3,13 +3,16 @@ footer {
     display: flex;
     flex-direction: column;
     background-color: #000;
-    padding: 2rem 0 1.25rem 0;
-    background: black;
-  
+    padding: 2rem 11.625rem 1.25rem 9.25rem;
+
     .footer-container {
+      display: flex;
+      justify-content: space-between;
+    }
+  
+    .footer-content {
       gap: 0.5rem;
       display: flex;
-      align-items: center;
       flex-direction: column;
   
       img {
@@ -28,10 +31,12 @@ footer {
         margin-left: 0.375rem;
         font-size: var(--small-text-font-size);
       }
-  
-      .support-text {
-        text-decoration: underline;
-      }
+    }
+
+    .text-footer-regulation {
+      height: 1.5rem;
+      font-weight: 800;
+      margin-top: 1.75rem;
     }
   
     .text-footer {

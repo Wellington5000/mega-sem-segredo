@@ -3,6 +3,7 @@ import { AppService } from '../app.service';
 import { Hits } from '../models/hits';
 import { NotificationService } from '../utils/notification/notification.service';
 import { FormControl } from '@angular/forms';
+import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-check-hits',
@@ -11,6 +12,7 @@ import { FormControl } from '@angular/forms';
 })
 export class CheckHitsComponent implements OnInit {
   hits: Hits[] = [];
+  isLoading: boolean = false;
   concourse: FormControl = new FormControl('');
 
   constructor(
@@ -46,5 +48,19 @@ export class CheckHitsComponent implements OnInit {
     } else {
       this.getHits();
     }
+  }
+
+  downloadConcourse(concourse: number): void {
+    this.isLoading = true;
+    this.appService.downloadConcourse(concourse).subscribe({
+      next: (responde: Blob) => {
+        this.isLoading = false;
+        const fileName = `concurso_${concourse}`;
+        Utils.downloadPdf(responde, fileName);
+      },
+      error: (error) => {
+        this.notificationService.notify('Erro ao baixar relatório de acertos');
+      }
+    })
   }
 }

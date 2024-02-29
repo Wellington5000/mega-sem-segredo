@@ -15,7 +15,7 @@
             <div class="ch-card" *ngFor="let hitsItem of hits">
                 <div class="ch-card-header">
                     <span class="ch-card-header-title text-secundary">Concurso {{ hitsItem.concurso }} ({{ hitsItem.data_sorteio }})</span>
-                    <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download">
+                    <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download" (click)="downloadConcourse(hitsItem.concurso)">
                 </div>
                 <div class="ch-card-items">
                     <div class="ch-card-item">
@@ -46,3 +46,4 @@
 </section>
 <app-footer></app-footer>
 <app-notification></app-notification>
+<app-loading [isLoading]="isLoading"></app-loading>
