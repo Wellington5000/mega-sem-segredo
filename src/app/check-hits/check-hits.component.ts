@@ -25,24 +25,30 @@ export class CheckHitsComponent implements OnInit {
   }
 
   getHits(): void {
+    this.isLoading = true;
     this.appService.findAllHits().subscribe({
       next: (response) => {
         this.hits = response.concursos;
+        this.isLoading = false;
       },
       error: (error) => {
         this.notificationService.notify('Erro ao carregar os concursos');
+        this.isLoading = false;
       }
     })
   }
 
   getHitsByCode(): void {
     if(this.concourse.value) {
+      this.isLoading = true;
       this.appService.findHitsByCode(this.concourse.value).subscribe({
         next: (response) => {
           this.hits = response.concursos;
+          this.isLoading = false;
         },
         error: (error) => {
           this.notificationService.notify('Concurso não encontrado');
+          this.isLoading = false;
         }
       })
     } else {
@@ -59,6 +65,7 @@ export class CheckHitsComponent implements OnInit {
         Utils.downloadPdf(responde, fileName);
       },
       error: (error) => {
+        this.isLoading = false;
         this.notificationService.notify('Erro ao baixar relatório de acertos');
       }
     })

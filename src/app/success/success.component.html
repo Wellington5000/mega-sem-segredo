@@ -1,16 +1,39 @@
-<div class="s-container">
-  <header>
-    <a routerLink="#"><img src="/assets/images/logo.png" alt="logo mega sem segredo"></a>
+<div class="s-container" [class.add-min-height]="successRoute">
+  <header *ngIf="successRoute">
+    <a routerLink="#"><img src="/assets/images/logo-mega-comunidade.svg" alt="logo mega sem segredo"></a>
   </header>
   <section>
     <div class="success-container">
       <img class="success-gif" src="/assets/images/success.gif" alt="animação de sucesso">
-      <div class="content-info-title">
+      <div class="content-info-title" *ngIf="!isPixPayment; else isPix">
         <span class="title text-secundary">Parabéns! Você deu um grande passo para </span>
         <span class="title text-primary">acertar na Mega-Sena!</span>
       </div>
+      <ng-template #isPix>
+        <div class="content-info-title">
+          <span class="title text-secundary">Parabéns! Você está participando do </span>
+          <span class="title text-primary">Pix da Sorte!</span>
+        </div>
+        <div class="content-info-pix">
+          <span class="text text-secundary">Seu código é LMT00086</span>
+          <span class="text text-secundary">Compartilhe seu código para ter mais chances de ganhar</span>
+          <button class="primary-button button-with-icon" cdkCopyToClipboard="LMT00086" (cdkCopyToClipboardCopied)="onCopied($event)">
+            <ng-container *ngIf="!isCopied; else copied">
+              <img src="/assets/icons/copy.svg" alt="Ícone de copiar">
+              Copiar código
+            </ng-container>
+            <ng-template #copied>
+              <img src="/assets/icons/done.svg" alt="Ícone de feito">
+              Código copiado
+            </ng-template>
+          </button>
+        </div>
+      </ng-template>
       <span class="text text-secundary">{{ subtitle }}</span>
-      <a [href]="link"><button class="primary-button s-button">{{ buttonText }}</button></a>
+     <div class="store-logos">
+       <a href="#"> <img src="/assets/images/google-play.png" alt="Logo "></a>
+       <a href="#"><img src="/assets/images/app-store.png" alt="Logo apple store"></a>
+     </div>
     </div>
   </section>
 </div>

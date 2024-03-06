@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-payment-type',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./payment-type.component.scss']
 })
 export class PaymentTypeComponent implements OnInit {
-  selectedPaymentMethod: string = 'credit_card';
+  selectedPaymentMethod: FormControl = new FormControl('credit_card');
 
   @Output() nextStep = new EventEmitter();
 
@@ -16,6 +17,6 @@ export class PaymentTypeComponent implements OnInit {
   }
 
   next(): void {
-    this.nextStep.emit(this.selectedPaymentMethod);
+    this.nextStep.emit(this.selectedPaymentMethod.value);
   }
 }

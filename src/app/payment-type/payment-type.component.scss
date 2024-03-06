@@ -68,6 +68,18 @@
   }
 }
 
+.code-indication-item {
+  span {
+    white-space: nowrap;
+    font-size: 0.875rem;
+    font-weight: 400;
+  }
+
+  input {
+    width: 100% !important;
+  }
+}
+
 .footer-form {
   margin-top: 1rem;
 

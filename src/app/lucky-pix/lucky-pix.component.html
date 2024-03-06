@@ -43,8 +43,8 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let promotion of promotionsByCode">
-                            <td>{{ promotion?.grupo }}</td>
-                            <td>01</td>
+                            <td>{{ promotion?.codigo }}</td>
+                            <td>{{ promotion?.qtd_cotas }}</td>
                             <td class="lp-column-with-margin">{{ promotion?.concurso }}</td>
                             <td class="lp-table-button"><button (click)="downloadPdf(promotion, 'comprovante')">Baixar</button></td>
                             <td class="lp-table-button"><button (click)="downloadPdf(promotion, 'relatorio')">Baixar</button></td>

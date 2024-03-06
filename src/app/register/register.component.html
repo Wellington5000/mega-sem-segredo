@@ -1,7 +1,5 @@
+<app-header></app-header>
 <div class="register-container">
-  <header>
-    <a routerLink="#"><img src="/assets/images/logo.png" alt="logo mega sem segredo"></a>
-  </header>
   <section [formGroup]="formUser">
     <div class="section-register" *ngIf="step !== 'success'; else success">
       <div class="register-form">
@@ -115,10 +113,10 @@
           <app-payment-type (nextStep)="nextStepByPayment($event)"></app-payment-type>
         </ng-container>
         <ng-container *ngIf="step === 'credit-card-data'">
-          <app-credit-card-data (nextStep)="originPayment ? createInvoiceByCreditCard($event) : createUser()"></app-credit-card-data>
+          <app-credit-card-data (nextStep)="originPayment ? createInvoiceByCreditCard($event) : createUser($event)"></app-credit-card-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-data'">
-          <app-pix-data (nextStep)="originPayment ? createInvoiceByPix($event) : createUser()"></app-pix-data>
+          <app-pix-data (nextStep)="originPayment ? createInvoiceByPix($event) : createUser($event)"></app-pix-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-payment'">
           <app-pix-payment [data]="pixData"></app-pix-payment>
@@ -126,7 +124,7 @@
       </div>
     </div>
     <ng-template #success>
-      <app-success></app-success>
+      <app-success [isPixPayment]="isPixPayment"></app-success>
     </ng-template>
   </section>
 </div>

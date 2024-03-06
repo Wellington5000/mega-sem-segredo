@@ -32,7 +32,7 @@ export class AppService {
       })
     };
 
-    return this.http.post(this.API_URL + 'v1/pagamento/checkout/salvar-cartao', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v2/pagamento/checkout/salvar-cartao', data.body, httpOptions);
   }
 
   createPaymentByPix(data: any): Observable<any> {
@@ -44,7 +44,7 @@ export class AppService {
       })
     };
 
-    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v2/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
   }
 
   findAllHits(): Observable<Concourse> {
@@ -79,5 +79,17 @@ export class AppService {
     return this.http.get(this.API_URL + `concursos-acertos-grupos/download/${concourse}`, {
       responseType: 'blob'
     });
+  }
+
+  checkPaymentByPix(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + data?.auth,
+        'Content-Type':  'application/json',
+        'Accept': 'application/json'
+      })
+    };
+
+    return this.http.post(this.API_URL + 'v2/pagamento/checkout/verificar-pix', {}, httpOptions);
   }
 }

@@ -25,6 +25,8 @@ import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
 import { CheckHitsComponent } from './check-hits/check-hits.component';
 import { LuckyPixComponent } from './lucky-pix/lucky-pix.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
 
 
 @NgModule({
@@ -56,7 +58,8 @@ import { LuckyPixComponent } from './lucky-pix/lucky-pix.component';
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     HeaderModule,
-    FooterModule
+    FooterModule,
+    ClipboardModule
   ],
   providers: [DeviceDetectorService],
   bootstrap: [AppComponent]

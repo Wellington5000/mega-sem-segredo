@@ -3,7 +3,7 @@
 </div>
 <div class="form">
   <div class="form-item">
-    <input type="radio" id="credit_card" name="payment_method" value="credit_card" [(ngModel)]="selectedPaymentMethod">
+    <input type="radio" id="credit_card" name="payment_method" value="credit_card" [formControl]="selectedPaymentMethod">
     <label for="credit_card"></label>
     <div class="item-card">
       <span>Cartão de crédito</span>
@@ -11,12 +11,16 @@
     </div>
   </div>
   <div class="form-item">
-    <input type="radio" id="pix" name="payment_method" value="pix" [(ngModel)]="selectedPaymentMethod">
+    <input type="radio" id="pix" name="payment_method" value="pix" [formControl]="selectedPaymentMethod">
     <label for="pix"></label>
     <div class="item-card">
       <span>PIX</span>
       <span>R$ 180</span>
     </div>
+  </div>
+  <div class="form-item code-indication-item" *ngIf="selectedPaymentMethod.value === 'pix'">
+    <span class="text-secundary">Código de indicação</span>
+    <input type="text" maxlength="15">
   </div>
   <div class="footer-form">
     <button class="primary-button" (click)="next()">Continuar</button>

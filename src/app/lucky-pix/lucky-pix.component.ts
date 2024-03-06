@@ -34,11 +34,14 @@ export class LuckyPixComponent implements OnInit {
   }
 
   getPromotions(): void {
+    this.isLoading = true;
     this.appService.findAllPromotions().subscribe({
       next: (response) => {
+        this.isLoading = false;
         this.promotions = response;
       },
       error: (error) => {
+        this.isLoading = false;
         this.notificationService.notify('Erro ao carregar promoções');
       }
     });
@@ -46,12 +49,15 @@ export class LuckyPixComponent implements OnInit {
 
   getPromotion(): void {
     if(this.code.value) {
+      this.isLoading = true;
       this.appService.findPromotionByCode(this.code.value).subscribe({
         next: (response) => {
           this.searchCode = true;
+          this.isLoading = false;
           this.promotionsByCode = response?.premiados;
         },
         error: (error) => {
+          this.isLoading = false;
           this.notificationService.notify('Erro ao carregar promoção');
         }
       })

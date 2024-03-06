@@ -1,14 +1,19 @@
-<header>
-    <a href="#"><img class="header-logo" src="/assets/images/logo-mega-comunidade.svg" alt="logo do mega sem segredo"></a>
-    <div class="header-actions">
-      <div class="header-actions-items">
-        <a href="#about">Aplicativo</a>
-        <a href="#book">Livro</a>
-        <a href="#plan">Plano</a>
-        <a routerLink="/check-hits">Conferir acertos</a>
-        <a routerLink="/lucky-pix">PIX da sorte</a>
-        <a href="#who-we-are">Quem somos</a>
-      </div>
-      <a routerLink="/register/web"><button class="primary-button">Assine agora</button></a>
+<header id="menu" [class.expanded]="expanded">
+  <a class="logo-link" href="#"><img class="header-logo" src="/assets/images/logo-mega-comunidade.svg" alt="logo do mega sem segredo"></a>
+  <div class="header-actions">
+    <div class="header-actions-items">
+      <a href="#about" (click)="hiddenMenu()">Aplicativo</a>
+      <a href="#book" (click)="hiddenMenu()">Livro</a>
+      <a href="#plan" (click)="hiddenMenu()">Plano</a>
+      <a routerLink="/check-hits" (click)="hiddenMenu()">Conferir acertos</a>
+      <a routerLink="/lucky-pix" (click)="hiddenMenu()">PIX da sorte</a>
+      <a href="#who-we-are"(click)="hiddenMenu()">Quem somos</a>
     </div>
-  </header>
+    <a routerLink="/register/web" (click)="hiddenMenu()"><button class="primary-button">Baixar aplicativo</button></a>
+    <div class="hamburger-menu" (click)="expanded = !expanded">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</header>

@@ -20,6 +20,7 @@ export class RegisterComponent implements OnInit {
   isLoading: boolean = false;
   origin: string = 'web';
   originPayment: boolean = false;
+  isPixPayment: boolean = false;
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
@@ -41,6 +42,7 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.origin = this.activatedRoute.snapshot.params['origin'];
+    //this.checkPixWasPaid("814|f3EIofmmIRM4GwYvPUD7SRLrw1MLA7p4dA1iH2Pi");
 
     if(this.router.url === '/payment-methods') {
       this.step = 'payment-type';
@@ -82,12 +84,17 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  createUser(): void {
+  createUser(data: any): void {
     this.isLoading = true;
     const user = { ...this.formUser.get('user')?.value, origin: this.origin };
-    this.appService.createUser(user).subscribe((response) => {
-      this.isLoading = false;
-      this.router.navigateByUrl('/confirmation');
+    this.appService.createUser(user).subscribe((response) => {      
+      const obj = { body: data, auth: response?.token }
+      
+      if(data?.pix_key) {
+        this.createInvoiceByPix(obj);
+      } else {
+        this.createInvoiceByCreditCard(obj)
+      }
     }, error => {
       this.isLoading = false;
       const emailError = error?.error?.errors?.email;
@@ -126,10 +133,29 @@ export class RegisterComponent implements OnInit {
       this.isLoading = false;
       this.pixData = { qrcode: response?.pix?.qrcode, qrcode_text: response?.pix?.qrcode_text };
       this.step = 'pix-payment';
-
+      this.checkPixWasPaid(paymentData?.auth);
     }, error => {
       this.isLoading = false;
       this.error();
+    })
+  }
+
+
+  checkPixWasPaid(token: string): void {
+    this.appService.checkPaymentByPix({ auth: token }).subscribe({
+      next: (response) => {
+        if(response?.paga) {
+          this.isPixPayment = true;
+          this.step = 'success';
+        } else {
+          setTimeout(() => {
+            this.checkPixWasPaid(token);
+          }, 5000);
+        }
+      },
+      error: (error) => {
+        this.error('Erro ao verificar se o pix foi pago');
+      }
     })
   }
 
