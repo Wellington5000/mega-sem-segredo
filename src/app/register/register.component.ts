@@ -21,6 +21,10 @@ export class RegisterComponent implements OnInit {
   origin: string = 'web';
   originPayment: boolean = false;
   isPixPayment: boolean = false;
+  coupon: string = '';
+  currentUserCoupon: string = '';
+
+  //"820|YCDkxaXS5nLfvorHkhQkeLFwO4v0TcLqi6qcjeI4"
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
@@ -42,7 +46,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.origin = this.activatedRoute.snapshot.params['origin'];
-    //this.checkPixWasPaid("814|f3EIofmmIRM4GwYvPUD7SRLrw1MLA7p4dA1iH2Pi");
 
     if(this.router.url === '/payment-methods') {
       this.step = 'payment-type';
@@ -67,8 +70,14 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  nextStepByPayment(paymentType: string): void {
-    this.step = (paymentType === 'pix') ? 'pix-data' : 'credit-card-data';
+  nextStepByPayment(payment: any): void {
+    if(payment?.payment_type === 'pix') {
+      this.step = 'pix-data';
+      this.coupon = payment?.coupon;
+    } else {
+      this.step = 'credit-card-data';
+      this.coupon = '';
+    }
   }
 
   createCreditCardObject(creditData: any): any {
@@ -87,6 +96,11 @@ export class RegisterComponent implements OnInit {
   createUser(data: any): void {
     this.isLoading = true;
     const user = { ...this.formUser.get('user')?.value, origin: this.origin };
+
+    if(this.coupon) {
+      data.cupom = this.coupon;
+    }
+
     this.appService.createUser(user).subscribe((response) => {      
       const obj = { body: data, auth: response?.token }
       
@@ -146,6 +160,7 @@ export class RegisterComponent implements OnInit {
       next: (response) => {
         if(response?.paga) {
           this.isPixPayment = true;
+          this.currentUserCoupon = response?.cupom;
           this.step = 'success';
         } else {
           setTimeout(() => {

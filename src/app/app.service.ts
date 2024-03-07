@@ -92,4 +92,8 @@ export class AppService {
 
     return this.http.post(this.API_URL + 'v2/pagamento/checkout/verificar-pix', {}, httpOptions);
   }
+
+  checkCouponIsValid(coupon: string): Observable<any> {
+    return this.http.post(this.API_URL + 'pagamento/checkout/validar-cupom', { cupom: coupon });
+  }
 }

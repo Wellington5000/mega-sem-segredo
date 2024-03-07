@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SuccessComponent implements OnInit {
   @Input() isPixPayment: boolean = false;
+  @Input() coupon: string = '';
   
   isCopied: boolean = false;
   successRoute: boolean = false;

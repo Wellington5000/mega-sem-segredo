@@ -80,6 +80,27 @@
   }
 }
 
+.valid-coupon {
+  color: var(--primary);
+}
+
+.input-payment {
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  .icon-payment-valid {
+    width: 24px;
+    margin: 10px;
+    position: absolute;
+  }
+
+  .error-payment {
+    margin-top: 44px;
+  }
+}
+
 .footer-form {
   margin-top: 1rem;
 
