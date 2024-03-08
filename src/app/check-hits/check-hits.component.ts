@@ -70,4 +70,18 @@ export class CheckHitsComponent implements OnInit {
       }
     })
   }
+
+  downloadPremiado(concourse: number): void {
+    this.isLoading = true;
+    this.appService.downloadPremiado(concourse).subscribe({
+      next: (responde: Blob) => {
+        this.isLoading = false;
+        const fileName = `grupo_com_sena_${concourse}`;
+        Utils.downloadPdf(responde, fileName);
+      },
+      error: (error) => {
+        this.notificationService.notify('Erro ao baixar relatório de acertos');
+      }
+    })
+  }
 }

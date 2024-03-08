@@ -98,6 +98,22 @@ section {
     }
 }
 
+.ch-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .ch-card-footer-title {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .ch-card-footer-download {
+        cursor: pointer;
+    }
+}
+
 @media(max-width: 380px) {
     .ch-card-items {
         gap: 0.25rem !important;

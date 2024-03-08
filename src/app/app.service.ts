@@ -96,4 +96,10 @@ export class AppService {
   checkCouponIsValid(coupon: string): Observable<any> {
     return this.http.post(this.API_URL + 'pagamento/checkout/validar-cupom', { cupom: coupon });
   }
+
+  downloadPremiado(concourse: number): Observable<Blob> {
+    return this.http.get(this.API_URL + `concursos-acertos-grupos/download-premiado/${concourse}`, {
+      responseType: 'blob'
+    });
+  }
 }
