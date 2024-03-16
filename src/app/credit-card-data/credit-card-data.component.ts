@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NotificationService } from '../utils/notification/notification.service';
 declare const Iugu: any;
 declare const mp: any;
 
@@ -22,7 +23,9 @@ export class CreditCardDataComponent implements OnInit {
     cvv: new FormControl('', [Validators.required]),
   })
 
-  constructor() { }
+  constructor(
+    private notificationService: NotificationService
+  ) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -145,6 +148,7 @@ export class CreditCardDataComponent implements OnInit {
           })
         },
         onError: (error: any) => {
+          this.notificationService.notify('Ocorreu um erro ao processar o pagamento, por favor, tente novamente!')
           console.log(error)
         }
       },
