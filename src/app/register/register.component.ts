@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PaymentErrors } from '../models/payment-errors';
 declare const Iugu: any;
 
 @Component({
@@ -32,7 +33,7 @@ export class RegisterComponent implements OnInit {
       first_name: new FormControl('', [Validators.required]),
       last_name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone_number: new FormControl('', [Validators.required]),
+      phone_number: new FormControl(''),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
@@ -98,6 +99,10 @@ export class RegisterComponent implements OnInit {
     this.isLoading = true;
     const user = { ...this.formUser.get('user')?.value, origin: this.origin };
 
+    if(!user?.phone_number) {
+      delete user.phone_number;
+    }
+
     if(data.document_number) {
       data.email = this.formUser.get('user')?.get('email')?.value;
     } else {
@@ -131,8 +136,9 @@ export class RegisterComponent implements OnInit {
     this.appService.createPaymentByCreditCard(data).subscribe((response) => {
       this.isLoading = false;
 
-      if(response.status === 'rejected') {
-        this.error()
+      if(response.status !== 'approved') {
+        const error = PaymentErrors.find((e) => e.error === response.status_detail);
+        this.error(error?.message || '');
       } else {
         this.step = 'success';
       }

@@ -315,6 +315,8 @@ section {
   }
 
   .content-5 {
+    gap: 5rem;
+    display: flex;
     padding: 7.375rem 0 13.125rem;
 
     .content-info-text {
@@ -530,12 +532,18 @@ section {
   }
 
   .content-5 {
+    justify-content: center;
+
     .content-info-text {
       align-items: center;
       text-align: justify;
       padding-left: 1rem;
       padding-right: 1rem;
       margin-left: 0 !important;
+    }
+
+    .wwa-image {
+      display: none;
     }
   }
 }

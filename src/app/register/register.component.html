@@ -53,7 +53,7 @@
               </div>
             </div>
             <div class="form-input">
-              <label for="phone">Telefone</label>
+              <label for="phone">Telefone (opcional)</label>
               <input [class.invalid-input]="formUser.get('user')?.get('phone_number')?.invalid && hasError" formControlName="phone_number" name="phone" placeholder="(00) 00000-0000" mask="(00) 00000-0000" maxlength="100">
               <div class="error" *ngIf="formUser.get('user')?.get('phone_number')?.invalid && hasError">
                 <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
