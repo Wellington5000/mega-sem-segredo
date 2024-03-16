@@ -1,5 +1,6 @@
 .pp-container {
-    min-height: 100vh;
+    margin-top: 5rem;
+    min-height: 88vh;
     background-color: var(--black-2);
   
     header {
@@ -23,12 +24,18 @@
     }
   
     .pp-content {
-      width: 100%;
-      padding-top: 56px;
-      max-width: 1328px;
+      max-width: 850px;
+      padding-top: 42px;
+
+      .title {
+        font-size: 28px;
+        font-weight: 400;
+      }
   
       .small-text {
         text-align: justify;
+        font-weight: 400;
+        line-height: 21px;
       }
     }
   }

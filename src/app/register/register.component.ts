@@ -19,6 +19,13 @@ export class RegisterComponent implements OnInit {
   showConfirmPassword: boolean = false;
   isLoading: boolean = false;
   origin: string = 'web';
+  originPayment: boolean = false;
+  isPixPayment: boolean = false;
+  coupon: string = '';
+  currentUserCoupon: string = '';
+
+  //"820|YCDkxaXS5nLfvorHkhQkeLFwO4v0TcLqi6qcjeI4"
+  //iVBORw0KGgoAAAANSUhEUgAABRQAAAUUAQAAAACGnaNFAAANZklEQVR4Xu3ZTXbcOBJFYWrkZXCpzKXmEmrokdCOiMdAAEy5fNRwH1F978Qwfj9qZFVt7cv3zzbPfL0wrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrul
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
@@ -40,6 +47,12 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.origin = this.activatedRoute.snapshot.params['origin'];
+
+    if(this.router.url === '/payment-methods') {
+      this.step = 'payment-type';
+      this.originPayment = true;
+      this.origin = 'app';
+    }
   }
 
   checkPasswordIsValid(): boolean {
@@ -52,14 +65,20 @@ export class RegisterComponent implements OnInit {
 
   nextStep(): void {
     if(this.checkPasswordIsValid() && this.formUser.valid) {
-      this.createUser();
+      this.step = 'payment-type';
     } else {
       this.hasError = true;
     }
   }
 
-  nextStepByPayment(paymentType: string): void {
-    this.step = (paymentType === 'pix') ? 'pix-data' : 'credit-card-data';
+  nextStepByPayment(payment: any): void {
+    if(payment?.payment_type === 'pix') {
+      this.step = 'pix-data';
+      this.coupon = payment?.coupon;
+    } else {
+      this.step = 'credit-card-data';
+      this.coupon = '';
+    }
   }
 
   createCreditCardObject(creditData: any): any {
@@ -75,12 +94,28 @@ export class RegisterComponent implements OnInit {
     );
   }
 
-  createUser(): void {
+  createUser(data: any): void {
     this.isLoading = true;
     const user = { ...this.formUser.get('user')?.value, origin: this.origin };
+
+    if(data.document_number) {
+      data.email = this.formUser.get('user')?.get('email')?.value;
+    } else {
+      data.payer.email = this.formUser.get('user')?.get('email')?.value;
+    }
+
+    if(this.coupon) {
+      data.cupom = this.coupon;
+    }
+
     this.appService.createUser(user).subscribe((response) => {
-      this.isLoading = false;
-      this.router.navigateByUrl('/confirmation');
+      const obj = { body: data, auth: response?.token }
+
+      if(data?.document_number) {
+        this.createInvoiceByPix(obj);
+      } else {
+        this.createInvoiceByCreditCard(obj)
+      }
     }, error => {
       this.isLoading = false;
       const emailError = error?.error?.errors?.email;
@@ -89,26 +124,18 @@ export class RegisterComponent implements OnInit {
   }
 
   createInvoiceByCreditCard(data: any): void {
-    Iugu.setAccountID("6743ADF556B84F229AE40D63AC8FE78A");
-    Iugu.setTestMode(true);
-    const cc = this.createCreditCardObject(data.body);
-    const self = this;
-
-    Iugu.createPaymentToken(cc, function(response: any) {
-      if (response.errors) {
-        self.isLoading = false;
-        self.notificationService.notify('Erro ao criar pagamento. Por favor, revise os dados informados e tente novamente');
-      } else {
-        self.createCardPayment({ auth: data.auth, body: { token: response.id }});
-      }
-    });
+    this.createCardPayment({ auth: data.auth, body: data.body });
   }
 
   createCardPayment(data: any): void {
     this.appService.createPaymentByCreditCard(data).subscribe((response) => {
-
       this.isLoading = false;
-      this.step = 'success';
+
+      if(response.status === 'rejected') {
+        this.error()
+      } else {
+        this.step = 'success';
+      }
     }, error => {
       this.isLoading = false;
       this.error();
@@ -118,12 +145,32 @@ export class RegisterComponent implements OnInit {
   createInvoiceByPix(paymentData: any): void {
     this.appService.createPaymentByPix(paymentData).subscribe((response) => {
       this.isLoading = false;
-      this.pixData = { qrcode: response?.pix?.qrcode, qrcode_text: response?.pix?.qrcode_text };
+      this.pixData = { qrcode: response?.img_qrcode, qrcode_text: response?.copia_cola };
       this.step = 'pix-payment';
-
+      this.checkPixWasPaid(paymentData?.auth);
     }, error => {
       this.isLoading = false;
       this.error();
+    })
+  }
+
+
+  checkPixWasPaid(token: string): void {
+    this.appService.checkPaymentByPix({ auth: token }).subscribe({
+      next: (response) => {
+        if(response?.paga) {
+          this.isPixPayment = true;
+          this.currentUserCoupon = response?.cupom;
+          this.step = 'success';
+        } else {
+          setTimeout(() => {
+            this.checkPixWasPaid(token);
+          }, 5000);
+        }
+      },
+      error: (error) => {
+        this.error('Erro ao verificar se o pix foi pago');
+      }
     })
   }
 

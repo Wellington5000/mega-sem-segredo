@@ -22,3 +22,15 @@
     margin-bottom: 1.25rem;
   }
 }
+
+#form-checkout__cardNumber, #form-checkout__expirationDate, #form-checkout__securityCode {
+  height: 45px;
+  width: 100%;
+  outline: none;
+  color: var(--black-2);
+  border-radius: 0.625rem;
+  background: var(--white) !important;
+  font-size: var(--small-font-size);
+  border: 2px solid rgba(0, 0, 0, 0.50);
+  padding: 0.59375rem 0rem 0.59375rem 0.75rem;
+}

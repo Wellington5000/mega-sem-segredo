@@ -1,12 +1,10 @@
+<app-header></app-header>
 <div class="register-container">
-  <header>
-    <a routerLink="#"><img src="/assets/images/logo.png" alt="logo mega sem segredo"></a>
-  </header>
   <section [formGroup]="formUser">
     <div class="section-register" *ngIf="step !== 'success'; else success">
       <div class="register-form">
         <div class="form-header">
-          <div class="header-icon icon-complete" (click)="step = 'user'">
+          <div class="header-icon icon-complete" (click)="step = originPayment ? 'payment-type' : 'user'">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
               <path d="M11.9898 13.415C15.5301 13.415 18.4023 10.5427 18.4023 7.0025C18.4023 3.46226 15.5301 0.589996 11.9898 0.589996C8.44961 0.589996 5.57734 3.46226 5.57734 7.0025C5.57734 10.5427 8.44961 13.415 11.9898 13.415ZM17.6898 14.84H15.2362C14.2476 15.2942 13.1477 15.5525 11.9898 15.5525C10.832 15.5525 9.73656 15.2942 8.74352 14.84H6.28984C3.14148 14.84 0.589844 17.3916 0.589844 20.54V21.2525C0.589844 22.4326 1.54727 23.39 2.72734 23.39H21.2523C22.4324 23.39 23.3898 22.4326 23.3898 21.2525V20.54C23.3898 17.3916 20.8382 14.84 17.6898 14.84Z" fill="black"/>
             </svg>
@@ -115,10 +113,10 @@
           <app-payment-type (nextStep)="nextStepByPayment($event)"></app-payment-type>
         </ng-container>
         <ng-container *ngIf="step === 'credit-card-data'">
-          <app-credit-card-data (nextStep)="createUser()"></app-credit-card-data>
+          <app-credit-card-data (nextStep)="originPayment ? createInvoiceByCreditCard($event) : createUser($event)"></app-credit-card-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-data'">
-          <app-pix-data (nextStep)="createUser()"></app-pix-data>
+          <app-pix-data (nextStep)="originPayment ? createInvoiceByPix($event) : createUser($event)"></app-pix-data>
         </ng-container>
         <ng-container *ngIf="step === 'pix-payment'">
           <app-pix-payment [data]="pixData"></app-pix-payment>
@@ -126,7 +124,7 @@
       </div>
     </div>
     <ng-template #success>
-      <app-success></app-success>
+      <app-success [isPixPayment]="isPixPayment" [coupon]="currentUserCoupon"></app-success>
     </ng-template>
   </section>
 </div>

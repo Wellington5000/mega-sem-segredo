@@ -1,0 +1,53 @@
+<app-header></app-header>
+<section>
+    <h2 class="ch-title text-secundary">Confira os <span class="text-primary">acertos</span> da Mega Comunidade</h2>
+    <div class="ch-search">
+        <span class="ch-search-title text-secundary">Concurso</span>
+        <div class="ch-search-actions">
+            <input mask="00000" [formControl]="concourse">
+            <button (click)="getHitsByCode()">
+                <img src="/assets/icons/search.svg" alt="ícone de lupa">
+            </button>
+        </div>
+    </div>
+    <div class="ch-cards">
+        <ng-container *ngIf="hits.length > 0; else notFoundHits">
+            <div class="ch-card" *ngFor="let hitsItem of hits">
+                <div class="ch-card-header">
+                    <span class="ch-card-header-title text-secundary">Concurso {{ hitsItem.concurso }} ({{ hitsItem.data_sorteio }})</span>
+                    <img class="ch-card-header-download" src="/assets/icons/download.svg" alt="ícone de download" (click)="downloadConcourse(hitsItem.concurso)">
+                </div>
+                <div class="ch-card-items">
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_1 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_2 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_3 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_4 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_5 }}</span>
+                    </div>
+                    <div class="ch-card-item">
+                        <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_6 }}</span>
+                    </div>
+                </div>
+                <div class="ch-card-footer">
+                    <span class="ch-card-footer-title text-secundary">O grupo {{ hitsItem.codigo_premiado }} acertou a SENA.</span>
+                    <img class="ch-card-footer-download" src="/assets/icons/download.svg" alt="ícone de download" (click)="downloadPremiado(hitsItem.concurso)">
+                </div>
+            </div>
+        </ng-container>
+        <ng-template #notFoundHits>
+            <span class="text-secundary small-text">Concurso não encontrado!</span>
+        </ng-template>
+    </div>
+</section>
+<app-footer></app-footer>
+<app-notification></app-notification>
+<app-loading [isLoading]="isLoading"></app-loading>

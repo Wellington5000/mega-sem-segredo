@@ -1,0 +1,121 @@
+section {
+    min-height: 75vh;
+    display: flex;
+    padding-top: 9rem;
+    padding-bottom: 3.75rem;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--black-2);
+
+    .ch-title {
+        font-weight: 400;
+        text-align: center;
+    }
+
+    .ch-search {
+        margin-top: 1.75rem;
+        margin-bottom: 3.5rem;
+
+        .ch-search-title {
+            font-size: 0.875rem;
+            font-weight: 400;
+        }
+
+        .ch-search-actions {
+            gap: 0.5rem;
+            display: flex;
+            align-items: center;
+
+            input {
+                width: 184px;
+                outline: none;
+                font-size: 1rem;
+                color: #151516;
+                font-weight: 400;
+                border-radius: 10px;
+                padding: 0.625rem 0.5rem;
+                border: 2px solid #00000080;
+            }
+
+            button {
+                width: 46px;
+                height: 42px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: var(--primary);
+                border-radius: 8px;
+            }
+        }
+    }
+
+    .ch-cards {
+        gap: 0.75rem;
+        display: flex;
+        flex-direction: column;
+
+        .ch-card {
+            border-radius: 16px;
+            padding: 1rem 1rem 1.25rem;
+            background-color: #263238;
+
+            .ch-card-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                .ch-card-header-title {
+                    font-size: 1rem;
+                    font-weight: 600;
+                }
+
+                .ch-card-header-download {
+                    cursor: pointer;
+                }
+            }
+
+            .ch-card-items {
+                gap: 0.75rem;
+                display: flex;
+                margin-top: 0.75rem;
+
+                .ch-card-item {
+                    width: 46px;
+                    height: 46px;
+                    display: flex;
+                    border-radius: 50%;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #20620A;
+
+                    .ch-card-item-number {
+                        font-weight: 800;
+                        font-size: 1.25rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.ch-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .ch-card-footer-title {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .ch-card-footer-download {
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 380px) {
+    .ch-card-items {
+        gap: 0.25rem !important;
+    }
+}
