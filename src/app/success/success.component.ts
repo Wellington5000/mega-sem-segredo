@@ -13,7 +13,7 @@ export class SuccessComponent implements OnInit {
   isCopied: boolean = false;
   successRoute: boolean = false;
   buttonText: string = 'Baixar o APP';
-  subtitle: string = 'Agora é so baixar o nosso app e logar que é sucesso!';
+  subtitle: string = 'Agora é só baixar o nosso app e logar que é sucesso!';
 
   constructor(
     private router: Router,

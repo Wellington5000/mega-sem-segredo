@@ -76,7 +76,6 @@ export class CreditCardDataComponent implements OnInit {
   }
 
   initForm(): void {
-
     const cardForm = mp.cardForm({
       amount: "240",
       iframe: true,
