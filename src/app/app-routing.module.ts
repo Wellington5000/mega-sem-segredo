@@ -7,12 +7,14 @@ import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { SuccessComponent } from './success/success.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { CheckHitsComponent } from './check-hits/check-hits.component';
 
 const routes: Routes = [
-  { path: 'register', component: RegisterComponent },
+  { path: 'register/:origin', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'success-register', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
+  { path: 'check-hits', component: CheckHitsComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];

@@ -21,6 +21,9 @@ import { NotificationService } from './utils/notification/notification.service';
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
+import { CheckHitsComponent } from './check-hits/check-hits.component';
+import { HeaderModule } from './components/header/header.module';
+import { FooterModule } from './components/footer/footer.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +39,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     NotificationComponent,
     UseTermsComponent,
     PrivacyPolicyComponent,
-    ConfirmationComponent
+    ConfirmationComponent,
+    CheckHitsComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +52,8 @@ import { ConfirmationComponent } from './confirmation/confirmation.component';
     FormsModule,
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
+    HeaderModule,
+    FooterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

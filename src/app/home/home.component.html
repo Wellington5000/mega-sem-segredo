@@ -1,24 +1,30 @@
-<header>
-  <img class="header-logo" src="/assets/images/logo.png" alt="logo do mega sem segredo">
-  <div class="header-actions">
-    <div class="header-actions-items">
-      <a href="#about" class="header-actions-item"><span >Sobre o aplicativo</span></a>
-      <a href="#book"><span class="header-actions-item">Livro</span></a>
-    </div>
-    <a routerLink="/register"><button class="primary-button">Cadastre-se</button></a>
-  </div>
-</header>
+<app-header></app-header>
 <section>
+  <div class="content content-2" id="about">
+    <div class="content-info-subtitle">
+      <span class="subtitle text-secundary">Por que somos a </span>
+      <span class="subtitle text-primary">opção ideal para você?</span>
+    </div>
+    <iframe id="youtubePlayer" width="1100" height="616" src="https://www.youtube.com/embed/vz_zJv4-QZQ?si=9VRrJj6SKdQnCL7j" frameborder="0" allowfullscreen></iframe>
+    <div class="content-info-footer">
+      <div>
+        <span class="cif-text text-secundary">Use nosso aplicativo </span>
+        <span class="cif-text text-primary">de graça</span>
+      </div>
+      <a routerLink="/register/web"> <button class="secundary-button">Baixar aplicativo</button></a>
+    </div>
+  </div>  
   <div class="content content-1">
     <div class="content-container">
       <div class="content-info">
+        <img class="content-info-img" src="/assets/images/logo.png" alt="Logo do aplicativo mega sem segredo">
         <div class="content-info-title">
           <span class="title text-secundary">Já imaginou ganhar na </span>
           <span class="title text-primary">Mega-Sena?</span>
         </div>
         <div class="content-info-elements hidden-mobile">
           <span class="text">Conheça o aplicativo Mega Sem Segredo e descubra como aumentar suas chances de ganhar!</span>
-          <a routerLink="/register"><button class="primary-button">Quero ganhar</button></a>
+          <a routerLink="/register/web"><button class="primary-button">Quero ganhar</button></a>
         </div>
       </div>
       <div class="content-info-ilustration">
@@ -28,17 +34,7 @@
     </div>
     <div class="content-info-elements hidden-desktop">
       <span class="text">Conheça o aplicativo Mega Sem Segredo e descubra como aumentar suas chances de ganhar!</span>
-      <a routerLink="/register"><button class="primary-button">Quero ganhar</button></a>
-    </div>
-  </div>
-  <div class="content content-2" id="about">
-    <div class="content-info-subtitle">
-      <span class="subtitle text-secundary">Por que somos a </span>
-      <span class="subtitle text-primary">opção ideal para você?</span>
-    </div>
-    <iframe id="youtubePlayer" width="1100" height="616" src="https://www.youtube.com/embed/vz_zJv4-QZQ?si=9VRrJj6SKdQnCL7j" frameborder="0" allowfullscreen></iframe>
-    <div class="content-info-footer">
-      <a routerLink="/register"><button class="secundary-button">Baixar aplicativo</button></a>
+      <a routerLink="/register/web"><button class="primary-button">Quero ganhar</button></a>
     </div>
   </div>
   <div class="content content-3" id="book">
@@ -74,15 +70,19 @@
       </div>
     </div>
   </div>
+  <div class="content content-5" id="who-we-are">
+    <div class="content-info-text">
+      <span class="text-primary title">Quem somos</span>
+      <p class="text-secundary text">
+        A Mega Comunidade é uma empresa especializada em prestação de serviços, com foco primordial no desenvolvimento de software. 
+        Estamos devidamente registrados no endereço Rua Celso Pinheiro, 1786, Sala A, Cristo Rei, Teresina, Piauí, 
+        e temos presença online através do nosso domínio em www.megacomunidade.com.br.
+        <br><br>
+        Nosso compromisso inclui promover transparência em todas as nossas ações, 
+        adotar abordagens pedagógicas para garantir o uso eficiente dos nossos aplicativos e contribuir para o sucesso financeiro dos nossos clientes. 
+        Além disso, buscamos proporcionar conveniência aos nossos clientes, oferecendo opções de pagamento via cartão de crédito ou Pix.
+      </p>
+    </div>
+  </div>
 </section>
-<footer>
-  <div class="footer-container">
-    <a href="#"><img src="/assets/images/logo.png" alt="logo mega sem segredo"></a>
-    <a href="https://api.whatsapp.com/send/?phone=86994202732&text&type=phone_number&app_absent=0"><span class="text-footer support-text">Suporte Técnico: (86) 9 9420-2732</span></a>
-    <a routerLink="/privacy-policy"><span class="text-footer support-text">Políticas de privacidade</span></a>
-  </div>
-  <div class="text-footer">
-    <span class="text-copy">CNPJ: 52.561.540/0001-48 </span>
-    <span class="text-copy">Todos os direitos reservados, 2023 - Mega Sem Segredo</span>
-  </div>
-</footer>
+<app-footer></app-footer>

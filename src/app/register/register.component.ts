@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 declare const Iugu: any;
 
 @Component({
@@ -18,13 +18,15 @@ export class RegisterComponent implements OnInit {
   step: string = 'user';
   showConfirmPassword: boolean = false;
   isLoading: boolean = false;
+  origin: string = 'web';
+  originPayment: boolean = false;
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
       first_name: new FormControl('', [Validators.required]),
       last_name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      phone_number: new FormControl('', [Validators.required]),
+      phone_number: new FormControl(''),
       password: new FormControl('', [Validators.required, Validators.minLength(8)]),
       password_confirmation: new FormControl('', [Validators.required, Validators.minLength(8)]),
     })
@@ -33,10 +35,18 @@ export class RegisterComponent implements OnInit {
   constructor(
     private router: Router,
     private appService: AppService,
+    private activatedRoute: ActivatedRoute,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
+    this.origin = this.activatedRoute.snapshot.params['origin'];
+
+    if(this.router.url === '/payment-methods') {
+      this.step = 'payment-type';
+      this.originPayment = true;
+      this.origin = 'app';
+    }
   }
 
   checkPasswordIsValid(): boolean {
@@ -74,7 +84,14 @@ export class RegisterComponent implements OnInit {
 
   createUser(): void {
     this.isLoading = true;
-    this.appService.createUser(this.formUser.get('user')?.value).subscribe((response) => {
+
+    const user = { ...this.formUser.get('user')?.value, origin: this.origin };
+
+    if(!user?.phone_number) {
+      delete user.phone_number;
+    }
+
+    this.appService.createUser(user).subscribe((response) => {
       this.isLoading = false;
       this.router.navigateByUrl('/confirmation');
     }, error => {

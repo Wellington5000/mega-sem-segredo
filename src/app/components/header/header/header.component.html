@@ -1,0 +1,17 @@
+<header id="menu" [class.expanded]="expanded">
+  <a class="logo-link" href="#"><img class="header-logo" src="/assets/images/logo-mega-comunidade.svg" alt="logo do mega sem segredo"></a>
+  <div class="header-actions">
+    <div class="header-actions-items">
+      <a href="#about" (click)="hiddenMenu()">Aplicativo</a>
+      <a href="#book" (click)="hiddenMenu()">Livro</a>
+      <a routerLink="/check-hits" (click)="hiddenMenu()">Conferir acertos</a>
+      <a href="#who-we-are"(click)="hiddenMenu()">Quem somos</a>
+    </div>
+    <a routerLink="/register/web" (click)="hiddenMenu()"><button class="primary-button">Baixar aplicativo</button></a>
+    <div class="hamburger-menu" (click)="expanded = !expanded">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+  </div>
+</header>
