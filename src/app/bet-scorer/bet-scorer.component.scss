@@ -1,0 +1,94 @@
+.bs-container {
+    padding-top: 130px;
+
+    .bs-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .bs-image-container {
+            background: radial-gradient(83.71% 83.71% at 50% 50%, rgba(64, 173, 28, 0.40) 0%, rgba(0, 0, 0, 0.00) 58.19%);
+        }
+
+        .bs-info {
+            display: flex;
+            max-width: 504px;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .bs-title {
+                font-size: 38px;
+                line-height: 48px;
+            }
+
+            .bs-text {
+                margin-top: 4px;
+                font-size: 18px;
+                line-height: 27px;
+                font-weight: 400;
+            }
+
+            .bs-button {
+                text-transform: none;
+                padding: 12px 136px;
+                margin-top: 34px;
+                margin-bottom: 21px;
+            }
+        }
+    }
+}
+
+:host ::ng-deep footer {
+    background-color: #191919 !important;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+}
+
+.bs-container-mobile {
+    display: none;
+}
+
+@media(max-width: 800px) {
+    .bs-container, app-footer {
+        display: none;
+    }
+
+    .bs-container-mobile {
+        padding-top: 130px;
+        display: block;
+
+        .bs-content {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+            .bs-title {
+                font-size: 24px;
+                line-height: 48px;
+            }
+
+            .bs-image {
+                margin-top: 28px;
+                max-width: 370px;
+            }
+
+            .bs-footer-title {
+                font-size: 24px;
+                font-weight: 600;
+                line-height: 32px;
+                color: var(--primary);
+                margin-top: 12px;
+            }
+
+            .bs-text {
+                font-size: 16px;
+                font-weight: 400;
+                line-height: 21px;
+                max-width: 347px;
+                text-align: center;
+                margin-top: 12px;
+            }
+        }
+    }
+}

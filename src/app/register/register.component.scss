@@ -1,5 +1,6 @@
 :host ::ng-deep .register-container {
   min-height: 100vh;
+  padding-top: 8rem;
   background-color: var(--black-2);
 
   header {
@@ -235,6 +236,8 @@ app-payment-type, app-credit-card-data, app-pix-data, app-pix-payment {
 
 @media(max-width: 800px) {
   .register-container {
+    padding-top: 3rem;
+    min-height: 0;
     background-color: var(--black);
   }
 
