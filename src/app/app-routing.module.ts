@@ -13,7 +13,7 @@ import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
 const routes: Routes = [
   { path: 'register/:origin', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
-  { path: 'success-register', component: SuccessComponent },
+  { path: 'success-register/:origin', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'check-hits', component: CheckHitsComponent },
   { path: 'bet-scorer', component: BetScorerComponent },

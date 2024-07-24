@@ -32,7 +32,7 @@ export class AppService {
       })
     };
 
-    return this.http.post(this.API_URL + 'v1/pagamento/checkout/salvar-cartao', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v2/pagamento/checkout/pagar-cartao', data.body, httpOptions);
   }
 
   createPaymentByPix(data: any): Observable<any> {
@@ -44,7 +44,7 @@ export class AppService {
       })
     };
 
-    return this.http.post(this.API_URL + 'v1/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v2/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
   }
 
   findAllHits(): Observable<Concourse> {
@@ -77,6 +77,28 @@ export class AppService {
 
   downloadConcourse(concourse: number): Observable<Blob> {
     return this.http.get(this.API_URL + `concursos-acertos-grupos/download/${concourse}`, {
+      responseType: 'blob'
+    });
+  }
+
+  checkPaymentByPix(data: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Authorization': 'Bearer ' + data?.auth,
+        'Content-Type':  'application/json',
+        'Accept': 'application/json'
+      })
+    };
+
+    return this.http.post(this.API_URL + 'v2/pagamento/checkout/verificar-pix', {}, httpOptions);
+  }
+
+  checkCouponIsValid(coupon: string): Observable<any> {
+    return this.http.post(this.API_URL + 'pagamento/checkout/validar-cupom', { cupom: coupon });
+  }
+
+  downloadPremiado(concourse: number): Observable<Blob> {
+    return this.http.get(this.API_URL + `concursos-acertos-grupos/download-premiado/${concourse}`, {
       responseType: 'blob'
     });
   }

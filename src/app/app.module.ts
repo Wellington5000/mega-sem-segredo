@@ -17,7 +17,6 @@ import { SuccessComponent } from './success/success.component';
 import { PixPaymentComponent } from './pix-payment/pix-payment.component';
 import { LoadingComponent } from './utils/loading/loading.component';
 import { NotificationComponent } from './utils/notification/notification/notification.component';
-import { NotificationService } from './utils/notification/notification.service';
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';

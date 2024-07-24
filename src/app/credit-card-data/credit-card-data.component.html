@@ -1,10 +1,10 @@
 <div class="content-info-subtitle">
   <span class="register-subtitle text-secundary">O primeiro passo foi dado</span>
 </div>
-<div class="form" [formGroup]="formCard">
+<form id="form-checkout" class="form" [formGroup]="formCard">
   <div class="form-input">
     <label for="name">Nome que consta no cartão</label>
-    <input [class.invalid-input]="formCard?.get('name')?.invalid && hasError" formControlName="name" name="name" placeholder="Ex: Maria da Silva " type="text" maxlength="100">
+    <input id="form-checkout__cardholderName" [class.invalid-input]="formCard?.get('name')?.invalid && hasError" formControlName="name" name="name" placeholder="Ex: Maria da Silva " type="text" maxlength="100">
     <div class="error" *ngIf="formCard?.get('name')?.invalid && hasError">
       <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
         <path d="M5 7.5C5.14167 7.5 5.26042 7.45208 5.35625 7.35625C5.45208 7.26042 5.5 7.14167 5.5 7V5C5.5 4.85833 5.45208 4.73958 5.35625 4.64375C5.26042 4.54792 5.14167 4.5 5 4.5C4.85833 4.5 4.73958 4.54792 4.64375 4.64375C4.54792 4.73958 4.5 4.85833 4.5 5V7C4.5 7.14167 4.54792 7.26042 4.64375 7.35625C4.73958 7.45208 4.85833 7.5 5 7.5ZM5 3.5C5.14167 3.5 5.26042 3.45208 5.35625 3.35625C5.45208 3.26042 5.5 3.14167 5.5 3C5.5 2.85833 5.45208 2.73958 5.35625 2.64375C5.26042 2.54792 5.14167 2.5 5 2.5C4.85833 2.5 4.73958 2.54792 4.64375 2.64375C4.54792 2.73958 4.5 2.85833 4.5 3C4.5 3.14167 4.54792 3.26042 4.64375 3.35625C4.73958 3.45208 4.85833 3.5 5 3.5ZM5 10C4.30833 10 3.65833 9.86875 3.05 9.60625C2.44167 9.34375 1.9125 8.9875 1.4625 8.5375C1.0125 8.0875 0.65625 7.55833 0.39375 6.95C0.13125 6.34167 0 5.69167 0 5C0 4.30833 0.13125 3.65833 0.39375 3.05C0.65625 2.44167 1.0125 1.9125 1.4625 1.4625C1.9125 1.0125 2.44167 0.65625 3.05 0.39375C3.65833 0.13125 4.30833 0 5 0C5.69167 0 6.34167 0.13125 6.95 0.39375C7.55833 0.65625 8.0875 1.0125 8.5375 1.4625C8.9875 1.9125 9.34375 2.44167 9.60625 3.05C9.86875 3.65833 10 4.30833 10 5C10 5.69167 9.86875 6.34167 9.60625 6.95C9.34375 7.55833 8.9875 8.0875 8.5375 8.5375C8.0875 8.9875 7.55833 9.34375 6.95 9.60625C6.34167 9.86875 5.69167 10 5 10ZM5 9C6.11667 9 7.0625 8.6125 7.8375 7.8375C8.6125 7.0625 9 6.11667 9 5C9 3.88333 8.6125 2.9375 7.8375 2.1625C7.0625 1.3875 6.11667 1 5 1C3.88333 1 2.9375 1.3875 2.1625 2.1625C1.3875 2.9375 1 3.88333 1 5C1 6.11667 1.3875 7.0625 2.1625 7.8375C2.9375 8.6125 3.88333 9 5 9Z" fill="#FF3A44"/>
@@ -12,7 +12,7 @@
       <span class="error-text">Informe o nome </span>
     </div>
   </div>
-  <div class="form-input">
+  <div id="form-checkout__cardNumber" class="form-input">
     <label for="number">Número do cartão</label>
     <input [class.invalid-input]="formCard.get('number')?.invalid && hasError" formControlName="number" name="number" placeholder="**** **** **** ****" mask="0000 0000 0000 0000" maxlength="100">
     <div class="error" *ngIf="formCard?.get('number')?.invalid && hasError">
@@ -23,9 +23,9 @@
     </div>
   </div>
   <div class="form-input-container">
-    <div class="form-input">
+    <div id="form-checkout__expirationDate" class="form-input">
       <label for="date">Data de validade</label>
-      <input [class.invalid-input]="formCard.get('date')?.invalid && hasError" formControlName="date" name="date" placeholder="MM/AA" mask="00/00">
+      <input [class.invalid-input]="formCard.get('date')?.invalid && hasError" formControlName="date" name="date" placeholder="MM/AA">
       <div class="error" *ngIf="formCard?.get('date')?.invalid && hasError">
         <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
           <path d="M5 7.5C5.14167 7.5 5.26042 7.45208 5.35625 7.35625C5.45208 7.26042 5.5 7.14167 5.5 7V5C5.5 4.85833 5.45208 4.73958 5.35625 4.64375C5.26042 4.54792 5.14167 4.5 5 4.5C4.85833 4.5 4.73958 4.54792 4.64375 4.64375C4.54792 4.73958 4.5 4.85833 4.5 5V7C4.5 7.14167 4.54792 7.26042 4.64375 7.35625C4.73958 7.45208 4.85833 7.5 5 7.5ZM5 3.5C5.14167 3.5 5.26042 3.45208 5.35625 3.35625C5.45208 3.26042 5.5 3.14167 5.5 3C5.5 2.85833 5.45208 2.73958 5.35625 2.64375C5.26042 2.54792 5.14167 2.5 5 2.5C4.85833 2.5 4.73958 2.54792 4.64375 2.64375C4.54792 2.73958 4.5 2.85833 4.5 3C4.5 3.14167 4.54792 3.26042 4.64375 3.35625C4.73958 3.45208 4.85833 3.5 5 3.5ZM5 10C4.30833 10 3.65833 9.86875 3.05 9.60625C2.44167 9.34375 1.9125 8.9875 1.4625 8.5375C1.0125 8.0875 0.65625 7.55833 0.39375 6.95C0.13125 6.34167 0 5.69167 0 5C0 4.30833 0.13125 3.65833 0.39375 3.05C0.65625 2.44167 1.0125 1.9125 1.4625 1.4625C1.9125 1.0125 2.44167 0.65625 3.05 0.39375C3.65833 0.13125 4.30833 0 5 0C5.69167 0 6.34167 0.13125 6.95 0.39375C7.55833 0.65625 8.0875 1.0125 8.5375 1.4625C8.9875 1.9125 9.34375 2.44167 9.60625 3.05C9.86875 3.65833 10 4.30833 10 5C10 5.69167 9.86875 6.34167 9.60625 6.95C9.34375 7.55833 8.9875 8.0875 8.5375 8.5375C8.0875 8.9875 7.55833 9.34375 6.95 9.60625C6.34167 9.86875 5.69167 10 5 10ZM5 9C6.11667 9 7.0625 8.6125 7.8375 7.8375C8.6125 7.0625 9 6.11667 9 5C9 3.88333 8.6125 2.9375 7.8375 2.1625C7.0625 1.3875 6.11667 1 5 1C3.88333 1 2.9375 1.3875 2.1625 2.1625C1.3875 2.9375 1 3.88333 1 5C1 6.11667 1.3875 7.0625 2.1625 7.8375C2.9375 8.6125 3.88333 9 5 9Z" fill="#FF3A44"/>
@@ -33,7 +33,7 @@
         <span class="error-text">{{ dateTextError || 'Informe a data de validade' }}</span>
       </div>
     </div>
-    <div class="form-input">
+    <div id="form-checkout__securityCode" class="form-input">
       <label for="phone">CVV</label>
       <input [class.invalid-input]="formCard.get('cvv')?.invalid && hasError" formControlName="cvv" name="cvv" placeholder="123" mask="000">
       <div class="error" *ngIf="formCard?.get('cvv')?.invalid && hasError">
@@ -44,9 +44,13 @@
       </div>
     </div>
   </div>
+  <select id="form-checkout__identificationType" hidden></select>
+  <input type="text" id="form-checkout__identificationNumber" />
+  <select hidden id="form-checkout__issuer"></select>
+  <select hidden id="form-checkout__installments"></select>
   <div class="footer-form">
     <span class="footer-text text-secundary">Parcelamento 12x  de R$ 20</span>
-    <button class="primary-button" (click)="next()">Continuar</button>
+    <button type="submit" id="form-checkout__submit" class="primary-button">Continuar</button>
     <img src="/assets/images/safe-buy.png" alt="imagem do selo de compra segura">
   </div>
-</div>
+</form>

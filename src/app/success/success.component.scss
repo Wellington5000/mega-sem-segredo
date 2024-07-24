@@ -1,5 +1,4 @@
 .s-container {
-  min-height: 100vh;
   background-color: var(--black-2);
 
   header {
@@ -11,6 +10,10 @@
     display: flex;
     justify-content: center;
   }
+}
+
+.add-min-height {
+  min-height: 100vh;
 }
 
 .success-container {
@@ -30,6 +33,19 @@
 
   .content-info-title {
     margin-bottom: 2rem;
+    max-width: 805px;
+    line-height: 58px;
+  }
+
+  .content-info-pix {
+    margin-bottom: 54px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    button {
+      margin-top: 10px;
+    }
   }
 
   .store-logos {
@@ -44,8 +60,21 @@
 
   .text {
     max-width: 542px;
-    margin-bottom: 20px;
   }
+
+  .s-button {
+    padding-left: 3.75rem;
+    padding-right: 3.75rem;
+  }
+}
+
+.button-with-icon {
+  gap: 0.5rem;
+  width: 246px;
+  display: flex;
+  align-items: center;
+  text-transform: none;
+  justify-content: center;
 }
 
 .info-text {
