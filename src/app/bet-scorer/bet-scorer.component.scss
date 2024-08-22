@@ -1,3 +1,14 @@
+:host ::ng-deep {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .bs-main {
+        width: 100%;
+    }
+}
+
 .bs-container {
     padding-top: 130px;
 
@@ -41,8 +52,6 @@
 :host ::ng-deep footer {
     background-color: #191919 !important;
     width: 100%;
-    position: absolute;
-    bottom: 0;
 }
 
 .bs-container-mobile {
@@ -50,6 +59,10 @@
 }
 
 @media(max-width: 800px) {
+    :host ::ng-deep {
+        height: auto;
+    }
+
     .bs-container, app-footer {
         display: none;
     }
