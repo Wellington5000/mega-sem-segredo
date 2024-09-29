@@ -77,6 +77,11 @@
   justify-content: center;
 }
 
+.info-text {
+  margin-top: 1rem;
+  font-size: 0.875rem;
+}
+
 @media(max-width: 800px) {
   .s-container {
     background-color: var(--black);

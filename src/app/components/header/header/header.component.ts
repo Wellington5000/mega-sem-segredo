@@ -13,7 +13,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
   hiddenMenu(): void {
     const menu = document.getElementById('menu');
     menu?.classList.remove('expanded');

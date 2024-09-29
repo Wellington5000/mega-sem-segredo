@@ -28,12 +28,12 @@ export class CheckHitsComponent implements OnInit {
     this.isLoading = true;
     this.appService.findAllHits().subscribe({
       next: (response) => {
-        this.hits = response.concursos;
         this.isLoading = false;
+        this.hits = response.concursos;
       },
       error: (error) => {
-        this.notificationService.notify('Erro ao carregar os concursos');
         this.isLoading = false;
+        this.notificationService.notify('Erro ao carregar os concursos');
       }
     })
   }
@@ -43,12 +43,12 @@ export class CheckHitsComponent implements OnInit {
       this.isLoading = true;
       this.appService.findHitsByCode(this.concourse.value).subscribe({
         next: (response) => {
-          this.hits = response.concursos;
           this.isLoading = false;
+          this.hits = response.concursos;
         },
         error: (error) => {
-          this.notificationService.notify('Concurso não encontrado');
           this.isLoading = false;
+          this.notificationService.notify('Concurso não encontrado');
         }
       })
     } else {
@@ -62,21 +62,6 @@ export class CheckHitsComponent implements OnInit {
       next: (responde: Blob) => {
         this.isLoading = false;
         const fileName = `concurso_${concourse}`;
-        Utils.downloadPdf(responde, fileName);
-      },
-      error: (error) => {
-        this.isLoading = false;
-        this.notificationService.notify('Erro ao baixar relatório de acertos');
-      }
-    })
-  }
-
-  downloadPremiado(concourse: number): void {
-    this.isLoading = true;
-    this.appService.downloadPremiado(concourse).subscribe({
-      next: (responde: Blob) => {
-        this.isLoading = false;
-        const fileName = `grupo_com_sena_${concourse}`;
         Utils.downloadPdf(responde, fileName);
       },
       error: (error) => {

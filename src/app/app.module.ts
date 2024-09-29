@@ -20,15 +20,10 @@ import { NotificationComponent } from './utils/notification/notification/notific
 import { UseTermsComponent } from './use-terms/use-terms.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
-import { DeviceDetectorService } from 'ngx-device-detector';
+import { CheckHitsComponent } from './check-hits/check-hits.component';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
-import { CheckHitsComponent } from './check-hits/check-hits.component';
-import { LuckyPixComponent } from './lucky-pix/lucky-pix.component';
-import { ClipboardModule } from '@angular/cdk/clipboard';
-import { PixPayment2Component } from './pix-payment2/pix-payment2.component';
-
-
+import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
 
 @NgModule({
   declarations: [
@@ -46,8 +41,7 @@ import { PixPayment2Component } from './pix-payment2/pix-payment2.component';
     PrivacyPolicyComponent,
     ConfirmationComponent,
     CheckHitsComponent,
-    LuckyPixComponent,
-    PixPayment2Component
+    BetScorerComponent
   ],
   imports: [
     BrowserModule,
@@ -60,10 +54,9 @@ import { PixPayment2Component } from './pix-payment2/pix-payment2.component';
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     HeaderModule,
-    FooterModule,
-    ClipboardModule
+    FooterModule
   ],
-  providers: [DeviceDetectorService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

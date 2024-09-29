@@ -4,7 +4,7 @@
     <div class="ch-search">
         <span class="ch-search-title text-secundary">Concurso</span>
         <div class="ch-search-actions">
-            <input mask="00000" [formControl]="concourse">
+            <input mask="00000" [formControl]="concourse" (keydown.enter)="getHitsByCode()">
             <button (click)="getHitsByCode()">
                 <img src="/assets/icons/search.svg" alt="ícone de lupa">
             </button>
@@ -36,10 +36,6 @@
                     <div class="ch-card-item">
                         <span class="ch-card-item-number text-secundary">{{ hitsItem.num_sorteio1_6 }}</span>
                     </div>
-                </div>
-                <div class="ch-card-footer">
-                    <span class="ch-card-footer-title text-secundary">O grupo {{ hitsItem.codigo_premiado }} acertou a SENA.</span>
-                    <img class="ch-card-footer-download" src="/assets/icons/download.svg" alt="ícone de download" (click)="downloadPremiado(hitsItem.concurso)">
                 </div>
             </div>
         </ng-container>
