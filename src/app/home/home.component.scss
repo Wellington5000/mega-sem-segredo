@@ -2,58 +2,114 @@ section {
   margin-top: 1.5rem;
 
   .content-1  {
-    .content-container {
-      gap: 4rem;
-      display: flex;
-      padding-top: 88px;
-      align-items: center;
-      justify-content: center;
+    display: flex;
+    margin-top: -20px;
+    align-items: center;
+    flex-direction: column;
 
-      .content-info {
-        margin-top: -105px;
-        z-index: 1;
-        gap: 2.25rem;
+    .hc1-title {
+      font-weight: 800;
+      font-size: 38px;
+      line-height: 40px;
+    }
+
+    .hc1-subtitle {
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 31px;
+    }
+
+    .hc1-cards {
+      display: flex;
+      gap: 60px;
+    }
+
+    .hc1-card {
+      width: 348px;
+      height: 407px;
+      margin-top: 136px;
+      border-radius: 22px;
+      padding: 14px 7px 23px;
+      background-color: #263238B2;
+
+      .hc1-number {
+        font-size: 50px;
+        line-height: 48px;
+        color: #40AD1C;
+        font-weight: 800;
+        margin-left: 7px;
+      }
+
+      .hc1-box {
+        margin-top: -145px;
         display: flex;
-        max-width: 540px;
+        align-items: center;
         flex-direction: column;
 
-        .content-info-img {
-          height: 50px;
-          width: 120px;
+        .hc1-box-text {
+          margin-bottom: 12px;
+          text-align: center;
+          color: white;
+          font-size: 16px;
+          font-weight: 400;
+          line-height: 21px;
         }
 
-        .content-info-title {
-          max-width: 469px;
+        button {
+          padding: 12px 94px;
         }
 
-        .content-info-elements {
+        .hc1-store-logos {
+          gap: 24px;
           display: flex;
-          gap: 1.3125rem;
-          max-width: 28.375rem;
-          flex-direction: column;
-
-          .content-info-stores {
-            display: flex;
-            gap: 0.25rem;
-          }
-
-          button {
-            width: fit-content;
-            padding-left: 3.75rem;
-            padding-right: 3.75rem;
-          }
+          margin-top: 15px;
+          justify-content: center;
         }
       }
+    }
 
-      .content-info-ilustration {
-        width: 440px;
-        height: 520px;
+    .highlight-text {
+      color: #40AD1C;
+      font-weight: 800;
+    }
+
+    .card-1 {
+      .hc1-box {
+        margin-top: -129px;
       }
 
-      .phone-image {
-        margin-top: -16px;
-        margin-left: 430px;
-        position: absolute;
+      .hc1-box-img {
+        width: 123px;
+        height: 247px;
+      }
+
+      .hc1-box-text {
+        margin-top: 34px;
+      }
+    }
+
+    .card-2 {
+      .hc1-box-img {
+        margin-left: 28px;
+        width: 234px;
+        height: 244px;
+      }
+
+      .hc1-box-text {
+        margin-top: 54px;
+      }
+    }
+
+    .card-3 {
+      .hc1-box-img {
+        width: 153px;
+        height: 247px;
+      }
+
+      .hc1-box-text {
+        margin-top: 30px;
+        max-width: 251px;
       }
     }
   }
@@ -63,8 +119,8 @@ section {
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding: 5.625rem 0 2.375rem 0;
-    background: radial-gradient(70.71% 70.71% at 50% 50%, #454F5B 34%, #000 100%);
+    padding: 7.625rem 0 7.375rem 0;
+    background: radial-gradient(35.71% 65.71% at 50% 58%, #44AB1C80 30%, #000 79%);
 
     .content-info-footer {
       gap: 1.125rem;
@@ -84,9 +140,170 @@ section {
       font-weight: 500;
       font-size: 1.25rem;
     }
+
+    .hc2-title {
+      font-size: 38px;
+    }
   }
 
   .content-3 {
+    gap: 125px;
+    display: flex;
+    padding-top: 20px;
+    margin-top: 150px;
+    align-items: center;
+    justify-content: center;
+    background: url('/assets/images/home/background-volante.png') no-repeat center center;
+    background-size: cover;
+
+    .hc3-info {
+      display: flex;
+      max-width: 528px;
+      margin-top: -58px;
+      flex-direction: column;
+
+
+      .hc3-title {
+        font-size: 30px;
+        color: #40AD1C;
+        font-weight: 800;
+        line-height: 31px;
+      }
+
+      .hc3-text {
+        color: white;
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 27px;
+      }
+
+      .t1 {
+        margin-top: 32px;
+        margin-bottom: 42px;
+      }
+
+      .t2 {
+        margin-bottom: 20px;
+      }
+
+      .hc3-text-box {
+        gap: 10px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .hc3-text-icon {
+        gap: 8px;
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    .hc3-img {
+      padding-top: 48px;
+    }
+
+    .highlight-text {
+      color: #40AD1C;
+      font-weight: 700;
+    }
+  }
+
+  .content-4 {
+    gap: 94px;
+    display: flex;
+    padding: 68px 0;
+    align-items: center;
+    flex-direction: column;
+    background-color: #161C24;
+
+    .hc4-title {
+      font-weight: 800;
+      line-height: 40px;
+      font-size: 38px;
+      color: white;
+    }
+
+    .hc4-cards {
+      gap: 56px;
+      display: flex;
+      justify-content: center;
+
+      .hc4-card {
+        display: flex;
+        padding: 42px 32px;
+        height: fit-content;
+        border-radius: 18px;
+        flex-direction: column;
+        background-color: white;
+        outline: solid 2px #66B285;
+
+        .hc4-card-title-content {
+          gap: 8px;
+          display: flex;
+
+          .hc4-card-title {
+            font-size: 28px;
+            font-weight: 500;
+            color: #263238;
+            line-height: 32px;
+          }
+
+          .hc4-card-title-box {
+            gap: 6px;
+            display: flex;
+            padding: 4px 10px;
+            border-radius: 4px;
+            align-items: center;
+            background-color: #DEF9D5;
+
+            .hc4-card-box-text {
+              font-weight: 600;
+              font-size: 14px;
+              line-height: 20px;
+              color: #40AD1C;
+            }
+          }
+        }
+
+        .hc4-card-value-content {
+          margin-top: 38px;
+
+          .hc4-card-value {
+            font-size: 36px;
+            font-weight: 700;
+            color: #40AD1C;
+            line-height: 36px;
+            letter-spacing: 0.25px;
+          }
+
+          .hc4-card-value-info {
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+            color: #4B5563;
+          }
+        }
+
+        .hc4-benefits {
+          gap: 16px;
+          display: flex;
+          margin-top: 24px;
+          margin-bottom: 24px;
+          flex-direction: column;
+
+          .hc4-benefits-item {
+            gap: 12px;
+            display: flex;
+            max-width: 255px;
+            align-items: flex-start;
+          }
+        }
+      }
+    }
+  }
+
+  .content-5 {
     gap: 9.5rem;
     display: flex;
     padding-top: 4rem;
@@ -108,7 +325,7 @@ section {
     .content-info {
       .content-info-title {
         margin-bottom: 1rem;
-        max-width: 37.875rem;
+        max-width: 616px;
 
         .title-small-weight {
           font-weight: var(--medium-font-weight);
@@ -148,189 +365,6 @@ section {
     }
   }
 
-  .content-4 {
-    gap: 3rem;
-    display: flex;
-    align-items: center;
-    padding-top: 6.25rem;
-    padding-bottom: 4.62rem;
-    flex-direction: column;
-    background-color: var(--black-2);
-
-    .content-info-subtitle {
-      max-width: 37.25rem;
-      text-align: center;
-    }
-
-    .content-info {
-      gap: 7.5rem;
-      display: flex;
-      align-items: center;
-
-      .content-info-text {
-        gap: 1.5rem;
-        display: flex;
-        max-width: 25rem;
-        flex-direction: column;
-
-        .content-info-title {
-          display: flex;
-          flex-direction: column;
-
-          .text-1 {
-            font-size: 1.875rem;
-            font-weight: var(--bold-font-weight);
-          }
-
-          .text-2 {
-            font-size: 1.875rem;
-            font-weight: var(--lighter-font-weight);
-          }
-
-          .text-3 {
-            font-size: 1.875rem;
-            font-weight: var(--bold-font-weight);
-          }
-        }
-
-        .content-text {
-          border-radius: 0.9375rem;
-          border: 1px solid var(--primary);
-          padding: 1.5rem 1.88rem 1.31rem 2.06rem;
-        }
-      }
-
-      .card-plan {
-        width: 25rem;
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-
-        .card-plan-top {
-          width: fit-content;
-          padding: 0.5rem 2.5rem;
-          background-color: var(--primary);
-          border-radius: 1.25rem 1.25rem 0rem 0rem;
-        }
-
-        .card-plan-container {
-          width: 100%;
-          height: 100%;
-
-          .card-plan-header {
-            display: flex;
-            padding: 0.6125rem 0;
-            justify-content: center;
-            background-color: #212B36;
-            border-radius: 1.25rem 1.25rem 0rem 0rem;
-          }
-
-          .card-plan-body {
-            height: 100%;
-            background-color: var(--white);
-            border-radius: 0rem 0rem 0.625rem 0.625rem;
-
-            .card-plan-info {
-              display: flex;
-              flex-direction: column;
-              padding: 0.7rem 1.88rem 0;
-              border-bottom: 1px solid var(--primary);
-
-              .text-center {
-                align-self: center;
-                margin-bottom: 0.75rem;
-              }
-
-              .info-title {
-                color: #000;
-                font-size: var(--small-text-font-size);
-                font-weight: var(--regular-font-weight);
-              }
-
-              .info-parcel {
-                font-size: 0.875rem;
-                font-weight: var(--medium-font-weight);
-              }
-
-              .info-value {
-                font-size: 1.1rem;
-                margin-bottom: 1rem;
-                font-weight: var(--medium-font-weight);
-              }
-
-              .card-value {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-
-                .card-value-aux {
-                  color: #000000;
-                  font-size: 1.5625rem;
-                  line-height: 1.875rem;
-                  font-weight: var(--bold-font-weight);
-                }
-
-                .card-value-price {
-                  font-size: 5.625rem;
-                  line-height: 6rem;
-                  font-weight: var(--bold-font-weight);
-                }
-              }
-            }
-
-            .card-plan-advantages {
-              gap: 2.94rem;
-              display: flex;
-              padding-top: 1.88rem;
-              flex-direction: column;
-              padding: 1.88rem;
-
-              button {
-                width: 100%;
-                align-self: center;
-              }
-
-              .advantages-content {
-                gap: 0.94rem;
-                display: flex;
-                flex-direction: column;
-
-                .advantages-description {
-                  gap: 0.62rem;
-                  display: flex;
-                  align-items: center;
-
-                  .advantages-text {
-                    line-height: normal;
-                    font-size: 0.875rem;
-                    font-weight: var(--bold-font-weight);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-  .content-5 {
-    gap: 5rem;
-    display: flex;
-    padding: 7.375rem 0 13.125rem;
-
-    .content-info-text {
-      gap: 2.5rem;
-      display: flex;
-      margin-left: 13vw;
-      flex-direction: column;
-    }
-
-    .text {
-      max-width: 540px;
-      line-height: 27px;
-    }
-  }
 }
 
 @media(max-width: 1360px) {
@@ -443,7 +477,7 @@ section {
     }
   }
 
-  .content-3 {
+  .content-5 {
     padding-top: 7rem !important;
     flex-direction: column;
 
@@ -502,48 +536,6 @@ section {
       .content-logos {
         flex-wrap: wrap;
       }
-    }
-  }
-
-  .content-4 {
-    gap: 2.75rem;
-    padding-top: 7rem !important;
-
-    .content-info {
-      gap: 4rem !important;
-      width: 100%;
-      flex-direction: column-reverse;
-
-      .card-plan {
-        padding: 0.5rem;
-        width: 100% !important;
-        max-width: 25rem;
-      }
-    }
-
-    .content-info-subtitle {
-      max-width: 23.5625rem !important;
-    }
-
-    .content-info-text {
-      width: 100%;
-      max-width: 23.8125rem !important;
-    }
-  }
-
-  .content-5 {
-    justify-content: center;
-
-    .content-info-text {
-      align-items: center;
-      text-align: justify;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      margin-left: 0 !important;
-    }
-
-    .wwa-image {
-      display: none;
     }
   }
 }

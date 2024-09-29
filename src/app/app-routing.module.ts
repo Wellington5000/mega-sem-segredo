@@ -16,6 +16,7 @@ const routes: Routes = [
   { path: 'register/:origin', component: RegisterComponent },
   { path: 'payment-methods', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
+  { path: 'use-terms', component: UseTermsComponent },
   { path: 'success-register/:origin', component: SuccessComponent },
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'check-hits', component: CheckHitsComponent },

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
 :root {
   //CORES
   --red: #FF3A44;
@@ -165,6 +167,14 @@ button:disabled {
 
 .hidden-mobile {
   display: flex;
+}
+
+.light-text {
+  font-weight: 200;
+}
+
+.bold-text {
+  font-weight: 900;
 }
 
 @media(max-width: 1040px) {
