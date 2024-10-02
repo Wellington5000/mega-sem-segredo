@@ -24,6 +24,8 @@ import { CheckHitsComponent } from './check-hits/check-hits.component';
 import { HeaderModule } from './components/header/header.module';
 import { FooterModule } from './components/footer/footer.module';
 import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
+import { LoginComponent } from './login/login.component';
+import { InitialPageComponent } from './initial-page/initial-page.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,9 @@ import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
     PrivacyPolicyComponent,
     ConfirmationComponent,
     CheckHitsComponent,
-    BetScorerComponent
+    BetScorerComponent,
+    LoginComponent,
+    InitialPageComponent
   ],
   imports: [
     BrowserModule,

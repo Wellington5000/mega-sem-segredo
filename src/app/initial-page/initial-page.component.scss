@@ -1,0 +1,171 @@
+:host ::ng-deep header {
+    padding-left: 80px !important;
+}
+
+.ip-container{
+    margin-top: 90px;
+    min-height: 90vh;
+    background-color: #161C24;
+
+    .ip-title {
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 20px;
+        color: white;
+    }
+
+    .ip-card {
+        display: flex;
+        align-items: center;
+        background-color: #07131F;
+        border-radius: 8px;
+    }
+
+    .ip-col {
+        gap: 8px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .ip1-container {
+        gap: 54px;
+        padding: 70px 96px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .ip-col {
+            .ip1-card-text {
+                font-weight: 500;
+                font-size: 32px;
+                line-height: 20px;
+                color: white;
+            }
+             
+            .ip-card {
+                padding: 22px 14px;
+                height: 90px;
+            }
+        }
+
+        .ip1-col-1 {
+            width: 100%;
+            
+            .ip-card {
+                gap: 20px;
+            }
+        }
+
+        .ip1-col-2 {
+            min-width: 240px;
+
+            .ip-card {
+                justify-content: space-between;
+
+            }
+        }
+    }
+
+    .ip2-container {
+        margin-top: 55px;
+        padding: 0 96px;
+        
+        .ip-card {
+            padding: 36px 0 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            .ip-card-numbers {
+                gap: 12px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                .ip-card-number {
+                    width: 46px;
+                    height: 46px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #40AD1C;
+                    font-weight: 800;
+                    font-size: 20px;
+                    line-height: 27px;
+                    color: white;
+                    border-radius: 50%;
+                }
+            }
+
+            .ip-card-text {
+                font-weight: 400;
+                font-size: 14px;
+                line-height: 19px;
+                color: white;
+                margin-top: 16px;
+            }
+        }
+    }
+
+    .ip3-container {
+        gap: 10%;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+
+        .ip3-content {
+            display: flex;
+            flex-direction: column;
+
+            .ip3-title {
+                font-weight: 700;
+                font-size: 38px;
+                line-height: 40px;
+                color: white;
+            }
+
+            .ip3-subtitle {
+                font-weight: 400;
+                font-size: 20px;
+                color: #40AD1C;
+            }
+
+            .ip3-text {
+                font-weight: 400;
+                font-size: 18px;
+                line-height: 27px;
+                color: white;
+                margin-top: 20px;
+                max-width: 504px;
+            }
+
+            .ip3-actions {
+                margin-top: 36px;
+                gap: 24px;
+                display: flex;
+                align-items: center;
+
+                .ip3-button {
+                    width: 252px;
+                }
+
+                .ip3-tutorial {
+                    gap: 4px;
+                    display: flex;
+                    align-items: center;
+                    color: #40AD1C;
+                    font-weight: 600;
+                    font-size: 20px;
+                    line-height: 25px;
+                }
+            }
+
+            .ip3-social {
+                margin-top: 22px;
+                display: flex;
+                gap: 4px;
+            }
+        }
+    }
+}

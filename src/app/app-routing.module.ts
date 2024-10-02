@@ -9,6 +9,8 @@ import { SuccessComponent } from './success/success.component';
 import { ConfirmationComponent } from './confirmation/confirmation.component';
 import { CheckHitsComponent } from './check-hits/check-hits.component';
 import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
+import { LoginComponent } from './login/login.component';
+import { InitialPageComponent } from './initial-page/initial-page.component';
 
 const routes: Routes = [
   { path: 'register/:origin', component: RegisterComponent },
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'confirmation', component: ConfirmationComponent },
   { path: 'check-hits', component: CheckHitsComponent },
   { path: 'bet-scorer', component: BetScorerComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'home', component: InitialPageComponent },
   { path: '', component: HomeComponent },
   { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
