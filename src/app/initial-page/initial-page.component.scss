@@ -37,7 +37,7 @@
                 line-height: 20px;
                 color: white;
             }
-             
+
             .ip-card {
                 padding: 22px 14px;
                 height: 90px;
@@ -46,7 +46,7 @@
 
         .ip1-col-1 {
             width: 100%;
-            
+
             .ip-card {
                 gap: 20px;
             }
@@ -65,7 +65,7 @@
     .ip2-container {
         margin-top: 70px;
         padding: 0 96px;
-        
+
         .ip-card {
             padding: 36px 0 38px;
             display: flex;
@@ -188,7 +188,7 @@
         .ip4-phones {
             margin-left: -80px;
         }
-        
+
 
         .ip-card {
             height: 389px;
@@ -233,13 +233,22 @@
             color: #40AD1C;
         }
 
+        .large-card {
+          height: 538px !important;
+        }
+
+        .medium-card {
+          height: 438px !important;
+        }
+
         .hc4-cards {
             gap: 56px;
             display: flex;
             justify-content: center;
-      
+
             .hc4-card {
               display: flex;
+              justify-content: space-between;
               padding: 42px 32px;
               height: fit-content;
               border-radius: 18px;
@@ -254,18 +263,18 @@
                     width: 100%;
                 }
               }
-      
+
               .hc4-card-title-content {
                 gap: 8px;
                 display: flex;
-      
+
                 .hc4-card-title {
                   font-size: 28px;
                   font-weight: 500;
                   color: #263238;
                   line-height: 32px;
                 }
-      
+
                 .hc4-card-title-box {
                   gap: 6px;
                   display: flex;
@@ -273,7 +282,7 @@
                   border-radius: 4px;
                   align-items: center;
                   background-color: #DEF9D5;
-      
+
                   .hc4-card-box-text {
                     font-weight: 600;
                     font-size: 14px;
@@ -282,10 +291,10 @@
                   }
                 }
               }
-      
+
               .hc4-card-value-content {
                 margin-top: 38px;
-      
+
                 .hc4-card-value {
                   font-size: 36px;
                   font-weight: 700;
@@ -293,7 +302,7 @@
                   line-height: 36px;
                   letter-spacing: 0.25px;
                 }
-      
+
                 .hc4-card-value-info {
                   font-weight: 400;
                   font-size: 14px;
@@ -301,14 +310,14 @@
                   color: #4B5563;
                 }
               }
-      
+
               .hc4-benefits {
                 gap: 16px;
                 display: flex;
                 margin-top: 24px;
                 margin-bottom: 24px;
                 flex-direction: column;
-      
+
                 .hc4-benefits-item {
                   gap: 12px;
                   display: flex;
