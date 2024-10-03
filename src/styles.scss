@@ -177,6 +177,38 @@ button:disabled {
   font-weight: 900;
 }
 
+.form-input {
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+
+  .eye-password {
+    cursor: pointer;
+    position: absolute;
+    margin-top: 30px;
+    margin-right: 10px;
+  }
+
+  label {
+    color: var(--white);
+    font-size: 0.875rem;
+    line-height: normal;
+    align-self: flex-start;
+    font-weight: var(--medium-font-weight);
+  }
+  
+  input {
+    width: 100%;
+    outline: none;
+    color: var(--black-2);
+    border-radius: 0.625rem;
+    background: var(--white);
+    font-size: var(--small-font-size);
+    border: 2px solid rgba(0, 0, 0, 0.50);
+    padding: 0.59375rem 0rem 0.59375rem 0.75rem;
+  }
+}
+
 @media(max-width: 1040px) {
   .title {
     font-size: 2rem;

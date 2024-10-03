@@ -39,7 +39,7 @@
         </div>
     </section>
 
-    <section>
+    <section *ngIf="hasPlan">
         <div class="ip3-container">
             <img src="/assets//images/initial-page/notebook.png">
             <div class="ip3-content">
@@ -62,4 +62,111 @@
             </div>
         </div>
     </section>
+
+    <section>
+        <div class="ip4-container">
+            <div class="ip-card">
+                <div class="ip4-card-box">
+                    <span class="ip4-box-text">{{ hasPlan ? '1000' : '5' }} combinações disponíveis</span>
+                </div>
+                <img class="ip4-phones" src="/assets/images/initial-page/phones.png">
+                <div class="ip4-card-info">
+                    <span class="ip4-title">Mega Sem Segredo</span>
+                    <span class="ip4-text">Use o aplicativo Mega Sem Segredo e descubra como aumentar suas chances de ganhar!</span>
+                    <div class="ip3-actions">
+                        <a href="https://chromewebstore.google.com/detail/mega-sem-segredo/ijppogbalaldgddhalhceomefpmjoajl" target="_blank"><button class="primary-button ip3-button">Utilizar</button></a>
+                        <a href="#" class="ip3-tutorial">
+                            <img src="/assets/images/initial-page/play.png">
+                            Assista o tutorial
+                        </a>
+                    </div>
+                    <div class="ip3-social">
+                        <img src="/assets/images/google-play.png">
+                        <img src="/assets/images/app-store.png">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="ip5-container">
+            <span class="ip5-title">{{ hasPlan ? 'Potencialize seu plano' : 'Nossos planos' }}</span>
+            <div class="hc4-cards">
+                <div class="hc4-card" *ngIf="!hasPlan">
+                  <div class="hc4-card-title-content">
+                    <span class="hc4-card-title">Plano Grátis</span>
+                  </div>
+                  <div class="hc4-card-value-content">
+                    <span class="hc4-card-value">R$0</span>
+                  </div>
+                  <div class="hc4-benefits">
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Geração de até <strong>5</strong> combinações no App Mega Sem Segredo</span>
+                    </div>
+                  </div>
+                  <button class="primary-button hc4-button" [disabled]="true">Seu plano atual</button>
+                </div>
+                <div class="hc4-card" *ngIf="!hasPlan">
+                  <div class="hc4-card-title-content">
+                    <span class="hc4-card-title">Profissional</span>
+                    <div class="hc4-card-title-box">
+                      <img src="/assets/icons/star.svg">
+                      <span class="hc4-card-box-text">Popular</span>
+                    </div>
+                  </div>
+                  <div class="hc4-card-value-content">
+                    <span class="hc4-card-value">R$20</span>
+                    <span class="hc4-card-value-info">/ Mês ou R$120 no pix</span>
+                  </div>
+                  <div class="hc4-benefits">
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Geração de combinações <strong>ilimitada</strong> no App Mega Sem Segredo</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Envio dos volantes gerados por e-mail</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Envio de até <strong>1000</strong> combinações por mês para o site da caixa</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Acesso a todos os serviços da Mega Comunidade</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Dicas exclusivas</span>
+                    </div>
+                  </div>
+                  <a class="hc4-link" routerLink="/payment-methods"><button class="primary-button hc4-button">Assinar</button></a>
+                </div>
+                <div class="hc4-card">
+                  <div class="hc4-card-title-content">
+                    <span class="hc4-card-title">Compra de créditos</span>
+                  </div>
+                  <div class="hc4-card-value-content">
+                    <span class="hc4-card-value">R$15</span>
+                    <span class="hc4-card-value-info">/ Valor mínimo </span>
+                  </div>
+                  <div class="hc4-benefits">
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">A cada R$15  dará 1 mês de uso do App Mega Sem Segredo</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Envio de até 50 combinações</span>
+                    </div>
+                  </div>
+                  <a class="hc4-link" routerLink="/buy-credit"><button class="primary-button hc4-button">Comprar</button></a>
+                </div>
+              </div>
+        </div>
+    </section>
 </div>
+
+<app-footer></app-footer>

@@ -26,6 +26,7 @@ import { FooterModule } from './components/footer/footer.module';
 import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
 import { LoginComponent } from './login/login.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
+import { BuyCreditComponent } from './buy-credit/buy-credit.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
     CheckHitsComponent,
     BetScorerComponent,
     LoginComponent,
-    InitialPageComponent
+    InitialPageComponent,
+    BuyCreditComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
     BrowserAnimationsModule,
     NgxMaskModule.forRoot(),
     HeaderModule,
-    FooterModule
+    FooterModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,3 +1,7 @@
+:host ::ng-deep header {
+  padding-left: 166px !important;
+}
+
 section {
   margin-top: 1.5rem;
 
@@ -229,14 +233,31 @@ section {
       display: flex;
       justify-content: center;
 
+      .large-card {
+        height: 538px !important;
+      }
+
+      .medium-card {
+        height: 438px !important;
+      }
+
       .hc4-card {
         display: flex;
+        justify-content: space-between;
         padding: 42px 32px;
         height: fit-content;
         border-radius: 18px;
         flex-direction: column;
         background-color: white;
         outline: solid 2px #66B285;
+
+        .hc4-link {
+          width: 100%;
+
+          button {
+              width: 100%;
+          }
+        }
 
         .hc4-card-title-content {
           gap: 8px;
