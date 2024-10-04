@@ -12,8 +12,10 @@ import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
 import { LoginComponent } from './login/login.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { BuyCreditComponent } from './buy-credit/buy-credit.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
+  { path: 'profile', component: ProfileComponent },
   { path: 'register/:origin', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },
   { path: 'payment-methods', component: RegisterComponent },

@@ -27,6 +27,8 @@ import { BetScorerComponent } from './bet-scorer/bet-scorer.component';
 import { LoginComponent } from './login/login.component';
 import { InitialPageComponent } from './initial-page/initial-page.component';
 import { BuyCreditComponent } from './buy-credit/buy-credit.component';
+import { CreditCardData2Component } from './credit-card-data-2/credit-card-data-2.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +49,9 @@ import { BuyCreditComponent } from './buy-credit/buy-credit.component';
     BetScorerComponent,
     LoginComponent,
     InitialPageComponent,
-    BuyCreditComponent
+    BuyCreditComponent,
+    CreditCardData2Component,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

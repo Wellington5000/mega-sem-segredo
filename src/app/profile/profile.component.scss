@@ -1,0 +1,92 @@
+section {
+    margin-top: 90px;
+    min-height: 90vh;
+    background-color: #161C24;
+
+    .bc-container {
+        display: flex;
+        padding: 90px 150px;
+        flex-direction: column;
+
+        .bc-title {
+            font-weight: 600;
+            font-size: 32px;
+            line-height: 48px;
+            color: white;
+            margin-bottom: 34px;
+        }
+
+        .bc-box {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            width: 708px;
+            height: 554px;
+            background-color: white;
+            border-radius: 4px;
+
+            .bc-box-coin {
+                margin-top: -90px;
+            }
+
+            .p-content {
+                margin-top: 42px;
+                width: 340px;
+                gap: 14px;
+                align-items: center;
+                display: flex;
+                flex-direction: column;
+            }
+
+            .p-button {
+                margin-top: 34px;
+                font-size: 16px;
+                width: 100%;
+                text-transform: none;
+            }
+
+            .p-logout {
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 24px;
+                margin-top: 6px;
+                color: #C0392B;
+            }
+        }
+    }
+}
+
+.p-input-container {
+    width: 100%;
+    gap: 2px;
+    display: flex;
+    flex-direction: column;
+
+    .p-input-title, input {
+        font-weight: 300;
+        font-size: 16px;
+        line-height: 24px;
+        color: #052535;
+    }
+
+    input {
+        padding: 8px 8px 8px 53px;
+        background-color: #F8F8F8;
+        border: solid 1px #D8DCDF;
+        border-radius: 2px;
+        outline: none;
+    }
+
+    .p-input-icon {
+        position: absolute;
+        width: 44px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #F8F8F8;
+        border-right: solid 1px #D8DCDF;
+        margin-top: 27px;
+        margin-left: 1px;
+    }
+}

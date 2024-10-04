@@ -1,0 +1,43 @@
+<app-header></app-header>
+
+<section>
+    <div class="bc-container">
+        <span class="bc-title">Perfil</span>
+        <div class="bc-box">
+            <img class="bc-box-coin" src="/assets/images/profile/ellipse.png">
+
+            <div class="p-content">
+                <div class="p-input-container">
+                    <span class="p-input-title">Nome</span>
+                    <input type="text" placeholder="">
+                    <div class="p-input-icon">
+                        <img src="/assets/images/profile/profile.svg" alt="">
+                    </div>
+                </div>
+
+                <div class="p-input-container">
+                    <span class="p-input-title">Sobrenome</span>
+                    <input type="text" placeholder="">
+                    <div class="p-input-icon">
+                        <img src="/assets/images/profile/profile.svg" alt="">
+                    </div>
+                </div>
+
+                <div class="p-input-container">
+                    <span class="p-input-title">E-mail</span>
+                    <input type="email" placeholder="">
+                    <div class="p-input-icon">
+                        <img src="/assets/images/profile/email.svg" alt="">
+                    </div>
+                </div>
+
+                <button class="primary-button p-button">Mudar senha</button>
+                <a href="#" class="p-logout">Sair</a>
+            </div>
+            
+           
+        </div>
+    </div>
+</section>
+<app-loading [isLoading]="isLoading"></app-loading>
+<app-notification></app-notification>
