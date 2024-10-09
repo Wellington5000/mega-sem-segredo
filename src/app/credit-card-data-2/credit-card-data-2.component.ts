@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../utils/notification/notification.service';
 declare const Iugu: any;
@@ -10,6 +10,7 @@ declare const mp: any;
   styleUrls: ['./credit-card-data-2.component.scss']
 })
 export class CreditCardData2Component implements OnInit {
+  @Input() value: string = '';
   hasError: boolean = false;
   numberTextError: string = '';
   dateTextError: string = '';
@@ -77,7 +78,7 @@ export class CreditCardData2Component implements OnInit {
 
   initForm(): void {
     const cardForm = mp.cardForm({
-      amount: "240",
+      amount: String(this.value),
       iframe: true,
       form: {
         id: "form-checkout",
@@ -117,7 +118,6 @@ export class CreditCardData2Component implements OnInit {
       callbacks: {
         onFormMounted: (error: any) => {
           if (error) return console.warn("Form Mounted handling error: ", error);
-          console.log("Form mounted");
         },
         onSubmit: (event: any) => {
           event.preventDefault();
@@ -143,12 +143,13 @@ export class CreditCardData2Component implements OnInit {
             "issuer_id": issuer_id,
             "payment_method_id": payment_method_id,
             "token": token,
-            "transaction_amount": amount
-          })
+            "transaction_amount": amount,
+            "produto": 4,
+            "descricao": "Compra de créditos"
+          });
         },
         onError: (error: any) => {
           this.notificationService.notify('Ocorreu um erro ao processar o pagamento, por favor, tente novamente!')
-          console.log(error)
         }
       },
     });

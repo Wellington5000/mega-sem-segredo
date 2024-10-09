@@ -6,13 +6,21 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { PaymentErrors } from '../models/payment-errors';
 declare const Iugu: any;
 
+interface PixData {
+  copia_cola: string;
+  img_qrcode: string;
+  transaction_amount: number;
+  pagamento: number;
+  error: boolean;
+  message: string;
+}
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-  pixData: any = { qrcode: 'https://qr.iugu.com/public/v1/qr_codes/image/0BA7928122F647BF829EE33AB970F69B', qrcode_text: '' };;
   hasAcceptedTerms: FormControl = new FormControl(false);
   hasError: boolean = false;
   showPassword: boolean = false;
@@ -24,9 +32,14 @@ export class RegisterComponent implements OnInit {
   isPixPayment: boolean = false;
   coupon: string = '';
   currentUserCoupon: string = '';
-
-  //"820|YCDkxaXS5nLfvorHkhQkeLFwO4v0TcLqi6qcjeI4"
-  //iVBORw0KGgoAAAANSUhEUgAABRQAAAUUAQAAAACGnaNFAAANZklEQVR4Xu3ZTXbcOBJFYWrkZXCpzKXmEmrokdCOiMdAAEy5fNRwH1F978Qwfj9qZFVt7cv3zzbPfL0wrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrgnjmjCuCeOaMK4J45owrul
+  pixData: PixData = {
+    copia_cola: '',
+    img_qrcode: '',
+    transaction_amount: 0,
+    pagamento: 0,
+    error: false,
+    message: ''
+  };
 
   formUser: FormGroup = new FormGroup({
     user: new FormGroup({
@@ -83,7 +96,7 @@ export class RegisterComponent implements OnInit {
   }
 
   createCreditCardObject(creditData: any): any {
-    const month = creditData.date.substring(0, 2); // '12'
+    const month = creditData.date.substring(0, 2);
     const year = creditData.date.substring(2);
     return Iugu.CreditCard(
       creditData.number,
@@ -103,24 +116,10 @@ export class RegisterComponent implements OnInit {
       delete user.phone_number;
     }
 
-    if(data.document_number) {
-      data.email = this.formUser.get('user')?.get('email')?.value;
-    } else {
-      data.payer.email = this.formUser.get('user')?.get('email')?.value;
-    }
-
-    if(this.coupon) {
-      data.cupom = this.coupon;
-    }
-
     this.appService.createUser(user).subscribe((response) => {
-      const obj = { body: data, auth: response?.token }
-
-      if(data?.document_number) {
-        this.createInvoiceByPix(obj);
-      } else {
-        this.createInvoiceByCreditCard(obj)
-      }
+      localStorage.setItem('access-token', response?.token);
+      localStorage.setItem('user', response);
+      this.router.navigateByUrl('/home');
     }, error => {
       this.isLoading = false;
       const emailError = error?.error?.errors?.email;
@@ -149,20 +148,19 @@ export class RegisterComponent implements OnInit {
   }
 
   createInvoiceByPix(paymentData: any): void {
-    this.appService.createPaymentByPix(paymentData).subscribe((response) => {
+    this.appService.createPaymentByPix(paymentData).subscribe((response: PixData) => {
       this.isLoading = false;
-      this.pixData = { qrcode: response?.img_qrcode, qrcode_text: response?.copia_cola };
+      this.pixData = response;
       this.step = 'pix-payment';
-      this.checkPixWasPaid(paymentData?.auth);
+      this.checkPixWasPaid(response?.pagamento);
     }, error => {
       this.isLoading = false;
       this.error();
     })
   }
 
-
-  checkPixWasPaid(token: string): void {
-    this.appService.checkPaymentByPix({ auth: token }).subscribe({
+  checkPixWasPaid(id: number): void {
+    this.appService.checkPaymentByPix(id).subscribe({
       next: (response) => {
         if(response?.paga) {
           this.isPixPayment = true;
@@ -170,7 +168,7 @@ export class RegisterComponent implements OnInit {
           this.step = 'success';
         } else {
           setTimeout(() => {
-            this.checkPixWasPaid(token);
+            this.checkPixWasPaid(id);
           }, 5000);
         }
       },

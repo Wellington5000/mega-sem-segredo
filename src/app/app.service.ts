@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Concourse } from './models/concourse';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +11,7 @@ export class AppService {
   private API_URL  = 'https://megamaisbets.com.br/api/';
 
   constructor(
+    private router: Router,
     private http: HttpClient
   ) { }
 
@@ -24,27 +26,11 @@ export class AppService {
   }
 
   createPaymentByCreditCard(data: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + data?.auth,
-        'Content-Type':  'application/json',
-        'Accept': 'application/json'
-      })
-    };
-
-    return this.http.post(this.API_URL + 'v2/pagamento/checkout/pagar-cartao', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v3/pagamento/checkout/pagar-cartao', data.body);
   }
 
   createPaymentByPix(data: any): Observable<any> {
-    const httpOptions = {
-      headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + data?.auth,
-        'Content-Type':  'application/json',
-        'Accept': 'application/json'
-      })
-    };
-
-    return this.http.post(this.API_URL + 'v2/pagamento/checkout/gerar-qr-code', data.body, httpOptions);
+    return this.http.post(this.API_URL + 'v3/pagamento/checkout/gerar-qr-code', data);
   }
 
   findAllHits(): Observable<Concourse> {
@@ -81,17 +67,14 @@ export class AppService {
     });
   }
 
-  checkPaymentByPix(data: any): Observable<any> {
-    const httpOptions = {
+  checkPaymentByPix(id: number): Observable<any> {
+    return this.http.post(this.API_URL + 'v3/pagamento/checkout/verificar-pix/' + id, {}, {
       headers: new HttpHeaders({
-        'Authorization': 'Bearer ' + data?.auth,
-        'Content-Type':  'application/json',
-        'Accept': 'application/json'
+        'nonloading': 'true'
       })
-    };
-
-    return this.http.post(this.API_URL + 'v2/pagamento/checkout/verificar-pix', {}, httpOptions);
+    });
   }
+  
 
   checkCouponIsValid(coupon: string): Observable<any> {
     return this.http.post(this.API_URL + 'pagamento/checkout/validar-cupom', { cupom: coupon });
@@ -101,5 +84,36 @@ export class AppService {
     return this.http.get(this.API_URL + `concursos-acertos-grupos/download-premiado/${concourse}`, {
       responseType: 'blob'
     });
+  }
+
+  createCookie(): Observable<any> {
+    return this.http.get('https://megamaisbets.com.br/sanctum/csrf-cookie');
+  }
+
+  checkEmail(body: any): Observable<any> {
+    return this.http.post(this.API_URL + 'auth/verify-email', body);
+  }
+
+  login(body: any): Observable<any> {
+    return this.http.post(this.API_URL + 'auth/login', body);
+  }
+
+  getUserCredit(): Observable<any> {
+    return this.http.get(this.API_URL + 'v3/usuario/get-creditos');
+  }
+
+  getLasResults(): Observable<any> {
+    return this.http.get(this.API_URL + 'concursos/ultimos');
+  }
+
+  logout(): void {
+    localStorage.removeItem('access-token');
+    localStorage.removeItem('user');
+    this.router.navigateByUrl('/login');
+  }
+
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('access-token');
+    return !!token;
   }
 }

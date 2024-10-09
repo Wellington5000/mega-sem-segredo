@@ -1,0 +1,22 @@
+<header id="menu" [class.expanded]="expanded">
+    <a class="logo-link" href="#"><img class="header-logo" src="/assets/images/logo-mega-comunidade.svg" alt="logo do mega sem segredo"></a>
+    <div class="header-actions">
+      <div class="header-actions-items">
+        <a href="#about" (click)="hiddenMenu()">Promoção</a>
+        <a href="#plan" (click)="hiddenMenu()">Minhas combinações</a>
+
+        <div class="h-credit-container">
+            <span class="h-action">Meus Créditos:</span>
+            <div class="h-credit-quantity">
+                <img src="/assets/images/header/coin.png">
+                <span class="h-action">{{ credits }}</span>
+            </div>
+        </div>
+      </div>
+      <div class="hamburger-menu" (click)="expanded = !expanded">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </header>

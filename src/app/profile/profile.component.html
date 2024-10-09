@@ -1,15 +1,15 @@
-<app-header></app-header>
+<app-header-logged></app-header-logged>
 
 <section>
     <div class="bc-container">
         <span class="bc-title">Perfil</span>
-        <div class="bc-box">
-            <img class="bc-box-coin" src="/assets/images/profile/ellipse.png">
+        <div class="bc-box" [formGroup]="formUser">
+            <img class="bc-box-coin" src="/assets/images/profile/profile.png">
 
             <div class="p-content">
                 <div class="p-input-container">
                     <span class="p-input-title">Nome</span>
-                    <input type="text" placeholder="">
+                    <input type="text" placeholder="" formControlName="first_name">
                     <div class="p-input-icon">
                         <img src="/assets/images/profile/profile.svg" alt="">
                     </div>
@@ -17,7 +17,7 @@
 
                 <div class="p-input-container">
                     <span class="p-input-title">Sobrenome</span>
-                    <input type="text" placeholder="">
+                    <input type="text" placeholder="" formControlName="last_name">
                     <div class="p-input-icon">
                         <img src="/assets/images/profile/profile.svg" alt="">
                     </div>
@@ -25,19 +25,15 @@
 
                 <div class="p-input-container">
                     <span class="p-input-title">E-mail</span>
-                    <input type="email" placeholder="">
+                    <input type="email" placeholder="" formControlName="email">
                     <div class="p-input-icon">
                         <img src="/assets/images/profile/email.svg" alt="">
                     </div>
                 </div>
 
                 <button class="primary-button p-button">Mudar senha</button>
-                <a href="#" class="p-logout">Sair</a>
+                <a href="#" class="p-logout" (click)="logout()">Sair</a>
             </div>
-            
-           
         </div>
     </div>
 </section>
-<app-loading [isLoading]="isLoading"></app-loading>
-<app-notification></app-notification>

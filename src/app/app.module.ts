@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxMaskModule } from 'ngx-mask';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaymentTypeComponent } from './payment-type/payment-type.component';
@@ -29,6 +29,17 @@ import { InitialPageComponent } from './initial-page/initial-page.component';
 import { BuyCreditComponent } from './buy-credit/buy-credit.component';
 import { CreditCardData2Component } from './credit-card-data-2/credit-card-data-2.component';
 import { ProfileComponent } from './profile/profile.component';
+import { TokenInterceptor } from './token.interceptor';
+import { SpinnerService } from './spinner.service';
+import { LuckyPixComponent } from './lucky-pix/lucky-pix.component';
+import { registerLocaleData } from '@angular/common';
+import localePt from '@angular/common/locales/pt';
+import { HeaderLoggedComponent } from './components/header-logged/header-logged.component';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
+
+
+
+registerLocaleData(localePt, 'pt');
 
 @NgModule({
   declarations: [
@@ -51,7 +62,9 @@ import { ProfileComponent } from './profile/profile.component';
     InitialPageComponent,
     BuyCreditComponent,
     CreditCardData2Component,
-    ProfileComponent
+    ProfileComponent,
+    LuckyPixComponent,
+    HeaderLoggedComponent
   ],
   imports: [
     BrowserModule,
@@ -65,8 +78,16 @@ import { ProfileComponent } from './profile/profile.component';
     NgxMaskModule.forRoot(),
     HeaderModule,
     FooterModule,
+    CurrencyMaskModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+    SpinnerService,
+    {
+      provide: LOCALE_ID,
+      useValue: 'pt'
+  },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header-logged></app-header-logged>
 
 <section>
     <div class="bc-container">
@@ -7,7 +7,7 @@
             <img class="bc-box-coin" src="/assets/images/buy-credit/coin.png">
 
             <span class="bc-credit-quantity" *ngIf="!step">Você não possui crédito</span>
-            <span class="bc-credit-quantity" *ngIf="step === 'payment'">15 créditos = R$ 15 reais</span>
+            <span class="bc-credit-quantity" *ngIf="step === 'payment'">{{ value.value }} créditos = {{ value?.value | currency: 'BRL' }} reais</span>
 
             <div class="bc-box-content">
                 <span class="bc-credit-info" *ngIf="!step">Digite o valor de crédito que deseja comprar</span>
@@ -18,7 +18,7 @@
                 <ng-container *ngIf="!step">
                     <div class="form-input bc-input-value">
                         <label for="first-name">Valor</label>
-                        <input  [class.invalid-input]="value.invalid && hasError" [formControl]="value" name="first-name" placeholder="0,00" type="text" maxlength="100">
+                        <input currencyMask [options]="{ align: 'left', prefix: 'R$ ', thousands: '.', decimal: ',' }" [class.invalid-input]="value.invalid && hasError" [formControl]="value" name="first-name" placeholder="0,00" type="text" maxlength="100">
                         <span class="form-input-info">Mínimo de R$ 15</span>
                         <div class="error" *ngIf="value?.invalid && hasError">
                             <svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10" fill="none">
@@ -54,7 +54,7 @@
                 </ng-container>
 
                 <ng-container *ngIf="step === 'credit_card'">
-                    <app-credit-card-data-2 (nextStep)="createInvoiceByCreditCard($event)"></app-credit-card-data-2>
+                    <app-credit-card-data-2 [value]="value?.value" (nextStep)="createInvoiceByCreditCard($event)"></app-credit-card-data-2>
                 </ng-container>
 
                 <ng-container *ngIf="step === 'pix'">
@@ -80,8 +80,7 @@
                     <div class="qr-code-container">
                         <div class="qr-code-box">
                           <div class="qr-code-image">
-                            <img [src]="'https://qr.iugu.com/public/v1/qr_codes/image/0BA7928122F647BF829EE33AB970F69B'" alt="qr code para pagamento">
-                            <!-- <img [src]="'data:image/jpeg;base64,' + data.qrcode" alt="qr code para pagamento"> -->
+                            <img [src]="'data:image/jpeg;base64,' + data.img_qrcode" alt="qr code para pagamento">
                           </div>
                           <button class="secundary-button" (click)="copyText()">COPIAR CÓDIGO pix</button>
                           <span class="copy-text" *ngIf="isCopy">
@@ -100,7 +99,7 @@
                 <ng-container *ngIf="step === 'success'">
                     <div class="bc-success-container">
                         <img src="/assets/images/buy-credit/done.png">
-                        <span class="bc-success-text">15  créditos adicionados</span>
+                        <span class="bc-success-text">{{ value.value }} créditos adicionados</span>
                         <a routerLink="/home"><button class="primary-button bc-success-button">Voltar pra página inicial</button></a>
                     </div>
                 </ng-container>
@@ -108,5 +107,3 @@
         </div>
     </div>
 </section>
-<app-loading [isLoading]="isLoading"></app-loading>
-<app-notification></app-notification>

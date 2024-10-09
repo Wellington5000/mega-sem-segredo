@@ -1,4 +1,6 @@
-<app-header></app-header>
+<app-header-logged *ngIf="originPayment"></app-header-logged>
+<app-header *ngIf="!originPayment"></app-header>
+
 <div class="register-container">
   <section [formGroup]="formUser">
     <div class="section-register" *ngIf="step !== 'success'; else success">
@@ -95,7 +97,7 @@
                   <a routerLink="/privacy-policy"><strong class="form-footer-text text-secundary privacy-text">Política de Privacidade</strong></a>
                 </span>
               </div>
-              <button class="primary-button" (click)="nextStep()" [disabled]="!hasAcceptedTerms.value">Continuar</button>
+              <button class="primary-button" (click)="createUser(formUser.value)" [disabled]="!hasAcceptedTerms.value">Continuar</button>
             </div>
           </div>
         </ng-container>
@@ -118,5 +120,3 @@
     </ng-template>
   </section>
 </div>
-<app-loading [isLoading]="isLoading"></app-loading>
-<app-notification></app-notification>

@@ -20,7 +20,7 @@ header {
     display: flex;
 
     .header-actions-items {
-      gap: 1rem;
+      gap: 1.5rem;
       z-index: 1;
       display: flex;
       align-items: center;
@@ -29,7 +29,7 @@ header {
       a {
         cursor: pointer;
         color: var(--white);
-        font-size: var(--medium-font-size);
+        font-size: 16px;
         font-weight: var(--bold-font-weight);
       }
 
@@ -47,7 +47,7 @@ header {
 
 @media(max-width: 1210px) {
   header {
-    padding-left: 1rem;
+    padding-left: 1rem !important;
     padding-right: 1rem;
   }
 }
@@ -59,7 +59,7 @@ header {
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 965px) {
   header {
     min-height: 86px;
   }

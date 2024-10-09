@@ -20,6 +20,8 @@
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
     "iugu": "0.0.6",
+    "ng2-currency-mask": "^13.0.3",
+    "ngx-currency": "^3.0.0",
     "ngx-currency-mask": "^4.3.2",
     "ngx-device-detector": "^3.0.0",
     "ngx-mask": "^13.2.1",

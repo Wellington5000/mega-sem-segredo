@@ -19,7 +19,13 @@ export class PixDataComponent implements OnInit {
 
   next(): void {
     if(this.formPix.valid) {
-      this.nextStep.emit({ document_number: this.formPix.value, document_type: 'CPF', valor: 180 });
+      this.nextStep.emit({ 
+        document_number: this.formPix.value, 
+        document_type: 'CPF', 
+        valor: 180,
+        produto: 5,
+        descricao: "Assinatura"
+      });
     } else {
       this.hasError = true;
     }

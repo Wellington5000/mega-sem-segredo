@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AppService } from '../app.service';
+import { NotificationService } from '../utils/notification/notification.service';
 
 type Step = 'email' | 'password';
 
@@ -17,17 +19,59 @@ export class LoginComponent implements OnInit {
   password: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
   constructor(
-    private router: Router
+    private router: Router,
+    private appService: AppService,
+    private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
+    this.createCookie();
   }
 
   setStep(step: Step): void {
     this.step = step;
   }
 
+  createCookie(): void {
+    this.appService.createCookie().subscribe({
+      next: (response) => {
+      },
+      error: (error) => {
+      }
+    })
+  }
+
+  checkEmail(step: Step): void {
+    if(this.email.valid) {
+      this.appService.checkEmail({ email: this.email.value }).subscribe({
+        next: (response) => {
+          if(response?.email) {
+            this.setStep(step);
+          } else {
+            this.router.navigateByUrl('/register/web');
+          }
+        }
+      })
+    }
+  }
+
   login(): void {
-    this.router.navigateByUrl('/home');
+    const deviceName = this.email.value?.split('@');
+    this.appService.login({
+      email: this.email.value,
+      password: this.password.value,
+      device_name: deviceName[0],
+      device_id: deviceName[0]
+    }).subscribe({
+      next: (response) => {
+        localStorage.setItem('access-token', response?.token);
+        localStorage.setItem('user', JSON.stringify(response));
+        this.router.navigateByUrl('/home');
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.message || 'Senha incorreta!');
+      }
+    })
+
   }
 }

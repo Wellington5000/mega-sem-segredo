@@ -64,10 +64,14 @@ footer {
     }
   }
 
-@media(max-width: 800px) {
+@media(max-width: 965px) {
     footer {
         align-items: center;
         text-align: center;
         padding: 2.5rem 0 1.75rem 0;
+      }
+
+      .f-logo {
+        margin-top: 0 !important;
       }
 }

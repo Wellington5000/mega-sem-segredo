@@ -1,8 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 interface PixData {
-  qrcode: string;
-  qrcode_text: string;
+  copia_cola: string;
+  img_qrcode: string;
+  transaction_amount: number;
+  pagamento: number;
+  error: boolean;
+  message: string;
 }
 
 @Component({
@@ -12,7 +16,14 @@ interface PixData {
 })
 export class PixPaymentComponent implements OnInit {
   isCopy: boolean = false;
-  @Input() data: PixData = { qrcode: 'https://qr.iugu.com/public/v1/qr_codes/image/0BA7928122F647BF829EE33AB970F69B', qrcode_text: '' };
+  @Input() data: PixData = {
+    copia_cola: '',
+    img_qrcode: '',
+    transaction_amount: 0,
+    pagamento: 0,
+    error: false,
+    message: ''
+  };
 
   constructor() { }
 
@@ -20,7 +31,7 @@ export class PixPaymentComponent implements OnInit {
   }
 
   copyText() {
-    navigator.clipboard.writeText(this.data.qrcode_text).then(() => {
+    navigator.clipboard.writeText(this.data.copia_cola).then(() => {
       this.isCopy = true;
       setTimeout(() => this.isCopy = false, 3000);
     }).catch(err => {

@@ -7,7 +7,7 @@
             <div class="form-input">
                 <label for="email">E-mail</label>
                 <input [formControl]="email" name="email" placeholder="exemplo@email.com" type="text" maxlength="100">
-                <button class="primary-button l-button" [disabled]="email.invalid" (click)="setStep('password')">Continuar</button>
+                <button class="primary-button l-button" [disabled]="email.invalid" (click)="checkEmail('password')">Continuar</button>
             </div>
             <div class="l-separator">
                 <div class="l-line"></div>

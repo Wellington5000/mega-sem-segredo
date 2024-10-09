@@ -233,14 +233,6 @@ section {
       display: flex;
       justify-content: center;
 
-      .large-card {
-        height: 538px !important;
-      }
-
-      .medium-card {
-        height: 438px !important;
-      }
-
       .hc4-card {
         display: flex;
         justify-content: space-between;
@@ -316,7 +308,7 @@ section {
           .hc4-benefits-item {
             gap: 12px;
             display: flex;
-            max-width: 255px;
+            max-width: 266px;
             align-items: flex-start;
           }
         }
@@ -392,6 +384,16 @@ section {
   .phone-image {
     width: 720px;
     margin-left: 350px !important;
+  }
+}
+
+@media(max-width: 1175px) {
+  .hc1-cards {
+    flex-direction: column;
+  }
+
+  .hc3-img img {
+    width: 400px;
   }
 }
 
@@ -558,5 +560,46 @@ section {
         flex-wrap: wrap;
       }
     }
+  }
+
+  .content-3 {
+    gap: 20px !important;
+    flex-direction: column;
+
+    .hc3-title {
+      text-align: center;
+    }
+
+    .hc3-img img {
+      width: 260px;
+    }
+  }
+
+  .content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .content-4 {
+    gap: 52px !important;
+
+    .hc4-title {
+      text-align: center;
+      font-size: 28px !important;
+    }
+  }
+
+  .hc4-cards {
+    flex-direction: column;
+  }
+
+  .hc1-title, .hc1-subtitle {
+    text-align: center;
+    font-size: 24px !important;
+    line-height: 30px !important;
+  }
+
+  .content-info-subtitle .subtitle {
+    font-size: 24px !important;
   }
 }

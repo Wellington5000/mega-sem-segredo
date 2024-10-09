@@ -1,4 +1,4 @@
-<app-header></app-header>
+<app-header-logged></app-header-logged>
 
 <div class="ip-container">
     <section>
@@ -8,7 +8,7 @@
                 <a routerLink="/profile">
                   <div class="ip-card">
                     <img src="/assets/images/initial-page/user.png">
-                    <span class="ip1-card-text">Kely Morita</span>
+                    <span class="ip1-card-text">{{ user?.user?.name }}</span>
                 </div>
                 </a>
             </div>
@@ -16,7 +16,7 @@
                 <span class="ip-title">Crédito</span>
                 <div class="ip-card">
                     <img src="/assets/images/initial-page/coin.png">
-                    <span class="ip1-card-text">R$ 0,00</span>
+                    <span class="ip1-card-text">{{ credits | currency: 'BRL' }}</span>
                 </div>
             </div>
         </div>
@@ -25,17 +25,17 @@
     <section>
         <div class="ip2-container">
             <div class="ip-col">
-                <span class="ip-title">Resultado Mega-Sena / Concurso 2774 (14/09/24)</span>
+                <span class="ip-title">Resultado Mega-Sena / Concurso {{ lastResults[0]?.concurso || '0000' }} ({{ lastResults[0]?.data_sorteio | date: 'dd/MM/yy' }})</span>
                 <div class="ip-card">
                     <div class="ip-card-numbers">
-                        <div class="ip-card-number">06</div>
-                        <div class="ip-card-number">16</div>
-                        <div class="ip-card-number">22</div>
-                        <div class="ip-card-number">24</div>
-                        <div class="ip-card-number">38</div>
-                        <div class="ip-card-number">50</div>
+                        <div class="ip-card-number">{{ lastResults[0]?.num_sorteio1_1 }}</div>
+                        <div class="ip-card-number">{{ lastResults[0]?.num_sorteio1_2 }}</div>
+                        <div class="ip-card-number">{{ lastResults[0]?.num_sorteio1_3 }}</div>
+                        <div class="ip-card-number">{{ lastResults[0]?.num_sorteio1_4 }}</div>
+                        <div class="ip-card-number">{{ lastResults[0]?.num_sorteio1_5 }}</div>
+                        <div class="ip-card-number">{{ lastResults[0]?.num_sorteio1_6 }}</div>
                     </div>
-                    <span class="ip-card-text">Acumulada próximo concurso: <strong>R$ 82.000.000,00</strong></span>
+                    <span class="ip-card-text">Acumulada próximo concurso: <strong>R$ {{ (lastResults[0]?.estimativa_premio || '0,00')  }}</strong></span>
                 </div>
             </div>
         </div>
@@ -95,7 +95,7 @@
         <div class="ip5-container">
             <span class="ip5-title">{{ hasPlan ? 'Potencialize seu plano' : 'Nossos planos' }}</span>
             <div class="hc4-cards">
-              <div class="hc4-card large-card">
+              <div class="hc4-card large-card" *ngIf="!hasPlan">
                 <div>
                   <div class="hc4-card-title-content">
                     <span class="hc4-card-title">Plano Grátis</span>
@@ -106,21 +106,25 @@
                   <div class="hc4-benefits">
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Geração de até <strong>50</strong> combinações  por mês no App Mega Sem Segredo</span>
+                      <span class="hc4-text">Geração de até <strong>50</strong> combinações, sendo até 5/vez no App Mega Sem Segredo</span>
                     </div>
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Geração de PDF das combinações</span>
+                      <span class="hc4-text">Dicas</span>
                     </div>
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Dicas e estatísticas </span>
+                      <span class="hc4-text">Estatísticas</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Gerar PDF das combinações</span>
                     </div>
                   </div>
                 </div>
                 <button class="primary-button hc4-button" [disabled]="true">Seu plano atual</button>
               </div>
-              <div class="hc4-card large-card">
+              <div class="hc4-card large-card" *ngIf="!hasPlan">
                 <div>
                   <div class="hc4-card-title-content">
                     <span class="hc4-card-title">Premium</span>
@@ -137,15 +141,31 @@
                   <div class="hc4-benefits">
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Geração de até <strong>10.000 </strong> combinações  no App Mega Sem Segredo</span>
+                      <span class="hc4-text">Geração de até <strong>10.000</strong> combinações, sendo até 200/vez no App Mega Sem Segredo</span>
                     </div>
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Geração de PDF das combinações</span>
+                      <span class="hc4-text">Dicas</span>
                     </div>
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Dicas e estatísticas </span>
+                      <span class="hc4-text">Estatísticas</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Gerar PDF das combinações</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Permite o envio de volantes preenchidos por e-mail</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Permite transmitir para o site da Caixa, até 1.000 combinações por mês, via Marca Rápido</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Participação na Promoção da Virada – Bolão de R$ <strong>1.000,00</strong> para cada grupo 100 assinantes concorrerem ao prêmio milionário de R$ 600 milhões (estimativa) na Mega da Virada.</span>
                     </div>
                   </div>
                 </div>
@@ -163,11 +183,27 @@
                   <div class="hc4-benefits">
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">A cada R$15  dará direito as geração de 10.000 combinações por mês no app Mega Sem Segredo</span>
+                      <span class="hc4-text">Geração de até <strong>10.000</strong> combinações/mês, sendo até 200/vez no app Mega Sem Segredo</span>
                     </div>
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Envio do volantes gerados por email</span>
+                      <span class="hc4-text">Dicas</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Estatísticas</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Gerar PDF das combinações</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Permite o envio de volantes preenchidos por e-mail</span>
+                    </div>
+                    <div class="hc4-benefits-item">
+                      <img src="/assets/icons/check.svg">
+                      <span class="hc4-text">Permite transmitir para o site da Caixa, até 50 combinações por mês, via Marca Rápido</span>
                     </div>
                   </div>
                 </div>

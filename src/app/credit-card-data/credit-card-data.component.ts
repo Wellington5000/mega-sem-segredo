@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../utils/notification/notification.service';
 declare const Iugu: any;
@@ -117,7 +117,6 @@ export class CreditCardDataComponent implements OnInit {
       callbacks: {
         onFormMounted: (error: any) => {
           if (error) return console.warn("Form Mounted handling error: ", error);
-          console.log("Form mounted");
         },
         onSubmit: (event: any) => {
           event.preventDefault();
@@ -143,12 +142,13 @@ export class CreditCardDataComponent implements OnInit {
             "issuer_id": issuer_id,
             "payment_method_id": payment_method_id,
             "token": token,
-            "transaction_amount": amount
+            "transaction_amount": amount,
+            "id": 5,
+            "descricao": "Assinatura"
           })
         },
         onError: (error: any) => {
           this.notificationService.notify('Ocorreu um erro ao processar o pagamento, por favor, tente novamente!')
-          console.log(error)
         }
       },
     });

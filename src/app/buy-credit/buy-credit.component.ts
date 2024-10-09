@@ -1,16 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../utils/notification/notification.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from '../app.service';
 import { PaymentErrors } from '../models/payment-errors';
+import { HeaderLoggedComponent } from '../components/header-logged/header-logged.component';
 
 type Step = null | 'payment' | 'credit_card' | 'pix' | 'success' | 'pix-payment';
 
 interface PixData {
-  qrcode: string;
-  qrcode_text: string;
+  copia_cola: string;
+  img_qrcode: string;
+  transaction_amount: number;
+  pagamento: number;
+  error: boolean;
+  message: string;
 }
+
 
 @Component({
   selector: 'app-buy-credit',
@@ -20,7 +26,7 @@ interface PixData {
 export class BuyCreditComponent implements OnInit {
   step: Step = null;
   hasError: boolean = false;
-  value: FormControl = new FormControl('', [Validators.required, Validators.min(15)]);
+  value: FormControl = new FormControl('', [Validators.required, Validators.min(0.5)]);
 
   selectedPaymentMethod: FormControl = new FormControl('credit_card');
   couponIsValid: boolean = false;
@@ -31,20 +37,28 @@ export class BuyCreditComponent implements OnInit {
   cvvTextError: string = '';
 
   isLoading: boolean = false;
-  pixData: any = { qrcode: 'https://qr.iugu.com/public/v1/qr_codes/image/0BA7928122F647BF829EE33AB970F69B', qrcode_text: '' };;
   formPix: FormControl = new FormControl('', [Validators.required]);
   isPixPayment: boolean = false;
   currentUserCoupon: string = '';
 
   isCopy: boolean = false;
-  data: PixData = { qrcode: 'https://qr.iugu.com/public/v1/qr_codes/image/0BA7928122F647BF829EE33AB970F69B', qrcode_text: '' };
+  data: PixData = {
+    copia_cola: '',
+    img_qrcode: '',
+    transaction_amount: 0,
+    pagamento: 0,
+    error: false,
+    message: ''
+  };
 
   formCard: FormGroup = new FormGroup({
     name: new FormControl('', [Validators.required, Validators.minLength(3)]),
     number: new FormControl('', [Validators.required]),
     date: new FormControl('', [Validators.required]),
     cvv: new FormControl('', [Validators.required]),
-  })
+  });
+
+  @ViewChild(HeaderLoggedComponent) headerLoggedComponent!: HeaderLoggedComponent;
 
   constructor(
     private router: Router,
@@ -61,7 +75,7 @@ export class BuyCreditComponent implements OnInit {
   }
 
   createInvoiceByCreditCard(data: any): void {
-    this.createCardPayment({ auth: data.auth, body: data.body });
+    this.createCardPayment({ auth: data.auth, body: data });
   }
 
   createCardPayment(data: any): void {
@@ -73,6 +87,7 @@ export class BuyCreditComponent implements OnInit {
         this.error(error?.message || '');
       } else {
         this.step = 'success';
+        this.headerLoggedComponent.getCredits();
       }
     }, error => {
       this.isLoading = false;
@@ -86,34 +101,41 @@ export class BuyCreditComponent implements OnInit {
 
   next(): void {
     if(this.formPix.valid) {
-      this.createInvoiceByPix({ document_number: this.formPix.value, document_type: 'CPF', valor: 180 });
+      this.createInvoiceByPix({ 
+        document_number: this.formPix.value, 
+        document_type: 'CPF', 
+        valor: this.value.value,
+        "produto": 4,
+        "descricao": "Compra de créditos"
+      });
     } else {
       this.hasError = true;
     }
   }
 
   createInvoiceByPix(paymentData: any): void {
-    this.appService.createPaymentByPix(paymentData).subscribe((response) => {
+    this.appService.createPaymentByPix(paymentData).subscribe((response: PixData) => {
       this.isLoading = false;
-      this.pixData = { qrcode: response?.img_qrcode, qrcode_text: response?.copia_cola };
+      this.data = response;
       this.step = 'pix-payment';
-      this.checkPixWasPaid(paymentData?.auth);
+      this.checkPixWasPaid(response?.pagamento);
     }, error => {
       this.isLoading = false;
       this.error();
     })
   }
 
-  checkPixWasPaid(token: string): void {
-    this.appService.checkPaymentByPix({ auth: token }).subscribe({
+  checkPixWasPaid(id: number): void {
+    this.appService.checkPaymentByPix(id).subscribe({
       next: (response) => {
         if(response?.paga) {
           this.isPixPayment = true;
           this.currentUserCoupon = response?.cupom;
           this.step = 'success';
+          this.headerLoggedComponent.getCredits();
         } else {
           setTimeout(() => {
-            this.checkPixWasPaid(token);
+            this.checkPixWasPaid(id);
           }, 5000);
         }
       },
@@ -124,7 +146,7 @@ export class BuyCreditComponent implements OnInit {
   }
 
   copyText() {
-    navigator.clipboard.writeText(this.data.qrcode_text).then(() => {
+    navigator.clipboard.writeText(this.data.copia_cola).then(() => {
       this.isCopy = true;
       setTimeout(() => this.isCopy = false, 3000);
     }).catch(err => {

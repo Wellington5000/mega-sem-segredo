@@ -8,7 +8,7 @@
   <span class="qr-code-text text-secundary">PIX</span>
   <div class="qr-code-box">
     <div class="qr-code-image">
-      <img [src]="'data:image/jpeg;base64,' + data.qrcode" alt="qr code para pagamento">
+      <img [src]="'data:image/jpeg;base64,' + data.img_qrcode" alt="qr code para pagamento">
     </div>
     <button class="secundary-button" (click)="copyText()">COPIAR CÓDIGO pix</button>
     <span class="copy-text" *ngIf="isCopy">
