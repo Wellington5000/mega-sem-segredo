@@ -1,6 +1,6 @@
 section {
     margin-top: 90px;
-    min-height: 90vh;
+    min-height: 89vh;
     background-color: #161C24;
 
     .bc-container {
@@ -20,7 +20,7 @@ section {
             display: flex;
             align-items: center;
             flex-direction: column;
-            width: 708px;
+            max-width: 708px;
             height: 468px;
             background-color: white;
             border-radius: 4px;
@@ -314,5 +314,25 @@ section {
   .bc-success-button {
     text-transform: none;
     font-size: 16px;
+  }
+}
+
+@media(max-width: 700px) {
+  .bc-container, .bc-box {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+
+      .bc-box-content {
+          width: 100% !important;
+
+          .bc-credit-info {
+            text-align: center;
+          }
+      }
+  }
+
+  .bc-container {
+      padding-top: 2rem !important;
+      padding-bottom: 1rem !important;
   }
 }

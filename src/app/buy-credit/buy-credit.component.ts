@@ -26,7 +26,7 @@ interface PixData {
 export class BuyCreditComponent implements OnInit {
   step: Step = null;
   hasError: boolean = false;
-  value: FormControl = new FormControl('', [Validators.required, Validators.min(0.5)]);
+  value: FormControl = new FormControl('', [Validators.required, Validators.min(15)]);
 
   selectedPaymentMethod: FormControl = new FormControl('credit_card');
   couponIsValid: boolean = false;

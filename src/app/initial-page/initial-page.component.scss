@@ -325,3 +325,74 @@
           }
     }
 }
+
+@media(max-width: 1210px) {
+    .ip2-container, .ip1-container {
+        padding-left: 1rem !important;
+        padding-right: 1rem !important;
+    }
+
+    .ip4-container {
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+
+    .ip4-container .ip-card {
+        justify-content: center;
+    }
+
+    .ip4-phones {
+        width: 500px;
+        margin-left: 0 !important;
+    }
+
+    .ip5-container .hc4-cards {
+        flex-direction: column;
+    }
+}
+
+@media(max-width: 965px) {
+    .ip4-container .ip-card {
+        flex-direction: column;
+        padding-bottom: 3rem;
+        height: auto !important;
+    }
+
+    .ip4-title {
+        margin-top: 2rem;
+        text-align: center;
+    }
+
+    .ip4-card-box {
+        position: relative !important;
+        right: 0 !important;
+    }
+
+    .ip1-container {
+        gap: 30px !important;
+        flex-direction: column;
+
+        .ip-col {
+            width: 100%;
+        }
+
+        .ip1-card-text {
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            line-height: 32px !important;
+        }
+    }
+
+    .ip3-actions {
+        flex-direction: column-reverse;
+    }
+
+    .ip3-social {
+        justify-content: center;
+    }
+
+    .ip4-phones {
+        width: 350px;
+    }
+}
