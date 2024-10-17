@@ -62,13 +62,13 @@ export class AppService {
   }
 
   downloadProofPayments(id: string): Observable<Blob> {
-    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/comprovante-pagamento`, {
+    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/pagamento`, {
       responseType: 'blob'
     });
   }
 
   downloadProofSuccess(id: string): Observable<Blob> {
-    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/comprovante-acertos`, {
+    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/acertos`, {
       responseType: 'blob'
     });
   }
@@ -86,7 +86,6 @@ export class AppService {
       })
     });
   }
-  
 
   checkCouponIsValid(coupon: string): Observable<any> {
     return this.http.post(this.API_URL + 'pagamento/checkout/validar-cupom', { cupom: coupon });
