@@ -5,7 +5,8 @@
       <a href="#about" (click)="hiddenMenu()">Nossos produtos</a>
       <a href="#plan" (click)="hiddenMenu()">Plano</a>
       <a routerLink="/check-hits" (click)="hiddenMenu()">Conferir acertos</a>
-      <a href="#who-we-are"(click)="hiddenMenu()">Quem somos</a>
+      <a [routerLink]="[promotionRouter]" (click)="hiddenMenu()">Promoção</a>
+      <a href="#who-we-are" (click)="hiddenMenu()">Quem somos</a>
     </div>
     <a routerLink="/login" (click)="hiddenMenu()"><button class="primary-button">Acessar</button></a>
     <div class="hamburger-menu" (click)="expanded = !expanded">

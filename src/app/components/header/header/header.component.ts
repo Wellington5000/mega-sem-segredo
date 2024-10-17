@@ -7,10 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
   expanded: boolean = false;
+  user: any;
+  promotionRouter: string = '/promotion';
 
   constructor() { }
 
   ngOnInit(): void {
+    const user = localStorage.getItem('user');
+    if(user) {
+      this.user = JSON.parse(user);
+
+      if(this.user?.assinatura === 'ativa') {
+        this.promotionRouter = '/promotion-result';
+      }
+    }
   }
 
   hiddenMenu(): void {

@@ -15,8 +15,12 @@ import { BuyCreditComponent } from './buy-credit/buy-credit.component';
 import { ProfileComponent } from './profile/profile.component';
 import { GuestGuard } from './auth/guest.guard';
 import { AuthRedirectGuard } from './auth/auth-redirect.guard';
+import { PromotionComponent } from './promotion/promotion.component';
+import { PromotionResultComponent } from './promotion-result/promotion-result.component';
 
 const routes: Routes = [
+  { path: 'promotion-result', component: PromotionResultComponent, canActivate: [GuestGuard] },
+  { path: 'promotion', component: PromotionComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [GuestGuard] },
   { path: 'register/:origin', component: RegisterComponent },
   { path: 'privacy-policy', component: PrivacyPolicyComponent },

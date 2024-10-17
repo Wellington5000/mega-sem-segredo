@@ -48,7 +48,7 @@ export class AppService {
   }
 
   findAllPromotions(): Observable<any> {
-    return this.http.get(this.API_URL + 'promocoes');
+    return this.http.get(this.API_URL + 'v3/promocoes/grupos');
   }
 
   findPromotionByCode(code: string): Observable<any> {
@@ -57,6 +57,18 @@ export class AppService {
 
   downloadReportOrReceipt(group: number, type: string): Observable<Blob> {
     return this.http.get(this.API_URL + `promocoes/download/${group}/${type}`, {
+      responseType: 'blob'
+    });
+  }
+
+  downloadProofPayments(id: string): Observable<Blob> {
+    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/comprovante-pagamento`, {
+      responseType: 'blob'
+    });
+  }
+
+  downloadProofSuccess(id: string): Observable<Blob> {
+    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/comprovante-acertos`, {
       responseType: 'blob'
     });
   }

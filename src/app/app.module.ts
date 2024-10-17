@@ -36,6 +36,8 @@ import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { HeaderLoggedComponent } from './components/header-logged/header-logged.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { PromotionComponent } from './promotion/promotion.component';
+import { PromotionResultComponent } from './promotion-result/promotion-result.component';
 
 
 
@@ -64,7 +66,9 @@ registerLocaleData(localePt, 'pt');
     CreditCardData2Component,
     ProfileComponent,
     LuckyPixComponent,
-    HeaderLoggedComponent
+    HeaderLoggedComponent,
+    PromotionComponent,
+    PromotionResultComponent
   ],
   imports: [
     BrowserModule,

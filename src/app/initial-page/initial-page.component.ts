@@ -25,6 +25,10 @@ export class InitialPageComponent implements OnInit {
     const user = localStorage.getItem('user');
     if(user) {
       this.user = JSON.parse(user);
+
+      if(this.user?.assinatura === 'ativa') {
+        this.hasPlan = true;
+      }
     }
   }
 
