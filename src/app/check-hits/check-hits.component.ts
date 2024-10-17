@@ -57,11 +57,21 @@ export class CheckHitsComponent implements OnInit {
   }
 
   downloadConcourse(concourse: number): void {
-    this.isLoading = true;
     this.appService.downloadConcourse(concourse).subscribe({
       next: (responde: Blob) => {
-        this.isLoading = false;
         const fileName = `concurso_${concourse}`;
+        Utils.downloadPdf(responde, fileName);
+      },
+      error: (error) => {
+        this.notificationService.notify('Erro ao baixar relatório de acertos');
+      }
+    })
+  }
+
+  downloadAwarded(concourse: number): void {
+    this.appService.downloadPremiado(concourse).subscribe({
+      next: (responde: Blob) => {
+        const fileName = `grupo_com_sena_${concourse}`;
         Utils.downloadPdf(responde, fileName);
       },
       error: (error) => {
