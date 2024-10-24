@@ -6,5 +6,6 @@ export interface Hits {
     num_sorteio1_3: number;
     num_sorteio1_4: number;
     num_sorteio1_5: number;
-    num_sorteio1_6: number;   
+    num_sorteio1_6: number;
+    codigo_premiado: string;
 }

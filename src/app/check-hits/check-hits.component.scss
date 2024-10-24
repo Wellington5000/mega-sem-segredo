@@ -66,7 +66,7 @@ section {
 
                 .ch-card-header-title {
                     font-size: 1rem;
-                    font-weight: 600;
+                    font-weight: 700;
                 }
 
                 .ch-card-header-download {
@@ -93,6 +93,22 @@ section {
                         font-size: 1.25rem;
                     }
                 }
+            }
+
+            .ch-card-footer {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              margin-top: 20px;
+
+              .ch-card-footer-title {
+                font-size: 1rem;
+                font-weight: 700;
+              }
+
+              .ch-card-footer-download {
+                cursor: pointer;
+              }
             }
         }
     }
