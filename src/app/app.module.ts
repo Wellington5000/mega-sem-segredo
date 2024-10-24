@@ -38,6 +38,7 @@ import { HeaderLoggedComponent } from './components/header-logged/header-logged.
 import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionResultComponent } from './promotion-result/promotion-result.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 
 
@@ -68,7 +69,8 @@ registerLocaleData(localePt, 'pt');
     LuckyPixComponent,
     HeaderLoggedComponent,
     PromotionComponent,
-    PromotionResultComponent
+    PromotionResultComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

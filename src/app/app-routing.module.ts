@@ -17,8 +17,10 @@ import { GuestGuard } from './auth/guest.guard';
 import { AuthRedirectGuard } from './auth/auth-redirect.guard';
 import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionResultComponent } from './promotion-result/promotion-result.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
+  { path: 'checkout', component: CheckoutComponent },
   { path: 'promotion-result', component: PromotionResultComponent, canActivate: [GuestGuard] },
   { path: 'promotion', component: PromotionComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [GuestGuard] },

@@ -87,7 +87,7 @@ export class CreditCardDataComponent implements OnInit {
         },
         expirationDate: {
           id: "form-checkout__expirationDate",
-          placeholder: "MM/YY",
+          placeholder: "MM/AA",
         },
         securityCode: {
           id: "form-checkout__securityCode",
@@ -95,7 +95,7 @@ export class CreditCardDataComponent implements OnInit {
         },
         cardholderName: {
           id: "form-checkout__cardholderName",
-          placeholder: "Titular do cartão",
+          placeholder: "Ex: Maria da Silva ",
         },
         issuer: {
           id: "form-checkout__issuer",
@@ -130,6 +130,9 @@ export class CreditCardDataComponent implements OnInit {
             identificationNumber,
             identificationType,
           } = cardForm.getCardFormData();
+
+
+          console.log(payment_method_id)
 
           this.next({
             "payer": {
