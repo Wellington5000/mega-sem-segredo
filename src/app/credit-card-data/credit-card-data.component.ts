@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../utils/notification/notification.service';
+import { UserResponse } from '../models/user-response';
+import { Utils } from '../utils/utils';
 declare const Iugu: any;
 declare const mp: any;
 
@@ -10,6 +12,8 @@ declare const mp: any;
   styleUrls: ['./credit-card-data.component.scss']
 })
 export class CreditCardDataComponent implements OnInit {
+  cardForm: any;
+  user!: UserResponse;
   hasError: boolean = false;
   numberTextError: string = '';
   dateTextError: string = '';
@@ -29,6 +33,7 @@ export class CreditCardDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.user = Utils.getUser();
   }
 
   ngAfterViewInit(): void {
@@ -76,7 +81,7 @@ export class CreditCardDataComponent implements OnInit {
   }
 
   initForm(): void {
-    const cardForm = mp.cardForm({
+    this.cardForm = mp.cardForm({
       amount: "240",
       iframe: true,
       form: {
@@ -95,7 +100,7 @@ export class CreditCardDataComponent implements OnInit {
         },
         cardholderName: {
           id: "form-checkout__cardholderName",
-          placeholder: "Ex: Maria da Silva ",
+          placeholder: "Ex: Maria da Silva",
         },
         issuer: {
           id: "form-checkout__issuer",
@@ -129,14 +134,11 @@ export class CreditCardDataComponent implements OnInit {
             installments,
             identificationNumber,
             identificationType,
-          } = cardForm.getCardFormData();
-
-
-          console.log(payment_method_id)
+          } = this.cardForm.getCardFormData();
 
           this.next({
             "payer": {
-              "email": email,
+              "email": this.user?.user?.email,
               "identification": {
                 "type": identificationType,
                 "number": identificationNumber
@@ -146,7 +148,7 @@ export class CreditCardDataComponent implements OnInit {
             "payment_method_id": payment_method_id,
             "token": token,
             "transaction_amount": amount,
-            "id": 5,
+            "produto": 5,
             "descricao": "Assinatura"
           })
         },
@@ -156,5 +158,9 @@ export class CreditCardDataComponent implements OnInit {
       },
     });
 
+  }
+
+  ngOnDestroy(): void {
+    this.cardForm.unmount();
   }
 }

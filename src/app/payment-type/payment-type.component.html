@@ -18,7 +18,7 @@
       <span [class.valid-coupon]="couponIsValid">R$ {{ couponIsValid ? '170' : '180' }}</span>
     </div>
   </div>
-  <div class="form-item code-indication-item" *ngIf="selectedPaymentMethod.value === 'pix'">
+  <!-- <div class="form-item code-indication-item" *ngIf="selectedPaymentMethod.value === 'pix'">
     <span class="text-secundary">Código de indicação</span>
     <div class="input-payment">
       <input type="text" maxlength="15" [formControl]="coupon">
@@ -30,7 +30,7 @@
         <span class="error-text">Código inválido</span>
       </div>
     </div>
-  </div>
+  </div> -->
   <div class="footer-form">
     <button class="primary-button" (click)="next()">Continuar</button>
     <img src="/assets/images/safe-buy.png" alt="imagem do selo de compra segura">

@@ -32,11 +32,10 @@ export class ProfileComponent implements OnInit {
   setValues(): void {
     const name = this.user?.user?.name?.split(' ');
     const email = this.user?.user?.email;
-    console.log(this.user)
 
     this.formUser.patchValue({
       first_name: name[0],
-      last_name: name[1],
+      last_name: name.length > 1 ? name.slice(1).join(' ') : '',
       email: email
     });
 

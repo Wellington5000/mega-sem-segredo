@@ -6,13 +6,22 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class SpinnerService {
   private spinnerSubject = new BehaviorSubject<boolean>(false);
+  private requestCount = 0; // Contador de requisições ativas
   spinner$ = this.spinnerSubject.asObservable();
 
   show(): void {
-    this.spinnerSubject.next(true);
+    this.requestCount++;
+    if (this.requestCount === 1) {
+      this.spinnerSubject.next(true);
+    }
   }
 
   hide(): void {
-    this.spinnerSubject.next(false);
+    if (this.requestCount > 0) {
+      this.requestCount--;
+      if (this.requestCount === 0) {
+        this.spinnerSubject.next(false);
+      }
+    }
   }
 }

@@ -26,7 +26,8 @@ interface PixData {
 export class BuyCreditComponent implements OnInit {
   step: Step = null;
   hasError: boolean = false;
-  value: FormControl = new FormControl('', [Validators.required, Validators.min(15)]);
+  keepChecking: boolean = true; 
+  value: FormControl = new FormControl('', [Validators.required, Validators.min(25)]);
 
   selectedPaymentMethod: FormControl = new FormControl('credit_card');
   couponIsValid: boolean = false;
@@ -126,6 +127,8 @@ export class BuyCreditComponent implements OnInit {
   }
 
   checkPixWasPaid(id: number): void {
+    if (!this.keepChecking) return;
+
     this.appService.checkPaymentByPix(id).subscribe({
       next: (response) => {
         if(response?.paga) {
@@ -152,5 +155,9 @@ export class BuyCreditComponent implements OnInit {
     }).catch(err => {
       this.isCopy = false;
     });
+  }
+
+  ngOnDestroy(): void {
+    this.keepChecking = false;
   }
 }

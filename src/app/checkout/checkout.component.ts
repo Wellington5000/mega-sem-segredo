@@ -93,14 +93,14 @@ export class CheckoutComponent implements OnInit {
   createUser(data: any): void {
     const user = { ...this.formUser.get('user')?.value, origin: this.origin };
 
-    this.appService.createUser(user).subscribe((response) => {
+    this.appService.createUserWithoutPassword(user).subscribe((response) => {
       localStorage.setItem('access-token', response?.token);
-      localStorage.setItem('user', response);
+      localStorage.setItem('user', JSON.stringify(response));
       
       if(this.selectedPaymentMethod.value === 'pix') {
         this.createInvoiceByPix(data);
       } else {
-        this.createCardPayment(data);
+        this.createInvoiceByCreditCard(data);
       }
 
     }, error => {
@@ -110,7 +110,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   createInvoiceByCreditCard(data: any): void {
-    this.createCardPayment({ auth: data.auth, body: data.body });
+    this.createCardPayment({ auth: data.token, body: data });
   }
 
   createCardPayment(data: any): void {

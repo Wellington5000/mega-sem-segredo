@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NotificationService } from '../utils/notification/notification.service';
+import { Utils } from '../utils/utils';
+import { UserResponse } from '../models/user-response';
 declare const Iugu: any;
 declare const mp: any;
 
@@ -10,6 +12,8 @@ declare const mp: any;
   styleUrls: ['./credit-card-data-2.component.scss']
 })
 export class CreditCardData2Component implements OnInit {
+  cardForm: any;
+  user!: UserResponse;
   @Input() value: string = '';
   hasError: boolean = false;
   numberTextError: string = '';
@@ -30,6 +34,7 @@ export class CreditCardData2Component implements OnInit {
 
   ngOnInit(): void {
     this.initForm();
+    this.user = Utils.getUser();
   }
 
   ngAfterViewInit(): void {
@@ -77,7 +82,7 @@ export class CreditCardData2Component implements OnInit {
   }
 
   initForm(): void {
-    const cardForm = mp.cardForm({
+    this.cardForm = mp.cardForm({
       amount: String(this.value),
       iframe: true,
       form: {
@@ -88,7 +93,7 @@ export class CreditCardData2Component implements OnInit {
         },
         expirationDate: {
           id: "form-checkout__expirationDate",
-          placeholder: "MM/YY",
+          placeholder: "MM/AA",
         },
         securityCode: {
           id: "form-checkout__securityCode",
@@ -96,7 +101,7 @@ export class CreditCardData2Component implements OnInit {
         },
         cardholderName: {
           id: "form-checkout__cardholderName",
-          placeholder: "Titular do cartão",
+          placeholder: "Ex: Maria da Silva",
         },
         issuer: {
           id: "form-checkout__issuer",
@@ -130,11 +135,11 @@ export class CreditCardData2Component implements OnInit {
             installments,
             identificationNumber,
             identificationType,
-          } = cardForm.getCardFormData();
+          } = this.cardForm.getCardFormData();
 
           this.next({
             "payer": {
-              "email": email,
+              "email": this.user?.user?.email,
               "identification": {
                 "type": identificationType,
                 "number": identificationNumber
@@ -153,6 +158,9 @@ export class CreditCardData2Component implements OnInit {
         }
       },
     });
+  }
 
+  ngOnDestroy(): void {
+    this.cardForm.unmount();
   }
 }

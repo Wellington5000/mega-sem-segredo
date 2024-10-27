@@ -23,6 +23,16 @@ export class AppService {
     };
 
     return this.http.post(this.API_URL + 'auth/register', user, httpOptions);
+  } 
+
+  createUserWithoutPassword(user: any): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'application/json'
+      })
+    };
+
+    return this.http.post(this.API_URL + 'v3/pagamento/checkout/registrar-usuario', user, httpOptions);
   }
 
   createPaymentByCreditCard(data: any): Observable<any> {

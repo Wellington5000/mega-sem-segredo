@@ -21,6 +21,8 @@ interface PixData {
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
+  keepChecking: boolean = true; 
+  timeOut: any;
   hasAcceptedTerms: FormControl = new FormControl(false);
   hasError: boolean = false;
   showPassword: boolean = false;
@@ -128,7 +130,7 @@ export class RegisterComponent implements OnInit {
   }
 
   createInvoiceByCreditCard(data: any): void {
-    this.createCardPayment({ auth: data.auth, body: data.body });
+    this.createCardPayment({ auth: data.token, body: data });
   }
 
   createCardPayment(data: any): void {
@@ -160,6 +162,8 @@ export class RegisterComponent implements OnInit {
   }
 
   checkPixWasPaid(id: number): void {
+    if (!this.keepChecking) return;
+
     this.appService.checkPaymentByPix(id).subscribe({
       next: (response) => {
         if(response?.paga) {
@@ -180,5 +184,9 @@ export class RegisterComponent implements OnInit {
 
   error(msg?: string): void {
     this.notificationService.notify(msg || 'Ocorreu um erro ao criar o pagamento. Por favor, entre em contato com o suporte!');
+  }
+
+  ngOnDestroy(): void {
+    this.keepChecking = false;
   }
 }

@@ -1,3 +1,5 @@
+import { UserResponse } from "../models/user-response";
+
 export class Utils {
     static downloadPdf(data: Blob, fileName: string): void {
         const blob = new Blob([data], { type: 'application/pdf' });
@@ -10,5 +12,14 @@ export class Utils {
         a.click();
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
+    }
+
+    static getUser(): UserResponse {
+        const user = localStorage.getItem('user');
+        if(user) {
+            return JSON.parse(user);
+        } else {
+            return {};
+        }
     }
 }
