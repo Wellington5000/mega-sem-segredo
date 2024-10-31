@@ -39,6 +39,7 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
 import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionResultComponent } from './promotion-result/promotion-result.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 
 
@@ -84,7 +85,8 @@ registerLocaleData(localePt, 'pt');
     NgxMaskModule.forRoot(),
     HeaderModule,
     FooterModule,
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    SocialLoginModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
@@ -92,7 +94,19 @@ registerLocaleData(localePt, 'pt');
     {
       provide: LOCALE_ID,
       useValue: 'pt'
-  },
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('5c56a4e3cb39f16acbf8efd4f5d3ddc8')
+          }
+        ],
+      } as SocialAuthServiceConfig,
+    },
   ],
   bootstrap: [AppComponent]
 })
