@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
-import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 type Step = 'email' | 'password';
 
@@ -22,7 +21,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private appService: AppService,
-    private authService: SocialAuthService,
     private notificationService: NotificationService,
   ) { }
 
@@ -74,19 +72,6 @@ export class LoginComponent implements OnInit {
         this.notificationService.notify(error?.error?.message || 'Senha incorreta!');
       }
     })
-  }
-
-  loginWithFacebook(): void {
-    console.log(FacebookLoginProvider);
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((response) => {
-      console.log(response)
-    }).catch((error) => {
-      console.error('Erro no login com Facebook:', error);
-    });
-  }
-
-  logout(): void {
-    this.authService.signOut();
   }
 
   onSignIn(googleUser: any) {
