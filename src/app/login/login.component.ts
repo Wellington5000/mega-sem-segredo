@@ -98,7 +98,7 @@ export class LoginComponent implements OnInit {
         this.saveAndRedirect(response);
       },
       error: (error) => {
-        this.notificationService.notify(error);
+        this.notificationService.notify(error?.error?.message);
       }
     })
   }
