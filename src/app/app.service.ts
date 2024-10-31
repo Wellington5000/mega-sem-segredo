@@ -137,4 +137,8 @@ export class AppService {
     const token = localStorage.getItem('access-token');
     return !!token;
   }
+
+  googleLogin(body: any): Observable<any> {
+    return this.http.post(this.API_URL + 'auth/google', body);
+  }
 }

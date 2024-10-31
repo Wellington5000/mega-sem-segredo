@@ -26,6 +26,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.createCookie();
+
+    (window as any).google.accounts.id.initialize({
+      client_id: '899649339453-iadctomthvspc8deu50g2544kqrctlfl.apps.googleusercontent.com',
+      callback: this.handleCredentialResponse.bind(this),
+    });
+
   }
 
   setStep(step: Step): void {
@@ -64,9 +70,7 @@ export class LoginComponent implements OnInit {
       device_id: deviceName[0]
     }).subscribe({
       next: (response) => {
-        localStorage.setItem('access-token', response?.token);
-        localStorage.setItem('user', JSON.stringify(response));
-        this.router.navigateByUrl('/home');
+        this.saveAndRedirect(response);
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Senha incorreta!');
@@ -74,12 +78,43 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSignIn(googleUser: any) {
-    // Profile data from the Google User object
-    var profile = googleUser.getBasicProfile();
-    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-    console.log('Name: ' + profile.getName());
-    console.log('Image URL: ' + profile.getImageUrl());
-    console.log('Email: ' + profile.getEmail());
+  loginWithGoogle(): void {
+    (window as any).google.accounts.id.prompt();
+  }
+  
+  handleCredentialResponse(response: any) {
+    const token = response.credential;
+    
+    if(token) {
+      const user = this.decodeToken(token);
+      const userInfo = { ...user, token: token };
+      this.googleLogin(userInfo);
+    }
+  }
+
+  googleLogin(body: any): void {
+    this.appService.googleLogin(body).subscribe({
+      next: (response) => {
+        this.saveAndRedirect(response);
+      },
+      error: (error) => {
+        this.notificationService.notify(error);
+      }
+    })
+  }
+
+  decodeToken(token: string) {
+    const payload = JSON.parse(atob(token.split('.')[1]));
+    return {
+      id: payload.sub,
+      email: payload.email,
+      name: payload.name,
+    };
+  }
+
+  saveAndRedirect(response: any): void {
+    localStorage.setItem('access-token', response?.token);
+    localStorage.setItem('user', JSON.stringify(response));
+    this.router.navigateByUrl('/home');
   }
 }
