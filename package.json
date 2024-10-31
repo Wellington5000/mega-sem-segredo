@@ -19,7 +19,6 @@
     "@angular/platform-browser": "~13.2.0",
     "@angular/platform-browser-dynamic": "~13.2.0",
     "@angular/router": "~13.2.0",
-    "angularx-social-login": "^4.1.0",
     "iugu": "0.0.6",
     "ng2-currency-mask": "^13.0.3",
     "ngx-currency": "^3.0.0",
