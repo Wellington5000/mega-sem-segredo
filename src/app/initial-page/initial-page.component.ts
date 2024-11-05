@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
+import { Signature } from '../models/signature';
 
 @Component({
   selector: 'app-initial-page',
@@ -25,10 +26,6 @@ export class InitialPageComponent implements OnInit {
     const user = localStorage.getItem('user');
     if(user) {
       this.user = JSON.parse(user);
-
-      if(this.user?.assinatura === 'ativa') {
-        this.hasPlan = true;
-      }
     }
   }
 
@@ -36,6 +33,7 @@ export class InitialPageComponent implements OnInit {
     this.appService.getUserCredit().subscribe({
       next: (response) => {
         this.credits = response?.saldo;
+        this.getSignature();
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao carregar informações dos créditos');
@@ -52,5 +50,24 @@ export class InitialPageComponent implements OnInit {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao buscar os últimos resultados');
       }
     })
+  }
+
+  getSignature(): void {
+    this.appService.getSignature().subscribe({
+      next: (response) => {
+        this.checkHasPlan(response);
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.message);
+      }
+    })
+  }
+
+  checkHasPlan(signature: Signature): void {
+    const situation = signature?.situacao === 'ativa';
+
+    if(situation && (signature?.plano?.codigo === 'pro' || this.credits > 0)) {
+      this.hasPlan = true;
+    }
   }
 }
