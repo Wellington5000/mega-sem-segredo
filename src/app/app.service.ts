@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Concourse } from './models/concourse';
 import { Router } from '@angular/router';
 import { Signature } from './models/signature';
+import { SocialAuthService } from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,8 @@ export class AppService {
 
   constructor(
     private router: Router,
-    private http: HttpClient
+    private http: HttpClient,
+    private authService: SocialAuthService,
   ) { }
 
   createUser(user: any): Observable<any> {
@@ -129,6 +131,7 @@ export class AppService {
   }
 
   logout(): void {
+    this.authService.signOut();
     localStorage.removeItem('access-token');
     localStorage.removeItem('user');
     this.router.navigateByUrl('/login');
@@ -141,6 +144,10 @@ export class AppService {
 
   googleLogin(body: any): Observable<any> {
     return this.http.post(this.API_URL + 'auth/google', body);
+  }
+
+  facebookLogin(body: any): Observable<any> {
+    return this.http.post(this.API_URL + 'auth/facebook', body);
   }
 
   getSignature(): Observable<Signature> {
