@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AppService } from '../app.service';
 import { PaymentErrors } from '../models/payment-errors';
 import { HeaderLoggedComponent } from '../components/header-logged/header-logged.component';
+import { debounceTime } from 'rxjs';
 
 type Step = null | 'payment' | 'credit_card' | 'pix' | 'success' | 'pix-payment';
 
@@ -25,6 +26,7 @@ interface PixData {
 })
 export class BuyCreditComponent implements OnInit {
   step: Step = null;
+  credits: number = 0;
   hasError: boolean = false;
   keepChecking: boolean = true; 
   value: FormControl = new FormControl('', [Validators.required, Validators.min(25)]);
@@ -69,6 +71,13 @@ export class BuyCreditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getCredits();
+  }
+
+  ngAfterViewInit(): void {
+    this.value.valueChanges.pipe(debounceTime(700)).subscribe((value) => {
+      this.hasError = !this.isInteger(Number(value))
+    });
   }
 
   setStep(step: Step): void {
@@ -155,6 +164,21 @@ export class BuyCreditComponent implements OnInit {
     }).catch(err => {
       this.isCopy = false;
     });
+  }
+
+  getCredits(): void {
+    this.appService.getUserCredit().subscribe({
+      next: (response) => {
+        this.credits = response?.saldo;
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao carregar informações dos créditos');
+      }
+    })
+  }
+
+  isInteger(value: number): boolean {
+    return Number.isInteger(Number(value));
   }
 
   ngOnDestroy(): void {

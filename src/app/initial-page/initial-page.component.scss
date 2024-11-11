@@ -395,4 +395,13 @@
     .ip4-phones {
         width: 350px;
     }
+
+    .ip3-container {
+        gap: 32px;
+        flex-direction: column;
+
+        .notebook-image {
+            width: 350px;
+        }
+    }
 }

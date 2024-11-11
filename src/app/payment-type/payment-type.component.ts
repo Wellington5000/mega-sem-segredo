@@ -22,8 +22,7 @@ export class PaymentTypeComponent implements OnInit {
     private notificationService: NotificationService
   ) { }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   ngAfterViewInit(): void {
     this.coupon.valueChanges.pipe(debounceTime(1000)).subscribe((value) => {

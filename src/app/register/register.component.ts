@@ -89,11 +89,13 @@ export class RegisterComponent implements OnInit {
 
   nextStepByPayment(payment: any): void {
     if(payment?.payment_type === 'pix') {
-      this.step = 'pix-data';
-      this.coupon = payment?.coupon;
+      window.location.href = 'https://clkdmg.site/pay/plano-mega-pix';
+      // this.step = 'pix-data';
+      // this.coupon = payment?.coupon;
     } else {
-      this.step = 'credit-card-data';
-      this.coupon = '';
+      window.location.href = 'https://clkdmg.site/pay/plano-mega-cartao';
+      // this.step = 'credit-card-data';
+      // this.coupon = '';
     }
   }
 

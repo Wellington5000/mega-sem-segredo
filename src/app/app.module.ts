@@ -40,6 +40,7 @@ import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionResultComponent } from './promotion-result/promotion-result.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FacebookLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
+import { PromotionLoggedResultComponent } from './promotion-logged-result/promotion-logged-result.component';
 
 
 
@@ -71,7 +72,8 @@ registerLocaleData(localePt, 'pt');
     HeaderLoggedComponent,
     PromotionComponent,
     PromotionResultComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    PromotionLoggedResultComponent
   ],
   imports: [
     BrowserModule,
