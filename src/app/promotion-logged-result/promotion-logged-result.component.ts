@@ -65,7 +65,7 @@ export class PromotionLoggedResultComponent implements OnInit {
         this.checkHasPlan(response);
       },
       error: (error) => {
-        this.notificationService.notify(error?.error?.message);
+        this.notificationService.notify(error?.error?.message); 
       }
     })
   }
