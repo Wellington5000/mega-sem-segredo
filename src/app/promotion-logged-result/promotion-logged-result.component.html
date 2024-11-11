@@ -1,1 +1,59 @@
-<p>promotion-logged-result works!</p>
+<div class="p-container">
+    <app-header-logged></app-header-logged>
+
+    <section>
+        <div class="p-content" *ngIf="hasPlan; else noHasPlan">
+            <img class="p-logo-virada" src="/assets/images/promotion/logo-mega-virada.png">
+            <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
+            <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>
+
+            <span class="p-code-text text-secundary">Código <strong class="text-primary">LMS00012</strong></span>
+
+            <div class="pr-table-container">
+                <table *ngIf="promotions.length > 0; else notFoundPromotions">
+                    <thead>
+                        <tr>
+                            <th>GRUPO</th>
+                            <th>QTD DE COTA </th>
+                            <th class="lp-column-with-margin">CONCURSO</th>
+                            <th>COMBINAÇÕES</th>
+                            <th>PAGAMENTO</th>
+                            <th>ACERTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let promotion of promotions">
+                            <td>{{ promotion?.codigo }}</td>
+                            <td>{{ promotion?.quantidade_cota }}</td>
+                            <td class="lp-column-with-margin">{{ promotion?.concurso }}</td>
+                            <td class="lp-table-button"><button (click)="downloadProofPayments(promotion?.id)">Baixar</button></td>
+                            <td class="lp-table-button"><button (click)="downloadProofPayments(promotion?.id)">Baixar</button></td>
+                            <td class="lp-table-button"><button (click)="downloadProofSuccess(promotion?.id)">Baixar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ng-template #notFoundPromotions>
+                <span class="text-secundary small-text">Sem resultados no momento!</span>
+            </ng-template>
+        </div>
+
+        <ng-template #noHasPlan>
+            <div class="p-content">
+                <img src="/assets/images/promotion/logo-mega-virada.png">
+                <span class="text-secundary pr-title title-no-plan">Bolão da<strong class="text-primary"> Virada!</strong></span>
+                <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
+                <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>    
+
+                <span class="text-secundary small-text text-plan">Faça a assinatura agora mesmo e participe do Sorteio!</span>
+
+                <a routerLink="/payment-methods">
+                    <button class="primary-button">Assinar agora</button>
+                </a>
+            </div>
+        </ng-template>
+    </section>
+
+    <app-footer></app-footer>
+</div>

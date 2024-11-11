@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
       this.user = JSON.parse(user);
 
       if(this.user?.assinatura === 'ativa') {
-        this.promotionRouter = '/promotion-result';
+        this.promotionRouter = '/promotion-logged-result';
       }
     }
   }

@@ -1,0 +1,134 @@
+.p-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #161C24;
+
+    section {
+        height: 100%;
+        display: flex;
+        margin-top: 90px;
+        align-items: center;
+        justify-content: center;
+
+        .p-content {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 51px 1rem 28px;
+
+            .pr-title {
+                font-weight: 400;
+                font-size: 28px;
+                line-height: 38px;
+                margin-bottom: 25px;
+            }
+
+            .pr-text {
+                max-width: 509px;
+                line-height: 21px;
+                text-align: center;
+                margin-bottom: 18px;
+            }
+
+            .pr-table-container {
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                max-width: 892px;
+
+            }
+
+            table {
+                width: 100%;
+                max-width: 100%;
+                overflow: hidden;
+                border-collapse: collapse;
+                border-radius: 1rem 1rem 0 0;
+        
+                th, td {
+                    text-align: center;
+                    padding: 1rem 1.5rem;
+                    color: white;
+                }
+            
+                th {
+                    font-size: 1rem;
+                    font-weight: 800;
+                    background-color: #000000;
+                }
+            
+                td {
+                    font-weight: 600;
+                    background-color: #263238;
+                }
+        
+                .lp-column-with-margin {
+                    padding-right: 12rem;
+                }
+            }
+
+            .lp-table-button button, .lp-button {
+                padding: 0;
+                color: var(--primary);
+                background-color: transparent;
+            }
+        
+            .lp-text-info {
+                max-width: 510px;
+                line-height: 22px;
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+        
+            .primary-button {
+                width: 340px;
+                margin-top: 26px;
+            }
+        }
+    }
+}
+
+.p-logo-virada {
+    width: 149px;
+    height: 132px;
+    margin-bottom: 22px;
+}
+
+.p-date {
+    margin-bottom: 14px;
+}
+
+.p-code-text {
+    font-weight: 400;
+    font-size: 28px;
+    line-height: 38px;
+    margin-bottom: 40px;
+}
+
+
+.text-plan {
+    font-size: 20px;
+}
+
+.title-no-plan {
+    margin-top: 8px;
+}
+
+@media(max-width: 700px) {
+    .lp-column-with-margin {
+        padding-right: 0 !important;
+    }
+
+    .pr-table-container {
+        overflow: auto;
+    }
+}
+
+@media(max-width: 400px) {
+    .pr-table-container {
+        padding-left: 9rem;
+    }
+}
