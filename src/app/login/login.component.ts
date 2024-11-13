@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
   hasError: boolean = false;
   showPassword: boolean = false;
   step: Step = 'email';
+  showButton: boolean = false;
   email: FormControl = new FormControl('', [Validators.required, Validators.email]);
   password: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
@@ -38,10 +39,11 @@ export class LoginComponent implements OnInit {
         this.googleLogin(this.getGoogleUser(user));
       }
     });
+  }
 
-    window.onload = () => {
-      this.renderGoogleSignInButton();
-    };
+  ngAfterViewInit(): void {
+    this.showButton = true;
+    setTimeout(() => this.renderGoogleSignInButton(), 0);
   }
 
   setStep(step: Step): void {
@@ -90,48 +92,6 @@ export class LoginComponent implements OnInit {
 
   loginWithGoogle(): void {
     (window as any).google.accounts.id.prompt();
-  }
-  
-  handleCredentialResponse(response: any) {
-    const token = response.credential;
-    
-    if(token) {
-      const user = this.decodeToken(token);
-      const userInfo = { ...user, token: token };
-      this.googleLogin(userInfo);
-    }
-  }
-
-  // googleLogin(body: any): void {
-  //   this.appService.googleLogin(body).subscribe({
-  //     next: (response) => {
-  //       this.saveAndRedirect(response);
-  //     },
-  //     error: (error) => {
-  //       this.notificationService.notify(error?.error?.message);
-  //     }
-  //   })
-  // }
-
-  decodeToken(token: string) {
-    const payload = JSON.parse(atob(token.split('.')[1]));
-    return {
-      id: payload.sub,
-      email: payload.email,
-      name: payload.name,
-    };
-  }
-
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then((response) => {
-      // this.googleLogin(this.getFacebookUser(response));
-      console.log(response);
-    }).catch((error) => {
-      console.log(error);
-      if(error !== 'User cancelled login or did not fully authorize.') {
-        this.notificationService.notify('Ocorreu um erro ao fazer login. Por favor, tente novamente!');
-      }
-    });
   }
 
   signInWithFacebook(): void {
@@ -195,23 +155,19 @@ export class LoginComponent implements OnInit {
     google.accounts.id.renderButton(
       document.getElementById("google-signin-button"),
       {
-        theme: "filled",  // Tema de fundo azul (pode ser 'outline' também)
-        size: "large",         // Tamanho do botão ('small', 'medium', 'large')
-        shape: "pill",         // Forma arredondada (ou 'rectangular')
-        type: "standard",      // Tipo do botão (ou 'icon_only' se você quiser só o ícone)
-        logo_alignment: "left", // Alinha o logo à esquerda
+        theme: "filled",
+        size: "large",        
+        shape: "pill",         
+        type: "standard",      
+        logo_alignment: "left", 
         width: 354,
       }
     );
-
-    setTimeout(() => {
-      const buttonDiv: any = document.querySelector("#google-signin-button > div");
-      if (buttonDiv) {
-          buttonDiv.style.width = "100%";
-      }
-  }, 0);
   }
   
+  showUnloadMessage(): void {
+    this.notificationService.notify('Ocorreu um erro ao carregar o login do Google. Recarregue a página e tente novamente!');
+  }
 
   saveAndRedirect(response: any): void {
     localStorage.setItem('access-token', response?.token);
