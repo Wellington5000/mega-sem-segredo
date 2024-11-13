@@ -3,7 +3,6 @@ import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
-import { FacebookLoginProvider, SocialAuthService } from 'angularx-social-login';
 
 type Step = 'email' | 'password';
 
@@ -48,7 +47,6 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private appService: AppService,
-    private authService: SocialAuthService,
     private notificationService: NotificationService,
   ) { }
 
@@ -140,15 +138,15 @@ export class LoginComponent implements OnInit {
     };
   }
 
-  signInWithFacebook(): void {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((response) => {
-      this.facebookLogin(this.getFacebookUser(response));
-    }).catch((error) => {
-      if(error !== 'User cancelled login or did not fully authorize.') {
-        this.notificationService.notify('Ocorreu um erro ao fazer login. Por favor, tente novamente!');
-      }
-    });
-  }
+  // signInWithFacebook(): void {
+  //   this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then((response) => {
+  //     this.facebookLogin(this.getFacebookUser(response));
+  //   }).catch((error) => {
+  //     if(error !== 'User cancelled login or did not fully authorize.') {
+  //       this.notificationService.notify('Ocorreu um erro ao fazer login. Por favor, tente novamente!');
+  //     }
+  //   });
+  // }
 
   getFacebookUser(user: any) {
     return {
@@ -166,14 +164,14 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao fazer login. Por favor, tente novamente!');
-        this.signOut();
+        // this.signOut();
       }
     })
   }
 
-  signOut(): void {
-    this.authService.signOut();
-  }
+  // signOut(): void {
+  //   this.authService.signOut();
+  // }
 
   
 
