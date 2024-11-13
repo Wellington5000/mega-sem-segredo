@@ -195,12 +195,21 @@ export class LoginComponent implements OnInit {
     google.accounts.id.renderButton(
       document.getElementById("google-signin-button"),
       {
-        theme: "outline",
-        size: "large",
-        shape: "pill",
-        type: "standard",
+        theme: "filled",  // Tema de fundo azul (pode ser 'outline' também)
+        size: "large",         // Tamanho do botão ('small', 'medium', 'large')
+        shape: "pill",         // Forma arredondada (ou 'rectangular')
+        type: "standard",      // Tipo do botão (ou 'icon_only' se você quiser só o ícone)
+        logo_alignment: "left", // Alinha o logo à esquerda
+        width: 354,
       }
     );
+
+    setTimeout(() => {
+      const buttonDiv: any = document.querySelector("#google-signin-button > div");
+      if (buttonDiv) {
+          buttonDiv.style.width = "100%";
+      }
+  }, 0);
   }
   
 

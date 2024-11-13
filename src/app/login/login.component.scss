@@ -96,14 +96,15 @@ section {
         .l-social-button {
             margin-bottom: 18px;
             width: 100%;
-            padding: 14px 0;
+            padding: 8px 0;
             border-radius: 40px;
             text-transform: none;
-            font-size: 18px;
+            font-size: 16px;
         }
 
         .l-g-button {
             color: black;
+            margin-top: -40px;
             background-color: white;
         }
 
@@ -125,13 +126,5 @@ section {
 }
 
 #google-signin-button {
-    margin-bottom: 18px;
-    width: 100%;
-    margin-top: -70px;
-    height: 52px;
     opacity: 0;
-}
-
-:host ::ng-deep #google-signin-button div {
-    height: 52px;
 }
