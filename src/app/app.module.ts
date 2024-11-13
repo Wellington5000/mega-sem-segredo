@@ -94,6 +94,10 @@ registerLocaleData(localePt, 'pt');
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     SpinnerService,
     {
+        provide: LOCALE_ID,
+        useValue: 'pt'
+    },
+    {
       provide: 'SocialAuthServiceConfig',
       useValue: {
         autoLogin: false,

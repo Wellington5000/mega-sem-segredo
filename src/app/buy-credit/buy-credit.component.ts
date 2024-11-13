@@ -76,7 +76,7 @@ export class BuyCreditComponent implements OnInit {
 
   ngAfterViewInit(): void {
     this.value.valueChanges.pipe(debounceTime(700)).subscribe((value) => {
-      this.hasError = !this.isInteger(Number(value))
+      this.hasError = !this.isMultipleOf25(Number(value))
     });
   }
 
@@ -177,8 +177,8 @@ export class BuyCreditComponent implements OnInit {
     })
   }
 
-  isInteger(value: number): boolean {
-    return Number.isInteger(Number(value));
+  isMultipleOf25(value: number): boolean {
+    return value % 25 === 0;
   }
 
   ngOnDestroy(): void {
