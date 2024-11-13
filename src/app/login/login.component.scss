@@ -124,23 +124,14 @@ section {
     }
 }
 
-.google-button {
+#google-signin-button {
     margin-bottom: 18px;
     width: 100%;
     margin-top: -70px;
     height: 52px;
-
-    
+    opacity: 0;
 }
 
-:host ::ng-deep .google-button div {
-    height: 52px !important;
-
-}
-
-:host ::ng-deep .google-button iframe {
-    top: -46px !important;
-    width: 100% !important;
-    height: 52px !important;
-    margin-left: 0px !important;
+:host ::ng-deep #google-signin-button div {
+    height: 52px;
 }

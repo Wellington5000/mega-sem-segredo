@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AppService } from '../app.service';
 import { NotificationService } from '../utils/notification/notification.service';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
+
+declare const google: any;
 
 type Step = 'email' | 'password';
 
@@ -19,6 +21,8 @@ export class LoginComponent implements OnInit {
   email: FormControl = new FormControl('', [Validators.required, Validators.email]);
   password: FormControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
+  @ViewChild('googleButton') googleButton!: any;
+
   constructor(
     private router: Router,
     private appService: AppService,
@@ -29,15 +33,15 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.createCookie();
 
-    // (window as any).google.accounts.id.initialize({
-    //   client_id: '899649339453-iadctomthvspc8deu50g2544kqrctlfl.apps.googleusercontent.com',
-    //   callback: this.handleCredentialResponse.bind(this),
-    // });
-
     this.authService.authState.subscribe((user) => {
-      console.log(user);
-      this.googleLogin(this.getGoogleUser(user));
+      if(user?.provider === 'GOOGLE') {
+        this.googleLogin(this.getGoogleUser(user));
+      }
     });
+
+    window.onload = () => {
+      this.renderGoogleSignInButton();
+    };
   }
 
   setStep(step: Step): void {
@@ -187,6 +191,17 @@ export class LoginComponent implements OnInit {
     this.authService.signOut();
   }
 
+  renderGoogleSignInButton() {
+    google.accounts.id.renderButton(
+      document.getElementById("google-signin-button"),
+      {
+        theme: "outline",
+        size: "large",
+        shape: "pill",
+        type: "standard",
+      }
+    );
+  }
   
 
   saveAndRedirect(response: any): void {
