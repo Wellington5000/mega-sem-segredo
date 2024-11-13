@@ -123,3 +123,18 @@ section {
         }
     }
 }
+
+.google-button {
+    margin-bottom: 18px;
+    width: 100%;
+    margin-top: -70px;
+    height: 52px;
+    opacity: 0;
+
+    
+}
+
+:host ::ng-deep .google-button div {
+    height: 52px !important;
+
+}

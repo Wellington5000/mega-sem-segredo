@@ -16,8 +16,10 @@
             </div>
             <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
-            <button class="l-social-button l-g-button" (click)="loginWithGoogle()">Entrar com Google</button>
-            <button class="l-social-button l-f-button" >Entrar com Facebook</button>
+            <button class="l-social-button l-g-button" (click)="signInWithGoogle()">Entrar com Google</button>
+            <asl-google-signin-button type="standard" size="medium" class="google-button"></asl-google-signin-button>
+
+            <button class="l-social-button l-f-button" (click)="signInWithFacebook()">Entrar com Facebook</button>
         </ng-container>
         
         <ng-template #stepPassword>

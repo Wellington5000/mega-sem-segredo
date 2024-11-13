@@ -40,6 +40,7 @@ import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionResultComponent } from './promotion-result/promotion-result.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PromotionLoggedResultComponent } from './promotion-logged-result/promotion-logged-result.component';
+import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 
 
 
@@ -87,29 +88,32 @@ registerLocaleData(localePt, 'pt');
     HeaderModule,
     FooterModule,
     CurrencyMaskModule,
+    SocialLoginModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
     SpinnerService,
-    // {
-    //   provide: LOCALE_ID,
-    //   useValue: 'pt'
-    // },
-    // {
-    //   provide: 'SocialAuthServiceConfig',
-    //   useValue: {
-    //     autoLogin: false,
-    //     providers: [
-    //       {
-    //         id: FacebookLoginProvider.PROVIDER_ID,
-    //         provider: new FacebookLoginProvider('997923862039288')
-    //       },
-    //     ],
-    //     onError: (err) => {
-    //       console.error(err);
-    //     }
-    //   } as SocialAuthServiceConfig,
-    // }
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '899649339453-iadctomthvspc8deu50g2544kqrctlfl.apps.googleusercontent.com'
+            )
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider('997923862039288')
+          }
+        ],
+        onError: (err) => {
+          console.error(err);
+        }
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })
