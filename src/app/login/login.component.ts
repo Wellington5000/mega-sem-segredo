@@ -33,6 +33,11 @@ export class LoginComponent implements OnInit {
     //   client_id: '899649339453-iadctomthvspc8deu50g2544kqrctlfl.apps.googleusercontent.com',
     //   callback: this.handleCredentialResponse.bind(this),
     // });
+
+    this.authService.authState.subscribe((user) => {
+      console.log(user);
+      this.googleLogin(this.getGoogleUser(user));
+    });
   }
 
   setStep(step: Step): void {
@@ -93,16 +98,16 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  googleLogin(body: any): void {
-    this.appService.googleLogin(body).subscribe({
-      next: (response) => {
-        this.saveAndRedirect(response);
-      },
-      error: (error) => {
-        this.notificationService.notify(error?.error?.message);
-      }
-    })
-  }
+  // googleLogin(body: any): void {
+  //   this.appService.googleLogin(body).subscribe({
+  //     next: (response) => {
+  //       this.saveAndRedirect(response);
+  //     },
+  //     error: (error) => {
+  //       this.notificationService.notify(error?.error?.message);
+  //     }
+  //   })
+  // }
 
   decodeToken(token: string) {
     const payload = JSON.parse(atob(token.split('.')[1]));
@@ -135,6 +140,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  getGoogleUser(user: any) {
+    return {
+      id: user?.id,
+      email: user?.email,
+      name: user?.name,
+      token: user?.idToken
+    }
+  }
+
+
   getFacebookUser(user: any) {
     return {
       id: user?.id,
@@ -151,7 +166,19 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao fazer login. Por favor, tente novamente!');
-        // this.signOut();
+        this.signOut();
+      }
+    })
+  }
+
+  googleLogin(body: any): void {
+    this.appService.googleLogin(body).subscribe({
+      next: (response) => {
+        this.saveAndRedirect(response);
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao fazer login. Por favor, tente novamente!');
+        this.signOut();
       }
     })
   }
