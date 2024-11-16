@@ -79,7 +79,8 @@ export class LoginComponent implements OnInit {
       email: this.email.value,
       password: this.password.value,
       device_name: deviceName[0],
-      device_id: deviceName[0]
+      device_id: deviceName[0],
+      plataforma: 'web'
     }).subscribe({
       next: (response) => {
         this.saveAndRedirect(response);

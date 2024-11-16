@@ -31,7 +31,9 @@
                     </div>
                 </div>
 
-                <button class="primary-button p-button">Mudar senha</button>
+                <a class="p-change-password" [routerLink]="['/change-password', 'change']">
+                    <button class="primary-button p-button">Mudar senha</button>
+                </a>
                 <a href="#" class="p-logout" (click)="logout()">Sair</a>
             </div>
         </div>

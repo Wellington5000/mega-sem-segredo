@@ -5,6 +5,7 @@ import { Concourse } from './models/concourse';
 import { Router } from '@angular/router';
 import { Signature } from './models/signature';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -152,5 +153,9 @@ export class AppService {
 
   getSignature(): Observable<Signature> {
     return this.http.get<Signature>(this.API_URL + 'v3/signature/check');
+  }
+
+  recoveryPassword(body: any): Observable<any> {
+    return this.http.post(this.API_URL + 'auth/forgot-password', body);
   }
 }

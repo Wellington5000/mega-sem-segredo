@@ -40,7 +40,7 @@
                   <span class="error-text">Informe uma senha válida</span>
                 </div>
             </div>
-            <a href="#" class="l-forgot-password">Esqueceu a senha?</a>
+            <a [routerLink]="['/change-password', 'recovery']" class="l-forgot-password">Esqueceu a senha?</a>
             <button class="primary-button l-button" [disabled]="password.invalid" (click)="login()">Entrar</button>
         </ng-template>
     </div>

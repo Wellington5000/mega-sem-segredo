@@ -19,8 +19,10 @@ import { PromotionComponent } from './promotion/promotion.component';
 import { PromotionResultComponent } from './promotion-result/promotion-result.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PromotionLoggedResultComponent } from './promotion-logged-result/promotion-logged-result.component';
+import { ChangePasswordComponent } from './change-password/change-password.component';
 
 const routes: Routes = [
+  { path: 'change-password/:type', component: ChangePasswordComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'promotion-result', component: PromotionResultComponent, canActivate: [GuestGuard] },
   { path: 'promotion-logged-result', component: PromotionLoggedResultComponent, canActivate: [GuestGuard] },
