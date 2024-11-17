@@ -329,6 +329,33 @@ section {
   align-self: flex-start !important;
 }
 
+.input-credit {
+  max-width: 214px;
+}
+
+.quantity-input {
+  display: flex;
+
+  input {
+    text-align: center !important;
+  }
+  
+  img {
+    cursor: pointer;
+    position: absolute;
+  }
+
+  .add {
+    margin-left: 178px;
+    margin-top: 6px;
+  }
+
+  .remove {
+    margin-top: 6px;
+    margin-left: 6px;
+  }
+}
+
 @media(max-width: 700px) {
   .bc-container, .bc-box {
       padding-left: 1rem !important;

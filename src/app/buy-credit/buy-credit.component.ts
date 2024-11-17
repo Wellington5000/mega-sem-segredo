@@ -29,7 +29,7 @@ export class BuyCreditComponent implements OnInit {
   credits: number = 0;
   hasError: boolean = false;
   keepChecking: boolean = true; 
-  value: FormControl = new FormControl('', [Validators.required, Validators.min(25)]);
+  value: FormControl = new FormControl(25, [Validators.required, Validators.min(25)]);
 
   selectedPaymentMethod: FormControl = new FormControl('credit_card');
   couponIsValid: boolean = false;
@@ -179,6 +179,19 @@ export class BuyCreditComponent implements OnInit {
 
   isMultipleOf25(value: number): boolean {
     return value % 25 === 0;
+  }
+
+  remove(): void {
+    const value = Number(this.value.value);
+
+    if(value > 25) {
+      this.value.setValue(value - 25);
+    }
+  }
+
+  add(): void {
+    const value = Number(this.value.value) + 25;
+    this.value.setValue(value);
   }
 
   ngOnDestroy(): void {
