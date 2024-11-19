@@ -356,6 +356,22 @@ section {
   }
 }
 
+.bc-back-button {
+  position: absolute;
+  margin-top: 98px;
+  background-color: transparent;
+  color: #40AD1C;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: none;
+  line-height: 25px;
+  padding: 0;
+  margin-left: 12px;
+}
+
 @media(max-width: 700px) {
   .bc-container, .bc-box {
       padding-left: 1rem !important;

@@ -110,9 +110,18 @@
 
     .ip3-container {
         gap: 120px;
-        padding: 20px;
+        padding: 86px 96px;
         display: flex;
         align-items: center;
+
+        .ip-card {
+            gap: 120px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            width: 100%;
+            height: 389px;
+        }
 
         .ip3-content {
             display: flex;
@@ -327,7 +336,7 @@
 }
 
 @media(max-width: 1210px) {
-    .ip2-container, .ip1-container {
+    .ip2-container, .ip1-container, .ip3-container {
         padding-left: 1rem !important;
         padding-right: 1rem !important;
     }
@@ -349,9 +358,22 @@
     .ip5-container .hc4-cards {
         flex-direction: column;
     }
+
+    .ip3-container .ip-card {
+        gap: 50px !important;
+    }
 }
 
 @media(max-width: 965px) {
+    .ip5-title {
+        font-size: 28px !important;
+    }
+
+    .ip3-container .ip-card {
+        flex-direction: column;
+        height: auto !important;
+    }
+
     .ip4-container .ip-card {
         flex-direction: column;
         padding-bottom: 3rem;

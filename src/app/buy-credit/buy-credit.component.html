@@ -3,6 +3,11 @@
 <section>
     <div class="bc-container">
         <span class="bc-title">Crédito</span>
+
+        <button class="bc-back-button" (click)="setStep(null)" *ngIf="step === 'payment'">
+          <img src="/assets/images/buy-credit/arrow-back.png">
+          Voltar
+        </button>
         <div class="bc-box">
             <img class="bc-box-coin" src="/assets/images/buy-credit/coin.png">
 
