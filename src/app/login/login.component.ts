@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
           if(response?.email) {
             this.setStep(step);
           } else {
-            this.router.navigateByUrl('/register/web');
+            this.router.navigate(['/register/web'], { queryParams: { email: this.email.value } });
           }
         }
       })

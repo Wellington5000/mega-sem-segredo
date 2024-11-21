@@ -69,6 +69,15 @@ export class RegisterComponent implements OnInit {
       this.originPayment = true;
       this.origin = 'app';
     }
+
+    this.getEmailParam();
+  }
+
+  getEmailParam(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      const email = params['email'];
+      this.formUser.get('user')?.get('email')?.setValue(email);
+    });
   }
 
   checkPasswordIsValid(): boolean {
@@ -122,7 +131,7 @@ export class RegisterComponent implements OnInit {
 
     this.appService.createUser(user).subscribe((response) => {
       localStorage.setItem('access-token', response?.token);
-      localStorage.setItem('user', response);
+      localStorage.setItem('user', JSON.stringify(response));
       this.router.navigateByUrl('/home');
     }, error => {
       this.isLoading = false;
