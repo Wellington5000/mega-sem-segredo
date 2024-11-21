@@ -56,7 +56,6 @@ button {
   cursor: pointer;
   color: var(--white);
   border-radius: 2rem;
-  text-transform: uppercase;
   padding: 0.75rem 1.625rem;
   font-size: var(--medium-font-size);
   font-weight: var(--bold-font-weight);
@@ -209,7 +208,31 @@ button:disabled {
   }
 }
 
+.p-color {
+  color: var(--primary);
+}
+
+.s-color {
+  color: var(--white);
+}
+
+.hide-desktop {
+  display: none !important;
+}
+
+.p-button {
+  background-color: var(--primary);
+}
+
 @media(max-width: 1040px) {
+  .hide-desktop {
+    display: flex !important;
+}
+
+.hide-mobile {
+    display: none !important;
+}
+
   .title {
     font-size: 2rem;
     line-height: 2.5rem;

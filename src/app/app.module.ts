@@ -42,6 +42,11 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { PromotionLoggedResultComponent } from './promotion-logged-result/promotion-logged-result.component';
 import { FacebookLoginProvider, GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { Section4Component } from './section-4/section-4.component';
+import { ImageComponent } from './components/image/image.component';
+import { Section5Component } from './section-5/section-5.component';
+import { Section6Component } from './section-6/section-6.component';
+import { Section7Component } from './section-7/section-7.component';
 
 
 
@@ -75,7 +80,12 @@ registerLocaleData(localePt, 'pt');
     PromotionResultComponent,
     CheckoutComponent,
     PromotionLoggedResultComponent,
-    ChangePasswordComponent
+    ChangePasswordComponent,
+    Section4Component,
+    Section5Component,
+    Section6Component,
+    Section7Component,
+    ImageComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +100,7 @@ registerLocaleData(localePt, 'pt');
     HeaderModule,
     FooterModule,
     CurrencyMaskModule,
-    SocialLoginModule
+    SocialLoginModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },

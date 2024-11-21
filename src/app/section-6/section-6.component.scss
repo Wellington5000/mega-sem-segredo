@@ -1,0 +1,56 @@
+.container {
+    display: flex;
+    margin-top: 150px;
+    flex-direction: column;
+    justify-content: center;
+
+    .content-1 {
+        gap: 40px;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: var(--primary);
+        padding-top: 17px;
+        padding-bottom: 20px;
+    }
+
+    .content-2 {
+        height: 16px;
+        width: 100%;
+        background-color: #208100;
+    }
+
+    .title {
+        font-size: 35px;
+    }
+}
+
+@media(max-width: 1040px) {
+    .container {
+        margin-top: 80px;
+    }
+
+    .content-1 {
+        justify-content: space-between;
+        gap: 10px !important;
+    }
+
+    :host ::ng-deep app-image img {
+        width: 40px !important;
+        max-width: fit-content !important;
+    }
+
+    .title {
+        font-size: 16px !important;
+        line-height: 20px;
+    }
+
+    .image-1 {
+        margin-left: 24px;
+    }
+
+    .image-2 {
+        margin-right: 24px;
+    }
+}

@@ -1,0 +1,93 @@
+.container {
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .title {
+        max-width: 750px;
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 35px;
+        font-weight: 500;
+        line-height: 42px;
+    }
+
+    .content-1 {
+        width: 700px;
+        height: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: radial-gradient(
+          63% 63% at 50% 50%,
+          rgba(64, 173, 28, 0.3019607843) 20%,
+          #000 79%);
+
+            .p-selo {
+                margin-top: -574px;
+                margin-left: -336px;
+                position: absolute;
+                z-index: 1;
+            }
+
+            .g-selo {
+                position: absolute;
+                margin-top: 562px;
+                margin-left: 315px;
+            }
+    }
+
+
+    .content-2 {
+        display: flex;
+        align-items: center;
+        position: relative;
+        gap: 8px;
+        margin-top: 50px;
+
+        .arrow {
+            top: 50%;
+            padding: 6px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .cards {
+            width: 100%;
+            max-width: 1073px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .card-content {
+            display: flex;
+            gap: 16px;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+    }
+}
+
+@media(max-width: 1040px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    .title {
+        margin-top: 40px;
+        margin-bottom: 0 !important;
+    }
+
+    .content-1 {
+        width: 100% !important;
+    }
+
+    .content-2 {
+        margin-top: 10px !important;
+    }
+
+    .card-image {
+        min-width: 100%;
+    }
+}

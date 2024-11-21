@@ -1,0 +1,35 @@
+<div class="container">
+    <h1 class="title s-color">E não foi só eu que ganhei, vejam alguns dos <span class="p-color">depoimentos dos nosso usuários:</span></h1>
+
+    <div class="content-1">
+        <app-image class="p-selo" img="p-selo" width="80px" height="85px"></app-image>
+        <div class="video-container">
+            <video width="316" height="561" src="/assets/videos/depoimento.mp4" type="video/mp4" autoplay controls muted loop></video>
+        </div>
+        <app-image class="g-selo" img="g-selo" width="134px" height="141px"></app-image>
+    </div>
+
+    <div class="content-2">
+        <app-image class="arrow" img="arrow-back" width="8px" height="14px" (click)="scrollLeft()"></app-image>
+        <div class="cards">
+            <div class="card-content"  #carousel>
+                <div class="card-image">
+                    <app-image img="depoimento-1" width="347px" height="165px"></app-image>
+                </div>
+                <div class="card-image">
+                    <app-image img="depoimento-2" width="347px" height="165px"></app-image>
+                </div>
+                <div class="card-image">
+                    <app-image img="depoimento-3" width="347px" height="165px"></app-image>
+                </div>
+                <div class="card-image">
+                    <app-image img="depoimento-4" width="347px" height="165px"></app-image>
+                </div>
+                <div class="card-image">
+                    <app-image img="depoimento-5" width="347px" height="165px"></app-image>
+                </div>
+            </div>
+        </div>
+        <app-image class="arrow" img="arrow-foward" width="8px" height="14px" (click)="scrollRight()"></app-image>
+    </div>
+</div>

@@ -126,6 +126,15 @@ section {
     padding: 7.625rem 0 7.375rem 0;
     background: radial-gradient(35.71% 65.71% at 50% 58%, #44AB1C80 30%, #000 79%);
 
+    .content-info-subtitle {
+      max-width: 900px;
+      text-align: center;
+      
+      .hc2-title {
+        font-size: 32px;
+      }
+    }
+
     .content-info-footer {
       gap: 1.125rem;
       display: flex;
@@ -154,7 +163,7 @@ section {
     gap: 125px;
     display: flex;
     padding-top: 20px;
-    margin-top: 150px;
+    margin-top: -50px;
     align-items: center;
     justify-content: center;
     background: url('/assets/images/home/background-volante.png') no-repeat center center;
@@ -413,6 +422,10 @@ section {
 }
 
 @media(max-width: 1040px) {
+  .content-3 {
+    margin-top: 100px !important;
+  }
+
   .content-container {
     gap: 1.5rem !important;
     flex-direction: column;
