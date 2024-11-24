@@ -20,6 +20,7 @@ export class PromotionLoggedResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSignature();
+
   }
 
   getPromotions(): void {
@@ -31,6 +32,17 @@ export class PromotionLoggedResultComponent implements OnInit {
         this.notificationService.notify('Erro ao carregar promoções');
       }
     });
+  }
+
+  downloadProofCombinations(id: string): void {
+    this.appService.downloadProofCombinations(id).subscribe({
+      next: (response: Blob) => {
+        this.downloadPdf(response, 'Combinacoes');
+      },
+      error: (error) => {
+        this.notificationService.notify('Ocorreu um erro ao baixar as combinações');
+      }
+    })
   }
 
   downloadProofPayments(id: string): void {
@@ -75,6 +87,7 @@ export class PromotionLoggedResultComponent implements OnInit {
 
     if(situation && (signature?.plano?.codigo === 'pro')) {
       this.hasPlan = true;
+      this.getPromotions();
     }
   }
 }

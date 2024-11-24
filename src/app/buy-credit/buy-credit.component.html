@@ -14,7 +14,7 @@
             <span class="bc-credit-quantity" *ngIf="!step">{{ credits > 0 ? ('Você possui ' + credits + ' créditos' ) : 'Você não possui crédito' }}</span>
             
             <ng-container *ngIf="!step">
-              <span class="bc-credit-quantity-info">R$ 25 = 100 crédito</span>
+              <span class="bc-credit-quantity-info">R$ 25 = 100 créditos</span>
             </ng-container>
 
             <ng-container *ngIf="step === 'payment'">
@@ -116,7 +116,7 @@
                 <ng-container *ngIf="step === 'success'">
                     <div class="bc-success-container">
                         <img src="/assets/images/buy-credit/done.png">
-                        <span class="bc-success-text">{{ value.value }} créditos adicionados</span>
+                        <span class="bc-success-text">{{ value.value * 4 }} créditos adicionados</span>
                         <a routerLink="/home"><button class="primary-button bc-success-button">Voltar pra página inicial</button></a>
                     </div>
                 </ng-container>

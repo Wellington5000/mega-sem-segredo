@@ -9,7 +9,7 @@ import { Signature } from '../models/signature';
   styleUrls: ['./initial-page.component.scss']
 })
 export class InitialPageComponent implements OnInit {
-  hasPlan: boolean = false;
+  hasPlan: boolean = true;
   user: any;
   credits:  number = 0;
   lastResults: any[] = [];

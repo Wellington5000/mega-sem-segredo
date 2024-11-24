@@ -75,6 +75,12 @@ export class AppService {
     });
   }
 
+  downloadProofCombinations(id: string): Observable<Blob> {
+    return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/combinacoes`, {
+      responseType: 'blob'
+    });
+  }
+
   downloadProofPayments(id: string): Observable<Blob> {
     return this.http.get(this.API_URL + `v3/promocoes/grupos/download/${id}/pagamento`, {
       responseType: 'blob'

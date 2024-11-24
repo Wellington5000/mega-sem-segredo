@@ -55,7 +55,7 @@
                       <a href="https://chromewebstore.google.com/detail/mega-sem-segredo/ijppogbalaldgddhalhceomefpmjoajl" target="_blank"><button class="primary-button ip3-button">Utilizar</button></a>
                       <a href="https://www.youtube.com/watch?v=-cspq4exXsQ" target="_blank" class="ip3-tutorial">
                           <img src="/assets/images/initial-page/play.png">
-                          Assista o tutorial
+                          Assista ao tutorial
                       </a>
                   </div>
                   <div class="ip3-social">
@@ -85,7 +85,7 @@
                         <a href="https://play.google.com/store/apps/details?id=br.com.lotobets&pcampaignid=web_share" target="_blank"><button class="primary-button ip3-button">Utilizar</button></a>
                         <a href="https://www.youtube.com/watch?v=7Ivi1V8Lwkw" target="_blank" class="ip3-tutorial">
                             <img src="/assets/images/initial-page/play.png">
-                            Assista o tutorial
+                            Assista ao tutorial
                         </a>
                     </div>
                     <div class="ip3-social">
@@ -101,7 +101,7 @@
         </div>
     </section>
 
-    <section>
+    <section *ngIf="!hasPlan">
         <div class="ip5-container">
             <span class="ip5-title">{{ hasPlan ? 'Potencialize seu plano' : 'Nossos planos' }}</span>
             <div class="hc4-cards">
@@ -213,7 +213,7 @@
                     </div>
                     <div class="hc4-benefits-item">
                       <img src="/assets/icons/check.svg">
-                      <span class="hc4-text">Permite transmitir para o site da Caixa, até 100 combinações por mês, via Marca Rápido</span>
+                      <span class="hc4-text">Permite transmitir para o site da Caixa, via computador, até 100 combinações por mês, através do Marca Rápido</span>
                     </div>
                   </div>
                 </div>
