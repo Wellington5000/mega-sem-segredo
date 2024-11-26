@@ -26,7 +26,7 @@ export class PromotionLoggedResultComponent implements OnInit {
   getPromotions(): void {
     this.appService.findAllPromotions().subscribe({
       next: (response) => {
-        this.promotions = response;
+        this.promotions = response?.participacoes;
       },
       error: (error) => {
         this.notificationService.notify('Erro ao carregar promoções');

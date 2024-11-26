@@ -55,6 +55,7 @@
                 }
             
                 th {
+                    white-space: nowrap;
                     font-size: 1rem;
                     font-weight: 800;
                     background-color: #000000;
@@ -63,6 +64,10 @@
                 td {
                     font-weight: 600;
                     background-color: #263238;
+
+                    button {
+                        text-transform: uppercase;
+                    }
                 }
         
                 .lp-column-with-margin {
@@ -124,6 +129,8 @@
 
     .pr-table-container {
         overflow: auto;
+        display: block !important;
+        padding-left: 0 !important;
     }
 }
 

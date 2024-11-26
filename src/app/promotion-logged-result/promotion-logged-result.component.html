@@ -7,7 +7,7 @@
             <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
             <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>
 
-            <span class="p-code-text text-secundary">Código <strong class="text-primary">LMS00012</strong></span>
+            <span class="p-code-text text-secundary">Código <strong class="text-primary">{{ promotions[0]?.codigo }}</strong></span>
 
             <div class="pr-table-container">
                 <table *ngIf="promotions.length > 0; else notFoundPromotions">
