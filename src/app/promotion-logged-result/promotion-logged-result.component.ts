@@ -37,7 +37,7 @@ export class PromotionLoggedResultComponent implements OnInit {
   downloadProofCombinations(id: string): void {
     this.appService.downloadProofCombinations(id).subscribe({
       next: (response: Blob) => {
-        this.downloadPdf(response, 'Combinacoes');
+        this.downloadPdf(response, 'Dezenas');
       },
       error: (error) => {
         this.notificationService.notify('Ocorreu um erro ao baixar as combinações');
