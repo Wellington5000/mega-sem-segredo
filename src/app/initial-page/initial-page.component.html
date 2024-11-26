@@ -101,7 +101,7 @@
         </div>
     </section>
 
-    <section *ngIf="!hasPlan">
+    <section *ngIf="!hasPlan || (hasPlan && credits <= 0)">
         <div class="ip5-container">
             <span class="ip5-title">{{ hasPlan ? 'Potencialize seu plano' : 'Nossos planos' }}</span>
             <div class="hc4-cards">
