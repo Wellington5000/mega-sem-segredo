@@ -417,6 +417,10 @@ section {
   }
 }
 
+#products {
+  scroll-margin: 130px;
+}
+
 @media(max-width: 1360px) {
   .phone-image {
     width: 720px;

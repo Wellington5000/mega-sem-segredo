@@ -122,6 +122,14 @@
     margin-top: 8px;
 }
 
+.regulamentation {
+    margin-bottom: 20px;
+
+    button {
+        margin-top: 0 !important;
+    }
+}
+
 @media(max-width: 700px) {
     .lp-column-with-margin {
         padding-right: 0 !important;

@@ -48,7 +48,7 @@ export class PromotionLoggedResultComponent implements OnInit {
   downloadProofPayments(id: string): void {
     this.appService.downloadProofPayments(id).subscribe({
       next: (response: Blob) => {
-        this.downloadPdf(response, 'Comprovante de pagamentos');
+        this.downloadPdf(response, 'Comprovante de apostas');
       },
       error: (error) => {
         this.notificationService.notify('Ocorreu um erro ao baixar o comprovante');

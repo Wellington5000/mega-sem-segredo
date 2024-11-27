@@ -2,7 +2,7 @@
   <a class="logo-link" href="#"><img class="header-logo" src="/assets/images/logo-mega-comunidade.svg" alt="logo do mega sem segredo"></a>
   <div class="header-actions" *ngIf="!hideOptions">
     <div class="header-actions-items">
-      <a href="#about" (click)="hiddenMenu()">Nossos produtos</a>
+      <a href="#products" (click)="hiddenMenu()">Nossos produtos</a>
       <a href="#plans" (click)="hiddenMenu()">Plano</a>
       <a routerLink="/check-hits" (click)="hiddenMenu()">Conferir acertos</a>
       <a [routerLink]="[promotionRouter]" (click)="hiddenMenu()">Promoção</a>
