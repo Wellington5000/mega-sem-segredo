@@ -153,7 +153,7 @@
 
     .ip3-actions {
         margin-top: 36px;
-        gap: 24px;
+        gap: 38px;
         display: flex;
         align-items: center;
 
@@ -333,6 +333,15 @@
             }
           }
     }
+}
+
+.google-play {
+    background-color: var(--primary);
+    border-radius: 4px;
+}
+
+.aplicativo {
+    margin-top: 0 !important;
 }
 
 @media(max-width: 1210px) {
