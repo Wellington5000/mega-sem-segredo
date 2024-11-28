@@ -57,4 +57,15 @@ export class PromotionResultComponent implements OnInit {
   downloadPdf(file: Blob, fileName: string): void {
     Utils.downloadPdf(file, fileName);
   }
+
+  downloadRegulation(): void {
+    this.appService.downloadRegulation().subscribe({
+      next: (response: Blob) => {
+        this.downloadPdf(response, 'Regulamento');
+      },
+      error: (error) => {
+        this.notificationService.notify('Ocorreu um erro ao baixar o regulamento');
+      }
+    })
+  }
 }

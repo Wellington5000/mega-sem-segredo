@@ -90,4 +90,15 @@ export class PromotionLoggedResultComponent implements OnInit {
       this.getPromotions();
     }
   }
+
+  downloadRegulation(): void {
+    this.appService.downloadRegulation().subscribe({
+      next: (response: Blob) => {
+        this.downloadPdf(response, 'Regulamento');
+      },
+      error: (error) => {
+        this.notificationService.notify('Ocorreu um erro ao baixar o regulamento');
+      }
+    })
+  }
 }

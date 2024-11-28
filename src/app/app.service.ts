@@ -99,6 +99,12 @@ export class AppService {
     });
   }
 
+  downloadRegulation(): Observable<Blob> {
+    return this.http.get(this.API_URL + `promocoes/download-regulamento`, {
+      responseType: 'blob'
+    });
+  }
+
   checkPaymentByPix(id: number): Observable<any> {
     return this.http.post(this.API_URL + 'v3/pagamento/checkout/verificar-pix/' + id, {}, {
       headers: new HttpHeaders({
