@@ -17,7 +17,7 @@
             display: flex;
             align-items: center;
             flex-direction: column;
-            padding: 51px 1rem 28px;
+            padding: 51px 1rem 75px;
 
             .pr-title {
                 font-weight: 400;
@@ -47,20 +47,21 @@
                 overflow: hidden;
                 border-collapse: collapse;
                 border-radius: 1rem 1rem 0 0;
-        
+
                 th, td {
                     text-align: center;
                     padding: 1rem 1.5rem;
                     color: white;
+                    white-space: nowrap;
                 }
-            
+
                 th {
                     white-space: nowrap;
                     font-size: 1rem;
                     font-weight: 800;
                     background-color: #000000;
                 }
-            
+
                 td {
                     font-weight: 600;
                     background-color: #263238;
@@ -69,7 +70,7 @@
                         text-transform: uppercase;
                     }
                 }
-        
+
                 .lp-column-with-margin {
                     padding-right: 12rem;
                 }
@@ -80,14 +81,14 @@
                 color: var(--primary);
                 background-color: transparent;
             }
-        
+
             .lp-text-info {
                 max-width: 510px;
                 line-height: 22px;
                 text-align: center;
                 margin-bottom: 1rem;
             }
-        
+
             .primary-button {
                 width: 340px;
                 margin-top: 26px;
@@ -123,14 +124,14 @@
 }
 
 .regulamentation {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
 
     button {
         margin-top: 0 !important;
     }
 }
 
-@media(max-width: 700px) {
+@media(max-width: 1200px) {
     .lp-column-with-margin {
         padding-right: 0 !important;
     }

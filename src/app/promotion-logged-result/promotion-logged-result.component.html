@@ -11,15 +11,14 @@
                 <button class="primary-button">Ver regulamento</button>
             </a>
 
-            <span class="p-code-text text-secundary">Código <strong class="text-primary">{{ promotions[0]?.codigo }}</strong></span>
-
             <div class="pr-table-container">
                 <table *ngIf="promotions.length > 0; else notFoundPromotions">
                     <thead>
                         <tr>
+                            <th>CÓDIGO</th>
                             <th>GRUPO</th>
-                            <th>QTD DE COTA </th>
-                            <th class="lp-column-with-margin">CONCURSO</th>
+                            <th>CONCURSO</th>
+                            <th class="lp-column-with-margin">COTAS DO GRUPO (%)</th>
                             <th>DEZENAS</th>
                             <th>APOSTAS</th>
                             <th>ACERTO</th>
@@ -28,8 +27,9 @@
                     <tbody>
                         <tr *ngFor="let promotion of promotions">
                             <td>{{ promotion?.codigo }}</td>
-                            <td>{{ promotion?.qtd_cota }}</td>
-                            <td class="lp-column-with-margin">{{ promotion?.concurso }}</td>
+                            <td>{{ promotion?.grupo }}</td>
+                            <td>{{ promotion?.concurso }}</td>
+                            <td class="lp-column-with-margin">{{ promotion?.preenchidas }}</td>
                             <td class="lp-table-button"><button (click)="downloadProofCombinations(promotion?.id)">Baixar</button></td>
                             <td class="lp-table-button"><button (click)="downloadProofPayments(promotion?.id)">Baixar</button></td>
                             <td class="lp-table-button"><button (click)="downloadProofSuccess(promotion?.id)">Baixar</button></td>
@@ -48,7 +48,7 @@
                 <img src="/assets/images/promotion/logo-mega-virada.png">
                 <span class="text-secundary pr-title title-no-plan">Bolão da<strong class="text-primary"> Virada!</strong></span>
                 <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
-                <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>    
+                <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>
 
                 <span class="text-secundary small-text text-plan">Faça a assinatura agora mesmo e participe do Sorteio!</span>
 
