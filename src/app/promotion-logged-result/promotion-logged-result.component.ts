@@ -11,6 +11,8 @@ import { Signature } from '../models/signature';
 })
 export class PromotionLoggedResultComponent implements OnInit {
   promotions: any[] = [];
+  isExpired: boolean = false;
+  promotionMessage: string = 'Faça a assinatura agora mesmo e participe do Sorteio!';
   hasPlan: boolean = false;
 
   constructor(
@@ -20,7 +22,7 @@ export class PromotionLoggedResultComponent implements OnInit {
 
   ngOnInit(): void {
     this.getSignature();
-
+    this.checkPromotionExpired();
   }
 
   getPromotions(): void {
@@ -101,4 +103,17 @@ export class PromotionLoggedResultComponent implements OnInit {
       }
     })
   }
+
+  checkPromotionExpired(): void {
+    if(!this.checkDate()) {
+      this.isExpired = true;
+    }
+  }
+
+  checkDate(): boolean {
+    const today = new Date(); 
+    const targetDate = new Date('2024-12-28');
+  
+    return today < targetDate;
+  }  
 }
