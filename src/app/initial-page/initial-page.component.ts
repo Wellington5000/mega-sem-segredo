@@ -9,7 +9,7 @@ import { Signature } from '../models/signature';
   styleUrls: ['./initial-page.component.scss']
 })
 export class InitialPageComponent implements OnInit {
-  hasPlan: boolean = true;
+  hasPlan: boolean = false;
   user: any;
   credits:  number = 0;
   lastResults: any[] = [];
@@ -65,6 +65,7 @@ export class InitialPageComponent implements OnInit {
 
   checkHasPlan(signature: Signature): void {
     const situation = signature?.situacao === 'ativa';
+
 
     if(situation && (signature?.plano?.codigo === 'pro' || this.credits > 0)) {
       this.hasPlan = true;
