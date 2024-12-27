@@ -3,10 +3,7 @@
 
     <section>
         <div class="p-content" *ngIf="hasPlan; else noHasPlan">
-            <img class="p-logo-virada" src="/assets/images/promotion/logo-mega-virada.png">
-            <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
-            <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>
-
+            <img class="p-logo-virada" src="/assets/images/promotion/encerramento-bolao.png">
             <a (click)="downloadRegulation()" class="regulamentation">
                 <button class="primary-button">Ver regulamento</button>
             </a>
@@ -45,15 +42,10 @@
 
         <ng-template #noHasPlan>
             <div class="p-content">
-                <img src="/assets/images/promotion/logo-mega-virada.png">
+                <img src="/assets/images/promotion/encerramento-bolao.png">
                 <span class="text-secundary pr-title title-no-plan">Bolão da<strong class="text-primary"> Virada!</strong></span>
-                <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
-                <span class="text-primary p-date">Data prevista do sorteio: 31/12/24</span>
-
-                <span class="text-secundary small-text text-plan">{{ isExpired ? 'Promoção encerrada' : 'Faça a assinatura agora mesmo e participe do Sorteio!' }}</span>
-
-                <a routerLink="/payment-methods" *ngIf="!isExpired">
-                    <button class="primary-button">Assinar agora</button>
+                <a (click)="downloadRegulation()" class="regulamentation-2">
+                  <button class="primary-button">Ver regulamento</button>
                 </a>
             </div>
         </ng-template>

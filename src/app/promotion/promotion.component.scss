@@ -1,5 +1,6 @@
 .p-container {
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -27,7 +28,7 @@
             align-items: center;
             justify-content: center;
             background: radial-gradient(77.71% 80.71% at 50% 50%, #1c470b80 16%, #161C24 68%);
-            
+
 
             img {
                 width: fit-content;

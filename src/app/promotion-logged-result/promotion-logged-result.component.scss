@@ -1,5 +1,6 @@
 .p-container {
-    height: 100vh;
+    height: 100%;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -98,8 +99,8 @@
 }
 
 .p-logo-virada {
-    width: 149px;
-    height: 132px;
+    width: 217px;
+    height: 284px;
     margin-bottom: 22px;
 }
 
@@ -120,14 +121,25 @@
 }
 
 .title-no-plan {
-    margin-top: 8px;
+    margin-top: -60px;
 }
 
-.regulamentation {
+.regulamentation-2 {
     margin-bottom: 40px;
 
     button {
-        margin-top: 0 !important;
+      font-size: 16px;
+      margin-top: 0 !important;
+    }
+}
+
+.regulamentation {
+    margin-top: -40px;
+    margin-bottom: 40px;
+
+    button {
+      font-size: 16px;
+      margin-top: 0 !important;
     }
 }
 
