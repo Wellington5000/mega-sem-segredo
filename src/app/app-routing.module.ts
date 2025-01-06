@@ -20,8 +20,12 @@ import { PromotionResultComponent } from './promotion-result/promotion-result.co
 import { CheckoutComponent } from './checkout/checkout.component';
 import { PromotionLoggedResultComponent } from './promotion-logged-result/promotion-logged-result.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { LotterySelectionComponent } from './lottery-selection/lottery-selection.component';
+import { LotteryComponent } from './lottery/lottery.component';
 
 const routes: Routes = [
+  { path: 'lottery/:lottery', component: LotteryComponent, canActivate: [GuestGuard] },
+  { path: 'lottery-selection', component: LotterySelectionComponent, canActivate: [GuestGuard] },
   { path: 'change-password/:type', component: ChangePasswordComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'promotion-result', component: PromotionResultComponent, canActivate: [GuestGuard] },

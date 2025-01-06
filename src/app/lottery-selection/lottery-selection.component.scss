@@ -1,0 +1,44 @@
+.ls-container {
+    height: 100%;
+    min-height: 100vh;
+    background-color: #161C24;
+
+    .ls-content {
+        margin-top: 90px;
+        padding: 80px 80px 80px 90px;
+
+        .ls-title {
+            font-weight: 600;
+        }
+
+        .ls-lotteries-container {
+            gap: 38px;
+            display: flex;
+            flex-wrap: wrap;
+            margin-top: 64px;
+            max-width: 1100px;
+
+            .ls-lotofacil {
+                margin-top: 9px;
+            }
+
+            img {
+                height: fit-content;
+                align-items: center;
+            }
+        }
+    }
+}
+
+@media(max-width: 965px) {
+    .ls-content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 1rem !important;
+
+        .ls-lotteries-container {
+            justify-content: center;
+        }
+    }
+}

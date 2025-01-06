@@ -47,6 +47,8 @@ import { ImageComponent } from './components/image/image.component';
 import { Section5Component } from './section-5/section-5.component';
 import { Section6Component } from './section-6/section-6.component';
 import { Section7Component } from './section-7/section-7.component';
+import { LotterySelectionComponent } from './lottery-selection/lottery-selection.component';
+import { LotteryComponent } from './lottery/lottery.component';
 
 
 
@@ -85,7 +87,9 @@ registerLocaleData(localePt, 'pt');
     Section5Component,
     Section6Component,
     Section7Component,
-    ImageComponent
+    ImageComponent,
+    LotterySelectionComponent,
+    LotteryComponent
   ],
   imports: [
     BrowserModule,
