@@ -1,6 +1,6 @@
 .ls-container {
     height: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 90px);
     background-color: #161C24;
 
     .ls-content {

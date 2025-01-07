@@ -21,6 +21,11 @@
             font-weight: 600;
         }
 
+        .l-subtitle {
+            font-weight: 600;
+            font-size: 20px;
+        }
+
         .l-cards {
             gap: 32px;
             display: flex;
@@ -64,6 +69,31 @@
 
                 span {
                     text-align: center;
+                }
+            }
+        }
+
+        .content-2 {
+            margin-top: 38px;
+
+            .l-card {
+                cursor: default;
+                height: 175px;
+                position: relative;
+
+                .delete-button {
+                    top: 6px;
+                    right: 6px;
+                    cursor: pointer;
+                    position: absolute;
+                }
+
+                .l-card-subtitle {
+                    font-size: 20px;
+                }
+
+                .l-card-info {
+                    font-size: 10px;
                 }
             }
         }

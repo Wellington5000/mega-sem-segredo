@@ -6,34 +6,62 @@
             <h1 class="l-title text-secundary">Lotofácil</h1>
         </div>
 
-        <span class="l-subtitle text-secundary">Selecione a quantidade de combinações que deseja criar</span>
+       <div class="content-1">
+            <span class="l-subtitle text-secundary">Selecione a quantidade de combinações que deseja criar</span>
 
-        <div class="l-cards">
+            <div class="l-cards">
+                <a [routerLink]="['/lotofacil', '1']">
+                    <div class="l-card">
+                        <span class="l-card-title text-secundary">24</span>
+                        <span class="l-card-subtitle text-secundary">Combinações de 15 números</span>
+                        <span class="l-card-info text-primary">Garantia de acerto de 14 pontos se o resultado estiver contido em 18 dezenas selecionadas</span>
+                    </div>
+                </a>
+
+                <a [routerLink]="['/lotofacil', '2']">
+                    <div class="l-card">
+                        <span class="l-card-title text-secundary">110</span>
+                        <span class="l-card-subtitle text-secundary">Combinações de 15 números</span>
+                        <span class="l-card-info text-primary">Garantia de acerto de 14 pontos se o resultado estiver contido em 19 dezenas selecionadas</span>
+                    </div>
+                </a>
+
+                <a [routerLink]="['/lotofacil', '3']">
+                    <div class="l-card">
+                        <span class="l-card-title text-secundary">356</span>
+                        <span class="l-card-subtitle text-secundary">Combinações de 15 números</span>
+                        <span class="l-card-info text-primary">Garantia de acerto de 14 pontos se o resultado estiver contido em 20 dezenas selecionadas</span>
+                    </div>
+                </a>
+
+                <span class="l-text text-secundary">OU</span>
+
+                <div class="l-card">
+                    <img src="/assets/icons/upload.png">
+                    <span class="l-card-subtitle text-secundary upload-text">Importe suas combinações</span>
+                    <span class="l-card-info text-primary">Enviei um arquivo csv das suas próprias combinações</span>
+                </div>
+            </div>
+       </div>
+
+       <div class="content-2">
+        <span class="l-subtitle text-secundary l-subtitle-2">Combinações geradas</span>
+
+        <div class="l-cards l-cards-2">
             <div class="l-card">
+                <img class="delete-button" src="/assets/icons/delete.png">
                 <span class="l-card-title text-secundary">24</span>
-                <span class="l-card-subtitle text-secundary">Combinações de 15 números</span>
-                <span class="l-card-info text-primary">Garantia de acerto de 14 pontos se o resultado estiver contido em 18 dezenas selecionadas</span>
+                <span class="l-card-subtitle text-secundary">Combinações</span>
+                <span class="l-card-info text-secundary"> Gerada em 31/08/24</span>
             </div>
 
             <div class="l-card">
-                <span class="l-card-title text-secundary">110</span>
-                <span class="l-card-subtitle text-secundary">Combinações de 15 números</span>
-                <span class="l-card-info text-primary">Garantia de acerto de 14 pontos se o resultado estiver contido em 19 dezenas selecionadas</span>
-            </div>
-
-            <div class="l-card">
-                <span class="l-card-title text-secundary">356</span>
-                <span class="l-card-subtitle text-secundary">Combinações de 15 números</span>
-                <span class="l-card-info text-primary">Garantia de acerto de 14 pontos se o resultado estiver contido em 20 dezenas selecionadas</span>
-            </div>
-
-            <span class="l-text text-secundary">OU</span>
-
-            <div class="l-card">
-                <img src="/assets/icons/upload.png">
-                <span class="l-card-subtitle text-secundary upload-text">Importe suas combinações</span>
-                <span class="l-card-info text-primary">Enviei um arquivo csv das suas próprias combinações</span>
+                <img class="delete-button" src="/assets/icons/delete.png">
+                <span class="l-card-title text-secundary">24</span>
+                <span class="l-card-subtitle text-secundary">Combinações</span>
+                <span class="l-card-info text-secundary"> Gerada em 31/08/24</span>
             </div>
         </div>
+       </div>
     </div>
 </div>
