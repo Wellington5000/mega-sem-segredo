@@ -5,10 +5,15 @@
 
     .l-content {
         width: 100%;
+        display: flex;
         margin-top: 90px;
-        max-width: 1124px;
         padding-top: 80px;
-        margin-left: 90px;
+        justify-content: center;
+
+        .box {
+            width: 100%;
+            max-width: 1124px;
+        }
 
         .l-title-container {
             padding: 2px 12px;
@@ -33,6 +38,7 @@
             align-items: center;
 
             .l-card {
+                width: 237px;
                 height: 209px;
                 display: flex;
                 cursor: pointer;
@@ -76,17 +82,13 @@
         .content-2 {
             margin-top: 38px;
 
+            .l-cards {
+                flex-wrap: wrap;
+            }
+
             .l-card {
-                cursor: default;
                 height: 175px;
                 position: relative;
-
-                .delete-button {
-                    top: 6px;
-                    right: 6px;
-                    cursor: pointer;
-                    position: absolute;
-                }
 
                 .l-card-subtitle {
                     font-size: 20px;
@@ -95,6 +97,14 @@
                 .l-card-info {
                     font-size: 10px;
                 }
+            }
+
+            .delete-button {
+                z-index: 1;
+                cursor: pointer;
+                margin-left: 208px;
+                margin-top: -142px;
+                position: absolute;
             }
         }
     }

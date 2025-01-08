@@ -1,0 +1,1 @@
+export const ENVIRONMENT = 'https://megamaisbets.com.br/api/';

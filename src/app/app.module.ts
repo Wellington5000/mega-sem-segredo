@@ -50,6 +50,7 @@ import { Section7Component } from './section-7/section-7.component';
 import { LotterySelectionComponent } from './lottery-selection/lottery-selection.component';
 import { LotteryComponent } from './lottery/lottery.component';
 import { LotofacilComponent } from './lotofacil/lotofacil.component';
+import { CombinationsComponent } from './combinations/combinations.component';
 
 
 
@@ -91,7 +92,8 @@ registerLocaleData(localePt, 'pt');
     ImageComponent,
     LotterySelectionComponent,
     LotteryComponent,
-    LotofacilComponent
+    LotofacilComponent,
+    CombinationsComponent
   ],
   imports: [
     BrowserModule,

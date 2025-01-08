@@ -23,8 +23,10 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { LotterySelectionComponent } from './lottery-selection/lottery-selection.component';
 import { LotteryComponent } from './lottery/lottery.component';
 import { LotofacilComponent } from './lotofacil/lotofacil.component';
+import { CombinationsComponent } from './combinations/combinations.component';
 
 const routes: Routes = [
+  { path: 'combinations/:id', component: CombinationsComponent, canActivate: [GuestGuard] },
   { path: 'lotofacil/:combination', component: LotofacilComponent, canActivate: [GuestGuard] },
   { path: 'lottery/:lottery', component: LotteryComponent, canActivate: [GuestGuard] },
   { path: 'lottery-selection', component: LotterySelectionComponent, canActivate: [GuestGuard] },

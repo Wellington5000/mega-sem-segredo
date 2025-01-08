@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LotteryService } from '../services/lottery.service';
+import { Lotofacil } from '../models/lotofacil';
 
 @Component({
   selector: 'app-lotofacil',
@@ -17,7 +19,10 @@ export class LotofacilComponent implements OnInit {
     3: 356
   };
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(
+    private lotteryService: LotteryService,
+    private activatedRoute: ActivatedRoute,
+  ) {}
 
   ngOnInit(): void {
     const combinationParam = this.activatedRoute.snapshot.params['combination'];
@@ -47,5 +52,23 @@ export class LotofacilComponent implements OnInit {
 
   checkNumber(number: number): boolean {
     return this.selectedNumbers.has(number);
+  }
+
+  getBodyLotofacil(): Lotofacil {
+    const selectedNumbersArray: number[] = [...this.selectedNumbers];
+
+    return {
+      dezenas: selectedNumbersArray,
+      tipo: this.combinationsQuantity,
+      loteria: 'LF'
+    }
+  }
+
+  createCombinations(): void {
+    this.lotteryService.createCombinations(this.getBodyLotofacil()).subscribe({
+      next: (response) => {
+        console.log(response);
+      }
+    })
   }
 }

@@ -1,28 +1,29 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { LotteryService } from '../services/lottery.service';
-import { Combination } from '../models/combinations';
 import { NotificationService } from '../utils/notification/notification.service';
 
 @Component({
-  selector: 'app-lottery',
-  templateUrl: './lottery.component.html',
-  styleUrls: ['./lottery.component.scss']
+  selector: 'app-combinations',
+  templateUrl: './combinations.component.html',
+  styleUrls: ['./combinations.component.scss']
 })
-export class LotteryComponent implements OnInit {
-  combinations!: Combination[];
-  hasCombination: boolean = false;
+export class CombinationsComponent implements OnInit {
+  combinations: any[] = [];
 
   constructor(
-    private lotteryService: LotteryService,
+    private activatedRoute: ActivatedRoute,
+    private LotteryService: LotteryService,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
-    this.getCombinations();
+    const id = this.activatedRoute.snapshot.params['id'];
+    this.getCombinations(id);
   }
 
-  getCombinations(): void {
-    this.lotteryService.getCombinations().subscribe({
+  getCombinations(id: number): void {
+    this.LotteryService.getCombinationsById(id).subscribe({
       next: (response) => {
         this.combinations = response?.combinacoes;
       },

@@ -6,12 +6,13 @@ import { Router } from '@angular/router';
 import { Signature } from './models/signature';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { environment } from 'src/environments/environment';
+import { ENVIRONMENT } from './environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  private API_URL  = 'https://megamaisbets.com.br/api/';
+  private API_URL  = ENVIRONMENT;
 
   constructor(
     private router: Router,
