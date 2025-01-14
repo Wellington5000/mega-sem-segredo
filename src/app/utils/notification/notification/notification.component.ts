@@ -1,6 +1,6 @@
 // notification.component.ts
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../notification.service';
+import { Notification, NotificationService } from '../notification.service';
 import { trigger, style, animate, transition } from '@angular/animations';
 
 @Component({
@@ -15,13 +15,13 @@ import { trigger, style, animate, transition } from '@angular/animations';
   ],
 })
 export class NotificationComponent implements OnInit {
-  message: string | null = '';
+  notification: Notification | null = null;
 
   constructor(private notificationService: NotificationService) {}
 
   ngOnInit() {
-    this.notificationService.getNotification().subscribe((message) => {
-      this.message = message;
+    this.notificationService.getNotification().subscribe((notification: Notification | null) => {
+      this.notification = notification;
     });
   }
 

@@ -1,5 +1,6 @@
 .l-container {
     height: 100%;
+    padding: 0 2rem;
     min-height: calc(100vh - 90px);
     background-color: #161C24;
 
@@ -67,7 +68,7 @@
                     }
 
                     .selected-number {
-                        background-color: #40AD1C;
+                        background-color: #A7348B;
                     }
                 }
             }

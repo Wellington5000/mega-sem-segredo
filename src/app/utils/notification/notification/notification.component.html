@@ -1,3 +1,3 @@
-<div *ngIf="message" class="notification" [@fadeInOut]>
-  {{ message }}
+<div *ngIf="notification?.message" class="notification" [ngClass]="notification?.type" [@fadeInOut]>
+  {{ notification?.message }}
 </div>

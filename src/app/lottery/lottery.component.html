@@ -49,8 +49,8 @@
                 <span class="l-subtitle text-secundary l-subtitle-2">Combinações geradas</span>
     
                 <div class="l-cards l-cards-2">
-                    <ng-container *ngFor="let combination of combinations">
-                        <img class="delete-button" src="/assets/icons/delete.png">
+                    <div *ngFor="let combination of combinations">
+                        <img class="delete-button" src="/assets/icons/delete.png" (click)="deleteCombination(combination.id)">
                         <a [routerLink]="['/combinations', combination.id]">
                             <div class="l-card">
                                 <span class="l-card-title text-secundary">{{ combination.quantidade }}</span>
@@ -58,7 +58,7 @@
                                 <span class="l-card-info text-secundary"> Gerada em {{ combination.criada_em }}</span>
                             </div>
                         </a>
-                    </ng-container>
+                    </div>
                 </div>
            </div>
         </div>

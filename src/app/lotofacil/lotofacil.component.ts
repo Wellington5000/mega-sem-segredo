@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { LotteryService } from '../services/lottery.service';
 import { Lotofacil } from '../models/lotofacil';
+import { NotificationService } from '../utils/notification/notification.service';
 
 @Component({
   selector: 'app-lotofacil',
@@ -20,8 +21,10 @@ export class LotofacilComponent implements OnInit {
   };
 
   constructor(
+    private router: Router,
     private lotteryService: LotteryService,
     private activatedRoute: ActivatedRoute,
+    private notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
@@ -67,7 +70,11 @@ export class LotofacilComponent implements OnInit {
   createCombinations(): void {
     this.lotteryService.createCombinations(this.getBodyLotofacil()).subscribe({
       next: (response) => {
-        console.log(response);
+        this.notificationService.success('Combinações geradas com sucesso!');
+        this.router.navigateByUrl('/lottery/lotofacil')
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.erro || 'Ocorreu um erro ao gerar as combinações!');
       }
     })
   }

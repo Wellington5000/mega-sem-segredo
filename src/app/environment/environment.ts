@@ -1,1 +1,1 @@
-export const ENVIRONMENT = 'https://megamaisbets.com.br/api/';
+export const environment = 'https://megamaisbets.com.br/api/';

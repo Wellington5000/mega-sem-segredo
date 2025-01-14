@@ -9,7 +9,7 @@ import { NotificationService } from '../utils/notification/notification.service'
   styleUrls: ['./lottery.component.scss']
 })
 export class LotteryComponent implements OnInit {
-  combinations!: Combination[];
+  combinations: Combination[] = [];
   hasCombination: boolean = false;
 
   constructor(
@@ -24,10 +24,23 @@ export class LotteryComponent implements OnInit {
   getCombinations(): void {
     this.lotteryService.getCombinations().subscribe({
       next: (response) => {
-        this.combinations = response?.combinacoes;
+        const combinacoes = response?.combinacoes || [];
+        this.combinations = Object.values(combinacoes);
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao listar as combinações!');
+      }
+    })
+  }
+
+  deleteCombination(id: number): void {
+    this.lotteryService.deleteCombination(id).subscribe({
+      next: (response) => {
+        this.notificationService.success('Combinações excluídas com sucesso!');
+        this.getCombinations();
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.erro || 'Ocorreu um erro ao excluir as combinações!');
       }
     })
   }

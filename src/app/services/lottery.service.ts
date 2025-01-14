@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ENVIRONMENT } from '../environment/environment';
+import { environment } from '../environment/environment';
 import { Lotofacil } from '../models/lotofacil';
 import { Combinations } from '../models/combinations';
 
@@ -15,14 +15,18 @@ export class LotteryService {
   ) { }
 
   getCombinations(): Observable<Combinations> {
-    return this.http.get<Combinations>(ENVIRONMENT + 'v3/matriz/LF');
+    return this.http.get<Combinations>(environment + 'v3/matriz/LF');
   }
 
   getCombinationsById(id: number): Observable<any> {
-    return this.http.get(ENVIRONMENT + 'v3/matriz/exibir/' + id);
+    return this.http.get(environment + 'v3/matriz/exibir/' + id);
   }
 
   createCombinations(body: Lotofacil): Observable<any> {
-    return this.http.post(ENVIRONMENT + 'v3/matriz/gerar', body);
+    return this.http.post(environment + 'v3/matriz/gerar', body);
+  }
+
+  deleteCombination(id: number): Observable<any> {
+    return this.http.delete(environment + 'v3/matriz/remover/' + id);
   }
 }

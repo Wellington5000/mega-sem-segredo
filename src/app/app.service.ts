@@ -5,14 +5,13 @@ import { Concourse } from './models/concourse';
 import { Router } from '@angular/router';
 import { Signature } from './models/signature';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { environment } from 'src/environments/environment';
-import { ENVIRONMENT } from './environment/environment';
+import { environment } from './environment/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  private API_URL  = ENVIRONMENT;
+  private API_URL  = environment;
 
   constructor(
     private router: Router,
