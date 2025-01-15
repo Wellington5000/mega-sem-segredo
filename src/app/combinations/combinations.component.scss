@@ -84,3 +84,22 @@
         }
     }
 }
+
+@media(max-width: 965px) {
+    .c-header {
+        flex-direction: column;
+    }
+
+    .actions {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .c-body {
+        padding: 0 2rem;
+    }
+
+    .numbers {
+        flex-wrap: wrap;
+    }
+}

@@ -2,24 +2,26 @@
     <app-header-logged></app-header-logged>
 
     <div class="l-content">
-        <div class="l-title-container">
-            <h1 class="l-title text-secundary">{{ combinationsQuantity }} combinações - Lotofácil</h1>
-        </div>
-
-        <span class="l-subtitle text-secundary">Selecione os 18 números que serão combinados</span>
-       
-        <div class="l-box">
-            <div class="card">
-                <span class="card-title text-secundary">{{ selectedNumbers.size }} {{ selectedNumbers.size <= 1 ? 'número selecionado' : 'números selecionados' }}</span>
-
-                <div class="numbers">
-                    <div *ngFor="let number of numbers" class="number" [class.selected-number]="checkNumber(+number)" (click)="addOrRemoveNumber(+number)">{{ number }}</div>
-                </div>
+        <div class="l-body">
+            <div class="l-title-container">
+                <h1 class="l-title text-secundary">{{ combinationsQuantity }} combinações - Lotofácil</h1>
             </div>
-
-            <button (click)="createCombinations()" class="primary-button" [disabled]="selectedNumbers.size < 18">Gerar combinações</button>
-
-            <a [routerLink]="['/lottery', 'lotofacil']" class="back-button text-primary">Voltar</a>
+    
+            <span class="l-subtitle text-secundary">Selecione os 18 números que serão combinados</span>
+           
+            <div class="l-box">
+                <div class="card">
+                    <span class="card-title text-secundary">{{ selectedNumbers.size }} {{ selectedNumbers.size <= 1 ? 'número selecionado' : 'números selecionados' }}</span>
+    
+                    <div class="numbers">
+                        <div *ngFor="let number of numbers" class="number" [class.selected-number]="checkNumber(+number)" (click)="addOrRemoveNumber(+number)">{{ number }}</div>
+                    </div>
+                </div>
+    
+                <button (click)="createCombinations()" class="primary-button" [disabled]="selectedNumbers.size < 18">Gerar combinações</button>
+    
+                <a [routerLink]="['/lottery', 'lotofacil']" class="back-button text-primary">Voltar</a>
+            </div>
         </div>
     </div>
 </div>
