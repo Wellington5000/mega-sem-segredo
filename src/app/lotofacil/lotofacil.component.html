@@ -18,7 +18,7 @@
                     </div>
                 </div>
     
-                <button (click)="createCombinations()" class="primary-button" [disabled]="selectedNumbers.size < 18">Gerar combinações</button>
+                <button (click)="createCombinations()" class="primary-button" [disabled]="selectedNumbers.size < maxSelectableNumbers">Gerar combinações</button>
     
                 <a [routerLink]="['/lottery', 'lotofacil']" class="back-button text-primary">Voltar</a>
             </div>
