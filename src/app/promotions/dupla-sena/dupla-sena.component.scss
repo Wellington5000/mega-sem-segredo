@@ -1,0 +1,140 @@
+.p-container {
+    height: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #161C24;
+
+    section {
+        height: 100%;
+        display: flex;
+        margin-top: 90px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .p-content {
+        height: 100%;
+        display: flex;
+        min-height: 467px;
+        align-items: center;
+        justify-content: center;
+
+        .p-image {
+            height: 100%;
+            width: 560px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .image-text {
+                z-index: 1;
+                font-size: 20px;
+                color: #FFEA30;
+                font-weight: 700;
+                line-height: 27px;
+                margin-bottom: -30px;
+            }
+
+            img {
+                width: fit-content;
+                height: fit-content;
+            }
+        }
+
+        .p-info {
+            display: flex;
+            max-width: 534px;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .p-title {
+                font-size: 20px;
+                font-weight: 700;
+                line-height: 27px;
+                margin-bottom: 28px;
+            }
+
+            .p-text {
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 24px;
+            }
+
+            .ds-list {
+                margin-bottom: 20px;
+
+                li {
+                    margin-left: 20px;
+                }
+            }
+
+            .ds-actions {
+                gap: 18px;
+                display: flex;
+                margin-top: 28px;
+                align-items: center;
+            }
+
+            .regulamentation {
+                font-weight: 700;
+            }
+
+            button {
+                width: 340px;
+            }
+        }
+    }
+}
+
+.pro-user {
+    section {
+        flex-direction: column;
+
+        .ds-actions {
+            width: 100%;
+            max-width: 340px;
+
+            a, button {
+                width: 100%;
+                display: block;
+                font-size: 18px;
+                font-weight: 700;
+
+            }
+        }
+    }
+}
+
+.pr-table-container {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+@media(max-width: 900px) {
+    section {
+        padding-bottom: 46px;
+        padding-top: 46px;
+    }
+
+    .p-content {
+        flex-direction: column;
+        gap: 40px;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .p-image {
+        width: 100% !important;
+    }
+
+    .p-info {
+        align-items: center !important;
+    }
+
+    .p-text {
+        text-align: center;
+    }
+}

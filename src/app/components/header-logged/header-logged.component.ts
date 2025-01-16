@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { NotificationService } from 'src/app/utils/notification/notification.service';
 
@@ -10,6 +10,7 @@ import { NotificationService } from 'src/app/utils/notification/notification.ser
 export class HeaderLoggedComponent implements OnInit {
   expanded: boolean = false;
   credits:  number = 0;
+  showPromotionSubMenu: boolean = false;
 
   constructor(
     private appService: AppService,
@@ -35,5 +36,17 @@ export class HeaderLoggedComponent implements OnInit {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao carregar informações dos créditos');
       }
     })
+  }
+
+  togglePromotionSubMenu(event: MouseEvent): void {
+    event.stopPropagation();
+    this.showPromotionSubMenu = !this.showPromotionSubMenu;
+  }
+
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    if (this.showPromotionSubMenu) {
+      this.showPromotionSubMenu = false;
+    }
   }
 }

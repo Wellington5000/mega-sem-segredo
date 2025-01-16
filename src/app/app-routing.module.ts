@@ -24,8 +24,10 @@ import { LotterySelectionComponent } from './lottery-selection/lottery-selection
 import { LotteryComponent } from './lottery/lottery.component';
 import { LotofacilComponent } from './lotofacil/lotofacil.component';
 import { CombinationsComponent } from './combinations/combinations.component';
+import { DuplaSenaComponent } from './promotions/dupla-sena/dupla-sena.component';
 
 const routes: Routes = [
+  { path: 'dupla-sena', component: DuplaSenaComponent },
   { path: 'combinations/:id', component: CombinationsComponent, canActivate: [GuestGuard] },
   { path: 'lotofacil/:combination', component: LotofacilComponent, canActivate: [GuestGuard] },
   { path: 'lottery/:lottery', component: LotteryComponent, canActivate: [GuestGuard] },

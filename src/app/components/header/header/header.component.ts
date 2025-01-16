@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -9,6 +9,7 @@ export class HeaderComponent implements OnInit {
   expanded: boolean = false;
   user: any;
   promotionRouter: string = '/promotion';
+  showPromotionSubMenu: boolean = false;
 
   @Input() hideOptions: boolean = false;
 
@@ -30,4 +31,16 @@ export class HeaderComponent implements OnInit {
     menu?.classList.remove('expanded');
     this.expanded = false;
   }
+
+  togglePromotionSubMenu(event: MouseEvent): void {
+      event.stopPropagation();
+      this.showPromotionSubMenu = !this.showPromotionSubMenu;
+    }
+  
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: Event): void {
+      if (this.showPromotionSubMenu) {
+        this.showPromotionSubMenu = false;
+      }
+    }
 }

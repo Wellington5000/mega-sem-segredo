@@ -1,0 +1,105 @@
+<div class="p-container" *ngIf="!isProUser; else proUserTemplate">
+    <app-header></app-header>
+
+    <section>
+        <div class="p-content">
+            <div class="p-image">
+                <span class="image-text">Prêmio estimado em R$ 35 MILHÕES</span>
+                <img src="/assets/images/promotion/dupla-sena.png">
+            </div>
+            <div class="p-info">
+                <span class="text-primary p-title">Na Dupla Sena de Páscoa teremos: bônus de R$ 1.000,00 em jogos para cada grupo de 100 assinantes Pro.</span>
+                <span class="text-secundary p-text">Vantagens da Dupla Sena:</span>
+                <ul class="ds-list">
+                    <li class="text-secundary p-text"> 2 sorteios no mesmo concurso</li>
+                    <li class="text-secundary p-text"> 10 números a menos que a Mega Sena</li>
+                    <li class="text-secundary p-text"> Paga premiação a partir de terno</li>
+                    <li class="text-secundary p-text"> Nosso jogo já garante terno, qualquer que seja o resultado da Dupla Sena</li>
+                    <li class="text-secundary p-text"> Atualmente o preço da aposta na Dupla Sena é a metade do preço da Mega-Sena</li>
+                </ul>
+
+                <span class="prevision-date text-primary">Data prevista do sorteio: 19/04/25</span>
+
+                <div class="ds-actions">
+                    <a routerLink="/payment-methods">
+                        <button class="primary-button">Participe assinando o  plano Pro !</button>
+                    </a>
+
+                    <a (click)="downloadRegulation()" class="text-primary regulamentation">
+                        Ver regulamento
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <app-footer></app-footer>
+</div>
+
+<ng-template #proUserTemplate>
+    <div class="p-container pro-user">
+        <app-header-logged></app-header-logged>
+    
+        <section>
+            <div class="p-content">
+                <div class="p-image">
+                    <span class="image-text">Prêmio estimado em R$ 35 MILHÕES</span>
+                    <img src="/assets/images/promotion/dupla-sena.png">
+                </div>
+                <div class="p-info">
+                    <span class="text-primary p-title">Na Dupla Sena de Páscoa teremos: bônus de R$ 1.000,00 em jogos para cada grupo de 100 assinantes Pro.</span>
+                    <span class="text-secundary p-text">Vantagens da Dupla Sena:</span>
+                    <ul class="ds-list">
+                        <li class="text-secundary p-text"> 2 sorteios no mesmo concurso</li>
+                        <li class="text-secundary p-text"> 10 números a menos que a Mega Sena</li>
+                        <li class="text-secundary p-text"> Paga premiação a partir de terno</li>
+                        <li class="text-secundary p-text"> Nosso jogo já garante terno, qualquer que seja o resultado da Dupla Sena</li>
+                        <li class="text-secundary p-text"> Atualmente o preço da aposta na Dupla Sena é a metade do preço da Mega-Sena</li>
+                    </ul>
+    
+                    <span class="prevision-date text-primary">Data prevista do sorteio: 19/04/25</span>
+                </div>
+            </div>
+
+            <div class="ds-actions">
+                <a (click)="downloadRegulation()">
+                    <button class="primary-button">Ver regulamento</button>
+                </a>
+            </div>
+
+
+            <div class="pr-table-container">
+                <table *ngIf="promotions.length > 0; else notFoundPromotions">
+                    <thead>
+                        <tr>
+                            <th>CÓDIGO</th>
+                            <th>GRUPO</th>
+                            <th>CONCURSO</th>
+                            <th class="lp-column-with-margin">COTAS DO GRUPO (%)</th>
+                            <th>Combinações</th>
+                            <th>APOSTAS</th>
+                            <th>ACERTO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let promotion of promotions">
+                            <td>{{ promotion?.codigo }}</td>
+                            <td>{{ promotion?.grupo }}</td>
+                            <td>{{ promotion?.concurso }}</td>
+                            <td class="lp-column-with-margin">{{ promotion?.preenchidas }}</td>
+                            <td class="lp-table-button"><button (click)="downloadProofCombinations(promotion?.id)">Baixar</button></td>
+                            <td class="lp-table-button"><button (click)="downloadProofPayments(promotion?.id)">Baixar</button></td>
+                            <td class="lp-table-button"><button (click)="downloadProofSuccess(promotion?.id)">Baixar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ng-template #notFoundPromotions>
+                <span class="text-secundary small-text">Sem resultados no momento!</span>
+            </ng-template>
+        </section>
+    
+        <app-footer></app-footer>
+    </div>
+</ng-template>

@@ -5,7 +5,15 @@
       <a href="#products" (click)="hiddenMenu()">Nossos produtos</a>
       <a href="#plans" (click)="hiddenMenu()">Plano</a>
       <a routerLink="/check-hits" (click)="hiddenMenu()">Conferir acertos</a>
-      <a [routerLink]="[promotionRouter]" (click)="hiddenMenu()">Promoção</a>
+
+      <div class="promotion-menu">
+        <a (click)="togglePromotionSubMenu($event)">Promoção</a>
+        <div class="submenu" *ngIf="showPromotionSubMenu">
+          <a routerLink="/dupla-sena" (click)="hiddenMenu()">Dupla Sena de Páscoa</a>
+          <a [routerLink]="promotionRouter" (click)="hiddenMenu()"> Mega da Virada</a>
+        </div>
+      </div>
+
       <a href="#who-we-are" (click)="hiddenMenu()">Quem somos</a>
     </div>
     <a routerLink="/login" (click)="hiddenMenu()"><button class="primary-button">Acessar</button></a>

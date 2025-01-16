@@ -51,6 +51,7 @@ import { LotterySelectionComponent } from './lottery-selection/lottery-selection
 import { LotteryComponent } from './lottery/lottery.component';
 import { LotofacilComponent } from './lotofacil/lotofacil.component';
 import { CombinationsComponent } from './combinations/combinations.component';
+import { DuplaSenaComponent } from './promotions/dupla-sena/dupla-sena.component';
 
 
 
@@ -93,7 +94,8 @@ registerLocaleData(localePt, 'pt');
     LotterySelectionComponent,
     LotteryComponent,
     LotofacilComponent,
-    CombinationsComponent
+    CombinationsComponent,
+    DuplaSenaComponent
   ],
   imports: [
     BrowserModule,
