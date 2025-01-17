@@ -9,7 +9,7 @@ import { NotificationService } from '../utils/notification/notification.service'
   styleUrls: ['./combinations.component.scss']
 })
 export class CombinationsComponent implements OnInit {
-  combinations: any[] = [];
+  sortedCombinations: any[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,7 +25,8 @@ export class CombinationsComponent implements OnInit {
   getCombinations(id: number): void {
     this.LotteryService.getCombinationsById(id).subscribe({
       next: (response) => {
-        this.combinations = response?.combinacoes;
+        const combinations: any[] = response?.combinacoes;
+        this.sortedCombinations = combinations.map(arr => arr.sort((a: number, b: number) => a - b))
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao listar as combinações!');

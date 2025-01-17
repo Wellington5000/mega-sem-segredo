@@ -35,8 +35,8 @@ export class DuplaSenaComponent {
 
   getUser(): void {
     const user = Utils.getUser();
-
-    if(user) {
+    
+    if(Object.keys(user).length > 0) {
       this.getSignature();
     }
   }
