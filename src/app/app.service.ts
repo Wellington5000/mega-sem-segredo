@@ -5,13 +5,13 @@ import { Concourse } from './models/concourse';
 import { Router } from '@angular/router';
 import { Signature } from './models/signature';
 import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { environment } from './environment/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  private API_URL  = environment;
+  private API_URL  = 'https://megamaisbets.com.br/api/';
 
   constructor(
     private router: Router,
@@ -27,7 +27,7 @@ export class AppService {
     };
 
     return this.http.post(this.API_URL + 'auth/register', user, httpOptions);
-  } 
+  }
 
   createUserWithoutPassword(user: any): Observable<any> {
     const httpOptions = {
@@ -61,8 +61,8 @@ export class AppService {
     return this.http.post<Concourse>(this.API_URL + 'concursos-acertos-grupos', { concurso: concurso }, httpOptions);
   }
 
-  findAllPromotions(): Observable<any> {
-    return this.http.get(this.API_URL + 'v3/promocoes/grupos');
+  findAllPromotions(lotteryCode: string): Observable<any> {
+    return this.http.get(this.API_URL + `v3/promocoes/${lotteryCode}/grupos`);
   }
 
   findPromotionByCode(code: string): Observable<any> {
@@ -99,8 +99,8 @@ export class AppService {
     });
   }
 
-  downloadRegulation(): Observable<Blob> {
-    return this.http.get(this.API_URL + `promocoes/download-regulamento`, {
+  downloadRegulation(lotteryCode: string): Observable<Blob> {
+    return this.http.get(this.API_URL + `promocoes/${lotteryCode}/download-regulamento`, {
       responseType: 'blob'
     });
   }

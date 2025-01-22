@@ -5,10 +5,11 @@
   <div class="header-actions">
     <div class="header-actions-items">
       <a routerLink="/home" (click)="hiddenMenu()">Página inicial</a>
-      
+
       <div class="promotion-menu">
         <a (click)="togglePromotionSubMenu($event)">Promoção</a>
         <div class="submenu" *ngIf="showPromotionSubMenu">
+          <img class="submenu-image" src="/assets/images/em-breve.png">
           <a routerLink="/dupla-sena" (click)="hiddenMenu()">Dupla Sena de Páscoa</a>
           <a routerLink="/promotion-logged-result" (click)="hiddenMenu()"> Mega da Virada</a>
         </div>

@@ -9,7 +9,7 @@
             </a>
 
             <div class="pr-table-container">
-                <table *ngIf="promotions.length > 0; else notFoundPromotions">
+                <table *ngIf="promotions.length > 0">
                     <thead>
                         <tr>
                             <th>CÓDIGO</th>
@@ -34,10 +34,6 @@
                     </tbody>
                 </table>
             </div>
-
-            <ng-template #notFoundPromotions>
-                <span class="text-secundary small-text">Sem resultados no momento!</span>
-            </ng-template>
         </div>
 
         <ng-template #noHasPlan>

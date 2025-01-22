@@ -19,7 +19,7 @@ export class PromotionComponent implements OnInit {
   }
 
   downloadRegulation(): void {
-    this.appService.downloadRegulation().subscribe({
+    this.appService.downloadRegulation('MS').subscribe({
       next: (response: Blob) => {
         this.downloadPdf(response, 'Regulamento');
       },

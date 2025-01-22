@@ -35,7 +35,7 @@ export class LuckyPixComponent implements OnInit {
 
   getPromotions(): void {
     this.isLoading = true;
-    this.appService.findAllPromotions().subscribe({
+    this.appService.findAllPromotions('MS').subscribe({
       next: (response) => {
         this.isLoading = false;
         this.promotions = response;

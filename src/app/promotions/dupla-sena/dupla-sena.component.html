@@ -25,9 +25,9 @@
                         <button class="primary-button">Participe assinando o  plano Pro !</button>
                     </a>
 
-                    <a (click)="downloadRegulation()" class="text-primary regulamentation">
+                    <!-- <a (click)="downloadRegulation()" class="text-primary regulamentation">
                         Ver regulamento
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
 <ng-template #proUserTemplate>
     <div class="p-container pro-user">
         <app-header-logged></app-header-logged>
-    
+
         <section>
             <div class="p-content">
                 <div class="p-image">
@@ -56,20 +56,21 @@
                         <li class="text-secundary p-text"> Nosso jogo já garante terno, qualquer que seja o resultado da Dupla Sena</li>
                         <li class="text-secundary p-text"> Atualmente o preço da aposta na Dupla Sena é a metade do preço da Mega-Sena</li>
                     </ul>
-    
+
                     <span class="prevision-date text-primary">Data prevista do sorteio: 19/04/25</span>
                 </div>
             </div>
 
             <div class="ds-actions">
+                <img class="soon-image" src="/assets/images/em-breve.png">
                 <a (click)="downloadRegulation()">
-                    <button class="primary-button">Ver regulamento</button>
+                    <button [disabled]="true" class="primary-button">Ver regulamento</button>
                 </a>
             </div>
 
 
             <div class="pr-table-container">
-                <table *ngIf="promotions.length > 0; else notFoundPromotions">
+                <table *ngIf="promotions.length > 0">
                     <thead>
                         <tr>
                             <th>CÓDIGO</th>
@@ -94,12 +95,8 @@
                     </tbody>
                 </table>
             </div>
-
-            <ng-template #notFoundPromotions>
-                <span class="text-secundary small-text">Sem resultados no momento!</span>
-            </ng-template>
         </section>
-    
+
         <app-footer></app-footer>
     </div>
 </ng-template>

@@ -9,6 +9,7 @@
       <div class="promotion-menu">
         <a (click)="togglePromotionSubMenu($event)">Promoção</a>
         <div class="submenu" *ngIf="showPromotionSubMenu">
+          <img class="submenu-image" src="/assets/images/em-breve.png">
           <a routerLink="/dupla-sena" (click)="hiddenMenu()">Dupla Sena de Páscoa</a>
           <a [routerLink]="promotionRouter" (click)="hiddenMenu()"> Mega da Virada</a>
         </div>

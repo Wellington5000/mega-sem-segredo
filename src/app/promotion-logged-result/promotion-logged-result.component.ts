@@ -26,7 +26,7 @@ export class PromotionLoggedResultComponent implements OnInit {
   }
 
   getPromotions(): void {
-    this.appService.findAllPromotions().subscribe({
+    this.appService.findAllPromotions('MS').subscribe({
       next: (response) => {
         this.promotions = response?.participacoes;
       },
@@ -79,7 +79,7 @@ export class PromotionLoggedResultComponent implements OnInit {
         this.checkHasPlan(response);
       },
       error: (error) => {
-        this.notificationService.notify(error?.error?.message); 
+        this.notificationService.notify(error?.error?.message);
       }
     })
   }
@@ -94,7 +94,7 @@ export class PromotionLoggedResultComponent implements OnInit {
   }
 
   downloadRegulation(): void {
-    this.appService.downloadRegulation().subscribe({
+    this.appService.downloadRegulation('MS').subscribe({
       next: (response: Blob) => {
         this.downloadPdf(response, 'Regulamento');
       },
@@ -111,9 +111,9 @@ export class PromotionLoggedResultComponent implements OnInit {
   }
 
   checkDate(): boolean {
-    const today = new Date(); 
+    const today = new Date();
     const targetDate = new Date('2024-12-28');
-  
+
     return today < targetDate;
-  }  
+  }
 }

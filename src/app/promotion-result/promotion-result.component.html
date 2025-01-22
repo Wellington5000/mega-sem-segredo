@@ -5,9 +5,9 @@
         <div class="p-content">
             <span class="pr-title text-secundary">Resultado do Sorteio da <strong class="text-primary">Virada 2024!</strong></span>
             <span class="pr-text text-secundary">Ao realizar o pagamento, você se habilita automaticamente para participar do sorteio, podendo acompanhar todas as etapas através do código fornecido.</span>
-        
+
             <div class="pr-table-container">
-                <table *ngIf="promotions.length > 0; else notFoundPromotions">
+                <table *ngIf="promotions.length > 0">
                     <thead>
                         <tr>
                             <th>GRUPO</th>
@@ -27,13 +27,9 @@
                 </table>
             </div>
 
-            <ng-template #notFoundPromotions>
-                <span class="text-secundary small-text">Sem resultados no momento!</span>
-            </ng-template>
-
             <a (click)="downloadRegulation()" class="regulamentation">
                 <button class="primary-button">Ver regulamento</button>
-            </a>    
+            </a>
         </div>
     </section>
 

@@ -23,7 +23,7 @@ export class DuplaSenaComponent {
   }
 
   getPromotions(): void {
-    this.appService.findAllPromotions().subscribe({
+    this.appService.findAllPromotions('DS').subscribe({
       next: (response) => {
         this.promotions = response?.participacoes;
       },
@@ -35,7 +35,7 @@ export class DuplaSenaComponent {
 
   getUser(): void {
     const user = Utils.getUser();
-    
+
     if(Object.keys(user).length > 0) {
       this.getSignature();
     }
@@ -47,7 +47,7 @@ export class DuplaSenaComponent {
         this.checkHasPlan(response);
       },
       error: (error) => {
-        this.notificationService.notify(error?.error?.message); 
+        this.notificationService.notify(error?.error?.message);
       }
     })
   }
@@ -62,7 +62,7 @@ export class DuplaSenaComponent {
   }
 
   downloadRegulation(): void {
-    this.appService.downloadRegulation().subscribe({
+    this.appService.downloadRegulation('DS').subscribe({
       next: (response: Blob) => {
         this.downloadPdf(response, 'Regulamento');
       },

@@ -44,6 +44,12 @@ header {
   cursor: pointer;
 }
 
+.submenu-image {
+  position: absolute;
+  left: 33px;
+  top: 18px;
+}
+
 button {
   text-transform: uppercase;
 }
@@ -96,7 +102,7 @@ button {
 
   .header-actions-items, .primary-button {
     display: none !important;
-  }  
+  }
 
   .expanded {
     padding: 0;
@@ -105,11 +111,11 @@ button {
     div.bar:first-of-type {
       transform: rotate(45deg) translate(4px, 10px);
     }
-    
+
     div.bar:last-of-type {
       transform: rotate(-45deg) translate(4px, -10px);
     }
-    
+
     div.bar:nth-child(2) {
       opacity: 0;
     }
@@ -142,8 +148,13 @@ button {
         font-size: 14px;
       }
 
-      
+
     }
+  }
+
+  .submenu-image {
+    top: 34px;
+    left: 49px;
   }
 }
 

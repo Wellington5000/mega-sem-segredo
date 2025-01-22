@@ -22,7 +22,7 @@ export class PromotionResultComponent implements OnInit {
   }
 
   getPromotions(): void {
-    this.appService.findAllPromotions().subscribe({
+    this.appService.findAllPromotions('MS').subscribe({
       next: (response) => {
         this.promotions = response;
       },
@@ -59,7 +59,7 @@ export class PromotionResultComponent implements OnInit {
   }
 
   downloadRegulation(): void {
-    this.appService.downloadRegulation().subscribe({
+    this.appService.downloadRegulation('MS').subscribe({
       next: (response: Blob) => {
         this.downloadPdf(response, 'Regulamento');
       },
