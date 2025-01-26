@@ -43,8 +43,7 @@ export class LotofacilComponent implements OnInit {
 
   setCombinationsProperties(combination: number): void {
     const mapping = this.combinationMapping[combination];
-    console.log(mapping);
-    console.log(combination)
+    
     if (mapping) {
       this.combinationsQuantity = mapping.quantity;
       this.maxSelectableNumbers = mapping.maxSelectable;

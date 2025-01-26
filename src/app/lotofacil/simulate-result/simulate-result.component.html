@@ -1,0 +1,143 @@
+<div class="c-container">
+    <app-header-logged></app-header-logged>
+
+    <div class="c-content">
+        <div class="box">
+            <div class="c-header">
+                <h2 class="c-title text-secundary">Confira os acertos das suas combinações de acordo com a simulação</h2>
+            </div>
+            
+            <div class="c-body">
+                <div class="card" *ngFor="let items of sortedCombinations; let i = index">
+                    <span class="card-title text-secundary">Combinação {{ i + 1 }}</span>
+                    <div class="numbers" >
+                        <div class="number text-secundary" *ngFor="let item of items">{{ item }}</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-title text-secundary">Se o resultado fosse esses números que você selecionou</span>
+                    <div class="numbers" >
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                    </div>
+                </div>
+
+                <div class="result">
+                    <span class="card-title text-secundary">Esses seriam os acertos das suas combinações</span>
+                    <div class="card">
+                        <div class="numbers" >
+                            <div class="box-combinations">
+                                <span class="combination-number text-secundary">24</span>
+                                <span class="combination-text text-secundary">Combinações</span>
+                            </div>
+
+                            <div class="box-info">
+                                <div class="item">
+                                    <span class="item-title">02</span>
+                                    <span class="item-text">11 acertos</span>
+                                </div>
+
+                                <div class="item">
+                                    <span class="item-title">02</span>
+                                    <span class="item-text">11 acertos</span>
+                                </div>
+
+                                <div class="item">
+                                    <span class="item-title">02</span>
+                                    <span class="item-text">11 acertos</span>
+                                </div>
+
+                                <div class="item">
+                                    <span class="item-title">02</span>
+                                    <span class="item-text">11 acertos</span>
+                                </div>
+
+                                <div class="item">
+                                    <span class="item-title">02</span>
+                                    <span class="item-text">11 acertos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-title text-secundary">Combinação 01 - 11 acertos</span>
+                    <div class="numbers" >
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-title text-secundary">Combinação 01 - 11 acertos</span>
+                    <div class="numbers" >
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <span class="card-title text-secundary">Combinação 01 - 11 acertos</span>
+                    <div class="numbers" >
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary">01</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

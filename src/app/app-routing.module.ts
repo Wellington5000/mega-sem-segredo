@@ -25,8 +25,12 @@ import { LotteryComponent } from './lottery/lottery.component';
 import { LotofacilComponent } from './lotofacil/lotofacil.component';
 import { CombinationsComponent } from './combinations/combinations.component';
 import { DuplaSenaComponent } from './promotions/dupla-sena/dupla-sena.component';
+import { SimulateComponent } from './lotofacil/simulate/simulate.component';
+import { SimulateResultComponent } from './lotofacil/simulate-result/simulate-result.component';
 
 const routes: Routes = [
+  { path: 'lotofacil-simulate-result', component: SimulateResultComponent },
+  { path: 'lotofacil-simulate', component: SimulateComponent },
   { path: 'dupla-sena', component: DuplaSenaComponent },
   { path: 'combinations/:id', component: CombinationsComponent, canActivate: [GuestGuard] },
   { path: 'lotofacil/:combination', component: LotofacilComponent, canActivate: [GuestGuard] },

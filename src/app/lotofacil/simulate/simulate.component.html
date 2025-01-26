@@ -1,0 +1,56 @@
+<div class="l-container">
+    <app-header-logged></app-header-logged>
+
+    <div class="l-content">
+        <div class="l-body">
+            <div class="l-title-container">
+                <h1 class="l-title text-secundary">Simular resultado Lotofácil</h1>
+            </div>
+
+            <div class="l-body-content">
+                <div class="l-card-container">
+                    <span class="l-subtitle text-secundary">Selecione os 15 números que simularão o resultado</span>
+    
+                    <div class="l-box">
+                        <div class="card">
+                            <span class="card-title text-secundary">{{ selectedNumbers.size }} {{ selectedNumbers.size <= 1 ? 'número selecionado' : 'números selecionados' }}</span>
+    
+                            <button (click)="clear()" class="s-clear-button">Limpar</button>
+    
+                            <div class="numbers">
+                                <div *ngFor="let number of numbers" class="number" [class.selected-number]="checkNumber(+number)" (click)="addOrRemoveNumber(+number)">{{ number }}</div>
+                            </div>
+                        </div>
+    
+                        <button (click)="createSimulation()" class="primary-button" [disabled]="selectedNumbers.size < maxSelectableNumbers">Conferir acertos das suas combinações</button>
+    
+                    </div>
+                </div>
+
+                <span class="text-secundary body-text">ou</span>
+    
+                <div class="l-card-container">
+                    <span class="l-subtitle text-secundary">Escolha o intervalo de concurso para comparar com resultados anteriores</span>
+    
+                    <div class="l-box box-concourse">
+                        <div class="card">
+                            <span class="text-secundary">Concurso</span>
+
+                            <div class="form-input">
+                                <input [class.invalid-input]="from.invalid" [formControl]="from" name="from" type="email" maxlength="5">
+                            </div>
+
+                            <span class="text-secundary">a</span>
+
+                            <div class="form-input">
+                                <input [class.invalid-input]="to.invalid" [formControl]="to" name="to" type="email" maxlength="5">
+                            </div>
+                        </div>
+    
+                        <button (click)="createSimulation()" class="primary-button" [disabled]="from.invalid || to.invalid">Conferir com os resultados anteriores</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
