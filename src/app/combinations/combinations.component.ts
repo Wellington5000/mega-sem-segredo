@@ -9,6 +9,7 @@ import { NotificationService } from '../utils/notification/notification.service'
   styleUrls: ['./combinations.component.scss']
 })
 export class CombinationsComponent implements OnInit {
+  id!: number;
   sortedCombinations: any[] = [];
 
   constructor(
@@ -18,8 +19,8 @@ export class CombinationsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const id = this.activatedRoute.snapshot.params['id'];
-    this.getCombinations(id);
+    this.id = this.activatedRoute.snapshot.params['id'];
+    this.getCombinations(this.id);
   }
 
   getCombinations(id: number): void {

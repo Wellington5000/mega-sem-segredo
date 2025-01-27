@@ -30,7 +30,7 @@ import { SimulateResultComponent } from './lotofacil/simulate-result/simulate-re
 
 const routes: Routes = [
   { path: 'lotofacil-simulate-result', component: SimulateResultComponent },
-  { path: 'lotofacil-simulate', component: SimulateComponent },
+  { path: 'lotofacil-simulate/:id', component: SimulateComponent },
   { path: 'dupla-sena', component: DuplaSenaComponent },
   { path: 'combinations/:id', component: CombinationsComponent, canActivate: [GuestGuard] },
   { path: 'lotofacil/:combination', component: LotofacilComponent, canActivate: [GuestGuard] },

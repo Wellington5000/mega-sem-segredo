@@ -8,31 +8,10 @@
             </div>
             
             <div class="c-body">
-                <div class="card" *ngFor="let items of sortedCombinations; let i = index">
-                    <span class="card-title text-secundary">Combinação {{ i + 1 }}</span>
-                    <div class="numbers" >
-                        <div class="number text-secundary" *ngFor="let item of items">{{ item }}</div>
-                    </div>
-                </div>
-
                 <div class="card">
                     <span class="card-title text-secundary">Se o resultado fosse esses números que você selecionou</span>
                     <div class="numbers" >
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary selected-number" *ngFor="let number of selectedNumbers">{{ number }}</div>
                     </div>
                 </div>
 
@@ -41,100 +20,44 @@
                     <div class="card">
                         <div class="numbers" >
                             <div class="box-combinations">
-                                <span class="combination-number text-secundary">24</span>
+                                <span class="combination-number text-secundary">{{ sortedCombinations.length }}</span>
                                 <span class="combination-text text-secundary">Combinações</span>
                             </div>
 
                             <div class="box-info">
                                 <div class="item">
-                                    <span class="item-title">02</span>
+                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 11) }}</span>
                                     <span class="item-text">11 acertos</span>
                                 </div>
 
                                 <div class="item">
-                                    <span class="item-title">02</span>
-                                    <span class="item-text">11 acertos</span>
+                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 12) }}</span>
+                                    <span class="item-text">12 acertos</span>
                                 </div>
 
                                 <div class="item">
-                                    <span class="item-title">02</span>
-                                    <span class="item-text">11 acertos</span>
+                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 13) }}</span>
+                                    <span class="item-text">13 acertos</span>
                                 </div>
 
                                 <div class="item">
-                                    <span class="item-title">02</span>
-                                    <span class="item-text">11 acertos</span>
+                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 14) }}</span>
+                                    <span class="item-text">14 acertos</span>
                                 </div>
 
                                 <div class="item">
-                                    <span class="item-title">02</span>
-                                    <span class="item-text">11 acertos</span>
+                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 15) }}</span>
+                                    <span class="item-text">15 acertos</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card">
-                    <span class="card-title text-secundary">Combinação 01 - 11 acertos</span>
+                <div class="card" *ngFor="let items of sortedCombinations; let i = index">
+                    <span class="card-title text-secundary">Combinação {{ i + 1 }} - {{ countMatchingNumbers(items, selectedNumbers) }} acertos</span>
                     <div class="numbers" >
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <span class="card-title text-secundary">Combinação 01 - 11 acertos</span>
-                    <div class="numbers" >
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <span class="card-title text-secundary">Combinação 01 - 11 acertos</span>
-                    <div class="numbers" >
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
-                        <div class="number text-secundary">01</div>
+                        <div class="number text-secundary" *ngFor="let item of items" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
                     </div>
                 </div>
             </div>

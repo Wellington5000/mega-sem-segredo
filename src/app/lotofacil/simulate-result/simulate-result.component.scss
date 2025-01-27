@@ -9,6 +9,8 @@
         display: flex;
         margin-top: 90px;
         justify-content: center;
+        padding-left: 2rem;
+        padding-right: 2rem;
 
         .box {
             width: 100%;
@@ -77,6 +79,10 @@
                             border-radius: 50%;
                             align-items: center;
                             justify-content: center;
+                            background-color: #455A64;
+                        }
+
+                        .selected-number {
                             background-color: #A7348B;
                         }
                     }
@@ -156,10 +162,6 @@
     .actions {
         flex-direction: column;
         margin-top: 20px;
-    }
-
-    .c-body {
-        padding: 0 2rem;
     }
 
     .numbers {
