@@ -18,6 +18,10 @@ export class LotteryService {
     return this.http.get<Combinations>(environment + 'v3/matriz/LF');
   }
 
+  getCombinationsByConcourses(lottery: string, from: number, to: number): Observable<any> {
+    return this.http.get(environment + `v3/matriz/concursos/${ lottery }/${ from }/${ to }`);
+  }
+
   getCombinationsById(id: number): Observable<any> {
     return this.http.get(environment + 'v3/matriz/exibir/' + id);
   }

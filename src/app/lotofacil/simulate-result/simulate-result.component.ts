@@ -10,22 +10,43 @@ import { NotificationService } from 'src/app/utils/notification/notification.ser
 })
 export class SimulateResultComponent implements OnInit {
   id!: number;
+  to!: number;
+  from!: number;
+  simulationType!: string;
   selectedNumbers: number[] = [];
   sortedCombinations: any[] = [];
   combinations: number[][] = [];
+  concourses: number[][] = [];
 
   constructor(
-    private router: Router,
     private activatedRoute: ActivatedRoute,
     private LotteryService: LotteryService,
     private notificationService: NotificationService
   ) { }
 
   ngOnInit(): void {
-    this.getSelectedNumbers();
+    this.checkSimulationType();
   }
 
-  getCombinations(id: number): void {
+  checkSimulationType(): void {
+    this.activatedRoute.queryParams.subscribe(params => {
+      this.id = params['id'];
+      const number = params['numbers'];
+
+      if(number) {
+        this.simulationType = 'selection';
+        this.selectedNumbers = params['numbers'] ? JSON.parse(params['numbers']) : [];
+        this.getCombinationsBySelection(this.id);
+      } else {
+        this.simulationType = 'concourse';
+        this.from = params['from'];
+        this.to = params['to'];
+        this.getCombinationsByConcourses(this.id, this.from, this.to);
+      }
+    });
+  }
+
+  getCombinationsBySelection(id: number): void {
     this.LotteryService.getCombinationsById(id).subscribe({
       next: (response) => {
         this.combinations = response?.combinacoes;
@@ -37,12 +58,16 @@ export class SimulateResultComponent implements OnInit {
     })
   }
 
-  getSelectedNumbers(): void {
-    this.activatedRoute.queryParams.subscribe(params => {
-      this.id = params['id'];
-      this.selectedNumbers = params['numbers'] ? JSON.parse(params['numbers']) : [];
-      this.getCombinations(this.id);
-    });
+  getCombinationsByConcourses(id: number, from: number, to: number): void {
+    this.LotteryService.getCombinationsByConcourses('LF', from, to).subscribe({
+      next: (response) => {
+        this.concourses = response?.concursos;
+        this.getCombinationsBySelection(id);
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao listar as combinações!');
+      }
+    })
   }
 
   countMatchingNumbers(arr1: number[], arr2: number[]): number {
@@ -50,10 +75,10 @@ export class SimulateResultComponent implements OnInit {
     return arr2.filter(num => set1.has(num)).length;
   }
 
-  countMatchingArrays(matrix: number[][], selectedNumbers: number[], minMatches: number): number {
+  countMatchingArrays(matrix: number[][], selectedNumbers: number[], numMatches: number): number {
     return matrix.filter(arr => {
       const commonNumbers = arr.filter(num => selectedNumbers.includes(num)).length;
-      return commonNumbers >= minMatches;
+      return commonNumbers === numMatches;
     }).length;
   }
   

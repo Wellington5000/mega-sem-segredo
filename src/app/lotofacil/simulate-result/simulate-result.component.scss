@@ -92,14 +92,58 @@
     }
 }
 
+.concourse {
+    .result {
+        margin: 0 !important;
+    }
+
+    .card {
+        margin-top: 0 !important;
+    }
+    
+
+    .c-body {
+        gap: 8px !important;
+    }
+
+    .card-concourse-result {
+        margin-bottom: 10px !important;
+    }
+
+    .card-title {
+        margin-top: 28px;
+        margin-bottom: 14px;
+    }
+}
+
 .result {
     margin-top:  8px;
     margin-bottom: 15px;
     width: 100%;
 
+    .box-concourse-info {
+        font-weight: 600;
+        font-size: 16px;
+    }
+
     .numbers {
         justify-content: space-between !important;
         align-items: center;
+    }
+
+    .box-concourse-interval {
+        gap: 20px;
+        display: flex;
+        align-items: center;
+
+        .label {
+            font-weight: 300;
+            font-size: 12px;
+        }
+
+        .box-combinations {
+            background-color: #A7348B !important;
+        }
     }
    
     .card {

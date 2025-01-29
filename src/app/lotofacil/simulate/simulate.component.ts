@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { SimulateParams } from 'src/app/models/simulate-params';
 import { CombinationService } from 'src/app/services/combination.service';
 
 @Component({
@@ -20,7 +21,6 @@ export class SimulateComponent implements OnInit {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private combinationService: CombinationService,
   ) { }
 
   ngOnInit(): void {
@@ -47,10 +47,24 @@ export class SimulateComponent implements OnInit {
     this.selectedNumbers.clear();
   }
 
-  createSimulation(): void {
-    this.router.navigate(['/lotofacil-simulate-result'], {
-      queryParams: { id: this.id, numbers: JSON.stringify(Array.from(this.selectedNumbers)) }
+  createSimulationBySelection(): void {
+    this.redirectToSimulation({ 
+      id: this.id, 
+      numbers: JSON.stringify(Array.from(this.selectedNumbers)) 
     });
   }
-   
+
+  createSimulationByConcourse(): void {
+    this.redirectToSimulation({ 
+      id: this.id, 
+      from: this.from.value,
+      to: this.to.value,
+    });
+  }
+  
+  redirectToSimulation(params: SimulateParams): void {
+    this.router.navigate(['/lotofacil-simulate-result'], {
+      queryParams: params
+    });
+  }
 }

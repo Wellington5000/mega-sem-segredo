@@ -22,7 +22,7 @@
                             </div>
                         </div>
     
-                        <button (click)="createSimulation()" class="primary-button" [disabled]="selectedNumbers.size < maxSelectableNumbers">Conferir acertos das suas combinações</button>
+                        <button (click)="createSimulationBySelection()" class="primary-button" [disabled]="selectedNumbers.size < maxSelectableNumbers">Conferir acertos das suas combinações</button>
     
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                             </div>
                         </div>
     
-                        <button (click)="createSimulation()" class="primary-button" [disabled]="from.invalid || to.invalid">Conferir com os resultados anteriores</button>
+                        <button (click)="createSimulationByConcourse()" class="primary-button" [disabled]="from.invalid || to.invalid">Conferir com os resultados anteriores</button>
                     </div>
                 </div>
             </div>
