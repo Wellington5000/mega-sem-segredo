@@ -10,54 +10,34 @@
             <div class="c-body">
                 <div class="card">
                     <span class="card-title text-secundary">Se o resultado fosse esses números que você selecionou</span>
-                    <div class="numbers" >
-                        <div class="number text-secundary selected-number" *ngFor="let number of selectedNumbers">{{ number }}</div>
+                    <div class="numbers">
+                        <div class="number text-secundary selected-number" *ngFor="let number of selectedNumbers; trackBy: trackByIndex">{{ number }}</div>
                     </div>
                 </div>
 
                 <div class="result">
                     <span class="card-title text-secundary">Esses seriam os acertos das suas combinações</span>
                     <div class="card">
-                        <div class="numbers" >
+                        <div class="numbers">
                             <div class="box-combinations">
                                 <span class="combination-number text-secundary">{{ sortedCombinations.length }}</span>
                                 <span class="combination-text text-secundary">Combinações</span>
                             </div>
 
                             <div class="box-info">
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 11) }}</span>
-                                    <span class="item-text">11 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 12) }}</span>
-                                    <span class="item-text">12 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 13) }}</span>
-                                    <span class="item-text">13 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 14) }}</span>
-                                    <span class="item-text">14 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 15) }}</span>
-                                    <span class="item-text">15 acertos</span>
+                                <div class="item" *ngFor="let i of [11, 12, 13, 14, 15]">
+                                    <span class="item-title">{{ matchCounts[i] }}</span>
+                                    <span class="item-text">{{ i }} acertos</span>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="card" *ngFor="let items of sortedCombinations; let i = index">
+                <div class="card" *ngFor="let items of sortedCombinations; let i = index; trackBy: trackByIndex">
                     <span class="card-title text-secundary">Combinação {{ i + 1 }} - {{ countMatchingNumbers(items, selectedNumbers) }} acertos</span>
-                    <div class="numbers" >
-                        <div class="number text-secundary" *ngFor="let item of items" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
+                    <div class="numbers">
+                        <div class="number text-secundary" *ngFor="let item of items; trackBy: trackByIndex" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
                     </div>
                 </div>
             </div>
@@ -72,15 +52,13 @@
                 <div class="result">
                     <span class="card-title text-secundary">Esses seriam os acertos das suas combinações</span>
                     <div class="card card-concourse-result">
-                        <div class="numbers" >
+                        <div class="numbers">
                             <div class="box-concourse-interval">
                                 <div class="box-combinations">
                                     <span class="combination-text text-secundary">Concurso</span>
                                     <span class="combination-number text-secundary">{{ from }}</span>
                                 </div>
-
                                 <span class="text-secundary label">até</span>
-
                                 <div class="box-combinations">
                                     <span class="combination-text text-secundary">Concurso</span>
                                     <span class="combination-number text-secundary">{{ to }}</span>
@@ -88,29 +66,9 @@
                             </div>
 
                             <div class="box-info">
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 11) }}</span>
-                                    <span class="item-text">11 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 12) }}</span>
-                                    <span class="item-text">12 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 13) }}</span>
-                                    <span class="item-text">13 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 14) }}</span>
-                                    <span class="item-text">14 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(combinations, selectedNumbers, 15) }}</span>
-                                    <span class="item-text">15 acertos</span>
+                                <div class="item" *ngFor="let i of [11, 12, 13, 14, 15]">
+                                    <span class="item-title">{{ totalMatches[i] }}</span>
+                                    <span class="item-text">{{ i }} acertos</span>
                                 </div>
                             </div>
                         </div>
@@ -120,38 +78,18 @@
                 </div>
 
                 <span class="card-title text-secundary">Acertos por concursos</span>
-                <div class="result" *ngFor="let concourse of concourses; let i = index">
+                <div class="result" *ngFor="let concourse of concourses; let i = index; trackBy: trackByIndex">
                     <div class="card">
-                        <div class="numbers" >
+                        <div class="numbers">
                             <div class="box-combinations">
-                                <span class="combination-number text-secundary">{{ i + 1 }}</span>
+                                <span class="combination-number text-secundary">{{ concourse[0] }}</span>
                                 <span class="combination-text text-secundary">Concurso</span>
                             </div>
 
                             <div class="box-info">
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(sortedCombinations, concourse, 11) }}</span>
-                                    <span class="item-text">11 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(sortedCombinations, concourse, 12) }}</span>
-                                    <span class="item-text">12 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(sortedCombinations, concourse, 13) }}</span>
-                                    <span class="item-text">13 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(sortedCombinations, concourse, 14) }}</span>
-                                    <span class="item-text">14 acertos</span>
-                                </div>
-
-                                <div class="item">
-                                    <span class="item-title">{{ countMatchingArrays(sortedCombinations, concourse, 15) }}</span>
-                                    <span class="item-text">15 acertos</span>
+                                <div class="item" *ngFor="let j of [11, 12, 13, 14, 15]">
+                                    <span class="item-title">{{ concourseMatchCounts[i][j] }}</span>
+                                    <span class="item-text">{{ j }} acertos</span>
                                 </div>
                             </div>
                         </div>
@@ -159,5 +97,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
 </div>

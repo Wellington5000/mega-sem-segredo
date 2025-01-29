@@ -33,4 +33,8 @@ export class LotteryService {
   deleteCombination(id: number): Observable<any> {
     return this.http.delete(environment + 'v3/matriz/remover/' + id);
   }
+
+  getLotofacilInfo(): Observable<any> {
+    return this.http.get('https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/');
+  }
 }

@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SimulateParams } from 'src/app/models/simulate-params';
 import { CombinationService } from 'src/app/services/combination.service';
+import { LotteryService } from 'src/app/services/lottery.service';
 
 @Component({
   selector: 'app-simulate',
@@ -16,15 +17,27 @@ export class SimulateComponent implements OnInit {
   maxSelectableNumbers: number = 15;
   numbers: string[] = Array.from({ length: 25 }, (_, i) => String(i + 1).padStart(2, '0'));
   from: FormControl = new FormControl(1, Validators.required);
-  to: FormControl = new FormControl(3000, Validators.required);
+  to: FormControl = new FormControl(3305, Validators.required);
 
   constructor(
     private router: Router,
+    private lotteryService: LotteryService,
     private activatedRoute: ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
     this.id = this.activatedRoute.snapshot.params['id'];
+    this.getLotofacilInfo();
+  }
+
+  getLotofacilInfo(): void {
+    this.lotteryService.getLotofacilInfo().subscribe({
+      next: (response) => {
+        if(response) {
+          this.to.setValue(response?.numero || 3005)
+        }
+      }
+    })
   }
 
   addOrRemoveNumber(number: number): void {
