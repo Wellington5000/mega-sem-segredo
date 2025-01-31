@@ -26,7 +26,7 @@
 
                             <div class="box-info">
                                 <div class="item" *ngFor="let i of [11, 12, 13, 14, 15]">
-                                    <span class="item-title">{{ matchCounts[i] }}</span>
+                                    <span class="item-title">{{ matchCounts[i] || 0 }}</span>
                                     <span class="item-text">{{ i }} acertos</span>
                                 </div>
                             </div>
@@ -34,12 +34,14 @@
                     </div>
                 </div>
 
-                <div class="card" *ngFor="let items of sortedCombinations; let i = index; trackBy: trackByIndex">
-                    <span class="card-title text-secundary">Combinação {{ i + 1 }} - {{ countMatchingNumbers(items, selectedNumbers) }} acertos</span>
-                    <div class="numbers">
-                        <div class="number text-secundary" *ngFor="let item of items; trackBy: trackByIndex" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
+                <ng-container *ngFor="let items of sortedCombinations; let i = index; trackBy: trackByIndex">
+                    <div class="card" *ngIf="countMatchingNumbers(items, selectedNumbers) >= 11">
+                        <span class="card-title text-secundary">Combinação {{ i + 1 }} - {{ countMatchingNumbers(items, selectedNumbers) }} acertos</span>
+                        <div class="numbers">
+                            <div class="number text-secundary" *ngFor="let item of items; trackBy: trackByIndex" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
+                        </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
 
@@ -67,7 +69,7 @@
 
                             <div class="box-info">
                                 <div class="item" *ngFor="let i of [11, 12, 13, 14, 15]">
-                                    <span class="item-title">{{ totalMatches[i] }}</span>
+                                    <span class="item-title">{{ totalMatches[i] || 0 }}</span>
                                     <span class="item-text">{{ i }} acertos</span>
                                 </div>
                             </div>
@@ -78,23 +80,25 @@
                 </div>
 
                 <span class="card-title text-secundary">Acertos por concursos</span>
-                <div class="result" *ngFor="let concourse of concourses; let i = index; trackBy: trackByIndex">
-                    <div class="card">
-                        <div class="numbers">
-                            <div class="box-combinations">
-                                <span class="combination-number text-secundary">{{ concourse[0] }}</span>
-                                <span class="combination-text text-secundary">Concurso</span>
-                            </div>
-
-                            <div class="box-info">
-                                <div class="item" *ngFor="let j of [11, 12, 13, 14, 15]">
-                                    <span class="item-title">{{ concourseMatchCounts[i][j] }}</span>
-                                    <span class="item-text">{{ j }} acertos</span>
+                <ng-container *ngFor="let concourse of concourses; let i = index; trackBy: trackByIndex">
+                    <div class="result" *ngIf="hasMatches(i)">
+                        <div class="card">
+                            <div class="numbers">
+                                <div class="box-combinations">
+                                    <span class="combination-number text-secundary">{{ concourse[0] }}</span>
+                                    <span class="combination-text text-secundary">Concurso</span>
+                                </div>
+    
+                                <div class="box-info">
+                                    <div class="item" *ngFor="let j of [11, 12, 13, 14, 15]">
+                                        <span class="item-title">{{ concourseMatchCounts[i][j] }}</span>
+                                        <span class="item-text">{{ j }} acertos</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </ng-container>
             </div>
         </div>
     </div> 

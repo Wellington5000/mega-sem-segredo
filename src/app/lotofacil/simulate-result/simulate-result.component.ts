@@ -130,4 +130,7 @@ export class SimulateResultComponent implements OnInit {
     return somaPorChave;
   }
   
+  hasMatches(i: number): boolean {
+    return [11, 12, 13, 14, 15].some(j => this.concourseMatchCounts[i][j] > 0);
+  }
 }
