@@ -107,7 +107,7 @@ section {
 
     .card-3 {
       .hc1-box-img {
-        width: 153px;
+        width: 179px;
         height: 247px;
       }
 
@@ -387,6 +387,89 @@ section {
     }
   }
 
+  .content-6 {
+    padding-top: 100px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .hc6-info {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      .hc6-title {
+        font-weight: 800;
+        font-size: 38px;
+        line-height: 52px;
+        color: white;
+      }
+
+      .highlight-text {
+        color: #40AD1C;
+      }
+    }
+
+    .hc6-body {
+      gap: 32px;
+      display: flex;
+      align-items: center;
+      margin-top: -50px;
+      margin-bottom: -150px;
+
+      .hc6-body-info {
+        display: flex;
+        max-width: 542px;
+        flex-direction: column;
+
+        .hc6-promotion-title {
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 27px;
+          color: #FFEA30;
+        }
+
+        .hc6-promotion-subtitle {
+          margin-top: 8px;
+          font-weight: 700;
+          font-size: 20px;
+          line-height: 27px;
+          color: white;
+        }
+
+        .hc6-text-content {
+          margin-top: 22px;
+        }
+
+        ul {
+          padding-left: 20px;
+        }
+
+        .hc6-text, li {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 21px;
+          color: white;
+          margin-top: 2px;
+        }
+
+        .hc6-text-date {
+          color: #44AB1C80;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 21px;
+          margin-top: 18px;
+        }
+
+        button {
+          max-width: 340px;
+          margin-top: 18px;
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+    }
+  }
 }
 
 .hc1-box-title {
@@ -426,6 +509,13 @@ section {
     width: 720px;
     margin-left: 350px !important;
   }
+
+  .hc6-image-content {
+    margin-right: -80px;
+    img {
+      width: 720px;
+    }
+  }
 }
 
 @media(max-width: 1175px) {
@@ -435,6 +525,23 @@ section {
 
   .hc3-img img {
     width: 400px;
+  }
+
+  .hc6-body {
+    flex-direction: column;
+    margin-bottom: 75px !important;
+
+    .hc6-image-content {
+      margin-right: 0 !important;
+    }
+
+    .hc6-body-info {
+      margin-top: -135px;
+
+      button {
+        max-width: 100% !important;
+      }
+    }
   }
 }
 
@@ -454,6 +561,22 @@ section {
 }
 
 @media(max-width: 1040px) {
+  .hc6-title {
+    font-size: 28px !important;
+    line-height: 35px !important;
+    text-align: center;
+  }
+
+  .hc6-image-content {
+    margin-top: 20px;
+    margin-bottom: 75px;
+
+    img {
+      max-width: 100%;
+      width: 100% !important;
+    }
+  }
+
   .content-3 {
     margin-top: 100px !important;
   }
