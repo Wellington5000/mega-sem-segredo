@@ -1,0 +1,105 @@
+.c-container {
+    height: 100%;
+    padding-bottom: 4rem;
+    background-color: #161C24;
+    min-height: calc(100vh - 90px);
+
+    .c-content {
+        width: 100%;
+        display: flex;
+        margin-top: 90px;
+        justify-content: center;
+
+        .box {
+            width: 100%;
+            margin-top: 42px;
+            max-width: 1180px;
+
+            .c-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                h2 {
+                    font-weight: 600;
+                    font-size: 32px;
+                }
+
+                .actions {
+                    gap: 30px;
+                    display: flex;
+                    align-items: center;
+
+                    a {
+                        font-size: 20px;
+                        font-weight: 600;
+                    }
+
+                    button {
+                        font-size: 16px;
+                        font-weight: 700;
+                        padding: 12px 36px !important;
+                    }
+                }
+            }
+
+            .c-body {
+                gap: 20px;
+                display: flex;
+                flex-wrap: wrap;
+                margin-top: 58px;
+
+                .card {
+                    gap: 12px;
+                    width: fit-content;
+                    display: flex;
+                    border-radius: 16px;
+                    flex-direction: column;
+                    background-color: #263238;
+                    padding: 16px 22px 20px 16px;
+
+                    .card-title {
+                        font-weight: 600;
+                    }
+
+                    .numbers {
+                        gap: 12px;
+                        display: flex;
+                        justify-content: center;
+
+                        .number {
+                            width: 46px;
+                            height: 46px;
+                            display: flex;
+                            font-size: 20px;
+                            font-weight: 800;
+                            border-radius: 50%;
+                            align-items: center;
+                            justify-content: center;
+                            background-color: #BE0133;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 965px) {
+    .c-header {
+        flex-direction: column;
+    }
+
+    .actions {
+        flex-direction: column;
+        margin-top: 20px;
+    }
+
+    .c-body {
+        padding: 0 2rem;
+    }
+
+    .numbers {
+        flex-wrap: wrap;
+    }
+}

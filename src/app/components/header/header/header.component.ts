@@ -33,14 +33,14 @@ export class HeaderComponent implements OnInit {
   }
 
   togglePromotionSubMenu(event: MouseEvent): void {
-      event.stopPropagation();
-      this.showPromotionSubMenu = !this.showPromotionSubMenu;
-    }
+    event.stopPropagation();
+    this.showPromotionSubMenu = !this.showPromotionSubMenu;
+  }
   
-    @HostListener('document:click', ['$event'])
-    onDocumentClick(event: Event): void {
-      if (this.showPromotionSubMenu) {
-        this.showPromotionSubMenu = false;
-      }
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    if (this.showPromotionSubMenu) {
+      this.showPromotionSubMenu = false;
     }
+  }
 }

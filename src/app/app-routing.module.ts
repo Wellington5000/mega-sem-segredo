@@ -27,10 +27,17 @@ import { CombinationsComponent } from './combinations/combinations.component';
 import { DuplaSenaComponent } from './promotions/dupla-sena/dupla-sena.component';
 import { SimulateComponent } from './lotofacil/simulate/simulate.component';
 import { SimulateResultComponent } from './lotofacil/simulate-result/simulate-result.component';
+import { CombinationTypeSelectionComponent } from './dupla-sena/combination-type-selection/combination-type-selection.component';
+import { DuplaSenaCombinationComponent } from './dupla-sena/dupla-sena-combination/dupla-sena-combination.component';
+
+import { DuplaSenaCombinationsComponent } from './dupla-sena/dupla-sena-combinations/dupla-sena-combinations.component';
 
 const routes: Routes = [
-  { path: 'lotofacil-simulate-result', component: SimulateResultComponent },
-  { path: 'lotofacil-simulate/:id', component: SimulateComponent },
+  { path: 'combinations/dupla-sena/:id', component: DuplaSenaCombinationsComponent, canActivate: [GuestGuard] },
+  { path: 'dupla-sena/:combination', component: DuplaSenaCombinationComponent, canActivate: [GuestGuard] },
+  { path: 'lottery/dupla-sena', component: CombinationTypeSelectionComponent, canActivate: [GuestGuard] },
+  { path: 'lotofacil-simulate-result', component: SimulateResultComponent, canActivate: [GuestGuard] },
+  { path: 'lotofacil-simulate/:id', component: SimulateComponent, canActivate: [GuestGuard] },
   { path: 'dupla-sena', component: DuplaSenaComponent },
   { path: 'combinations/:id', component: CombinationsComponent, canActivate: [GuestGuard] },
   { path: 'lotofacil/:combination', component: LotofacilComponent, canActivate: [GuestGuard] },

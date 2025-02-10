@@ -22,7 +22,7 @@
             padding: 2px 12px;
             border-radius: 8px;
             margin-bottom: 38px;
-            background-color: #A7348B;
+            background-color: #BE0133;
             
         }
 
@@ -33,7 +33,7 @@
         .l-box {
             width: 100%;
             display: flex;
-            max-width: 314px;
+            max-width: 609px;
             margin-top: 36px;
             align-items: center;
             flex-direction: column;
@@ -76,7 +76,7 @@
                     }
 
                     .selected-number {
-                        background-color: #A7348B;
+                        background-color: #BE0133;
                     }
                 }
             }
@@ -84,6 +84,8 @@
             .primary-button {
                 width: 100%;
                 margin-top: 20px;
+                max-width: 314px;
+                align-self: flex-end;
             }
 
             .back-button {
@@ -115,5 +117,9 @@
 
     .card {
         height:     auto !important;
+    }
+
+    .primary-button {
+        max-width: 100% !important;
     }
 }

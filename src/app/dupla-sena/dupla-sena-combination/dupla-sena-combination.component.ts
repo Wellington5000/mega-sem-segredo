@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { LotteryService } from '../services/lottery.service';
-import { Lotofacil } from '../models/lotofacil';
-import { NotificationService } from '../utils/notification/notification.service';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Lotofacil } from 'src/app/models/lotofacil';
+import { LotteryService } from 'src/app/services/lottery.service';
+import { NotificationService } from 'src/app/utils/notification/notification.service';
 
 @Component({
-  selector: 'app-lotofacil',
-  templateUrl: './lotofacil.component.html',
-  styleUrls: ['./lotofacil.component.scss']
+  selector: 'app-dupla-sena-combination',
+  templateUrl: './dupla-sena-combination.component.html',
+  styleUrls: ['./dupla-sena-combination.component.scss']
 })
-export class LotofacilComponent implements OnInit {
-  combinationsQuantity: number = 0;
+export class DuplaSenaCombinationComponent implements OnInit {
+combinationsQuantity: number = 0;
   selectedNumbers: Set<number> = new Set();
   maxSelectableNumbers: number = 18;
-  numbers: string[] = Array.from({ length: 25 }, (_, i) => String(i + 1).padStart(2, '0'));
+  numbers: string[] = Array.from({ length: 50 }, (_, i) => String(i + 1).padStart(2, '0'));
 
   private combinationMapping: Record<number, { quantity: number; maxSelectable: number }> = {
-    1: { quantity: 24, maxSelectable: 18 },
-    2: { quantity: 110, maxSelectable: 19 },
-    3: { quantity: 356, maxSelectable: 20 }
+    1: { quantity: 14, maxSelectable: 10 },
+    2: { quantity: 142, maxSelectable: 10 },
+    3: { quantity: 850, maxSelectable: 10 }
   };
 
   constructor(
@@ -73,7 +73,7 @@ export class LotofacilComponent implements OnInit {
     return {
       dezenas: selectedNumbersArray,
       tipo: this.combinationsQuantity,
-      loteria: 'LF'
+      loteria: 'DS'
     };
   }
 
@@ -81,7 +81,7 @@ export class LotofacilComponent implements OnInit {
     this.lotteryService.createCombinations(this.getBodyLotofacil()).subscribe({
       next: (response) => {
         this.notificationService.success('Combinações geradas com sucesso!');
-        this.router.navigateByUrl('/lottery/lotofacil');
+        this.router.navigateByUrl('/lottery/dupla-sena');
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.erro || 'Ocorreu um erro ao gerar as combinações!');

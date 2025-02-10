@@ -4,7 +4,7 @@
     <div class="l-content">
         <div class="l-body">
             <div class="l-title-container">
-                <h1 class="l-title text-secundary">{{ combinationsQuantity }} combinações - Lotofácil</h1>
+                <h1 class="l-title text-secundary">{{ combinationsQuantity }} combinações - Dupla Sena</h1>
             </div>
 
             <span class="l-subtitle text-secundary">Selecione os {{ maxSelectableNumbers }} números que serão combinados</span>
@@ -21,8 +21,6 @@
                 </div>
 
                 <button (click)="createCombinations()" class="primary-button" [disabled]="selectedNumbers.size < maxSelectableNumbers">Gerar combinações</button>
-
-                <a [routerLink]="['/lottery', 'lotofacil']" class="back-button text-primary">Voltar</a>
             </div>
         </div>
     </div>

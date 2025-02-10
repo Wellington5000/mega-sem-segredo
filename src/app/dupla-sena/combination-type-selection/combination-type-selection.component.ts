@@ -1,14 +1,14 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { LotteryService } from '../services/lottery.service';
-import { Combination } from '../models/combinations';
-import { NotificationService } from '../utils/notification/notification.service';
+import { Combination } from 'src/app/models/combinations';
+import { LotteryService } from 'src/app/services/lottery.service';
+import { NotificationService } from 'src/app/utils/notification/notification.service';
 
 @Component({
-  selector: 'app-lottery',
-  templateUrl: './lottery.component.html',
-  styleUrls: ['./lottery.component.scss']
+  selector: 'app-combination-type-selection',
+  templateUrl: './combination-type-selection.component.html',
+  styleUrls: ['./combination-type-selection.component.scss']
 })
-export class LotteryComponent implements OnInit {
+export class CombinationTypeSelectionComponent implements OnInit {
   combinations: Combination[] = [];
   hasCombination: boolean = false;
   showPromotionSubMenuId: number | null = null;
@@ -18,14 +18,12 @@ export class LotteryComponent implements OnInit {
     private notificationService: NotificationService
   ) { }
 
-  //55837786368
-
   ngOnInit(): void {
     this.getCombinations();
   }
 
   getCombinations(): void {
-    this.lotteryService.getCombinations('LF').subscribe({
+    this.lotteryService.getCombinations('DS').subscribe({
       next: (response) => {
         const combinacoes = response?.combinacoes || [];
         this.combinations = Object.values(combinacoes);
@@ -49,14 +47,14 @@ export class LotteryComponent implements OnInit {
   }
 
   togglePromotionSubMenu(event: Event, combinationId: number) {
-    event.stopPropagation();
-    this.showPromotionSubMenuId = this.showPromotionSubMenuId === combinationId ? null : combinationId;
-  }
-  
-  @HostListener('document:click', ['$event'])
-  onDocumentClick(event: Event): void {
-    if (this.showPromotionSubMenuId) {
-      this.showPromotionSubMenuId = null;
+      event.stopPropagation();
+      this.showPromotionSubMenuId = this.showPromotionSubMenuId === combinationId ? null : combinationId;
     }
-  }
+    
+    @HostListener('document:click', ['$event'])
+    onDocumentClick(event: Event): void {
+      if (this.showPromotionSubMenuId) {
+        this.showPromotionSubMenuId = null;
+      }
+    }
 }

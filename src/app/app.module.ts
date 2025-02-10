@@ -54,6 +54,9 @@ import { CombinationsComponent } from './combinations/combinations.component';
 import { DuplaSenaComponent } from './promotions/dupla-sena/dupla-sena.component';
 import { SimulateComponent } from './lotofacil/simulate/simulate.component';
 import { SimulateResultComponent } from './lotofacil/simulate-result/simulate-result.component';
+import { CombinationTypeSelectionComponent } from './dupla-sena/combination-type-selection/combination-type-selection.component';
+import { DuplaSenaCombinationComponent } from './dupla-sena/dupla-sena-combination/dupla-sena-combination.component';
+import { DuplaSenaCombinationsComponent } from './dupla-sena/dupla-sena-combinations/dupla-sena-combinations.component';
 
 
 
@@ -99,7 +102,10 @@ registerLocaleData(localePt, 'pt');
     CombinationsComponent,
     DuplaSenaComponent,
     SimulateComponent,
-    SimulateResultComponent
+    SimulateResultComponent,
+    CombinationTypeSelectionComponent,
+    DuplaSenaCombinationComponent,
+    DuplaSenaCombinationsComponent
   ],
   imports: [
     BrowserModule,

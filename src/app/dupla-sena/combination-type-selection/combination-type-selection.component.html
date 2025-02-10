@@ -1,0 +1,80 @@
+<div class="l-container">
+    <app-header-logged></app-header-logged>
+
+    <div class="l-content">
+        <div class="box">
+            <div class="l-title-container">
+                <h1 class="l-title text-secundary">Dupla Sena</h1>
+            </div>
+    
+           <div class="content-1">
+                <span class="l-subtitle text-secundary">Selecione a quantidade de combinações que deseja criar</span>
+    
+                <div class="l-cards">
+                    <a [routerLink]="['/dupla-sena', '1']">
+                        <div class="l-card">
+                            <span class="l-card-title text-secundary">14</span>
+                            <span class="l-card-subtitle text-secundary">Combinações de 6 números</span>
+                            <span class="l-card-info text-primary">Garantia de acerto de Quina se o resultado estiver contido nas 10 dezenas selecionadas</span>
+                        </div>
+                    </a>
+    
+                    <a [routerLink]="['/dupla-sena', '2']">
+                        <div class="l-card">
+                            <span class="l-card-title text-secundary">142</span>
+                            <span class="l-card-subtitle text-secundary">Combinações de 6 números</span>
+                            <span class="l-card-info text-primary">Garantia de acerto de Quina se o resultado estiver contido nas 15 dezenas selecionadas</span>
+                        </div>
+                    </a>
+    
+                    <a [routerLink]="['/dupla-sena', '3']">
+                        <div class="l-card">
+                            <span class="l-card-title text-secundary">850</span>
+                            <span class="l-card-subtitle text-secundary">Combinações de 6 números</span>
+                            <span class="l-card-info text-primary">Garantia de acerto de Quina se o resultado estiver contido nas 20 dezenas selecionadas</span>
+                        </div>
+                    </a>
+                </div>
+           </div>
+    
+           <div class="content-2" *ngIf="combinations.length > 0">
+                <span class="l-subtitle text-secundary l-subtitle-2">Combinações geradas</span>
+    
+                <div class="l-cards l-cards-2">
+                    <div *ngFor="let combination of combinations">
+                        <img class="delete-button" src="/assets/icons/menu.png" 
+                            (click)="togglePromotionSubMenu($event, combination.id)">
+            
+                        <div class="promotion-menu" *ngIf="showPromotionSubMenuId === combination.id">
+                            <div class="submenu">
+                                <button class="menu-button">
+                                    <img class="menu-icon" src="/assets/icons/download.png">
+                                    Baixar
+                                </button>
+                                <div class="menu-line"></div>
+                                <button class="menu-button" (click)="togglePromotionSubMenu($event, combination.id)">
+                                    <img class="menu-icon" src="/assets/icons/email.png">
+                                    Enviar volantes por e-mail
+                                </button>
+                                <div class="menu-line"></div>
+                                <button class="menu-button" 
+                                    (click)="deleteCombination(combination.id); togglePromotionSubMenu($event, combination.id)">
+                                    <img class="menu-icon" src="/assets/icons/delete.png">
+                                    Excluir
+                                </button>
+                            </div>
+                        </div>
+            
+                        <a [routerLink]="['/combinations/dupla-sena', combination.id]">
+                            <div class="l-card">
+                                <span class="l-card-title text-secundary">{{ combination.quantidade }}</span>
+                                <span class="l-card-subtitle text-secundary">Combinações</span>
+                                <span class="l-card-info text-secundary"> Gerada em {{ combination.criada_em }}</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>

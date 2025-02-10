@@ -14,8 +14,8 @@ export class LotteryService {
     private http: HttpClient
   ) { }
 
-  getCombinations(): Observable<Combinations> {
-    return this.http.get<Combinations>(environment + 'v3/matriz/LF');
+  getCombinations(lottery: string): Observable<Combinations> {
+    return this.http.get<Combinations>(environment + 'v3/matriz/' + lottery);
   }
 
   getCombinationsByConcourses(lottery: string, from: number, to: number): Observable<any> {
