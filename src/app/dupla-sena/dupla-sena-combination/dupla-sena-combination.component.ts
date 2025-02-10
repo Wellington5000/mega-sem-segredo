@@ -17,8 +17,8 @@ combinationsQuantity: number = 0;
 
   private combinationMapping: Record<number, { quantity: number; maxSelectable: number }> = {
     1: { quantity: 14, maxSelectable: 10 },
-    2: { quantity: 142, maxSelectable: 10 },
-    3: { quantity: 850, maxSelectable: 10 }
+    2: { quantity: 142, maxSelectable: 15 },
+    3: { quantity: 850, maxSelectable: 20 }
   };
 
   constructor(

@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { LotteryService } from '../services/lottery.service';
 import { Combination } from '../models/combinations';
 import { NotificationService } from '../utils/notification/notification.service';
+import { Utils } from '../utils/utils';
 
 @Component({
   selector: 'app-lottery',
@@ -17,8 +18,6 @@ export class LotteryComponent implements OnInit {
     private lotteryService: LotteryService,
     private notificationService: NotificationService
   ) { }
-
-  //55837786368
 
   ngOnInit(): void {
     this.getCombinations();
@@ -45,7 +44,31 @@ export class LotteryComponent implements OnInit {
       error: (error) => {
         this.notificationService.notify(error?.error?.erro || 'Ocorreu um erro ao excluir as combinações!');
       }
-    })
+    });
+  }
+
+  sendEmail(id: number): void {
+    this.lotteryService.sendEmail(id).subscribe({
+      next: (response) => {
+        this.notificationService.success('Volantes enviados com sucesso!');
+        this.getCombinations();
+      },
+      error: (error) => {
+        this.notificationService.notify(error?.error?.erro || 'Ocorreu um erro ao enviar os volantes!');
+      }
+    });
+  }
+
+  downloadCombinations(id: number): void {
+     this.lotteryService.downloadCombinations(id).subscribe({
+      next: (responde: Blob) => {
+        const fileName = `Combinações${id}`;
+        Utils.downloadPdf(responde, fileName);
+      },
+      error: (error) => {
+        this.notificationService.notify('Erro ao baixar combinações');
+      }
+    });
   }
 
   togglePromotionSubMenu(event: Event, combinationId: number) {

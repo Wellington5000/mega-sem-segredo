@@ -21,6 +21,8 @@ export class SimulateResultComponent implements OnInit {
   matchCounts: { [key: number]: number } = {};
   concourseMatchCounts: { [key: number]: { [key: number]: number } } = {};
   totalMatches: { [key: number]: number } = {};
+  frequencyText: string = '';
+  
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -57,6 +59,7 @@ export class SimulateResultComponent implements OnInit {
         this.sortedCombinations = this.combinations.map(arr => [...arr].sort((a, b) => a - b));
         this.precomputeMatchCounts();
         this.totalMatches = this.calculateTotalMatches(this.concourseMatchCounts);
+        this.frequencyText = this.calculatePrizeFrequency()
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao listar as combinações!');
@@ -133,4 +136,18 @@ export class SimulateResultComponent implements OnInit {
   hasMatches(i: number): boolean {
     return [11, 12, 13, 14, 15].some(j => this.concourseMatchCounts[i][j] > 0);
   }
+
+  calculatePrizeFrequency(): string {
+    const totalConcourses = this.concourses.length;
+    if (totalConcourses === 0) return "Nenhum concurso analisado.";
+  
+    const prizeCount = this.concourses.filter((_, i) => this.hasMatches(i)).length;
+  
+    if (prizeCount === 0) return "Nenhum concurso teve premiação.";
+  
+    const ratio = totalConcourses / prizeCount;
+    
+    return `Em média, 1 em cada ${ratio.toFixed(2)} concursos houve premiação.`;
+  }
+  
 }

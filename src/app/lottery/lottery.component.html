@@ -47,18 +47,18 @@
         
                     <div class="promotion-menu" *ngIf="showPromotionSubMenuId === combination.id">
                         <div class="submenu">
-                            <button class="menu-button">
+                            <button class="menu-button" (click)="downloadCombinations(combination.id);">
                                 <img class="menu-icon" src="/assets/icons/download.png">
                                 Baixar
                             </button>
                             <div class="menu-line"></div>
-                            <button class="menu-button" (click)="togglePromotionSubMenu($event, combination.id)">
+                            <button class="menu-button" (click)="sendEmail(combination.id);">
                                 <img class="menu-icon" src="/assets/icons/email.png">
                                 Enviar volantes por e-mail
                             </button>
                             <div class="menu-line"></div>
                             <button class="menu-button" 
-                                (click)="deleteCombination(combination.id); togglePromotionSubMenu($event, combination.id)">
+                                (click)="deleteCombination(combination.id);">
                                 <img class="menu-icon" src="/assets/icons/delete.png">
                                 Excluir
                             </button>

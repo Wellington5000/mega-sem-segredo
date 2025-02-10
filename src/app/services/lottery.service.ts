@@ -37,4 +37,14 @@ export class LotteryService {
   getLotofacilInfo(): Observable<any> {
     return this.http.get('https://servicebus2.caixa.gov.br/portaldeloterias/api/lotofacil/');
   }
+
+  sendEmail(id: number): Observable<any> {
+    return this.http.get(environment + 'v3/matriz/enviar-volantes/' + id);
+  }
+
+  downloadCombinations(id: number): Observable<Blob> {
+    return this.http.get(environment + `v3/matriz/download/${id}`, {
+      responseType: 'blob'
+    });
+  }
 }
