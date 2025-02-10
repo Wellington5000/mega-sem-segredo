@@ -18,7 +18,7 @@ export class HeaderLoggedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    //this.getCredits();
+    this.getCredits();
   }
 
   hiddenMenu(): void {
