@@ -35,7 +35,7 @@
               </div>
 
               <ng-container *ngFor="let items of sortedCombinations; let i = index; trackBy: trackByIndex">
-                  <div class="card" >
+                  <div class="card card-combination" >
                       <span class="card-title text-secundary">Combinação {{ i + 1 }} - {{ countMatchingNumbers(items, selectedNumbers) }} acertos</span>
                       <div class="numbers">
                           <div class="number text-secundary" *ngFor="let item of items; trackBy: trackByIndex" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
@@ -70,7 +70,7 @@
                           <div class="box-info">
                             <span class="box-info-text">1° Sorteio</span>
                               <div class="item" *ngFor="let i of [3, 4, 5, 6]">
-                                  <span class="item-title">{{ totalMatches[i] || 0 }}</span>
+                                  <span class="item-title">{{ totalMatchesFirstDraw[i] || 0 }}</span>
                                   <span class="item-text">{{ getDescriptionName(i) }}</span>
                               </div>
                           </div>
@@ -78,7 +78,7 @@
                           <div class="box-info">
                             <span class="box-info-text">2° Sorteio</span>
                               <div class="item" *ngFor="let i of [3, 4, 5, 6]">
-                                  <span class="item-title">{{ totalMatches[i] || 0 }}</span>
+                                  <span class="item-title">{{ totalMatchesSecondDraw[i] || 0 }}</span>
                                   <span class="item-text">{{ getDescriptionName(i) }}</span>
                               </div>
                           </div>
@@ -91,7 +91,7 @@
               <span class="card-title text-secundary">Acertos por concursos</span>
               <ng-container *ngFor="let concourse of concourses; let i = index; trackBy: trackByIndex">
                   <div class="result" *ngIf="hasMatches(i)">
-                      <div class="card">
+                      <div class="card card-concourse">
                           <div class="numbers">
                               <div class="box-combinations">
                                   <span class="combination-number text-secundary">{{ concourse[0] }}</span>
@@ -99,9 +99,18 @@
                               </div>
 
                               <div class="box-info">
+                                <span class="box-info-text">1° Sorteio</span>
                                   <div class="item" *ngFor="let j of [3, 4, 5, 6]">
-                                      <span class="item-title">{{ concourseMatchCounts[i][j] }}</span>
-                                      <span class="item-text">{{ j }} acertos</span>
+                                      <span class="item-title">{{ concourseMatchCountsFirstDraw[i][j] }}</span>
+                                      <span class="item-text">{{ getDescriptionName(j) }}</span>
+                                  </div>
+                              </div>
+
+                              <div class="box-info">
+                                <span class="box-info-text">2° Sorteio</span>
+                                  <div class="item" *ngFor="let j of [3, 4, 5, 6]">
+                                      <span class="item-title">{{ concourseMatchCountsSecondDraw[i][j] }}</span>
+                                      <span class="item-text">{{ getDescriptionName(j) }}</span>
                                   </div>
                               </div>
                           </div>

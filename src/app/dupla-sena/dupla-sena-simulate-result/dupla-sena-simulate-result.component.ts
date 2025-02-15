@@ -18,11 +18,13 @@ id!: number;
   combinations: number[][] = [];
   concourses: number[][] = [];
 
-  matchCounts: { [key: number]: number } = {};
-  concourseMatchCounts: { [key: number]: { [key: number]: number } } = {};
-  totalMatches: { [key: number]: number } = {};
+  concourseMatchCountsFirstDraw: { [key: number]: { [key: number]: number } } = {};
+  concourseMatchCountsSecondDraw: { [key: number]: { [key: number]: number } } = {};
+  totalMatchesFirstDraw: { [key: number]: number } = {};
+  totalMatchesSecondDraw: { [key: number]: number } = {};
   frequencyText: string = '';
   dozens: number[] = [];
+  matchCounts: { [key: number]: number } = {};
 
 
   constructor(
@@ -59,9 +61,11 @@ id!: number;
         this.combinations = response?.combinacoes || [];
         this.sortedCombinations = this.combinations.map(arr => [...arr].sort((a, b) => a - b));
         this.precomputeMatchCounts();
-        this.totalMatches = this.calculateTotalMatches(this.concourseMatchCounts);
-        this.frequencyText = this.calculatePrizeFrequency();
+        this.totalMatchesFirstDraw = this.calculateTotalMatches(this.concourseMatchCountsFirstDraw);
+        this.totalMatchesSecondDraw = this.calculateTotalMatches(this.concourseMatchCountsSecondDraw);
         this.dozens = response?.dezenas;
+        this.calculateSelectionMatches();
+        this.frequencyText = this.calculatePrizeFrequency();
       },
       error: (error) => {
         this.notificationService.notify(error?.error?.message || 'Ocorreu um erro ao listar as combinações!');
@@ -81,18 +85,24 @@ id!: number;
     });
   }
 
-  private precomputeMatchCounts(): void {
+  calculateSelectionMatches(): void {
     this.matchCounts = {};
-
     for (let i = 3; i <= 6; i++) {
-      this.matchCounts[i] = this.countMatchingArrays(this.combinations, this.selectedNumbers, i);
+      this.matchCounts[i] = this.countMatchingArrays(this.sortedCombinations, this.selectedNumbers, i);
     }
+  }
 
+  precomputeMatchCounts(): void {
     this.concourses.forEach((concourse, index) => {
-      this.concourseMatchCounts[index] = {};
+      this.concourseMatchCountsFirstDraw[index] = {};
+      this.concourseMatchCountsSecondDraw[index] = {};
+
+      const firstDraw = concourse.slice(1, 7).sort((a, b) => a - b);
+      const secondDraw = concourse.slice(7, 13).sort((a, b) => a - b);
+
       for (let i = 3; i <= 6; i++) {
-        const count = this.countMatchingArrays(this.sortedCombinations, concourse, i);
-        this.concourseMatchCounts[index][i] = count;
+        this.concourseMatchCountsFirstDraw[index][i] = this.countMatchingArrays(this.sortedCombinations, firstDraw, i);
+        this.concourseMatchCountsSecondDraw[index][i] = this.countMatchingArrays(this.sortedCombinations, secondDraw, i);
       }
     });
   }
@@ -116,39 +126,33 @@ id!: number;
   }
 
   calculateTotalMatches(dados: any): { [key: string]: number } {
-    const somaPorChave: { [key: string]: number } = {};
-
-    for (const chave in dados) {
-      if (dados.hasOwnProperty(chave)) {
-        const subObjeto = dados[chave];
-        for (const subChave in subObjeto) {
-          if (subObjeto.hasOwnProperty(subChave)) {
-            if (!somaPorChave[subChave]) {
-              somaPorChave[subChave] = 0;
-            }
-            somaPorChave[subChave] += subObjeto[subChave];
-          }
-        }
+    const total: { [key: string]: number } = {};
+    for (const key in dados) {
+      for (const subKey in dados[key]) {
+        total[subKey] = (total[subKey] || 0) + dados[key][subKey];
       }
     }
-
-    return somaPorChave;
+    return total;
   }
 
   hasMatches(i: number): boolean {
-    return [3, 4, 5, 6].some(j => this.concourseMatchCounts[i][j] > 0);
+    return [3, 4, 5, 6].some(j =>
+      (this.concourseMatchCountsFirstDraw[i]?.[j] || 0) > 0 ||
+      (this.concourseMatchCountsSecondDraw[i]?.[j] || 0) > 0
+    );
   }
 
   calculatePrizeFrequency(): string {
     const totalConcourses = this.concourses.length;
     if (totalConcourses === 0) return "Nenhum concurso analisado.";
 
-    const prizeCount = this.concourses.filter((_, i) => this.hasMatches(i)).length;
+    const prizeCount = this.concourses.filter((_, i) =>
+      [3, 4, 5, 6].some(j => (this.concourseMatchCountsFirstDraw[i]?.[j] || 0) > 0 || (this.concourseMatchCountsSecondDraw[i]?.[j] || 0) > 0)
+    ).length;
 
     if (prizeCount === 0) return "Nenhum concurso teve premiação.";
 
     const ratio = totalConcourses / prizeCount;
-
     return `Em média, 1 em cada ${ratio.toFixed(2)} concursos houve premiação.`;
   }
 
