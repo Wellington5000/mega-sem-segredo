@@ -234,6 +234,16 @@ padding: 16px 22px 20px 16px;
   width: 100% !important;
 }
 
+.card {
+  width: 100% !important;
+}
+
+.box-info-text {
+  font-weight: 600;
+  font-size: 16px;
+  color: white;
+}
+
 @media(max-width: 965px) {
   .c-header {
       flex-direction: column;

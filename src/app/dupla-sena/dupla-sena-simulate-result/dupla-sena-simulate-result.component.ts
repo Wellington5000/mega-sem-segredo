@@ -82,7 +82,7 @@ id!: number;
   }
 
   private precomputeMatchCounts(): void {
-    this.matchCounts = {}; // Reinicializar para evitar lixo de execuções anteriores
+    this.matchCounts = {};
 
     for (let i = 3; i <= 6; i++) {
       this.matchCounts[i] = this.countMatchingArrays(this.combinations, this.selectedNumbers, i);
@@ -100,7 +100,7 @@ id!: number;
   countMatchingNumbers(arr1: number[], arr2: number[]): number {
     const set1 = new Set(arr1);
     const set2 = new Set(arr2);
-    return [...set1].filter(num => set2.has(num)).length; // Conta corretamente os números em comum
+    return [...set1].filter(num => set2.has(num)).length;
   }
 
   countMatchingArrays(matrix: number[][], selectedNumbers: number[], numMatches: number): number {
@@ -152,4 +152,12 @@ id!: number;
     return `Em média, 1 em cada ${ratio.toFixed(2)} concursos houve premiação.`;
   }
 
+  getDescriptionName(number: number): string {
+    if(number === 3) return 'Terno';
+    if(number === 4) return 'Quadra';
+    if(number === 5) return 'Quina';
+    if(number === 6) return 'Sena';
+
+    return '';
+  }
 }

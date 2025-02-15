@@ -27,7 +27,7 @@
                           <div class="box-info">
                               <div class="item" *ngFor="let i of [3, 4, 5, 6]">
                                   <span class="item-title">{{ matchCounts[i] || 0 }}</span>
-                                  <span class="item-text">{{ i }} acertos</span>
+                                  <span class="item-text">{{ getDescriptionName(i) }}</span>
                               </div>
                           </div>
                       </div>
@@ -68,9 +68,18 @@
                           </div>
 
                           <div class="box-info">
+                            <span class="box-info-text">1° Sorteio</span>
                               <div class="item" *ngFor="let i of [3, 4, 5, 6]">
                                   <span class="item-title">{{ totalMatches[i] || 0 }}</span>
-                                  <span class="item-text">{{ i }} acertos</span>
+                                  <span class="item-text">{{ getDescriptionName(i) }}</span>
+                              </div>
+                          </div>
+
+                          <div class="box-info">
+                            <span class="box-info-text">2° Sorteio</span>
+                              <div class="item" *ngFor="let i of [3, 4, 5, 6]">
+                                  <span class="item-title">{{ totalMatches[i] || 0 }}</span>
+                                  <span class="item-text">{{ getDescriptionName(i) }}</span>
                               </div>
                           </div>
                       </div>
