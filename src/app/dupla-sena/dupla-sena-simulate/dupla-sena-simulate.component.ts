@@ -1,22 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { SimulateParams } from 'src/app/models/simulate-params';
-import { CombinationService } from 'src/app/services/combination.service';
 import { LotteryService } from 'src/app/services/lottery.service';
 import { NotificationService } from 'src/app/utils/notification/notification.service';
 
 @Component({
-  selector: 'app-simulate',
-  templateUrl: './simulate.component.html',
-  styleUrls: ['./simulate.component.scss']
+  selector: 'app-dupla-sena-simulate',
+  templateUrl: './dupla-sena-simulate.component.html',
+  styleUrls: ['./dupla-sena-simulate.component.scss']
 })
-export class SimulateComponent implements OnInit {
-  id!: number;
+export class DuplaSenaSimulateComponent implements OnInit {
+id!: number;
   combinationsQuantity: number = 0;
   selectedNumbers: Set<number> = new Set();
-  maxSelectableNumbers: number = 15;
-  numbers: string[] = Array.from({ length: 25 }, (_, i) => String(i + 1).padStart(2, '0'));
+  maxSelectableNumbers: number = 6;
+  numbers: string[] = Array.from({ length: 50 }, (_, i) => String(i + 1).padStart(2, '0'));
   from: FormControl = new FormControl(1, Validators.required);
   to: FormControl = new FormControl(3305, Validators.required);
   dozens: number[] = [];
@@ -81,7 +80,7 @@ export class SimulateComponent implements OnInit {
   }
 
   redirectToSimulation(params: SimulateParams): void {
-    this.router.navigate(['/lotofacil-simulate-result'], {
+    this.router.navigate(['/dupla-sena-simulate-result'], {
       queryParams: params
     });
   }

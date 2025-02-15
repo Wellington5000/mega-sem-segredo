@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LotteryService } from '../../services/lottery.service';
+import { LotteryService } from 'src/app/services/lottery.service';
 import { NotificationService } from 'src/app/utils/notification/notification.service';
 
 @Component({
-  selector: 'app-simulate-result',
-  templateUrl: './simulate-result.component.html',
-  styleUrls: ['./simulate-result.component.scss']
+  selector: 'app-dupla-sena-simulate-result',
+  templateUrl: './dupla-sena-simulate-result.component.html',
+  styleUrls: ['./dupla-sena-simulate-result.component.scss']
 })
-export class SimulateResultComponent implements OnInit {
-  id!: number;
+export class DuplaSenaSimulateResultComponent {
+id!: number;
   to!: number;
   from!: number;
   simulationType!: string;
@@ -70,7 +70,7 @@ export class SimulateResultComponent implements OnInit {
   }
 
   getCombinationsByConcourses(id: number, from: number, to: number): void {
-    this.lotteryService.getCombinationsByConcourses('LF', from, to).subscribe({
+    this.lotteryService.getCombinationsByConcourses('DS', from, to).subscribe({
       next: (response) => {
         this.concourses = response?.concursos || [];
         this.getCombinationsBySelection(id);
@@ -84,13 +84,13 @@ export class SimulateResultComponent implements OnInit {
   private precomputeMatchCounts(): void {
     this.matchCounts = {}; // Reinicializar para evitar lixo de execuções anteriores
 
-    for (let i = 11; i <= 15; i++) {
+    for (let i = 3; i <= 6; i++) {
       this.matchCounts[i] = this.countMatchingArrays(this.combinations, this.selectedNumbers, i);
     }
 
     this.concourses.forEach((concourse, index) => {
       this.concourseMatchCounts[index] = {};
-      for (let i = 11; i <= 15; i++) {
+      for (let i = 3; i <= 6; i++) {
         const count = this.countMatchingArrays(this.sortedCombinations, concourse, i);
         this.concourseMatchCounts[index][i] = count;
       }
@@ -136,7 +136,7 @@ export class SimulateResultComponent implements OnInit {
   }
 
   hasMatches(i: number): boolean {
-    return [11, 12, 13, 14, 15].some(j => this.concourseMatchCounts[i][j] > 0);
+    return [3, 4, 5, 6].some(j => this.concourseMatchCounts[i][j] > 0);
   }
 
   calculatePrizeFrequency(): string {

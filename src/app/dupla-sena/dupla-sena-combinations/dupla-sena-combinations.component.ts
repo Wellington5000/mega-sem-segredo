@@ -11,6 +11,7 @@ import { NotificationService } from 'src/app/utils/notification/notification.ser
 export class DuplaSenaCombinationsComponent implements OnInit {
   id!: number;
   sortedCombinations: any[] = [];
+  dozens: number[] = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,6 +28,7 @@ export class DuplaSenaCombinationsComponent implements OnInit {
     this.LotteryService.getCombinationsById(id).subscribe({
       next: (response) => {
         const combinations: any[] = response?.combinacoes;
+        this.dozens = response?.dezenas;
         this.sortedCombinations = combinations.map(arr => arr.sort((a: number, b: number) => a - b))
       },
       error: (error) => {

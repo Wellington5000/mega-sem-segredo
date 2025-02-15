@@ -1,0 +1,105 @@
+<div class="c-container">
+  <app-header-logged></app-header-logged>
+
+  <div class="c-content">
+      <div class="box" *ngIf="simulationType === 'selection'">
+          <div class="c-header">
+              <h2 class="c-title text-secundary">Confira os acertos das suas combinações de acordo com a simulação</h2>
+          </div>
+
+          <div class="c-body">
+              <div class="card dozens">
+                  <span class="card-title text-secundary">Se o resultado fosse esses números que você selecionou</span>
+                  <div class="numbers">
+                      <div class="number text-secundary selected-number" *ngFor="let number of selectedNumbers; trackBy: trackByIndex">{{ number }}</div>
+                  </div>
+              </div>
+
+              <div class="result">
+                  <span class="card-title text-secundary">Esses seriam os acertos das suas combinações</span>
+                  <div class="card dozens">
+                      <div class="numbers">
+                          <div class="box-combinations">
+                              <span class="combination-number text-secundary">{{ sortedCombinations.length }}</span>
+                              <span class="combination-text text-secundary">Combinações</span>
+                          </div>
+
+                          <div class="box-info">
+                              <div class="item" *ngFor="let i of [3, 4, 5, 6]">
+                                  <span class="item-title">{{ matchCounts[i] || 0 }}</span>
+                                  <span class="item-text">{{ i }} acertos</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <ng-container *ngFor="let items of sortedCombinations; let i = index; trackBy: trackByIndex">
+                  <div class="card" >
+                      <span class="card-title text-secundary">Combinação {{ i + 1 }} - {{ countMatchingNumbers(items, selectedNumbers) }} acertos</span>
+                      <div class="numbers">
+                          <div class="number text-secundary" *ngFor="let item of items; trackBy: trackByIndex" [class.selected-number]="selectedNumbers.includes(item)">{{ item }}</div>
+                      </div>
+                  </div>
+              </ng-container>
+          </div>
+      </div>
+
+      <div class="box concourse" *ngIf="simulationType === 'concourse'">
+          <div class="c-header">
+              <h2 class="c-title text-secundary">Confira os acertos das suas combinações nos intervalos de concurso</h2>
+          </div>
+
+          <div class="c-body">
+              <div class="result">
+                  <span class="card-title text-secundary">Esses seriam os acertos das suas combinações</span>
+                  <div class="card dozens card-concourse-result">
+                      <div class="numbers">
+                          <div class="box-concourse-interval">
+                              <div class="box-combinations">
+                                  <span class="combination-text text-secundary">Concurso</span>
+                                  <span class="combination-number text-secundary">{{ from }}</span>
+                              </div>
+                              <span class="text-secundary label">até</span>
+                              <div class="box-combinations">
+                                  <span class="combination-text text-secundary">Concurso</span>
+                                  <span class="combination-number text-secundary">{{ to }}</span>
+                              </div>
+                          </div>
+
+                          <div class="box-info">
+                              <div class="item" *ngFor="let i of [3, 4, 5, 6]">
+                                  <span class="item-title">{{ totalMatches[i] || 0 }}</span>
+                                  <span class="item-text">{{ i }} acertos</span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <span class="box-concourse-info text-secundary">Detalhe: {{ frequencyText }}</span>
+              </div>
+
+              <span class="card-title text-secundary">Acertos por concursos</span>
+              <ng-container *ngFor="let concourse of concourses; let i = index; trackBy: trackByIndex">
+                  <div class="result" *ngIf="hasMatches(i)">
+                      <div class="card">
+                          <div class="numbers">
+                              <div class="box-combinations">
+                                  <span class="combination-number text-secundary">{{ concourse[0] }}</span>
+                                  <span class="combination-text text-secundary">Concurso</span>
+                              </div>
+
+                              <div class="box-info">
+                                  <div class="item" *ngFor="let j of [3, 4, 5, 6]">
+                                      <span class="item-title">{{ concourseMatchCounts[i][j] }}</span>
+                                      <span class="item-text">{{ j }} acertos</span>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </ng-container>
+          </div>
+      </div>
+  </div>
+</div>

@@ -100,7 +100,7 @@
     .card {
         margin-top: 0 !important;
     }
-    
+
 
     .c-body {
         gap: 8px !important;
@@ -145,7 +145,7 @@
             background-color: #A7348B !important;
         }
     }
-   
+
     .card {
         margin-top: 8px;
         padding-top: 8px !important;
@@ -196,6 +196,38 @@
             }
         }
     }
+}
+
+.dozens-selected {
+  gap: 12px;
+  width: 100%;
+  display: flex;
+  border-radius: 16px;
+  flex-direction: column;
+  background-color: #263238;
+  padding: 16px 22px 20px 16px;
+
+  .card-title {
+      font-weight: 600;
+  }
+
+  .numbers {
+      gap: 12px;
+      display: flex;
+      justify-content: center;
+
+      .number {
+          width: 46px;
+          height: 46px;
+          display: flex;
+          font-size: 20px;
+          font-weight: 800;
+          border-radius: 50%;
+          align-items: center;
+          justify-content: center;
+          background-color: #A7348B;
+      }
+  }
 }
 
 @media(max-width: 965px) {

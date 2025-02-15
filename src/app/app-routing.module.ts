@@ -31,8 +31,12 @@ import { CombinationTypeSelectionComponent } from './dupla-sena/combination-type
 import { DuplaSenaCombinationComponent } from './dupla-sena/dupla-sena-combination/dupla-sena-combination.component';
 
 import { DuplaSenaCombinationsComponent } from './dupla-sena/dupla-sena-combinations/dupla-sena-combinations.component';
+import { DuplaSenaSimulateComponent } from './dupla-sena/dupla-sena-simulate/dupla-sena-simulate.component';
+import { DuplaSenaSimulateResultComponent } from './dupla-sena/dupla-sena-simulate-result/dupla-sena-simulate-result.component';
 
 const routes: Routes = [
+  { path: 'dupla-sena-simulate-result', component: DuplaSenaSimulateResultComponent, canActivate: [GuestGuard] },
+  { path: 'dupla-sena-simulate/:id', component: DuplaSenaSimulateComponent, canActivate: [GuestGuard] },
   { path: 'combinations/dupla-sena/:id', component: DuplaSenaCombinationsComponent, canActivate: [GuestGuard] },
   { path: 'dupla-sena/:combination', component: DuplaSenaCombinationComponent, canActivate: [GuestGuard] },
   { path: 'lottery/dupla-sena', component: CombinationTypeSelectionComponent, canActivate: [GuestGuard] },

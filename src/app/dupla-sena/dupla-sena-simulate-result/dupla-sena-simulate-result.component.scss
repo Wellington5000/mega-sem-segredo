@@ -1,0 +1,258 @@
+.c-container {
+  height: 100%;
+  padding-bottom: 4rem;
+  background-color: #161C24;
+  min-height: calc(100vh - 90px);
+
+  .c-content {
+      width: 100%;
+      display: flex;
+      margin-top: 90px;
+      justify-content: center;
+      padding-left: 2rem;
+      padding-right: 2rem;
+
+      .box {
+          width: 100%;
+          margin-top: 42px;
+          max-width: 1180px;
+
+          .c-header {
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+
+              h2 {
+                  font-weight: 600;
+                  font-size: 32px;
+              }
+
+              .actions {
+                  gap: 30px;
+                  display: flex;
+                  align-items: center;
+
+                  a {
+                      font-size: 20px;
+                      font-weight: 600;
+                  }
+
+                  button {
+                      font-size: 16px;
+                      font-weight: 700;
+                      padding: 12px 36px !important;
+                  }
+              }
+          }
+
+          .c-body {
+              gap: 20px;
+              display: flex;
+              flex-wrap: wrap;
+              margin-top: 58px;
+
+              .card {
+                  gap: 12px;
+                  width: fit-content;
+                  display: flex;
+                  border-radius: 16px;
+                  flex-direction: column;
+                  background-color: #263238;
+                  padding: 16px 22px 20px 16px;
+                  max-width: 912px;
+
+                  .card-title {
+                      font-weight: 600;
+                  }
+
+                  .numbers {
+                      gap: 12px;
+                      display: flex;
+                      justify-content: flex-start;
+
+                      .number {
+                          width: 46px;
+                          height: 46px;
+                          display: flex;
+                          font-size: 20px;
+                          font-weight: 800;
+                          border-radius: 50%;
+                          align-items: center;
+                          justify-content: center;
+                          background-color: #455A64;
+                      }
+
+                      .selected-number {
+                          background-color: #BE0133;
+                      }
+                  }
+              }
+          }
+      }
+  }
+}
+
+.concourse {
+  .result {
+      margin: 0 !important;
+  }
+
+  .card {
+      margin-top: 0 !important;
+  }
+
+
+  .c-body {
+      gap: 8px !important;
+  }
+
+  .card-concourse-result {
+      margin-bottom: 10px !important;
+  }
+
+  .card-title {
+      margin-top: 28px;
+      margin-bottom: 14px;
+  }
+}
+
+.result {
+  margin-top:  8px;
+  margin-bottom: 15px;
+  width: 100%;
+
+  .box-concourse-info {
+      font-weight: 600;
+      font-size: 16px;
+  }
+
+  .numbers {
+      justify-content: space-between !important;
+      align-items: center;
+  }
+
+  .box-concourse-interval {
+      gap: 20px;
+      display: flex;
+      align-items: center;
+
+      .label {
+          font-weight: 300;
+          font-size: 12px;
+      }
+
+      .box-combinations {
+          background-color: #BE0133 !important;
+      }
+  }
+
+  .card {
+      margin-top: 8px;
+      padding-top: 8px !important;
+      padding-bottom: 8px !important;
+
+      .box-combinations {
+          width: 74px;
+          height: 65px;
+          display: flex;
+          flex-direction: column;
+          background-color: var(--primary);
+          border-radius: 8px;
+          align-items: center;
+          justify-content: center;
+
+          .combination-number {
+              font-size: 20px;
+              font-weight: 700;
+          }
+
+          .combination-text {
+              font-size: 12px;
+              font-weight: 300;
+          }
+      }
+
+      .box-info {
+          gap: 16px;
+          align-items: center;
+          display: flex;
+
+          .item {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+
+              .item-title {
+                  color: var(--primary);
+                  font-size: 24px;
+                  font-weight: 700;
+              }
+
+              .item-text {
+                  color: white;
+                  font-weight: 300;
+                  font-size: 12px;
+              }
+          }
+      }
+  }
+}
+
+.dozens-selected {
+gap: 12px;
+width: 100%;
+display: flex;
+border-radius: 16px;
+flex-direction: column;
+background-color: #263238;
+padding: 16px 22px 20px 16px;
+
+.card-title {
+    font-weight: 600;
+}
+
+.numbers {
+    gap: 12px;
+    display: flex;
+    justify-content: center;
+
+    .number {
+        width: 46px;
+        height: 46px;
+        display: flex;
+        font-size: 20px;
+        font-weight: 800;
+        border-radius: 50%;
+        align-items: center;
+        justify-content: center;
+        background-color: #BE0133;
+    }
+}
+}
+
+.dozens {
+  width: 100% !important;
+}
+
+@media(max-width: 965px) {
+  .c-header {
+      flex-direction: column;
+  }
+
+  .actions {
+      flex-direction: column;
+      margin-top: 20px;
+  }
+
+  .numbers {
+      flex-wrap: wrap;
+  }
+
+  .box-concourse-interval, .box-combinations {
+      width: 100% !important;
+  }
+
+  .item-text {
+      text-align: center;
+  }
+}

@@ -5,15 +5,23 @@
         <div class="box">
             <div class="c-header">
                 <h2 class="c-title text-secundary">{{ sortedCombinations?.length }} combinações geradas </h2>
-    
+
                 <div class="actions">
-                    <!-- <a class="back-button text-primary" [routerLink]="['/lotofacil-simulate', id]">Simular resultado</a> -->
-                    <!-- <a class="back-button text-primary">Simular resultado</a> -->
+                    <a class="back-button text-primary" [routerLink]="['/dupla-sena-simulate', id]">Simular resultado</a>
                     <button class="primary-button">Usar Marca Rápido PRO</button>
                 </div>
             </div>
-            
+
             <div class="c-body">
+                <div class="dozens-container">
+                  <div class="card dozens-selected">
+                    <span class="card-title text-secundary">{{ dozens.length }} números selecionados</span>
+                    <div class="numbers" >
+                        <div class="number text-secundary" *ngFor="let number of dozens;">{{ number }}</div>
+                    </div>
+                  </div>
+                </div>
+
                 <div class="card" *ngFor="let items of sortedCombinations; let i = index">
                     <span class="card-title text-secundary">Combinação {{ i + 1 }}</span>
                     <div class="numbers" >
