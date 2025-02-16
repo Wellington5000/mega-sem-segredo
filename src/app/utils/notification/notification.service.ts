@@ -4,6 +4,8 @@ import { BehaviorSubject } from 'rxjs';
 
 type NotificationType = 'success' | 'error' | 'warning';
 
+const NOTIFICATION_TIME = 5000;
+
 export interface Notification {
   message: string;
   type: NotificationType;
@@ -30,7 +32,7 @@ export class NotificationService {
   clear() {
     setTimeout(() => {
       this.notificationSubject.next(null);
-    }, 50000);
+    }, NOTIFICATION_TIME);
   }
 
   getNotification() {
