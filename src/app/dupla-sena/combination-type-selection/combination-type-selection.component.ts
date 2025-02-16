@@ -2,6 +2,7 @@ import { Component, HostListener, OnInit } from '@angular/core';
 import { Combination } from 'src/app/models/combinations';
 import { LotteryService } from 'src/app/services/lottery.service';
 import { NotificationService } from 'src/app/utils/notification/notification.service';
+import { Utils } from 'src/app/utils/utils';
 
 @Component({
   selector: 'app-combination-type-selection',
@@ -46,11 +47,35 @@ export class CombinationTypeSelectionComponent implements OnInit {
     })
   }
 
+  sendEmail(id: number): void {
+      this.lotteryService.sendEmail(id).subscribe({
+        next: (response) => {
+          this.notificationService.success('Volantes enviados com sucesso!');
+          this.getCombinations();
+        },
+        error: (error) => {
+          this.notificationService.notify(error?.error?.erro || 'Ocorreu um erro ao enviar os volantes!');
+        }
+      });
+    }
+
+    downloadCombinations(id: number): void {
+       this.lotteryService.downloadCombinations(id).subscribe({
+        next: (responde: Blob) => {
+          const fileName = `Combinações${id}`;
+          Utils.downloadPdf(responde, fileName);
+        },
+        error: (error) => {
+          this.notificationService.notify('Erro ao baixar combinações');
+        }
+      });
+    }
+
   togglePromotionSubMenu(event: Event, combinationId: number) {
       event.stopPropagation();
       this.showPromotionSubMenuId = this.showPromotionSubMenuId === combinationId ? null : combinationId;
     }
-    
+
     @HostListener('document:click', ['$event'])
     onDocumentClick(event: Event): void {
       if (this.showPromotionSubMenuId) {
